@@ -30,7 +30,7 @@
 
 <script >
 import dataPopularCategories from '@/data/popular-categories'
-import AppTimer from '~/components/shared/AppTimer';
+import AppTimer from '~/components/shared/AppTimer'
 
 export default {
   components: {
@@ -38,7 +38,7 @@ export default {
   },
   data() {
     return {
-      popular: dataPopularCategories,
+      popular: dataPopularCategories
     }
   },
 

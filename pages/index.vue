@@ -2,6 +2,7 @@
   <main>
     <app-promotions/>
     <app-popular-categories/>
+    <app-bestsellers/>
   </main>
 </template>
 
