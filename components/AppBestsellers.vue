@@ -1,11 +1,7 @@
 <template>
   <section class="layout bestsellers">
     <app-section-header v-bind="{ headerProps }" />
-    <app-swiper
-      v-slot="slotProps"
-      :slides="slides"
-      :options="options"
-    >
+    <app-swiper v-slot="slotProps" :slides="slides" :options="options">
       <app-card :slide="{ ...slotProps }" />
     </app-swiper>
   </section>
@@ -33,6 +29,8 @@ export default {
       options: {
         slidesPerView: 2,
         spaceBetween: 8,
+        freeMode: true,
+
         breakpoints: {
           599: {
             slidesPerView: 3,

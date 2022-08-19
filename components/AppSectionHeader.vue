@@ -4,13 +4,13 @@
       <span class="title__text">{{ headerProps.title }}</span>
       <span class="title__number">{{ headerProps.count }}</span>
     </h2>
-    <a v-if="headerProps.link" class="section-header__link">{{ headerProps.link.text }}</a>
+    <a v-if="headerProps.link" class="section-header__link">{{
+      headerProps.link.text
+    }}</a>
   </div>
 </template>
 
 <script>
-
-
 export default {
   name: 'AppSectionHeader',
   props: {
@@ -19,7 +19,7 @@ export default {
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

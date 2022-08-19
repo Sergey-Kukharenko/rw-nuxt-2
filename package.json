@@ -14,16 +14,16 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
-    "@nuxtjs/composition-api": "^0.33.1",
     "@nuxtjs/svg-sprite": "^0.5.2",
     "core-js": "^3.19.3",
     "node-sass": "^7.0.1",
     "nuxt": "^2.15.8",
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
-    "vue-ssr-carousel": "^1.4.0",
     "vue-template-compiler": "^2.6.14",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "swiper": "^5.3.6",
+    "vue-awesome-swiper": "^4.1.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.16.3",

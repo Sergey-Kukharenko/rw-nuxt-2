@@ -19,7 +19,7 @@ export default {
       minutes: null,
       seconds: null,
       isEnded: null,
-      endDate: null,
+      endDate: null
     }
   },
 
@@ -50,12 +50,12 @@ export default {
         clearInterval(this.timer)
         this.isEnded = true
       }
-    },
+    }
   },
 
   destroy() {
     clearInterval(this.timer)
-  },
+  }
 }
 </script>
 

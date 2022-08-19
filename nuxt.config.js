@@ -21,7 +21,10 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ['~/assets/css/fonts.css'],
+  css: [
+    '~/assets/css/fonts.css',
+    'swiper/css/swiper.css'
+  ],
 
   styleResources: {
     scss: [
@@ -30,7 +33,9 @@ export default {
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '@/plugins/vue-awesome-swiper', ssr: true },
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -39,9 +44,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources',
-    '@nuxtjs/composition-api/module',
-    'vue-ssr-carousel/nuxt'
+    '@nuxtjs/style-resources'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

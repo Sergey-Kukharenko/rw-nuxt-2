@@ -38,7 +38,7 @@
       </div>
       <div class="footer__button">
         <app-button theme="green" size="sm">
-          <svg-icon name="bag" class="icon" />
+          <svg-icon name="bag" class="icon-bag" />
           <span>Send</span>
         </app-button>
       </div>
@@ -62,7 +62,7 @@ export default {
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -155,22 +155,22 @@ export default {
     position: absolute;
     z-index: 2;
     background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 7e-5) 0%,
-        rgba(0, 0, 0, 0.0109804) 9.22%,
-        rgba(0, 0, 0, 0.0384314) 18.76%,
-        rgba(0, 0, 0, 0.0823529) 28.48%,
-        rgba(0, 0, 0, 0.14) 38.19%,
-        rgba(0, 0, 0, 0.203137) 47.75%,
-        rgba(0, 0, 0, 0.27451) 56.99%,
-        rgba(0, 0, 0, 0.351373) 65.75%,
-        rgba(0, 0, 0, 0.42549) 73.87%,
-        rgba(0, 0, 0, 0.496863) 81.18%,
-        rgba(0, 0, 0, 0.56) 87.52%,
-        rgba(0, 0, 0, 0.617647) 92.74%,
-        rgba(0, 0, 0, 0.661569) 96.66%,
-        rgba(0, 0, 0, 0.68902) 99.14%,
-        rgba(0, 0, 0, 0.7) 100%
+      180deg,
+      rgba(0, 0, 0, 7e-5) 0%,
+      rgba(0, 0, 0, 0.0109804) 9.22%,
+      rgba(0, 0, 0, 0.0384314) 18.76%,
+      rgba(0, 0, 0, 0.0823529) 28.48%,
+      rgba(0, 0, 0, 0.14) 38.19%,
+      rgba(0, 0, 0, 0.203137) 47.75%,
+      rgba(0, 0, 0, 0.27451) 56.99%,
+      rgba(0, 0, 0, 0.351373) 65.75%,
+      rgba(0, 0, 0, 0.42549) 73.87%,
+      rgba(0, 0, 0, 0.496863) 81.18%,
+      rgba(0, 0, 0, 0.56) 87.52%,
+      rgba(0, 0, 0, 0.617647) 92.74%,
+      rgba(0, 0, 0, 0.661569) 96.66%,
+      rgba(0, 0, 0, 0.68902) 99.14%,
+      rgba(0, 0, 0, 0.7) 100%
     );
     border-radius: 12px;
     transition: height 0.35s;
@@ -343,7 +343,7 @@ export default {
   }
 }
 
-.icon {
+.icon-bag {
   fill: white;
 
   @include gt-xs {

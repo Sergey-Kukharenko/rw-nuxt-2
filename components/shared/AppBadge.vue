@@ -1,35 +1,35 @@
 <template>
   <div :class="classNames">
-<!--    <svg-icon v-if="icon" :name="icon" class="icon" />-->
+    <!--    <svg-icon v-if="icon" :name="icon" class="icon" />-->
     <slot></slot>
   </div>
 </template>
 
 <script>
-import {useClassName} from '~/composables/useClassName';
+import { useClassName } from '~/composables/useClassName'
 
 export default {
   name: 'AppBadge',
   props: {
     theme: {
       type: String,
-      default: '',
+      default: ''
     },
     size: {
       type: String,
-      default: '',
+      default: ''
     },
     icon: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
   computed: {
     classNames() {
       return useClassName(this.$props, 'badge')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

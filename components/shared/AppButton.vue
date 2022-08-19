@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import {useClassName} from '~/composables/useClassName';
+import { useClassName } from '~/composables/useClassName'
 
 export default {
   name: 'AppButton',
@@ -28,7 +28,7 @@ export default {
       return useClassName(this.$props, 'button')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
