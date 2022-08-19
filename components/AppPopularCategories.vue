@@ -2,11 +2,7 @@
   <section class="layout popular-categories">
     <h1 class="popular-title">New way to show love</h1>
     <div class="popular-list">
-      <a
-        v-for="item in popular"
-        :key="item.hashTag"
-        class="popular-list__item card"
-      >
+      <a v-for="item in popular" :key="item.hashTag" class="popular-list__item card">
         <div class="absolute-grow card__content">
           <img
             :key="item.hashTag"
@@ -29,25 +25,25 @@
 </template>
 
 <script >
-import dataPopularCategories from '@/data/popular-categories'
-import AppTimer from '~/components/shared/AppTimer'
+import dataPopularCategories from '@/data/popular-categories';
+import AppTimer from '~/components/shared/AppTimer';
 
 export default {
   components: {
-    AppTimer
+    AppTimer,
   },
   data() {
     return {
-      popular: dataPopularCategories
-    }
+      popular: dataPopularCategories,
+    };
   },
 
   computed: {
     getImg() {
-      return this.$mq === 'xs' ? 'mobile' : 'desktop'
-    }
-  }
-}
+      return this.$mq === 'xs' ? 'mobile' : 'desktop';
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">

@@ -8,19 +8,19 @@
 </template>
 
 <script>
-import dataBestsellers from '@/data/bestsellers'
-import AppSectionHeader from '@/components/AppSectionHeader.vue'
-import AppSwiper from '@/components/ui/AppSwiper.vue'
-import AppCard from '@/components/shared/AppCard.vue'
+import dataBestsellers from '@/data/bestsellers';
+import AppSectionHeader from '@/components/AppSectionHeader.vue';
+import AppSwiper from '@/components/ui/AppSwiper.vue';
+import AppCard from '@/components/shared/AppCard.vue';
 
-const { main, list } = dataBestsellers
+const { main, list } = dataBestsellers;
 
 export default {
   name: 'AppBestsellers',
   components: {
     AppSectionHeader,
     AppSwiper,
-    AppCard
+    AppCard,
   },
   data() {
     return {
@@ -34,17 +34,17 @@ export default {
         breakpoints: {
           599: {
             slidesPerView: 3,
-            spaceBetween: 16
+            spaceBetween: 16,
           },
           959: {
             slidesPerView: 4,
-            spaceBetween: 16
-          }
-        }
-      }
-    }
-  }
-}
+            spaceBetween: 16,
+          },
+        },
+      },
+    };
+  },
+};
 </script>
 
 <style scoped lang="scss">

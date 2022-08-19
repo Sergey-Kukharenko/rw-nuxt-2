@@ -1,40 +1,32 @@
 <template>
   <section class="layout promotion">
-    <a
-      v-for="promotion in promotions"
-      :key="promotion.text"
-      class="promotion__item"
-    >
+    <a v-for="promotion in promotions" :key="promotion.text" class="promotion__item">
       <div class="promotion__text">
         {{ promotion.text }}
       </div>
       <figure class="promotion__figure">
-        <img
-          :src="promotion.img[getImg]"
-          class="promotion__image"
-          :alt="promotion.text"
-        />
+        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text" />
       </figure>
     </a>
   </section>
 </template>
 
 <script >
-import dataPromotions from '@/data/promotions'
+import dataPromotions from '@/data/promotions';
 
 export default {
   data() {
     return {
-      promotions: dataPromotions
-    }
+      promotions: dataPromotions,
+    };
   },
 
   computed: {
     getImg() {
-      return this.$mq === 'xs' ? 'mobile' : 'desktop'
-    }
-  }
-}
+      return this.$mq === 'xs' ? 'mobile' : 'desktop';
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
