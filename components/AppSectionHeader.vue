@@ -14,9 +14,9 @@ export default {
   props: {
     headerProps: {
       type: Object,
-      default: () => ({}),
-    },
-  },
+      default: () => ({})
+    }
+  }
 };
 </script>
 

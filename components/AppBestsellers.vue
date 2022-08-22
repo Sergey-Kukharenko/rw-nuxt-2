@@ -20,7 +20,7 @@ export default {
   components: {
     AppSectionHeader,
     AppSwiper,
-    AppCard,
+    AppCard
   },
   data() {
     return {
@@ -34,16 +34,16 @@ export default {
         breakpoints: {
           599: {
             slidesPerView: 3,
-            spaceBetween: 16,
+            spaceBetween: 16
           },
           959: {
             slidesPerView: 4,
-            spaceBetween: 16,
-          },
-        },
-      },
+            spaceBetween: 16
+          }
+        }
+      }
     };
-  },
+  }
 };
 </script>
 

@@ -17,15 +17,15 @@ import dataPromotions from '@/data/promotions';
 export default {
   data() {
     return {
-      promotions: dataPromotions,
+      promotions: dataPromotions
     };
   },
 
   computed: {
     getImg() {
       return this.$mq === 'xs' ? 'mobile' : 'desktop';
-    },
-  },
+    }
+  }
 };
 </script>
 

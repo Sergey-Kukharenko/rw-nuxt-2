@@ -30,19 +30,19 @@ import AppTimer from '~/components/shared/AppTimer';
 
 export default {
   components: {
-    AppTimer,
+    AppTimer
   },
   data() {
     return {
-      popular: dataPopularCategories,
+      popular: dataPopularCategories
     };
   },
 
   computed: {
     getImg() {
       return this.$mq === 'xs' ? 'mobile' : 'desktop';
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -81,6 +81,15 @@ export default {
       grid-column: span 3;
     }
 
+    .card__figcaption {
+      @include xs {
+        font-size: 12px;
+        line-height: 16px;
+        text-align: center;
+        padding: 9px 0 4px 0;
+      }
+    }
+
     &:nth-child(1) {
       @include gt-sm {
         grid-column: 1 / span 2;
@@ -107,13 +116,6 @@ export default {
           line-height: 40px;
           font-weight: 600;
         }
-
-        @include xs {
-          font-size: 12px;
-          line-height: 16px;
-          text-align: center;
-          padding: 9px 0 4px 0;
-        }
       }
 
       .card__image {
@@ -123,26 +125,23 @@ export default {
       }
     }
 
-    &:not(:first-child) {
+    &:not(:nth-child(1), :nth-child(2)) {
       @include gt-xs {
         padding: 20px;
       }
 
       @include xs {
         padding: 0;
+        grid-column: span 2;
       }
+    }
 
+    &:not(:nth-child(1)) {
       .card__figcaption {
         @include gt-xs {
           display: inline-block;
           font-size: 20px;
           line-height: 24px;
-        }
-
-        @include xs {
-          font-size: 12px;
-          text-align: center;
-          padding: 9px 0 4px 0;
         }
       }
 
@@ -166,44 +165,6 @@ export default {
         @include xs {
           display: none;
         }
-      }
-    }
-
-    &:nth-child(1) {
-      @include xs {
-        order: 0;
-      }
-    }
-
-    &:nth-child(4) {
-      @include xs {
-        order: 1;
-      }
-    }
-
-    &:nth-child(2) {
-      @include xs {
-        order: 3;
-      }
-    }
-
-    &:nth-child(3) {
-      @include xs {
-        order: 2;
-      }
-    }
-
-    &:nth-child(5) {
-      @include xs {
-        order: 4;
-      }
-    }
-
-    &:nth-child(2),
-    &:nth-child(3),
-    &:nth-child(5) {
-      @include xs {
-        grid-column: span 2;
       }
     }
   }

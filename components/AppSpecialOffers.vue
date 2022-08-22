@@ -20,14 +20,14 @@ export default {
   components: {
     AppSectionHeader,
     AppGrid,
-    AppCard,
+    AppCard
   },
   data() {
     return {
       headerProps: main,
-      slides: list,
+      slides: list
     };
-  },
+  }
 };
 </script>
 
