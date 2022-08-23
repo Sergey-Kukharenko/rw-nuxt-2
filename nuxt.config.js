@@ -53,7 +53,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
-    'nuxt-mq'
+    'nuxt-mq',
+    '@nuxtjs/device'
   ],
 
   svgSprite: {

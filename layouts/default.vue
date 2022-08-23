@@ -21,14 +21,13 @@ export default {
   name: 'DefaultLayout',
   components: {
     AppNavBar,
-
     AppHeaderMobile,
     AppHeader,
     AppFooter
   },
   computed: {
     isDevice() {
-      return this.$mq === 'xs' || this.$mq === 'sm';
+      return !this.$device.isDesktop;
     }
   },
 };
