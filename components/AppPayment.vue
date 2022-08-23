@@ -1,6 +1,6 @@
 <template>
   <div class="payment">
-    <div v-for="item in payment" :key="item" class="payment__item">
+    <div v-for="(item, idx) in payment" :key="idx" class="payment__item">
       <svg-icon
         :name="item.name"
         v-bind="item[getImg].style"

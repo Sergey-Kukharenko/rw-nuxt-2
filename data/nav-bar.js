@@ -3,15 +3,15 @@ export default [
     title: 'All Flowers',
     icon: 'tile',
     style: {
-      width: 20,
-      height: 20
+      width: 16.67,
+      height: 16.67
     }
   },
   {
     title: 'Trending',
     icon: 'fire',
     style: {
-      width: 16,
+      width: 13,
       height: 16
     }
   },
