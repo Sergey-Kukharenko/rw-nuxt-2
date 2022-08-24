@@ -22,7 +22,7 @@ export default {
 
   computed: {
     getImg() {
-      return this.$mq === 'xs' ? 'mobile' : 'desktop';
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   },
 };

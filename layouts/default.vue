@@ -1,6 +1,6 @@
 <template>
   <div>
-    <app-header-mobile v-if="isDevice" />
+    <app-header-mobile v-if="$device.isMobileOrTablet" />
     <template v-else>
       <app-header/>
       <app-nav-bar/>
@@ -13,9 +13,9 @@
 
 <script>
 import AppHeader from '@/components/header/AppHeader';
-import AppHeaderMobile from '~/components/header/AppHeaderMobile';
+import AppHeaderMobile from '@/components/header/AppHeaderMobile';
 import AppFooter from '@/components/footer/AppFooter';
-import AppNavBar from '~/components/header/AppNavBar';
+import AppNavBar from '@/components/header/AppNavBar';
 
 export default {
   name: 'DefaultLayout',
@@ -24,11 +24,6 @@ export default {
     AppHeaderMobile,
     AppHeader,
     AppFooter
-  },
-  computed: {
-    isDevice() {
-      return !this.$device.isDesktop;
-    }
-  },
+  }
 };
 </script>

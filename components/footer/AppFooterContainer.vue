@@ -23,7 +23,7 @@
 
 <script>
 import dataFooter from '@/data/footer'
-import AppFooterSection from '~/components/footer/AppFooterSection';
+import AppFooterSection from '@/components/footer/AppFooterSection';
 
 export default {
   name: 'AppFooterContainer',

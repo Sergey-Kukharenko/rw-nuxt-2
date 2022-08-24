@@ -16,15 +16,15 @@
 </template>
 
 <script>
-import AppDrawer from '~/components/shared/AppDrawer';
-import AppNavigation from '~/components/header/AppNavigation';
-import AppMenu from '~/components/header/AppMenu';
-import AppNavBar from '~/components/header/AppNavBar';
-import AppLogo from '~/components/header/AppLogo';
-import AppSearch from '~/components/header/AppSearch';
-import AppCall from '~/components/header/AppCall';
-import AppCart from '~/components/header/AppCart';
-// import AppNotification from '~/components/header/AppNotification';
+import AppDrawer from '@/components/shared/AppDrawer';
+import AppNavigation from '@/components/header/AppNavigation';
+import AppMenu from '@/components/header/AppMenu';
+import AppNavBar from '@/components/header/AppNavBar';
+import AppLogo from '@/components/header/AppLogo';
+import AppSearch from '@/components/header/AppSearch';
+import AppCall from '@/components/header/AppCall';
+import AppCart from '@/components/header/AppCart';
+// import AppNotification from '@/components/header/AppNotification';
 
 export default {
   name: 'AppHeaderMobile',

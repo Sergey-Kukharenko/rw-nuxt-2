@@ -26,7 +26,7 @@
 
 <script >
 import dataPopularCategories from '@/data/popular-categories';
-import AppTimer from '~/components/shared/AppTimer';
+import AppTimer from '@/components/shared/AppTimer';
 
 export default {
   components: {
@@ -40,7 +40,7 @@ export default {
 
   computed: {
     getImg() {
-      return this.$mq === 'xs' ? 'mobile' : 'desktop';
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   }
 };

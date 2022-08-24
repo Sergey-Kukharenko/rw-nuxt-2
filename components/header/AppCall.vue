@@ -1,6 +1,6 @@
 <template>
   <a class="call" :href="call.href">
-    <svg-icon v-if="isDevice" name="call-outline" class="call__icon"/>
+    <svg-icon v-if="$device.isMobileOrTablet" name="call-outline" class="call__icon"/>
 
     <div v-else class="content">
       <div v-if="call.icon" class="content__figure">
@@ -25,12 +25,7 @@ export default {
     return {
       call: dataNavigation.call
     }
-  },
-  computed: {
-    isDevice() {
-      return this.$mq === 'xs' || this.$mq === 'sm';
-    }
-  },
+  }
 };
 </script>
 
