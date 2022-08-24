@@ -30,7 +30,7 @@ import AppSearch from '@/components/header/AppSearch.vue'
 import AppCart from '@/components/header/AppCart.vue'
 import AppCall from '@/components/header/AppCall.vue'
 
-import {useToggleClassName} from '~/composables/useToggleClassName';
+import {useToggleClassName} from '@/helpers';
 
 export default {
   name: 'AppNavBar',

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { useClassName } from '@/composables/useClassName';
+import { useClassName } from '@/helpers'
 import dataNotification from '@/data/notification';
 
 export default {

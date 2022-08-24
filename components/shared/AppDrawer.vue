@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {useToggleClassName} from '~/composables/useToggleClassName';
+import {useToggleClassName} from '@/helpers'
 
 export default {
   name: 'AppDrawer',

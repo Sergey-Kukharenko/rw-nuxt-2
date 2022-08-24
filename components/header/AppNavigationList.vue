@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import {useClassName} from '~/composables/useClassName';
+import {useClassName} from '@/helpers'
 
 export default {
   name: 'AppNavigationList',

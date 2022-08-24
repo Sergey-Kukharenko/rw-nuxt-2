@@ -5,7 +5,7 @@ export default [
     items: {
       slides: [
         {
-          img: '/images/card-product/slides/1.jpg',
+          img: require('~/public/images/card-product/slides/1.jpg'),
           rating: 4.98,
           reviews: 109,
           sale: {
@@ -14,7 +14,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/2.jpg',
+          img: require('~/public/images/card-product/slides/2.jpg'),
           rating: 4.91,
           reviews: 211,
           sale: {
@@ -23,8 +23,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/3.jpg',
-          // video: 'https://flor2u.ru/images/uploads/original/88b/88b9ff7a1a93540d8b55403800f1334c.mp4',
+          img: require('~/public/images/card-product/slides/3.jpg'),
           rating: 4.99,
           reviews: 111,
           sale: {
@@ -33,7 +32,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/4.jpg',
+          img: require('~/public/images/card-product/slides/4.jpg'),
           rating: 4.97,
           reviews: 89,
           sale: {
@@ -45,16 +44,16 @@ export default [
       ],
       thumbs: [
         {
-          img: '/images/card-product/thumbs/1.jpg'
+          img: require('~/public/images/card-product/thumbs/1.jpg')
         },
         {
-          img: '/images/card-product/thumbs/2.jpg'
+          img: require('~/public/images/card-product/thumbs/2.jpg')
         },
         {
-          img: '/images/card-product/thumbs/3.jpg'
+          img: require('~/public/images/card-product/thumbs/3.jpg')
         },
         {
-          img: '/images/card-product/thumbs/4.jpg'
+          img: require('~/public/images/card-product/thumbs/4.jpg')
         }
       ]
     },
@@ -267,7 +266,7 @@ export default [
     items: {
       slides: [
         {
-          img: '/images/card-product/slides/1.jpg',
+          img: require('~/public/images/card-product/slides/1.jpg'),
           rating: 4.98,
           reviews: 109,
           sale: {
@@ -276,7 +275,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/2.jpg',
+          img: require('~/public/images/card-product/slides/2.jpg'),
           rating: 4.91,
           reviews: 211,
           sale: {
@@ -285,7 +284,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/3.jpg',
+          img: require('~/public/images/card-product/slides/3.jpg'),
           rating: 4.99,
           reviews: 111,
           sale: {
@@ -294,7 +293,7 @@ export default [
           }
         },
         {
-          img: '/images/card-product/slides/4.jpg',
+          img: require('~/public/images/card-product/slides/4.jpg'),
           rating: 4.97,
           reviews: 89,
           sale: {
@@ -306,16 +305,16 @@ export default [
       ],
       thumbs: [
         {
-          img: '/images/card-product/thumbs/1.jpg'
+          img: require('~/public/images/card-product/thumbs/1.jpg')
         },
         {
-          img: '/images/card-product/thumbs/2.jpg'
+          img: require('~/public/images/card-product/thumbs/2.jpg')
         },
         {
-          img: '/images/card-product/thumbs/3.jpg'
+          img: require('~/public/images/card-product/thumbs/3.jpg')
         },
         {
-          img: '/images/card-product/thumbs/4.jpg'
+          img: require('~/public/images/card-product/thumbs/4.jpg')
         }
       ]
     },

@@ -1,12 +1,12 @@
 <template>
   <div :class="classNames">
-    <!--    <svg-icon v-if="icon" :name="icon" class="icon" />-->
+    <svg-icon v-if="icon" :name="icon" class="icon" />
     <slot></slot>
   </div>
 </template>
 
 <script>
-import { useClassName } from '~/composables/useClassName'
+import { useClassName } from '@/helpers'
 
 export default {
   name: 'AppBadge',

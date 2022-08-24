@@ -1,6 +1,6 @@
 <template>
   <a class="logo">
-    <img :src="require('~/public/images/logo.jpg')" class="logo__img" alt="logo">
+    <img :src="require('@/public/images/logo.jpg')" class="logo__img" alt="logo">
   </a>
 </template>
 
