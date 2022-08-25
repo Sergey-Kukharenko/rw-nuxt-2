@@ -67,15 +67,7 @@ export default {
 
   methods: {
     handleScroll() {
-      if (this.lastPosition < window.scrollY && this.limitPosition < window.scrollY) {
-        this.scrolled = true
-      }
-
-      if (this.lastPosition > window.scrollY) {
-        this.scrolled = false
-      }
-
-      this.lastPosition = window.scrollY
+      this.scrolled = this.limitPosition < window.scrollY;
     }
   }
 }
