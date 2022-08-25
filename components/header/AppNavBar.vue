@@ -30,16 +30,18 @@ import AppSearch from '@/components/header/AppSearch.vue'
 import AppCart from '@/components/header/AppCart.vue'
 import AppCall from '@/components/header/AppCall.vue'
 
-import {useToggleClassName} from '@/helpers';
+import { useToggleClassName } from '@/helpers'
 
 export default {
   name: 'AppNavBar',
+
   components: {
     AppNavigationList,
     AppSearch,
     AppCart,
-    AppCall,
+    AppCall
   },
+
   data() {
     return {
       navBar: dataNavBar,
@@ -51,32 +53,32 @@ export default {
 
   computed: {
     classNames() {
-      return  useToggleClassName(this.scrolled, 'navbar', 'modified')
+      return useToggleClassName(this.scrolled, 'navbar', 'modified')
     }
   },
 
   mounted() {
-    window.addEventListener("scroll", this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll)
   },
 
   destroyed() {
-    window.removeEventListener("scroll", this.handleScroll);
+    window.removeEventListener('scroll', this.handleScroll)
   },
 
   methods: {
     handleScroll() {
       if (this.lastPosition < window.scrollY && this.limitPosition < window.scrollY) {
-        this.scrolled = true;
+        this.scrolled = true
       }
 
       if (this.lastPosition > window.scrollY) {
-        this.scrolled = false;
+        this.scrolled = false
       }
 
-      this.lastPosition = window.scrollY;
+      this.lastPosition = window.scrollY
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -6,15 +6,17 @@
 </template>
 
 <script>
-import AppFooterContainer from '@/components/footer/AppFooterContainer';
-import AppFooterBottom from '@/components/footer/AppFooterBottom';
+import AppFooterContainer from '@/components/footer/AppFooterContainer'
+import AppFooterBottom from '@/components/footer/AppFooterBottom'
+
 export default {
   name: 'AppFooter',
+
   components: {
     AppFooterBottom,
     AppFooterContainer
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

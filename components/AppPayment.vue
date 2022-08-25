@@ -1,10 +1,7 @@
 <template>
   <div class="payment">
     <div v-for="(item, idx) in payment" :key="idx" class="payment__item">
-      <svg-icon
-        :name="item.name"
-        v-bind="item[getImg].style"
-      />
+      <svg-icon :name="item.name" v-bind="item[getImg].style" />
     </div>
   </div>
 </template>
@@ -22,10 +19,10 @@ export default {
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
     }
-  },
-};
+  }
+}
 </script>
 
 <style lang="scss" scoped>

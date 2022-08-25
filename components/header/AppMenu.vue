@@ -3,16 +3,16 @@
     <div class="layout layout--horizontal-dt">
       <div class="menu-list">
         <div class="menu-list__item">
-          <app-logo/>
+          <app-logo />
         </div>
         <div class="menu-list__item">
-          <app-location/>
+          <app-location />
         </div>
         <div class="menu-list__item">
-          <app-informer/>
+          <app-informer />
         </div>
         <div class="menu-list__item">
-          <app-navigation-user/>
+          <app-navigation-user />
         </div>
       </div>
     </div>
@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import AppLogo from '@/components/header/AppLogo';
-import AppLocation from '@/components/header/AppLocation';
-import AppInformer from '@/components/header/AppInformer';
-import AppNavigationUser from '@/components/header/AppNavigationUser';
+import AppLogo from '@/components/header/AppLogo'
+import AppLocation from '@/components/header/AppLocation'
+import AppInformer from '@/components/header/AppInformer'
+import AppNavigationUser from '@/components/header/AppNavigationUser'
 
 export default {
   name: 'AppMenu',
@@ -32,9 +32,9 @@ export default {
     AppLogo,
     AppLocation,
     AppInformer,
-    AppNavigationUser,
+    AppNavigationUser
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,13 +1,10 @@
 <template>
   <a class="call" :href="call.href">
-    <svg-icon v-if="$device.isMobileOrTablet" name="call-outline" class="call__icon"/>
+    <svg-icon v-if="$device.isMobileOrTablet" name="call-outline" class="call__icon" />
 
     <div v-else class="content">
       <div v-if="call.icon" class="content__figure">
-        <svg-icon
-          :name="call.icon.desktop"
-          class="content__icon"
-        />
+        <svg-icon :name="call.icon.desktop" class="content__icon" />
       </div>
       <div class="content__text">
         {{ call.title }}
@@ -17,16 +14,17 @@
 </template>
 
 <script>
-import dataNavigation from '@/data/navigation';
+import dataNavigation from '@/data/navigation'
 
 export default {
   name: 'AppCall',
+
   data() {
     return {
       call: dataNavigation.call
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -51,7 +49,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
 
   @include lt-md {
     margin: 0;
@@ -79,5 +76,4 @@ export default {
     }
   }
 }
-
 </style>

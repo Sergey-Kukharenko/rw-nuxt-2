@@ -8,10 +8,11 @@
 </template>
 
 <script>
-import {useClassName} from '@/helpers'
+import { useClassName } from '@/helpers'
 
 export default {
   name: 'AppCart',
+
   props: {
     theme: {
       type: String,
@@ -21,10 +22,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassName(this.$props, 'cart');
+      return useClassName(this.$props, 'cart')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

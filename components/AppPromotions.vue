@@ -12,21 +12,21 @@
 </template>
 
 <script >
-import dataPromotions from '@/data/promotions';
+import dataPromotions from '@/data/promotions'
 
 export default {
   data() {
     return {
       promotions: dataPromotions
-    };
+    }
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

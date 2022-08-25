@@ -2,11 +2,7 @@
   <div class="card">
     <div class="card__container">
       <a class="card__figure figure absolute-grow">
-        <img
-          :src="slide.img"
-          class="absolute-center figure__img"
-          :alt="slide.img"
-        />
+        <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
         <div class="figure__overlay figure__overlay--top"></div>
         <div class="figure__overlay figure__overlay--bottom"></div>
       </a>
@@ -52,10 +48,12 @@ import AppButton from './AppButton.vue'
 
 export default {
   name: 'AppCard',
+
   components: {
     AppBadge,
     AppButton
   },
+
   props: {
     slide: {
       type: Object,

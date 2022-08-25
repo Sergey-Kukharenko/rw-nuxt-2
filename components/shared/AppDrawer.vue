@@ -2,36 +2,38 @@
   <div :class="classNames">
     <div class="drawer__button" @click="isVisibility = true">
       <div class="burger">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span />
+        <span />
+        <span />
       </div>
     </div>
     <div class="drawer__overlay" @click="isVisibility = false" />
     <div class="drawer__container">
       <div class="drawer__inner">
-        <slot></slot>
+        <slot />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {useToggleClassName} from '@/helpers'
+import { useToggleClassName } from '@/helpers'
 
 export default {
   name: 'AppDrawer',
+
   data() {
     return {
       isVisibility: false
     }
   },
+
   computed: {
     classNames() {
       return useToggleClassName(this.isVisibility, 'drawer', 'active')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

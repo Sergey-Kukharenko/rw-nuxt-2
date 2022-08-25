@@ -3,17 +3,11 @@
     <div class="footer-container container">
       <div class="group">
         <div class="group__logo">FLOR</div>
-        <div class="group__text">
-          We work 24 hours and 7 days a week. Even without break!
-        </div>
+        <div class="group__text">We work 24 hours and 7 days a week. Even without break!</div>
       </div>
 
       <div class="group-lists">
-        <div
-          v-for="(section, idx) in footer.sections"
-          :key="idx"
-          class="group-lists__item"
-        >
+        <div v-for="(section, idx) in footer.sections" :key="idx" class="group-lists__item">
           <app-footer-section :section="section" />
         </div>
       </div>
@@ -23,17 +17,19 @@
 
 <script>
 import dataFooter from '@/data/footer'
-import AppFooterSection from '@/components/footer/AppFooterSection';
+import AppFooterSection from '@/components/footer/AppFooterSection'
 
 export default {
   name: 'AppFooterContainer',
-  components: {AppFooterSection},
+
+  components: { AppFooterSection },
+
   data() {
     return {
       footer: dataFooter
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

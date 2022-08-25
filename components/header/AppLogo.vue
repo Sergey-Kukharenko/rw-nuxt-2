@@ -1,25 +1,24 @@
 <template>
   <a class="logo">
-    <img :src="require('@/public/images/logo.jpg')" class="logo__img" alt="logo">
+    <img :src="require('@/public/images/logo.jpg')" class="logo__img" alt="logo" />
   </a>
 </template>
 
 <script>
 export default {
   name: 'AppLogo'
-};
+}
 </script>
 
 <style lang="scss" scoped>
 .logo {
   display: block;
 
-
   @include lt-md {
     margin-right: auto;
   }
 
-  &__img{
+  &__img {
     display: block;
 
     @include gt-sm {

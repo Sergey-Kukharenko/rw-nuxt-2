@@ -27,16 +27,14 @@ export default {
     const time = new Date()
     time.setHours(time.getHours() + 3)
     this.endDate = time
-
     this.tick()
     this.timer = setInterval(this.tick.bind(this), 1000)
   },
+
   methods: {
     updateRemaining(distance) {
       this.days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      this.hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-      )
+      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
       this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
       this.seconds = Math.floor((distance % (1000 * 60)) / 1000)
     },

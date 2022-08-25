@@ -5,37 +5,65 @@
         <app-gallery :items="items" />
         <app-notification :notification="notification" />
       </div>
+      <div class="detail-page__col">
+        <app-form-sizes v-if="isSizePage" :product="product" />
+        <app-form-lists v-if="isListsPage" :product="product" />
+        <app-service :service="service" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import products from '@/data/products';
+import products from '@/data/products'
 
 import AppGallery from '@/components/ui/AppGallery'
 import AppNotification from '@/components/card-product/AppNotification'
+import AppFormSizes from '@/components/card-product/AppFormSizes'
+import AppFormLists from '@/components/card-product/AppFormLists'
+import AppService from '@/components/card-product/AppService'
 
 export default {
   name: 'IdPage',
+
   components: {
     AppNotification,
-    AppGallery
+    AppGallery,
+    AppFormSizes,
+    AppFormLists,
+    AppService
   },
+
   data() {
     return {
       id: this.$route.params.id,
-      product: null,
+      product: {},
       items: {},
       notification: {},
-    };
+      type_of_page: null,
+      service: {}
+    }
+  },
+
+  computed: {
+    isSizePage() {
+      return this.type_of_page === 'size_page'
+    },
+
+    isListsPage() {
+      return this.type_of_page === 'lists_page'
+    }
   },
 
   mounted() {
-    this.product = products.find((item) => item.id === +this.id)
-    this.items = this.product.items
-    this.notification = this.product.notification
+    const product = products.find((item) => item.id === +this.id)
+    this.product = product
+    this.items = product.items
+    this.notification = product.notification
+    this.type_of_page = product.type_of_page
+    this.service = product.service
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

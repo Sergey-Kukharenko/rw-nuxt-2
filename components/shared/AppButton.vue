@@ -1,6 +1,6 @@
 <template>
   <button :class="classNames">
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
@@ -9,20 +9,24 @@ import { useClassName } from '@/helpers'
 
 export default {
   name: 'AppButton',
+
   props: {
     theme: {
       type: String,
       default: ''
     },
+
     size: {
       type: String,
       default: ''
     },
+
     stretch: {
       type: String,
       default: ''
     }
   },
+
   computed: {
     classNames() {
       return useClassName(this.$props, 'button')

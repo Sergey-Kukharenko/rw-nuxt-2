@@ -1,12 +1,7 @@
 <template>
   <div v-if="breadCrumbs" class="layout layout--horizontal">
     <div class="breadcrumbs">
-      <NuxtLink
-        v-for="item in breadCrumbs"
-        :key="item.text"
-        :to="item.path"
-        class="breadcrumbs__item"
-      >
+      <NuxtLink v-for="item in breadCrumbs" :key="item.text" :to="item.path" class="breadcrumbs__item">
         <svg-icon name="arrow-left" class="breadcrumbs__icon" />
         {{ item.text }}
       </NuxtLink>
@@ -15,16 +10,17 @@
 </template>
 
 <script>
-import {useBreadCrumbs} from '@/helpers';
+import { useBreadCrumbs } from '@/helpers'
 
 export default {
   name: 'AppBreadcrumbs',
+
   computed: {
     breadCrumbs() {
       return useBreadCrumbs(this.$route)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -94,14 +90,14 @@ export default {
   }
 
   &__icon {
-    fill: currentColor;
-
     @include gt-xs {
       display: none;
     }
 
     @include xs {
       display: block;
+      width: 12px;
+      height: 16px;
       margin: 0 4px 0 9px;
     }
   }

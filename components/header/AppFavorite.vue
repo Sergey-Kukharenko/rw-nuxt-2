@@ -1,10 +1,7 @@
 <template>
   <a class="card favorite">
     <div class="card__figure">
-      <svg-icon
-        name="hart"
-        class="card__icon"
-      />
+      <svg-icon name="hart" class="card__icon" />
     </div>
     <figcaption class="card__figcaption">Favorite</figcaption>
   </a>
@@ -13,7 +10,7 @@
 <script>
 export default {
   name: 'AppFavorite'
-};
+}
 </script>
 
 <style lang="scss" scoped>

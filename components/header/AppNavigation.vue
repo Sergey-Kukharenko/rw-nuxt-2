@@ -2,13 +2,10 @@
   <nav class="navigation">
     <div class="layout layout--horizontal-dt">
       <div class="navigation__group">
-        <app-navigation-list :list="navigation.main"/>
+        <app-navigation-list :list="navigation.main" />
         <div class="navigation__section">
-          <app-navigation-list
-            :list="navigation.other"
-            :options="{ theme: 'mixed' }"
-          >
-            <app-call/>
+          <app-navigation-list :list="navigation.other" :options="{ theme: 'mixed' }">
+            <app-call />
           </app-navigation-list>
         </div>
       </div>
@@ -17,9 +14,9 @@
 </template>
 
 <script>
-import dataNavigation from '@/data/navigation';
-import AppNavigationList from '@/components/header/AppNavigationList';
-import AppCall from '@/components/header/AppCall';
+import dataNavigation from '@/data/navigation'
+import AppNavigationList from '@/components/header/AppNavigationList'
+import AppCall from '@/components/header/AppCall'
 
 export default {
   name: 'AppNavigation',
@@ -33,7 +30,7 @@ export default {
       navigation: dataNavigation
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

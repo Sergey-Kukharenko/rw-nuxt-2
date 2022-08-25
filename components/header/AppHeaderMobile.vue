@@ -12,22 +12,23 @@
     <app-cart />
   </header>
 
-<!--  <app-notification />-->
+  <!--  <app-notification />-->
 </template>
 
 <script>
-import AppDrawer from '@/components/shared/AppDrawer';
-import AppNavigation from '@/components/header/AppNavigation';
-import AppMenu from '@/components/header/AppMenu';
-import AppNavBar from '@/components/header/AppNavBar';
-import AppLogo from '@/components/header/AppLogo';
-import AppSearch from '@/components/header/AppSearch';
-import AppCall from '@/components/header/AppCall';
-import AppCart from '@/components/header/AppCart';
+import AppDrawer from '@/components/shared/AppDrawer'
+import AppNavigation from '@/components/header/AppNavigation'
+import AppMenu from '@/components/header/AppMenu'
+import AppNavBar from '@/components/header/AppNavBar'
+import AppLogo from '@/components/header/AppLogo'
+import AppSearch from '@/components/header/AppSearch'
+import AppCall from '@/components/header/AppCall'
+import AppCart from '@/components/header/AppCart'
 // import AppNotification from '@/components/header/AppNotification';
 
 export default {
   name: 'AppHeaderMobile',
+
   components: {
     AppCart,
     AppCall,
@@ -36,10 +37,10 @@ export default {
     AppNavBar,
     AppMenu,
     AppDrawer,
-    AppNavigation,
+    AppNavigation
     // AppNotification
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

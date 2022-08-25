@@ -1,10 +1,6 @@
 <template>
   <div class="notification" :style="notification.style">
-    <svg-icon
-      v-if="notification.icon"
-      :name="notification.icon"
-      class="notification__icon"
-    />
+    <svg-icon v-if="notification.icon" :name="notification.icon" class="notification__icon" />
     <div class="notification__text">{{ notification.text }}</div>
   </div>
 </template>
@@ -18,7 +14,7 @@ export default {
       default: () => {}
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

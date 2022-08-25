@@ -3,9 +3,9 @@
     <div class="modal">
       <div class="modal__overlay" @click="close"></div>
       <div class="modal__content">
-        <slot/>
+        <slot />
         <button type="button" class="button" @click="close">
-          <svg-icon name="close" class="button__icon"/>
+          <svg-icon name="close" class="button__icon" />
         </button>
       </div>
     </div>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import Teleport from 'vue2-teleport';
+import Teleport from 'vue2-teleport'
 
 export default {
   name: 'AppModalAbstraction',
@@ -23,10 +23,10 @@ export default {
   },
 
   mounted() {
-    window.addEventListener('keyup', this.handleKeyup);
+    window.addEventListener('keyup', this.handleKeyup)
   },
 
-  destroyed () {
+  destroyed() {
     window.removeEventListener('keyup', this.handleKeyup)
   },
 
@@ -37,13 +37,13 @@ export default {
 
     handleKeyup() {
       if (event.keyCode !== 27) {
-        return;
+        return
       }
 
-      this.close();
+      this.close()
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

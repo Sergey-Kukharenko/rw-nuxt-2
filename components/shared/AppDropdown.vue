@@ -1,11 +1,11 @@
 <template>
   <div v-click-outside="close" class="dropdown">
     <div class="dropdown__header" @click="isVisibility = true">
-      <slot name="button"> </slot>
+      <slot name="button" />
     </div>
 
     <div v-show="isVisibility" class="dropdown__container">
-      <slot name="dropdown"> </slot>
+      <slot name="dropdown" />
     </div>
   </div>
 </template>
@@ -20,7 +20,7 @@ export default {
     clickOutside: vClickOutside.directive
   },
 
-  data () {
+  data() {
     return {
       isVisibility: false
     }
@@ -31,7 +31,7 @@ export default {
       this.isVisibility = false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

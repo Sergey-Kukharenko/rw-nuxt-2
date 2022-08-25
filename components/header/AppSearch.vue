@@ -16,15 +16,17 @@ import AppModal from '@/components/shared/AppModal.vue'
 
 export default {
   name: 'AppSearch',
+
   components: {
     AppModal
   },
+
   data() {
     return {
       isVisibility: false
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -66,7 +68,7 @@ export default {
     font-size: 14px;
     margin-left: 4px;
 
-    @include lt-md{
+    @include lt-md {
       display: none;
     }
   }

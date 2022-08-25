@@ -3,9 +3,7 @@
     <div class="layout layout--horizontal-dt">
       <div class="footer-bottom__content">
         <app-payment />
-        <div class="text">
-          © 2022 Flor2u - flowers delivery in United Kingdom
-        </div>
+        <div class="text">© 2022 Flor2u - flowers delivery in United Kingdom</div>
       </div>
     </div>
   </div>
@@ -16,10 +14,9 @@ import AppPayment from '@/components/AppPayment.vue'
 
 export default {
   name: 'AppFooterBottom',
-  components: {
-    AppPayment
-  }
-};
+
+  components: { AppPayment }
+}
 </script>
 
 <style lang="scss" scoped>

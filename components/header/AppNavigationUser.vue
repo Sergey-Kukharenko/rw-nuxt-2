@@ -18,7 +18,8 @@ import AppCart from '@/components/header/AppCart.vue'
 import AppProfile from '@/components/header/AppProfile.vue'
 
 export default {
-  name: "AppNavigationUser",
+  name: 'AppNavigationUser',
+
   components: {
     AppFavorite,
     AppCart,
@@ -88,5 +89,4 @@ export default {
     opacity: 0.75;
   }
 }
-
 </style>

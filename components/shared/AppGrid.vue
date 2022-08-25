@@ -1,7 +1,7 @@
 <template>
   <div class="grid">
     <div v-for="(slide, idx) in slides" :key="idx" class="grid__item">
-      <slot v-bind="{ ...slide }"></slot>
+      <slot v-bind="{ ...slide }" />
     </div>
   </div>
 </template>
@@ -9,13 +9,14 @@
 <script>
 export default {
   name: 'AppGrid',
+
   props: {
     slides: {
       type: Array,
       default: () => []
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

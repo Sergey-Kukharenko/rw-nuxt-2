@@ -10,7 +10,7 @@
 
 <script>
 import { useClassName } from '@/helpers'
-import dataNotification from '@/data/notification';
+import dataNotification from '@/data/notification'
 
 export default {
   name: 'AppNotification',
@@ -24,14 +24,14 @@ export default {
       options: {
         theme: dataNotification.theme
       }
-    };
+    }
   },
   computed: {
     classNames() {
-      return useClassName(this.options, 'notification');
+      return useClassName(this.options, 'notification')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

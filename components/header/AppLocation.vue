@@ -14,9 +14,8 @@
     </div>
 
     <app-modal :visible="isVisibility" @close="isVisibility = false">
-      <h1>Content123</h1>
+      <h1>Here Content</h1>
     </app-modal>
-
   </div>
 </template>
 
@@ -25,6 +24,7 @@ import AppModal from '@/components/shared/AppModal.vue'
 
 export default {
   name: 'AppLocation',
+
   components: {
     AppModal
   },
@@ -38,7 +38,7 @@ export default {
       }
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

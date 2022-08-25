@@ -134,35 +134,34 @@ export default [
         price: 51,
         sale: {
           status: true,
-          icon_path: '/icons/fire.png',
+          icon_path: require('~/public/icons/fire.png'),
           text: 'Recommended',
           color: 'yellow'
         }
       }
     ],
-
     service: {
       list: [
         {
           img: {
-            desktop: '/images/service/desktop/1.png',
-            mobile: '/images/service/mobile/1.png'
+            desktop: require('~/public/images/service/desktop/1.png'),
+            mobile: require('~/public/images/service/mobile/1.png')
           },
           alt: '1',
           title: 'Free London delivery  to your apartment'
         },
         {
           img: {
-            desktop: '/images/service/desktop/2.png',
-            mobile: '/images/service/mobile/2.png'
+            desktop: require('~/public/images/service/desktop/2.png'),
+            mobile: require('~/public/images/service/mobile/2.png')
           },
           alt: '2',
           title: 'We’ll send you bouquet photo. Showing the quality'
         },
         {
           img: {
-            desktop: '/images/service/desktop/3.png',
-            mobile: '/images/service/mobile/3.png'
+            desktop: require('~/public/images/service/desktop/3.png'),
+            mobile: require('~/public/images/service/mobile/3.png')
           },
           alt: '3',
           title: 'Delivery in 2 hours from the order moment'
@@ -416,7 +415,7 @@ export default [
       {
         sale: {
           status: true,
-          icon_path: '/icons/fire.png'
+          icon_path: require('~/public/icons/fire.png')
         },
         id: 3,
         img: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGJvdXF1ZXQlMjBvZiUyMGZsb3dlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=100&q=60',
@@ -429,24 +428,24 @@ export default [
       list: [
         {
           img: {
-            desktop: '/images/service/desktop/1.png',
-            mobile: '/images/service/mobile/1.png'
+            desktop: require('~/public/images/service/desktop/1.png'),
+            mobile: require('~/public/images/service/mobile/1.png')
           },
           alt: '1',
           title: 'Free London delivery  to your apartment'
         },
         {
           img: {
-            desktop: '/images/service/desktop/2.png',
-            mobile: '/images/service/mobile/2.png'
+            desktop: require('~/public/images/service/desktop/2.png'),
+            mobile: require('~/public/images/service/mobile/2.png')
           },
           alt: '2',
           title: 'We’ll send you bouquet photo. Showing the quality'
         },
         {
           img: {
-            desktop: '/images/service/desktop/3.png',
-            mobile: '/images/service/mobile/3.png'
+            desktop: require('~/public/images/service/desktop/3.png'),
+            mobile: require('~/public/images/service/mobile/3.png')
           },
           alt: '3',
           title: 'Delivery in 2 hours from the order moment'

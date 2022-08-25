@@ -2,7 +2,7 @@
   <section class="layout popular-categories">
     <h1 class="popular-title">New way to show love</h1>
     <div class="popular-list">
-      <a v-for="item in popular" :key="item.hashTag" class="popular-list__item card">
+      <nuxt-link v-for="item in popular" :key="item.hashTag" to="/flowers/roses/0" class="popular-list__item card">
         <div class="absolute-grow card__content">
           <img
             :key="item.hashTag"
@@ -19,31 +19,32 @@
           <span class="card__figcaption-text">{{ item.text }}</span>
           <span class="card__figcaption-hash">{{ item.hashTag }}</span>
         </div>
-      </a>
+      </nuxt-link>
     </div>
   </section>
 </template>
 
 <script >
-import dataPopularCategories from '@/data/popular-categories';
-import AppTimer from '@/components/shared/AppTimer';
+import dataPopularCategories from '@/data/popular-categories'
+import AppTimer from '@/components/shared/AppTimer'
 
 export default {
   components: {
     AppTimer
   },
+
   data() {
     return {
       popular: dataPopularCategories
-    };
+    }
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

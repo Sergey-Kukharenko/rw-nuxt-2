@@ -4,10 +4,7 @@
       <template #button>
         <div class="card">
           <figure class="card__figure">
-            <svg-icon
-              name="profile"
-              class="card__icon"
-            />
+            <svg-icon name="profile" class="card__icon" />
           </figure>
           <figcaption class="card__figcaption">Log in / Register</figcaption>
         </div>
@@ -24,10 +21,11 @@ import AppDropdown from '@/components/shared/AppDropdown.vue'
 
 export default {
   name: 'AppProfile',
+
   components: {
     AppDropdown
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -54,7 +52,7 @@ export default {
     @include lt-md {
       width: 32px;
       height: 32px;
-      background: #F7F7F7;
+      background: #f7f7f7;
       border-radius: 50%;
     }
   }

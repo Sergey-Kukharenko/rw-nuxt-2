@@ -10,12 +10,13 @@
 <script>
 export default {
   name: 'AppInformer',
+
   data() {
     return {
       title: 'We work daily for 24 hours without a break'
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

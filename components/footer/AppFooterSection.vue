@@ -12,27 +12,30 @@
 </template>
 
 <script>
-import {useToggleClassName} from '@/helpers'
+import { useToggleClassName } from '@/helpers'
 
 export default {
   name: 'AppFooterSection',
+
   props: {
     section: {
       type: Object,
       default: () => ({})
     }
   },
+
   data() {
     return {
       isVisibility: false
     }
   },
+
   computed: {
     classNames() {
       return useToggleClassName(this.isVisibility, 'section', 'active')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

@@ -1,19 +1,9 @@
 <template>
   <div :class="classNames">
-    <a
-      v-for="item in list"
-      :key="item.title"
-      :href="item.href"
-      target="_blank"
-      class="navigation-list__item"
-    >
+    <a v-for="item in list" :key="item.title" :href="item.href" target="_blank" class="navigation-list__item">
       <div class="content">
         <div v-if="item.icon" class="content__figure">
-          <svg-icon
-            :name="item.icon"
-            :style="item.style"
-            :class="['content__icon', item.icon]"
-          />
+          <svg-icon :name="item.icon" :style="item.style" :class="['content__icon', item.icon]" />
         </div>
         <div class="content__text">
           {{ item.title }}
@@ -24,21 +14,23 @@
       </div>
     </a>
     <div class="navigation-list__item sm-hide">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import {useClassName} from '@/helpers'
+import { useClassName } from '@/helpers'
 
 export default {
   name: 'AppNavigationList',
+
   props: {
     list: {
       type: Array,
       default: () => []
     },
+
     options: {
       type: Object,
       default: () => ({})
@@ -46,10 +38,10 @@ export default {
   },
   computed: {
     classNames() {
-      return useClassName(this.$props.options, 'navigation-list');
+      return useClassName(this.$props.options, 'navigation-list')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -105,7 +97,7 @@ export default {
         }
       }
 
-      &.sm-hide{
+      &.sm-hide {
         display: none;
       }
     }

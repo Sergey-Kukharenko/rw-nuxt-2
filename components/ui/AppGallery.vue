@@ -1,11 +1,16 @@
 <template>
   <div class="thumb-example">
-    <swiper ref="swiperTop" class="swiper swiper--gallery" :options="swiperOptionTop">
+    <swiper ref="swiperTop" class="swiper swiper--gallery" :options="swiperOption">
       <swiper-slide v-for="(slide, idx) in items.slides" :key="idx">
         <app-gallery-card :slide="slide" />
       </swiper-slide>
 
-      <div slot="pagination" class="swiper-pagination"></div>
+      <template v-if="swiperOption.navigation">
+        <div slot="button-next" class="swiper-button-next swiper-button-white" />
+        <div slot="button-prev" class="swiper-button-prev swiper-button-white" />
+      </template>
+
+      <div v-if="swiperOption.pagination" slot="pagination" class="swiper-pagination" />
     </swiper>
 
     <swiper ref="swiperThumbs" class="swiper-thumbs" :options="swiperOptionThumbs">
@@ -20,8 +25,8 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
-import AppGalleryCard from '@/components/shared/AppGalleryCard.vue';
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import AppGalleryCard from '@/components/shared/AppGalleryCard.vue'
 
 export default {
   components: {
@@ -29,24 +34,30 @@ export default {
     SwiperSlide,
     AppGalleryCard
   },
+
   props: {
     items: {
       type: Object,
       default: () => {}
     }
   },
+
   data() {
     return {
-      swiperOptionTop: {
+      swiperOption: {
         loop: true,
         loopedSlides: 4,
         keyboard: { enabled: true },
         slidesPerView: 1,
-        pagination: {
-          el: '.swiper-pagination'
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev'
         },
+        pagination: {
+          el: '.swiper-pagination',
+          clickable: true
+        }
       },
-
       swiperOptionThumbs: {
         loop: true,
         loopedSlides: 4,
@@ -54,20 +65,20 @@ export default {
         spaceBetween: 4,
         slidesPerView: 4,
         touchRatio: 0.2,
-        slideToClickedSlide: true,
+        slideToClickedSlide: true
       }
-    };
+    }
   },
 
   mounted() {
     this.$nextTick(() => {
-      const swiperTop = this.$refs.swiperTop.$swiper;
-      const swiperThumbs = this.$refs.swiperThumbs.$swiper;
-      swiperTop.controller.control = swiperThumbs;
-      swiperThumbs.controller.control = swiperTop;
-    });
+      const swiperTop = this.$refs.swiperTop.$swiper
+      const swiperThumbs = this.$refs.swiperThumbs.$swiper
+      swiperTop.controller.control = swiperThumbs
+      swiperThumbs.controller.control = swiperTop
+    })
   }
-};
+}
 </script>
 
 <style lang="scss">

@@ -11,13 +11,14 @@
 <script>
 export default {
   name: 'AppSectionHeader',
+
   props: {
     headerProps: {
       type: Object,
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style scoped lang="scss">

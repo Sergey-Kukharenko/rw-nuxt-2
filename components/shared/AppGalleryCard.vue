@@ -24,11 +24,12 @@
 </template>
 
 <script>
-import AppBadge from '@/components/shared/AppBadge';
-import AppBadgeRateReviews from '~/components/shared/AppBadgeRateReviews';
+import AppBadge from '@/components/shared/AppBadge'
+import AppBadgeRateReviews from '~/components/shared/AppBadgeRateReviews'
 
 export default {
   name: 'AppGalleryCard',
+
   components: {
     AppBadgeRateReviews,
     AppBadge
@@ -40,7 +41,7 @@ export default {
       default: () => ({})
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>

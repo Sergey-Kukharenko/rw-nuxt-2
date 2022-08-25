@@ -1,7 +1,7 @@
 <template>
   <div :class="classNames">
     <svg-icon v-if="icon" :name="icon" class="icon" />
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -10,20 +10,24 @@ import { useClassName } from '@/helpers'
 
 export default {
   name: 'AppBadge',
+
   props: {
     theme: {
       type: String,
       default: ''
     },
+
     size: {
       type: String,
       default: ''
     },
+
     icon: {
       type: String,
       default: ''
     }
   },
+
   computed: {
     classNames() {
       return useClassName(this.$props, 'badge')

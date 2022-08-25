@@ -8,27 +8,29 @@
 </template>
 
 <script>
-import dataSpecialOffers from '@/data/special-offers';
-import AppSectionHeader from '@/components/AppSectionHeader.vue';
-import AppGrid from '@/components/shared//AppGrid.vue';
-import AppCard from '@/components/shared/AppCard.vue';
+import dataSpecialOffers from '@/data/special-offers'
+import AppSectionHeader from '@/components/AppSectionHeader.vue'
+import AppGrid from '@/components/shared//AppGrid.vue'
+import AppCard from '@/components/shared/AppCard.vue'
 
-const { main, list } = dataSpecialOffers;
+const { main, list } = dataSpecialOffers
 
 export default {
   name: 'AppSpecialOffers',
+
   components: {
     AppSectionHeader,
     AppGrid,
     AppCard
   },
+
   data() {
     return {
       headerProps: main,
       slides: list
-    };
+    }
   }
-};
+}
 </script>
 
 <style lang="scss">

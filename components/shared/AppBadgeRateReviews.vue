@@ -16,23 +16,27 @@
 </template>
 
 <script>
-import { useClassName } from '~/helpers';
+import { useClassName } from '~/helpers'
 
 export default {
   name: 'AppBadgeRateReviews',
+
   props: {
     rating: {
       type: Number,
       default: 1
     },
+
     stars: {
       type: Number,
       default: 1
     },
+
     reviews: {
       type: Number,
       required: true
     },
+
     options: {
       type: Object,
       default: () => ({})
@@ -41,10 +45,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassName(this.$props.options, 'badge');
+      return useClassName(this.$props.options, 'badge')
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
