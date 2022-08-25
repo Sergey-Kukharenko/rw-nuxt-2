@@ -2,7 +2,8 @@
   <div class="layout layout-dt detail-page">
     <div class="detail-page__row">
       <div class="detail-page__col">
-        <app-gallery :slides="slides" :thumbs="thumbs" />
+        <app-gallery :items="items" />
+        <app-notification :notification="notification" />
       </div>
     </div>
   </div>
@@ -10,26 +11,29 @@
 
 <script>
 import products from '@/data/products';
-import AppGallery from '@/components/ui/AppGallery';
+
+import AppGallery from '@/components/ui/AppGallery'
+import AppNotification from '@/components/card-product/AppNotification'
 
 export default {
   name: 'IdPage',
   components: {
+    AppNotification,
     AppGallery
   },
   data() {
     return {
       id: this.$route.params.id,
       product: null,
-      slides: null,
-      thumbs: null,
+      items: {},
+      notification: {},
     };
   },
 
   mounted() {
     this.product = products.find((item) => item.id === +this.id)
-    this.slides = this.product.items.slides
-    this.thumbs = this.product.items.thumbs
+    this.items = this.product.items
+    this.notification = this.product.notification
   }
 };
 </script>

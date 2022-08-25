@@ -1,7 +1,7 @@
 <template>
   <div class="thumb-example">
     <swiper ref="swiperTop" class="swiper swiper--gallery" :options="swiperOptionTop">
-      <swiper-slide v-for="(slide, idx) in slides" :key="idx">
+      <swiper-slide v-for="(slide, idx) in items.slides" :key="idx">
         <app-gallery-card :slide="slide" />
       </swiper-slide>
 
@@ -9,7 +9,7 @@
     </swiper>
 
     <swiper ref="swiperThumbs" class="swiper-thumbs" :options="swiperOptionThumbs">
-      <swiper-slide v-for="(slide, idx) in thumbs" :key="idx">
+      <swiper-slide v-for="(slide, idx) in items.thumbs" :key="idx">
         <div class="thumbs-item">
           <img :src="slide.img" :alt="slide.img" class="thumbs-item__img" />
           <div class="thumbs-item__border absolute-grow" />
@@ -30,13 +30,9 @@ export default {
     AppGalleryCard
   },
   props: {
-    slides: {
-      type: Array,
-      default: () => []
-    },
-    thumbs: {
-      type: Array,
-      default: () => []
+    items: {
+      type: Object,
+      default: () => {}
     }
   },
   data() {
