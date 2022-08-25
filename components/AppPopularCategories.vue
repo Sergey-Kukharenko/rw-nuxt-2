@@ -2,7 +2,7 @@
   <section class="layout popular-categories">
     <h1 class="popular-title">New way to show love</h1>
     <div class="popular-list">
-      <nuxt-link v-for="item in popular" :key="item.hashTag" to="/flowers/roses/0" class="popular-list__item card">
+      <nuxt-link v-for="item in popular" :key="item.hashTag" to="/flowers/roses/1" class="popular-list__item card">
         <div class="absolute-grow card__content">
           <img
             :key="item.hashTag"

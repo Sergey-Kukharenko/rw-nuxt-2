@@ -49,10 +49,10 @@ export default {
         loopedSlides: 4,
         keyboard: { enabled: true },
         slidesPerView: 1,
-        navigation: {
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev'
-        },
+        // navigation: {
+        //   nextEl: '.swiper-button-next',
+        //   prevEl: '.swiper-button-prev'
+        // },
         pagination: {
           el: '.swiper-pagination',
           clickable: true
