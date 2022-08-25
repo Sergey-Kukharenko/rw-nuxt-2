@@ -47,7 +47,6 @@ export default {
       navBar: dataNavBar,
       limitPosition: 184,
       scrolled: false,
-      lastPosition: 0
     }
   },
 
@@ -58,6 +57,7 @@ export default {
   },
 
   mounted() {
+    this.handleScroll()
     window.addEventListener('scroll', this.handleScroll)
   },
 
