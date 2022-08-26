@@ -12,6 +12,13 @@ const useToggleClassName = (value, clsNm, tgClsNm) => {
   return [value ? `${clsNm} ${clsNm}--${tgClsNm}` : clsNm]
 }
 
+const useSortArrayBy = (array, value, prop) => {
+  return array.sort((a, b) =>
+    value
+      ? a[prop] - b[prop]
+      : b[prop] - a[prop])
+}
+
 const useBreadCrumbs = (route) => {
   if (route.path === '/') { return }
 
@@ -35,5 +42,6 @@ const useBreadCrumbs = (route) => {
 export {
   useClassName,
   useToggleClassName,
+  useSortArrayBy,
   useBreadCrumbs
 }

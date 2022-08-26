@@ -17,7 +17,7 @@ export default {
   props: {
     count: {
       type: Number,
-      default: 51
+      default: 0
     }
   },
 

@@ -46,7 +46,7 @@ export default {
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/style-resources',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
   ],
 
   device: {
@@ -59,7 +59,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
     'nuxt-mq',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
   ],
 
   svgSprite: {

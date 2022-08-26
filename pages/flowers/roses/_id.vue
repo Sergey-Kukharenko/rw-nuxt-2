@@ -11,6 +11,20 @@
         <app-service :service="service" />
       </div>
     </div>
+
+    <div class="detail-page__about about">
+      <h2 class="about__title">
+        {{ reviews.title }}
+      </h2>
+      <div class="about__row">
+        <div class="about__reviews">
+          <app-reviews :reviews="reviews.list" />
+        </div>
+        <div class="about__rating">
+          <app-rating v-if="rating.count" :rating="rating" />
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -22,6 +36,8 @@ import AppNotification from '@/components/card-product/AppNotification'
 import AppFormSizes from '@/components/card-product/AppFormSizes'
 import AppFormLists from '@/components/card-product/AppFormLists'
 import AppService from '@/components/card-product/AppService'
+import AppReviews from '@/components/card-product/AppReviews'
+import AppRating from '@/components/card-product/AppRating'
 
 export default {
   name: 'IdPage',
@@ -31,7 +47,9 @@ export default {
     AppGallery,
     AppFormSizes,
     AppFormLists,
-    AppService
+    AppService,
+    AppReviews,
+    AppRating
   },
 
   data() {
@@ -41,7 +59,9 @@ export default {
       items: {},
       notification: {},
       type_of_page: null,
-      service: {}
+      service: {},
+      reviews: {},
+      rating: {},
     }
   },
 
@@ -62,6 +82,8 @@ export default {
     this.notification = product.notification
     this.type_of_page = product.type_of_page
     this.service = product.service
+    this.reviews = product.reviews
+    this.rating = product.rating
   }
 }
 </script>
