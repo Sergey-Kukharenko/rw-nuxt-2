@@ -1,5 +1,5 @@
 <template>
-  <div class="vue3-star-ratings__wrapper">
+  <div >
     <div class="vue3-star-ratings">
       <button
         v-if="showControl"
@@ -35,6 +35,8 @@
             :key="i"
             :style="{
               ...generateSameWidthAndHeight(starSize),
+               marginLeft: spacing,
+               marginRight: spacing,
             }"
           >
           </star-icon>
@@ -45,6 +47,8 @@
             :key="i"
             :style="{
               ...generateSameWidthAndHeight(starSize),
+              marginLeft: spacing,
+               marginRight: spacing,
             }"
           >
           </star-icon>
@@ -95,6 +99,10 @@ export default {
     starSize: {
       type: String,
       default: "32",
+    },
+    spacing: {
+      type: String,
+      default: "0",
     },
     controlBg: {
       type: String,
@@ -210,9 +218,7 @@ export default {
 <style scoped>
 .vue3-star-ratings__wrapper {
   display: block;
-  margin: 25px auto;
   text-align: center;
-  padding: 25px;
 }
 
 .vue3-star-ratings {
@@ -237,7 +243,6 @@ export default {
   display: inline-block;
   position: relative;
   overflow: hidden;
-  margin: 0 auto;
 }
 
 .stars-outer,

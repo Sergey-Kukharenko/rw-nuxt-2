@@ -12,7 +12,11 @@
     </div>
 
 
-    <stars-rating :model-value="rating.count" star-size="38"/>
+    <stars-rating
+      :model-value="rating.count"
+      star-size="38.03"
+      spacing="2"
+    />
 
     <!--    <app-rating-list :rating="rating" class="rating__list" />-->
     <!--    <app-button theme="grey-whitely" stretch="full">-->
