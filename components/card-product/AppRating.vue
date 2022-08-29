@@ -10,31 +10,24 @@
         {{ rating.text }}
       </div>
     </div>
-
-
-    <stars-rating
-      :model-value="rating.count"
-      star-size="38.03"
-      spacing="2"
-    />
-
-    <!--    <app-rating-list :rating="rating" class="rating__list" />-->
-    <!--    <app-button theme="grey-whitely" stretch="full">-->
-    <!--      Leave feedback-->
-    <!--    </app-button>-->
+    <stars-rating :model-value="rating.count" star-size="38.03" spacing="2" disable-click />
+    <app-rating-list :rating="rating" class="rating__list" />
+    <app-button theme="grey-whitely" stretch="full"> Leave feedback </app-button>
   </div>
 </template>
 
 <script>
-// import AppStarsRating from '@/components/ui/AppStarsRating'
+import AppRatingList from '@/components/card-product/AppRatingList'
 import StarsRating from '@/components/shared/stars-rating/StarsRating'
+import AppButton from '@/components/shared/AppButton'
 
 export default {
   name: 'AppRating',
 
   components: {
-    // AppStarsRating,
-    StarsRating
+    AppRatingList,
+    StarsRating,
+    AppButton
   },
 
   props: {
@@ -43,7 +36,6 @@ export default {
       default: () => {}
     }
   }
-
 }
 </script>
 

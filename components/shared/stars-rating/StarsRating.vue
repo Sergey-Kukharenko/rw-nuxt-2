@@ -1,6 +1,6 @@
 <template>
   <div >
-    <div class="vue3-star-ratings">
+    <div class="star-ratings">
       <button
         v-if="showControl"
         :style="{
@@ -82,7 +82,7 @@
 </template>
 
 <script>
-import StarIcon from '@/components/shared/stars-rating/StarIcon';
+import StarIcon from './StarIcon';
 
 export default {
   name: 'StarsRating',
@@ -143,16 +143,6 @@ export default {
     };
   },
   computed: {
-    // rating: {
-    //   get() {
-    //     return this.modelValue
-    //   },
-    //
-    //   set(newVal) {
-    //     this.$emit('update:modelValue', +newVal)
-    //   }
-    // },
-
     roundedRating() {
       return this.rounded(this.rating, 1);
     },
@@ -215,34 +205,36 @@ export default {
 };
 </script>
 
-<style scoped>
-.vue3-star-ratings__wrapper {
-  display: block;
-  text-align: center;
-}
-
-.vue3-star-ratings {
+<style lang="scss" scoped>
+.star-ratings {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-.vue3-star-ratings button {
-  border: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 50%;
-  cursor: pointer;
-}
 
-.vue3-star-ratings button svg {
-  fill: currentColor;
+  button {
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+
+    svg {
+      fill: currentColor;
+    }
+  }
 }
 
 .stars {
   display: inline-block;
   position: relative;
   overflow: hidden;
+
+  svg {
+    display: inline-block;
+    fill: currentColor;
+    cursor: pointer;
+  }
 }
 
 .stars-outer,
@@ -260,10 +252,5 @@ export default {
   white-space: nowrap;
   transition: 320ms cubic-bezier(0.075, 0.82, 0.165, 1);
   overflow: hidden;
-}
-.stars svg {
-  display: inline-block;
-  fill: currentColor;
-  cursor: pointer;
 }
 </style>
