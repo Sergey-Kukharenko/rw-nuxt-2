@@ -25,6 +25,16 @@
         </div>
       </div>
     </div>
+
+    <div class="detail-page__section">
+      <app-similar />
+    </div>
+    <div class="detail-page__section">
+      <app-recently />
+    </div>
+    <div class="detail-page__section">
+      <app-popular-categories :popular="popular" />
+    </div>
   </div>
 </template>
 
@@ -38,6 +48,8 @@ import AppFormLists from '@/components/card-product/AppFormLists'
 import AppService from '@/components/card-product/AppService'
 import AppReviews from '@/components/card-product/AppReviews'
 import AppRating from '@/components/card-product/AppRating'
+import AppRecently from '@/components/AppRecently'
+import AppPopularCategories from '@/components/card-product/AppPopularCategories'
 
 export default {
   name: 'IdPage',
@@ -49,7 +61,9 @@ export default {
     AppFormLists,
     AppService,
     AppReviews,
-    AppRating
+    AppRating,
+    AppRecently,
+    AppPopularCategories
   },
 
   data() {
@@ -62,6 +76,7 @@ export default {
       service: {},
       reviews: {},
       rating: {},
+      popular: {}
     }
   },
 
@@ -84,6 +99,7 @@ export default {
     this.service = product.service
     this.reviews = product.reviews
     this.rating = product.rating
+    this.popular = product.popular
   }
 }
 </script>
