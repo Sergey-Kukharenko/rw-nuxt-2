@@ -27,12 +27,11 @@ export default {
   data() {
     return {
       headerProps: main,
-      slides: list,
+      slides: list
     }
   }
-};
+}
 </script>
 
 <style scoped>
-
 </style>

@@ -6,7 +6,7 @@
         <div class="absolute-grow card__content">
           <img
             :key="item.hashTag"
-            :src="item.img[$mq === 'xs' ? 'mobile' : 'desktop']"
+            :src="item.img[getImg]"
             class="absolute-center card__image"
             :alt="item.hashTag"
           />

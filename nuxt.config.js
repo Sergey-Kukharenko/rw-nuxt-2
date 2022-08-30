@@ -58,24 +58,12 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
-    'nuxt-mq',
     '@nuxtjs/device',
   ],
 
   svgSprite: {
     // input: '~/assets/sprite/svg/',
     // output: '~/public/sprite',
-  },
-
-  mq: {
-    defaultBreakpoint: 'sm',
-    breakpoints: {
-      xs: 600,
-      sm: 960,
-      md: 1280,
-      lg: 1920,
-      xl: 5000
-    }
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
