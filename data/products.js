@@ -5,7 +5,7 @@ export default [
     items: {
       slides: [
         {
-          img: require('~/public/images/card-product/slides/1.jpg'),
+          img: '/images/card-product/slides/1.jpg',
           rating: 4.98,
           reviews: 109,
           sale: {
@@ -14,7 +14,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/2.jpg'),
+          img: '/images/card-product/slides/2.jpg',
           rating: 4.91,
           reviews: 211,
           sale: {
@@ -23,7 +23,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/3.jpg'),
+          img: '/images/card-product/slides/3.jpg',
           rating: 4.99,
           reviews: 111,
           sale: {
@@ -32,7 +32,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/4.jpg'),
+          img: '/images/card-product/slides/4.jpg',
           rating: 4.97,
           reviews: 89,
           sale: {
@@ -44,16 +44,16 @@ export default [
       ],
       thumbs: [
         {
-          img: require('~/public/images/card-product/thumbs/1.jpg')
+          img: '/images/card-product/thumbs/1.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/2.jpg')
+          img: '/images/card-product/thumbs/2.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/3.jpg')
+          img: '/images/card-product/thumbs/3.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/4.jpg')
+          img: '/images/card-product/thumbs/4.jpg'
         }
       ]
     },
@@ -134,7 +134,7 @@ export default [
         price: 51,
         sale: {
           status: true,
-          icon_path: require('~/public/icons/fire.png'),
+          icon_path: '/icons/fire.png',
           text: 'Recommended',
           color: 'yellow'
         }
@@ -144,24 +144,24 @@ export default [
       list: [
         {
           img: {
-            desktop: require('~/public/images/service/desktop/1.png'),
-            mobile: require('~/public/images/service/mobile/1.png')
+            desktop: '/images/service/desktop/1.png',
+            mobile: '/images/service/mobile/1.png'
           },
           alt: '1',
           title: 'Free London delivery  to your apartment'
         },
         {
           img: {
-            desktop: require('~/public/images/service/desktop/2.png'),
-            mobile: require('~/public/images/service/mobile/2.png')
+            desktop: '/images/service/desktop/2.png',
+            mobile: '/images/service/mobile/2.png'
           },
           alt: '2',
           title: 'We’ll send you bouquet photo. Showing the quality'
         },
         {
           img: {
-            desktop: require('~/public/images/service/desktop/3.png'),
-            mobile: require('~/public/images/service/mobile/3.png')
+            desktop: '/images/service/desktop/3.png',
+            mobile: '/images/service/mobile/3.png'
           },
           alt: '3',
           title: 'Delivery in 2 hours from the order moment'
@@ -265,7 +265,7 @@ export default [
     items: {
       slides: [
         {
-          img: require('~/public/images/card-product/slides/1.jpg'),
+          img: '/images/card-product/slides/1.jpg',
           rating: 4.98,
           reviews: 109,
           sale: {
@@ -274,7 +274,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/2.jpg'),
+          img: '/images/card-product/slides/2.jpg',
           rating: 4.91,
           reviews: 211,
           sale: {
@@ -283,7 +283,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/3.jpg'),
+          img: '/images/card-product/slides/3.jpg',
           rating: 4.99,
           reviews: 111,
           sale: {
@@ -292,7 +292,7 @@ export default [
           }
         },
         {
-          img: require('~/public/images/card-product/slides/4.jpg'),
+          img: '/images/card-product/slides/4.jpg',
           rating: 4.97,
           reviews: 89,
           sale: {
@@ -304,16 +304,16 @@ export default [
       ],
       thumbs: [
         {
-          img: require('~/public/images/card-product/thumbs/1.jpg')
+          img: '/images/card-product/thumbs/1.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/2.jpg')
+          img: '/images/card-product/thumbs/2.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/3.jpg')
+          img: '/images/card-product/thumbs/3.jpg'
         },
         {
-          img: require('~/public/images/card-product/thumbs/4.jpg')
+          img: '/images/card-product/thumbs/4.jpg'
         }
       ]
     },
@@ -415,7 +415,7 @@ export default [
       {
         sale: {
           status: true,
-          icon_path: require('~/public/icons/fire.png')
+          icon_path: 'icons/fire.png'
         },
         id: 3,
         img: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGJvdXF1ZXQlMjBvZiUyMGZsb3dlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=100&q=60',
@@ -428,24 +428,24 @@ export default [
       list: [
         {
           img: {
-            desktop: require('~/public/images/service/desktop/1.png'),
-            mobile: require('~/public/images/service/mobile/1.png')
+            desktop: '/images/service/desktop/1.png',
+            mobile: '/images/service/mobile/1.png'
           },
           alt: '1',
           title: 'Free London delivery  to your apartment'
         },
         {
           img: {
-            desktop: require('~/public/images/service/desktop/2.png'),
-            mobile: require('~/public/images/service/mobile/2.png')
+            desktop: '/images/service/desktop/2.png',
+            mobile: '/images/service/mobile/2.png'
           },
           alt: '2',
           title: 'We’ll send you bouquet photo. Showing the quality'
         },
         {
           img: {
-            desktop: require('~/public/images/service/desktop/3.png'),
-            mobile: require('~/public/images/service/mobile/3.png')
+            desktop: '/images/service/desktop/3.png',
+            mobile: '/images/service/mobile/3.png'
           },
           alt: '3',
           title: 'Delivery in 2 hours from the order moment'

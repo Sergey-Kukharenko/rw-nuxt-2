@@ -3,8 +3,8 @@ export default [
     text: 'Special offers this week',
     url: '',
     img: {
-      desktop: require('~/public/images/popular-categories/desktop/1.jpg'),
-      mobile: require('~/public/images/popular-categories/mobile/1.jpg')
+      desktop: '/images/popular-categories/desktop/1.jpg',
+      mobile: '/images/popular-categories/mobile/1.jpg'
     },
     timer: {
       from: '',
@@ -16,8 +16,8 @@ export default [
     hashTag: 'Birthday',
     url: '',
     img: {
-      desktop: require('~/public/images/popular-categories/desktop/2.jpg'),
-      mobile: require('~/public/images/popular-categories/mobile/2.jpg')
+      desktop: '/images/popular-categories/desktop/2.jpg',
+      mobile: '/images/popular-categories/mobile/2.jpg'
     }
   },
   {
@@ -25,8 +25,8 @@ export default [
     hashTag: 'Get well soon',
     url: '',
     img: {
-      desktop: require('~/public/images/popular-categories/desktop/3.jpg'),
-      mobile: require('~/public/images/popular-categories/mobile/3.jpg')
+      desktop: '/images/popular-categories/desktop/3.jpg',
+      mobile: '/images/popular-categories/mobile/3.jpg'
     }
   },
   {
@@ -34,8 +34,8 @@ export default [
     hashTag: 'Congratulations',
     url: '',
     img: {
-      desktop: require('~/public/images/popular-categories/desktop/4.jpg'),
-      mobile: require('~/public/images/popular-categories/mobile/4.jpg')
+      desktop: '/images/popular-categories/desktop/4.jpg',
+      mobile: '/images/popular-categories/mobile/4.jpg'
     }
   },
   {
@@ -43,8 +43,8 @@ export default [
     hashTag: 'Anniversary',
     url: '',
     img: {
-      desktop: require('~/public/images/popular-categories/desktop/5.jpg'),
-      mobile: require('~/public/images/popular-categories/mobile/5.jpg')
+      desktop: '/images/popular-categories/desktop/5.jpg',
+      mobile: '/images/popular-categories/mobile/5.jpg'
     }
   }
 ]
