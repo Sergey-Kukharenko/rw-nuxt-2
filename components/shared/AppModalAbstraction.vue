@@ -26,7 +26,7 @@ export default {
     window.addEventListener('keyup', this.handleKeyup)
   },
 
-  destroyed() {
+  beforeDestroy() {
     window.removeEventListener('keyup', this.handleKeyup)
   },
 

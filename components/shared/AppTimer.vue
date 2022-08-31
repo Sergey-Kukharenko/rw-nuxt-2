@@ -31,6 +31,10 @@ export default {
     this.timer = setInterval(this.tick.bind(this), 1000)
   },
 
+  beforeDestroy() {
+    clearInterval(this.timer)
+  },
+
   methods: {
     updateRemaining(distance) {
       this.days = Math.floor(distance / (1000 * 60 * 60 * 24))
@@ -49,10 +53,6 @@ export default {
         this.isEnded = true
       }
     }
-  },
-
-  destroy() {
-    clearInterval(this.timer)
   }
 }
 </script>
