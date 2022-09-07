@@ -415,7 +415,7 @@ export default [
       {
         sale: {
           status: true,
-          icon_path: 'icons/fire.png'
+          icon_path: '/icons/fire.png'
         },
         id: 3,
         img: 'https://images.unsplash.com/photo-1487530811176-3780de880c2d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mzd8fGJvdXF1ZXQlMjBvZiUyMGZsb3dlcnN8ZW58MHx8MHx8&auto=format&fit=crop&w=100&q=60',

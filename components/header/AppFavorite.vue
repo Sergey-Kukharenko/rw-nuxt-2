@@ -1,7 +1,7 @@
 <template>
   <a class="card favorite">
     <div class="card__figure">
-      <svg-icon name="hart" class="card__icon" />
+      <svg-icon name="heart" class="card__icon" />
     </div>
     <figcaption class="card__figcaption">Favorite</figcaption>
   </a>

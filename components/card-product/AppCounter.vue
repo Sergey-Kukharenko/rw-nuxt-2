@@ -1,10 +1,10 @@
 <template>
   <div class="counter">
-    <button class="counter__btn btn" @click="decrement()">
+    <button class="counter__btn btn" @click="decrement">
       <span class="absolute-grow btn__icon btn__icon--minus"></span>
     </button>
     <input v-model="passedCount" type="number" class="counter__input" />
-    <button class="counter__btn btn" @click="increment()">
+    <button class="counter__btn btn" @click="increment">
       <span class="absolute-grow btn__icon btn__icon--minus"></span>
       <span class="absolute-grow btn__icon btn__icon--plus"></span>
     </button>

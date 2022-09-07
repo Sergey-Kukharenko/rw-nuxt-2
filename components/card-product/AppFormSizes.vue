@@ -22,10 +22,10 @@
 
       <div class="group-buttons">
         <div class="group-buttons__item">
-          <app-button theme="green" stretch="fix" @click.native="addToCart">Send now</app-button>
+          <app-button theme="green" stretch="fix" @click="addToCart">Send now</app-button>
         </div>
         <div class="group-buttons__item">
-          <app-button theme="grey" @click.native="toggleLike">
+          <app-button theme="grey" @click="toggleLike">
             <svg-icon name="heart" :class="classNames" />
           </app-button>
         </div>

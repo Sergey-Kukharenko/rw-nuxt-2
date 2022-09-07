@@ -156,35 +156,23 @@ export default {
     },
   },
   mounted() {
-    const starsCont = this.$refs.starsContainer;
-    const self = this;
-
-    starsCont.addEventListener("click", function(e) {
-      const relativeX = e.pageX - this.offsetLeft;
-      self.rating = (relativeX / this.offsetWidth) * self.numberOfStars;
-    });
+    const el = this.$refs.starsContainer;
+    el.addEventListener('click', this.handleChange)
+  },
+  beforeDestroy() {
+    const el = this.$refs.starsContainer;
+    el.removeEventListener('click', this.handleChange)
   },
   methods: {
+    handleChange(e) {
+      const relativeX = e.pageX - e.target.offsetLeft;
+      this.rating = (relativeX / e.target.offsetWidth) * this.numberOfStars;
+    },
     increaseRating() {
-      if (this.rating < this.numberOfStars) {
-        this.rating += this.step;
-      } else if (this.rating > this.numberOfStars) {
-        this.rating = this.numberOfStars;
-      }
-      if (this.rating > this.numberOfStars) {
-        this.rating = this.numberOfStars;
-      }
+      this.rating = this.rating > this.numberOfStars ? this.numberOfStars : this.rating += this.step
     },
     decreaseRating() {
-      if (this.rating <= 0) {
-        return;
-      } else {
-        this.rating -= this.step;
-      }
-
-      if (this.rating < 0) {
-        this.rating = 0;
-      }
+      this.rating = this.rating > 0 ? this.rating -= this.step : 0
     },
 
     rounded(value, decimalPlaces) {
@@ -233,13 +221,13 @@ export default {
   svg {
     display: inline-block;
     fill: currentColor;
-    cursor: pointer;
   }
 }
 
 .stars-outer,
 .stars-inner {
   height: inherit;
+  pointer-events: none;
 }
 
 .stars-inner {

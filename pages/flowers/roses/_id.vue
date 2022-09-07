@@ -48,6 +48,7 @@ import AppFormLists from '@/components/card-product/AppFormLists'
 import AppService from '@/components/card-product/AppService'
 import AppReviews from '@/components/card-product/AppReviews'
 import AppRating from '@/components/card-product/AppRating'
+import AppSimilar from '@/components/AppSimilar'
 import AppRecently from '@/components/AppRecently'
 import AppPopularCategories from '@/components/card-product/AppPopularCategories'
 
@@ -62,44 +63,42 @@ export default {
     AppService,
     AppReviews,
     AppRating,
+    AppSimilar,
     AppRecently,
     AppPopularCategories
   },
 
-  data() {
+  asyncData(context){
+    const id = context.route.params.id
+    const product = products.find((item) => item.id === +id)
+    const items = product.items
+    const notification = product.notification
+    const typeOfPage = product.type_of_page
+    const service = product.service
+    const reviews = product.reviews
+    const rating = product.rating
+    const popular = product.popular
+
     return {
-      id: this.$route.params.id,
-      product: {},
-      items: {},
-      notification: {},
-      type_of_page: null,
-      service: {},
-      reviews: {},
-      rating: {},
-      popular: {}
+      product,
+      items,
+      notification,
+      typeOfPage,
+      service,
+      reviews,
+      rating,
+      popular
     }
   },
 
   computed: {
     isSizePage() {
-      return this.type_of_page === 'size_page'
+      return this.typeOfPage === 'size_page'
     },
 
     isListsPage() {
-      return this.type_of_page === 'lists_page'
+      return this.typeOfPage === 'lists_page'
     }
-  },
-
-  mounted() {
-    const product = products.find((item) => item.id === +this.id)
-    this.product = product
-    this.items = product.items
-    this.notification = product.notification
-    this.type_of_page = product.type_of_page
-    this.service = product.service
-    this.reviews = product.reviews
-    this.rating = product.rating
-    this.popular = product.popular
   }
 }
 </script>
