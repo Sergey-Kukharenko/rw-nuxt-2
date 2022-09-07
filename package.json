@@ -24,6 +24,7 @@
     "vue-awesome-swiper": "^4.1.0",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
+    "vue-textarea-autosize": "^1.1.1",
     "vue2-teleport": "^1.0.1",
     "webpack": "^4.46.0"
   },

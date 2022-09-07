@@ -34,14 +34,14 @@
 
         <div class="delivery">
           <div class="delivery__item">
-<!--            <app-address :addresses="addresses" />-->
+            <app-address :addresses="addresses" />
           </div>
 
-          <div class="delivery__item" style="display: none">
-<!--            <app-text-area-->
-<!--              v-model:value="textareaValue"-->
-<!--              placeholder="Comment for the courier"-->
-<!--            />-->
+          <div class="delivery__item">
+            <app-text-area
+              :value.sync="textareaValue"
+              placeholder="Comment for the courier"
+            />
           </div>
         </div>
       </div>
@@ -51,10 +51,14 @@
 
 <script>
 import AppRadioGroup from '@/components/shared/AppRadioGroup';
+import AppAddress from '@/components/checkout/AppAddress';
+import AppTextArea from '@/components/ui/AppTextArea';
 
 export default {
   name: 'IndexPage',
-  components: {AppRadioGroup},
+
+  components: {AppTextArea, AppAddress, AppRadioGroup},
+
   data() {
     return {
       recipients: ['I’ll get order by mySelf', 'Another recipient'],
