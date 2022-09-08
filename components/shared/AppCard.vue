@@ -262,7 +262,7 @@ export default {
 .like {
   &__icon {
     display: block;
-    fill: none;
+    color: transparent;
     stroke: #fff;
 
     @include gt-xs {

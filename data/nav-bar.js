@@ -11,7 +11,7 @@ export default [
     title: 'Trending',
     icon: 'fire',
     style: {
-      width: 13,
+      width: 16,
       height: 16
     }
   },
@@ -35,7 +35,7 @@ export default [
     title: 'Roses',
     icon: 'rose',
     style: {
-      width: 16,
+      width: 10.31,
       height: 16
     }
   },
@@ -43,8 +43,8 @@ export default [
     title: 'Sales',
     icon: 'percent',
     style: {
-      width: 16,
-      height: 16
+      width: 14,
+      height: 14
     }
   }
 ]

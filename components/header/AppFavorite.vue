@@ -1,21 +1,48 @@
 <template>
-  <a class="card favorite">
-    <div class="card__figure">
-      <svg-icon name="heart" class="card__icon" />
+  <a :class="classNames">
+    <div class="favorite__figure">
+      <svg-icon name="heart" class="favorite__icon" />
+      <app-counter v-if="isCount" :count="count" class="favorite__counter"/>
     </div>
-    <figcaption class="card__figcaption">Favorite</figcaption>
+    <div class="favorite__figcaption">Favorite</div>
   </a>
 </template>
 
 <script>
+import AppCounter from '@/components/shared/AppCounter';
+import {useToggleClassName} from '@/helpers';
+
 export default {
-  name: 'AppFavorite'
+  name: 'AppFavorite',
+
+  components: {AppCounter},
+
+  data() {
+    return {
+      count: 12
+    }
+  },
+
+  computed: {
+    isCount() {
+      return this.count > 0
+    },
+
+    classNames() {
+      return useToggleClassName(this.isCount, 'favorite', 'active')
+    }
+  }
 }
 </script>
 
 <style lang="scss" scoped>
-.card {
+.favorite {
+  color: $color-light-grey;
   cursor: pointer;
+
+  &:hover {
+    opacity: 0.75;
+  }
 
   @include lt-md {
     display: none;
@@ -25,6 +52,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
     width: 28px;
     height: 28px;
     margin: 0 auto;
@@ -33,7 +61,7 @@ export default {
   &__icon {
     width: 20px;
     height: 18.5px;
-    fill: $color-light-grey;
+    fill: currentColor;
   }
 
   &__figcaption {
@@ -41,12 +69,22 @@ export default {
     font-size: 14px;
     line-height: 16px;
     text-align: center;
-    color: $color-white-grey;
+    color: $color-dark-grey;
     margin-top: 7px;
   }
 
-  &:hover {
-    opacity: 0.75;
+  &__counter {
+    background: currentColor;
+  }
+
+  &--active {
+    color: $color-favorite;
+
+    &:hover {
+      .favorite__figcaption{
+        color: inherit;
+      }
+    }
   }
 }
 </style>

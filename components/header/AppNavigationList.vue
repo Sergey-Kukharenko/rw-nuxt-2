@@ -60,6 +60,11 @@ export default {
 
   &--full {
     .navigation-list__item {
+
+      &:hover {
+        color: $color-dark-green;
+      }
+
       &:first-child {
         position: relative;
 
@@ -89,15 +94,11 @@ export default {
 
       &:last-of-type {
         &:not(:hover) {
-          color: #f1ae01;
-        }
-
-        &:hover {
-          color: lighten(#f1ae01, 5%);
+          color: #F63866;
         }
       }
 
-      &.sm-hide {
+      &.sm-hide{
         display: none;
       }
     }
@@ -141,7 +142,7 @@ export default {
     }
 
     &:hover {
-      color: lighten($color-dark-grey, 20%);
+      color: $color-white-grey;
     }
 
     @include gt-sm {
@@ -165,8 +166,6 @@ export default {
 
   &__icon {
     display: block;
-    width: 16px;
-    height: 16px;
     color: inherit;
     fill: currentColor;
 
@@ -196,18 +195,6 @@ export default {
 .whatsapp {
   @include lt-md {
     display: none;
-  }
-}
-
-.tile {
-  @include gt-sm {
-    width: 20px;
-    height: 20px;
-  }
-
-  @include lt-md {
-    width: 16px;
-    height: 16px;
   }
 }
 </style>
