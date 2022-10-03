@@ -10,7 +10,7 @@
         {{ rating.text }}
       </div>
     </div>
-    <stars-rating :model-value="rating.count" star-size="38.03" spacing="2"  />
+    <stars-rating :model-value="rating.count" star-size="38.03" spacing="2" disable-click />
     <app-rating-list :rating="rating" class="rating__list" />
     <app-button theme="grey-whitely" stretch="full"> Leave feedback </app-button>
   </div>

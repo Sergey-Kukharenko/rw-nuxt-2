@@ -58,6 +58,17 @@ export default {
     padding: 2px 4.4555px;
   }
 
+  &--white {
+    //font-size: 11px;
+    //line-height: 16px;
+    //letter-spacing: -0.01em;
+    //padding: 2px 6px;
+
+    color: #f63866;
+    background: #fff;
+    border-radius: 8px;
+  }
+
   &--red {
     background: #db1838;
   }
@@ -70,6 +81,11 @@ export default {
       width: 14px;
       height: 12px;
     }
+  }
+
+  &--orange {
+    color: #dda100;
+    background: #fff8df;
   }
 
   &--md {
@@ -103,6 +119,33 @@ export default {
         margin-right: 2px;
       }
     }
+  }
+
+  &--sm {
+    font-family: $golos-medium;
+    line-height: 16px;
+
+    @include gt-xs {
+      font-size: 12px;
+      padding: 4px 9px;
+
+      .icon {
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+      }
+    }
+
+    @include xs {
+      font-size: 10px;
+      padding: 2px 7px;
+    }
+  }
+
+  &--xs {
+    font-size: 11px;
+    line-height: 16px;
+    padding: 2px 6px;
   }
 }
 

@@ -26,7 +26,7 @@
         </div>
         <div class="group-buttons__item">
           <app-button theme="grey" @click="toggleLike">
-            <svg-icon name="heart" :class="classNames" />
+            <svg-icon name="heart-outline" :class="classNames" />
           </app-button>
         </div>
       </div>
@@ -299,13 +299,13 @@ export default {
   display: block;
   width: 20px;
   height: 18.5px;
-  fill: #99a2ad00;
-  stroke: #99a2ad;
+  fill: transparent;
+  stroke: $color-grey;
   transition: fill 0.2s ease-out 0s, stroke 0.2s ease-out 0s;
 
   &--active {
-    fill: #99a2ad;
-    stroke: #99a2ad;
+    fill: $color-grey;
+    stroke: $color-grey;
   }
 }
 </style>

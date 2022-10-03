@@ -24,6 +24,7 @@ export default [
         },
         {
           img: '/images/card-product/slides/3.jpg',
+          // video: 'https://flor2u.ru/images/uploads/original/88b/88b9ff7a1a93540d8b55403800f1334c.mp4',
           rating: 4.99,
           reviews: 111,
           sale: {
@@ -140,6 +141,7 @@ export default [
         }
       }
     ],
+
     service: {
       list: [
         {

@@ -1,13 +1,13 @@
 <template>
   <div>
-        <app-header-mobile v-if="$device.isMobileOrTablet" />
-        <template v-else>
-          <app-header/>
-          <app-nav-bar/>
-        </template>
-        <app-breadcrumbs/>
-    <Nuxt />
-        <app-footer />
+    <app-header-mobile v-if="$device.isMobileOrTablet"/>
+    <template v-else>
+      <app-header/>
+      <app-nav-bar/>
+    </template>
+    <app-breadcrumbs/>
+    <Nuxt/>
+    <app-footer/>
   </div>
 </template>
 

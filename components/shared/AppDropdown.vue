@@ -4,7 +4,7 @@
       <slot name="button" />
     </div>
 
-    <div v-show="isVisibility" class="dropdown__container">
+    <div v-show="isVisibility" :style="options" class="dropdown__container" @click="close">
       <slot name="dropdown" />
     </div>
   </div>
@@ -18,6 +18,13 @@ export default {
 
   directives: {
     clickOutside: vClickOutside.directive
+  },
+
+  props: {
+    options: {
+      type: Object,
+      default: () => ({})
+    }
   },
 
   data() {
@@ -42,9 +49,7 @@ export default {
 
   &__container {
     position: absolute;
-    width: 100%;
     background: #fff;
-    padding: 0.5rem;
     margin-top: 10px;
     border-radius: 0.5rem;
     box-sizing: border-box;

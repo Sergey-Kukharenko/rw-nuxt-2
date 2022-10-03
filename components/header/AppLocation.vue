@@ -1,41 +1,57 @@
 <template>
   <div class="location">
-    <div class="location-button" @click="isVisibility = true">
-      <div class="location-button__icon icon">
-        <svg-icon name="location" class="icon__location" />
-      </div>
-      <div class="location__description description">
-        <div class="description__text">{{ location.text }}</div>
-        <div class="description__title">{{ location.city }}</div>
-      </div>
-      <div class="location-button__icon icon">
-        <svg-icon name="pencil" class="icon__arrow" />
-      </div>
-    </div>
+    <app-location-button :location="location" @click="open"/>
 
-    <app-modal :visible="isVisibility" @close="isVisibility = false">
-      <h1>Here Content</h1>
+    <app-modal :visible="isVisibility" @close="close">
+      <app-address />
     </app-modal>
   </div>
 </template>
 
 <script>
 import AppModal from '@/components/shared/AppModal.vue'
+import AppLocationButton from '~/components/header/AppLocationButton';
+import {disableScroll, enableScroll} from '~/helpers/scrollLock';
+import AppAddress from '~/components/header/address/AppAddress';
 
 export default {
   name: 'AppLocation',
 
   components: {
+    AppAddress,
+    AppLocationButton,
     AppModal
   },
+
+  // provide() {
+  //   location: 'bar'
+  // },
 
   data() {
     return {
       isVisibility: false,
       location: {
-        city: 'London',
-        text: 'Flower delivery to'
+        city: '',
+        address: ''
       }
+    }
+  },
+
+  methods: {
+    open() {
+      this.isVisibility = true
+      disableScroll()
+    },
+
+    close() {
+      this.isVisibility = false
+      enableScroll()
+    },
+
+    updateLocation(payload) {
+      this.location = payload
+      this.isVisibility = false
+      enableScroll()
     }
   }
 }

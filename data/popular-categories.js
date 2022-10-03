@@ -30,7 +30,7 @@ export default [
     }
   },
   {
-    text: 'Congratu-lations',
+    text: 'Congratulations',
     hashTag: 'Congratulations',
     url: '',
     img: {
