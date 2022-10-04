@@ -9,7 +9,7 @@
     <div class="container__body">
       <div class="container__layout">
         <app-input :query.sync="query" />
-<!--        <app-list v-show="isList" :list="list" @clearQuery="onClearQuery" />-->
+        <app-list v-show="isList" :list="list" @clearQuery="onClearQuery" />
 <!--        <app-cities-by-default v-if="isCitiesByDefault" />-->
       </div>
     </div>
@@ -18,10 +18,13 @@
 
 <script>
 import AppInput from './AppInput';
+import AppList from './AppList';
+import { woosMapService } from '@/services/woosMapService'
+
 export default {
   name: 'AppAddress',
 
-  components: {AppInput},
+  components: {AppList, AppInput},
 
   data() {
     return {
@@ -41,8 +44,8 @@ export default {
   },
 
   watch: {
-    query(value) {
-      console.log(value);
+    async query(value) {
+      this.list = value ? await woosMapService(value) : []
     }
   },
 
@@ -54,6 +57,39 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+.container {
+  @include gt-sm {
+    padding-top: 18px;
+    box-sizing: border-box;
+  }
 
+  &__layout {
+    @include gt-sm {
+      padding: 0 24px;
+    }
+  }
+
+  &__header {
+    @include gt-sm {
+      padding: 0 24px;
+      border-bottom: 1px solid #dde0e6;
+    }
+
+    @include lt-md {
+      display: none;
+    }
+  }
+
+  &__body {
+    @include gt-sm {
+      margin-top: 24px;
+      height: 305px;
+    }
+
+    @include lt-md {
+      margin: 0;
+    }
+  }
+}
 </style>

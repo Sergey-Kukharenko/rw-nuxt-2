@@ -23,9 +23,11 @@ export default {
     AppModal
   },
 
-  // provide() {
-  //   location: 'bar'
-  // },
+  provide() {
+    return {
+      updateLocation: this.updateLocation
+    }
+  },
 
   data() {
     return {
