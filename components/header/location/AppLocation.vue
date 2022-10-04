@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import AppModal from '@/components/shared/AppModal.vue'
-import AppLocationButton from '~/components/header/AppLocationButton';
+import AppModal from '~/components/shared/AppModal.vue'
+import AppLocationButton from '~/components/header/location/AppLocationButton';
 import {disableScroll, enableScroll} from '~/helpers/scrollLock';
 import AppAddress from '~/components/header/address/AppAddress';
 

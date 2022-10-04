@@ -18,7 +18,7 @@
 <script>
 import AppDrawer from '@/components/shared/AppDrawer'
 import AppNavigation from '@/components/header/AppNavigation'
-import AppMenu from '@/components/header/AppMenu'
+import AppMenu from '~/components/header/AppMultiplyNavigation'
 import AppNavBar from '@/components/header/AppNavBar'
 import AppLogo from '@/components/header/AppLogo'
 import AppSearch from '~/components/header/search/AppSearch'

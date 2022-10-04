@@ -1,9 +1,9 @@
 <template>
-  <div class="menu-navigation-list">
+  <div class="menu">
     <div
       v-for="item in list"
       :key="item.title"
-      class="menu-navigation-list__item"
+      class="menu__item"
       :class="{ 'has-sub-level': item.hasSubLevel }"
     >
       <div class="content">
@@ -32,9 +32,9 @@
 </template>
 
 <script>
-import AppMenuDropdown from '~/components/header/AppMenuDropdown';
-import AppMenuSections from '~/components/header/AppMenuSections';
-import AppMenuSection from '~/components/header/AppMenuSection';
+import AppMenuDropdown from '~/components/header/menu/AppMenuDropdown';
+import AppMenuSections from '~/components/header/menu/AppMenuSections';
+import AppMenuSection from '~/components/header/menu/AppMenuSection';
 
 export default {
   name: 'AppMenuNavigation',
@@ -64,7 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.menu-navigation-list {
+.menu {
   display: flex;
   align-items: center;
   justify-content: center;

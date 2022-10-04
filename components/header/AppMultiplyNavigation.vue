@@ -1,17 +1,17 @@
 <template>
-  <div class="menu">
+  <div class="multiply-navigation">
     <div class="layout layout--horizontal-dt">
-      <div class="menu-list">
-        <div class="menu-list__item">
+      <div class="multiply-navigation-list">
+        <div class="multiply-navigation-list__item">
           <app-logo />
         </div>
-        <div class="menu-list__item">
+        <div class="multiply-navigation-list__item">
           <app-location />
         </div>
-        <div class="menu-list__item">
+        <div class="multiply-navigation-list__item">
           <app-informer />
         </div>
-        <div class="menu-list__item">
+        <div class="multiply-navigation-list__item">
           <app-navigation-user />
         </div>
       </div>
@@ -21,7 +21,7 @@
 
 <script>
 import AppLogo from '@/components/header/AppLogo'
-import AppLocation from '@/components/header/AppLocation'
+import AppLocation from '~/components/header/location/AppLocation'
 import AppInformer from '@/components/header/AppInformer'
 import AppNavigationUser from '@/components/header/AppNavigationUser'
 
@@ -38,7 +38,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.menu {
+.multiply-navigation {
   @include gt-sm {
     position: relative;
     z-index: 5;
@@ -47,7 +47,7 @@ export default {
   }
 }
 
-.menu-list {
+.multiply-navigation-list {
   @include md {
     margin: 0 -8px;
   }
