@@ -2,7 +2,7 @@
   <div class="location">
     <app-location-button :location="location" @click="open"/>
 
-    <app-modal :visible="isVisibility" @close="close">
+    <app-modal :visible="isVisible" @close="close">
       <app-address />
     </app-modal>
   </div>
@@ -31,7 +31,7 @@ export default {
 
   data() {
     return {
-      isVisibility: false,
+      isVisible: false,
       location: {
         city: '',
         address: ''
@@ -41,18 +41,18 @@ export default {
 
   methods: {
     open() {
-      this.isVisibility = true
+      this.isVisible = true
       disableScroll()
     },
 
     close() {
-      this.isVisibility = false
+      this.isVisible = false
       enableScroll()
     },
 
     updateLocation(payload) {
       this.location = payload
-      this.isVisibility = false
+      this.isVisible = false
       enableScroll()
     }
   }

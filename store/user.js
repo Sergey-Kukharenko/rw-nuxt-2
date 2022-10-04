@@ -16,7 +16,15 @@ export const state = () => ({
 export const mutations = {
   setAuth(state, payload) {
     state.authorized = payload
-  }
+  },
+
+  addToHistory(state, payload) {
+    state.searchHistory.push(payload)
+  },
+
+  removeFromHistory(state, payload) {
+    state.searchHistory.splice(state.searchHistory.indexOf(payload), 1)
+  },
 }
 
 export const actions = {
@@ -30,5 +38,6 @@ export const actions = {
 }
 
 export const getters = {
-  state: state => state
+  state: state => state,
+  searchHistory: state => state.searchHistory,
 }

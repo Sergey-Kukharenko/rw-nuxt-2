@@ -1,29 +1,36 @@
 <template>
   <div>
-    <button class="button search" @click="isVisibility = true">
+    <button class="button search" @click="isVisible = true">
       <svg-icon name="search" class="button__icon" />
       <span class="button__text">Search in Florа</span>
     </button>
 
-    <app-modal :visible="isVisibility" @close="isVisibility = false">
-      <h1>Search</h1>
+    <app-modal
+      v-if="$device.isDesktop"
+      :visible="isVisible"
+      theme="full"
+      @close="isVisible = false"
+    >
+      <app-search-box/>
     </app-modal>
   </div>
 </template>
 
 <script>
-import AppModal from '@/components/shared/AppModal.vue'
+import AppModal from '~/components/shared/AppModal.vue'
+import AppSearchBox from '~/components/header/search/AppSearchBox';
 
 export default {
   name: 'AppSearch',
 
   components: {
+    AppSearchBox,
     AppModal
   },
 
   data() {
     return {
-      isVisibility: false
+      isVisible: false
     }
   }
 }

@@ -1,0 +1,142 @@
+<template>
+  <div class="menu-navigation-list">
+    <div
+      v-for="item in list"
+      :key="item.title"
+      class="menu-navigation-list__item"
+      :class="{ 'has-sub-level': item.hasSubLevel }"
+    >
+      <div class="content">
+        <div class="content__figure">
+          <svg-icon
+            :name="item.icon"
+            v-bind="item.style"
+            class="content__icon"
+          />
+        </div>
+        <div class="content__text">
+          {{ item.title }}
+        </div>
+      </div>
+
+      <app-menu-dropdown v-if="item.hasSubLevel">
+        <app-menu-sections v-slot="slotProps" :section="item.by">
+          <app-menu-section
+            :theme="setColumnSize(item.title)"
+            :section="{ ...slotProps }"
+          />
+        </app-menu-sections>
+      </app-menu-dropdown>
+    </div>
+  </div>
+</template>
+
+<script>
+import AppMenuDropdown from '~/components/header/AppMenuDropdown';
+import AppMenuSections from '~/components/header/AppMenuSections';
+import AppMenuSection from '~/components/header/AppMenuSection';
+
+export default {
+  name: 'AppMenuNavigation',
+
+  components: {AppMenuSection, AppMenuSections, AppMenuDropdown},
+
+  props: {
+    list: {
+      type: Array,
+      default: () => []
+    }
+  },
+
+  methods: {
+    setColumnSize(value) {
+      switch (value) {
+        case 'Flowers':
+          return 'md';
+        case 'Roses':
+          return 'lg';
+        default:
+          return '';
+      }
+    }
+  }
+};
+</script>
+
+<style lang="scss" scoped>
+.menu-navigation-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+
+  &__item {
+    cursor: default;
+    background: #ffffff;
+    padding: 0;
+    border-radius: 12px 12px 0 0;
+
+    &:hover {
+      color: lighten($color-dark-green, 5%);
+    }
+
+    &.has-sub-level {
+      &:hover {
+        color: $color-dark-green;
+        box-shadow: 0 4px 16px #0000001f;
+        z-index: 3;
+
+        & .dropdown {
+          display: block;
+        }
+      }
+    }
+
+    &:first-child {
+      &:not(:hover) {
+        color: $color-dark-green;
+      }
+    }
+
+    &:last-of-type {
+      &:not(:hover) {
+        color: #f63866;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  background: #ffffff;
+  padding: 8px 16px 13px;
+  border-radius: 12px 12px 0 0;
+  z-index: 2;
+  cursor: pointer;
+
+  &__icon {
+    display: block;
+    color: inherit;
+    fill: currentColor;
+  }
+
+  &__figure {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    margin-right: 8px;
+  }
+
+  &__text {
+    font-family: $golos-medium;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+</style>

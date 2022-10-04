@@ -1,6 +1,6 @@
 <template>
   <div :class="classNames">
-    <div class="section__title" @click="isVisibility = !isVisibility">
+    <div class="section__title" @click="isVisible = !isVisible">
       {{ section.title }}
     </div>
     <div class="section__list list">
@@ -26,13 +26,13 @@ export default {
 
   data() {
     return {
-      isVisibility: false
+      isVisible: false
     }
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.isVisibility, 'section', 'active')
+      return useToggleClassName(this.isVisible, 'section', 'active')
     }
   }
 }

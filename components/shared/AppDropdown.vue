@@ -1,10 +1,10 @@
 <template>
   <div v-click-outside="close" class="dropdown">
-    <div class="dropdown__header" @click="isVisibility = true">
+    <div class="dropdown__header" @click="isVisible = true">
       <slot name="button" />
     </div>
 
-    <div v-show="isVisibility" :style="options" class="dropdown__container" @click="close">
+    <div v-show="isVisible" :style="options" class="dropdown__container" @click="close">
       <slot name="dropdown" />
     </div>
   </div>
@@ -29,13 +29,13 @@ export default {
 
   data() {
     return {
-      isVisibility: false
+      isVisible: false
     }
   },
 
   methods: {
     close() {
-      this.isVisibility = false
+      this.isVisible = false
     }
   }
 }

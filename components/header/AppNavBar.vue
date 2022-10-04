@@ -3,7 +3,7 @@
     <div class="layout layout--horizontal-dt">
       <div class="navbar-list">
         <div class="navbar-list__item">
-          <app-navigation-list :list="navBar" :options="{ theme: 'full' }" />
+          <app-menu-navigation :list="navBar" />
         </div>
         <div class="navbar-list__item content">
           <div class="content__static">
@@ -25,8 +25,8 @@
 
 <script>
 import dataNavBar from '@/data/nav-bar'
-import AppNavigationList from '@/components/header/AppNavigationList.vue'
-import AppSearch from '@/components/header/AppSearch.vue'
+import AppMenuNavigation from '~/components/header/AppMenuNavigation';
+import AppSearch from '~/components/header/search/AppSearch.vue'
 import AppCart from '@/components/header/AppCart.vue'
 import AppCall from '@/components/header/AppCall.vue'
 
@@ -36,7 +36,7 @@ export default {
   name: 'AppNavBar',
 
   components: {
-    AppNavigationList,
+    AppMenuNavigation,
     AppSearch,
     AppCart,
     AppCall

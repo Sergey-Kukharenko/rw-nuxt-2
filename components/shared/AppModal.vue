@@ -1,5 +1,5 @@
 <template>
-  <AppModalAbstraction v-if="visible" @close="close">
+  <AppModalAbstraction v-if="visible" :theme="theme" @close="close">
     <slot />
   </AppModalAbstraction>
 </template>
@@ -18,6 +18,11 @@ export default {
     visible: {
       type: Boolean,
       required: true
+    },
+
+    theme: {
+      type: String,
+      default: ''
     }
   },
 

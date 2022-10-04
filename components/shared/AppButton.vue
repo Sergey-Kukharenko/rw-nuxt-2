@@ -142,6 +142,61 @@ export default {
     }
   }
 
+  &--pre-lg {
+    @include gt-sm {
+      font-size: 16px;
+      padding: 12px 16px;
+      min-height: 48px;
+    }
+
+    @include lt-md {
+      display: flex;
+      min-width: 32px;
+      min-height: 32px;
+      padding: 2px;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+  }
+
+  &--lg {
+    @include gt-sm {
+      font-size: 16px;
+      padding: 14px 16px;
+      min-height: 50px;
+    }
+
+    @include lt-md {
+      display: flex;
+      min-width: 32px;
+      min-height: 32px;
+      padding: 2px;
+      border-radius: 8px;
+      box-sizing: border-box;
+    }
+
+    & ::v-deep(svg) {
+      @include gt-sm {
+        display: none;
+      }
+
+      @include lt-md {
+        display: block;
+        margin: auto;
+      }
+    }
+
+    & ::v-deep(svg + span) {
+      @include gt-sm {
+        display: block;
+      }
+
+      @include lt-md {
+        display: none;
+      }
+    }
+  }
+
   &--fix {
     @include gt-sm {
       width: 244px;
@@ -154,6 +209,12 @@ export default {
 
   &--full {
     width: 100%;
+  }
+
+  &--search {
+    min-width: 160px;
+    border-radius: 12px;
+    box-sizing: border-box;
   }
 }
 </style>

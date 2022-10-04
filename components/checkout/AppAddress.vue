@@ -37,23 +37,23 @@ export default {
   data() {
     return {
       address: '',
-      visibility: false
+      visible: false
     }
   },
 
   computed: {
     isVisible() {
-      return this.addresses.length > 0 && this.visibility
+      return this.addresses.length > 0 && this.visible
     }
   },
 
   methods: {
     hide() {
-      this.visibility = false
+      this.visible = false
     },
 
     show() {
-      this.visibility = true
+      this.visible = true
     }
   }
 };

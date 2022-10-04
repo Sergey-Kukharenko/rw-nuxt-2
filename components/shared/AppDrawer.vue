@@ -1,13 +1,13 @@
 <template>
   <div :class="classNames">
-    <div class="drawer__button" @click="isVisibility = true">
+    <div class="drawer__button" @click="isVisible = true">
       <div class="burger">
         <span />
         <span />
         <span />
       </div>
     </div>
-    <div class="drawer__overlay" @click="isVisibility = false" />
+    <div class="drawer__overlay" @click="isVisible = false" />
     <div class="drawer__container">
       <div class="drawer__inner">
         <slot />
@@ -24,13 +24,13 @@ export default {
 
   data() {
     return {
-      isVisibility: false
+      isVisible: false
     }
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.isVisibility, 'drawer', 'active')
+      return useToggleClassName(this.isVisible, 'drawer', 'active')
     }
   }
 }

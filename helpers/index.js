@@ -8,6 +8,12 @@ const useClassName = (obj, clsNm) => {
   return [clsNm, clsNmObj]
 }
 
+const useClassNameProp = (value, clsNm) => {
+  return value
+    ? [`${clsNm} ${clsNm}--${value}`]
+    : clsNm
+}
+
 const useToggleClassName = (value, clsNm, tgClsNm) => {
   return [value ? `${clsNm} ${clsNm}--${tgClsNm}` : clsNm]
 }
@@ -45,6 +51,7 @@ const useBreadCrumbs = (route) => {
 
 export {
   useClassName,
+  useClassNameProp,
   useToggleClassName,
   useSetClassName,
   useSortArrayBy,
