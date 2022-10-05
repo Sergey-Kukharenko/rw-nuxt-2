@@ -10,7 +10,7 @@
       <div class="container__layout">
         <app-input :query.sync="query" />
         <app-list v-show="isList" :list="list" @clearQuery="onClearQuery" />
-<!--        <app-cities-by-default v-if="isCitiesByDefault" />-->
+        <app-cities-by-default v-if="isCitiesByDefault" />
       </div>
     </div>
   </div>
@@ -20,11 +20,12 @@
 import AppInput from './AppInput';
 import AppList from './AppList';
 import { woosMapService } from '@/services/woosMapService'
+import AppCitiesByDefault from '~/components/header/address/AppCitiesByDefault';
 
 export default {
   name: 'AppAddress',
 
-  components: {AppList, AppInput},
+  components: {AppCitiesByDefault, AppList, AppInput},
 
   data() {
     return {

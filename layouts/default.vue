@@ -14,7 +14,7 @@
 
 <script>
 import AppHeader from '@/components/header/AppHeader';
-import AppHeaderMobile from '@/components/header/AppHeaderMobile';
+import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 import AppNavBar from '@/components/header/AppNavBar';
 import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
 import AppFooter from '@/components/footer/AppFooter';
