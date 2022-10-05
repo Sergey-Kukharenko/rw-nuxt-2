@@ -17,7 +17,7 @@
         <div class="content__group">
           <div class="content__separator"/>
           <div class="content__layout">
-            <!--            <app-header-mobile-nav/>-->
+            <app-header-mobile-nav/>
           </div>
         </div>
       </div>
@@ -43,11 +43,13 @@ import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
+import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
+    AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
     AppMobileProfile,

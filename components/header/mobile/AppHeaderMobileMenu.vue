@@ -6,9 +6,9 @@
       @selectItem="onSelectItem"
     />
     <app-drawer-nested :visible="isVisible" :title="title" @close="close">
-<!--      <app-mobile-sub-menu-->
-<!--        v-bind="{ list, link, categories, by, products, type }"-->
-<!--      />-->
+      <app-mobile-sub-menu
+        v-bind="{ list, link, categories, by, products, type }"
+      />
     </app-drawer-nested>
   </div>
 </template>
@@ -17,11 +17,16 @@
 import dataMenu from '@/data/menu.js';
 import AppMobileMenu from '~/components/header/mobile/AppMobileMenu';
 import AppDrawerNested from '~/components/header/mobile/AppDrawerNested';
+import AppMobileSubMenu from '~/components/header/mobile/AppMobileSubMenu';
 
 export default {
   name: 'AppHeaderMobileMenu',
 
-  components: {AppDrawerNested, AppMobileMenu},
+  components: {
+    AppMobileSubMenu,
+    AppDrawerNested,
+    AppMobileMenu
+  },
 
   inject: ['updateVisibility'],
 

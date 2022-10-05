@@ -1,23 +1,24 @@
 <template>
   <div :class="classNames">
-    <div class="drawer__button" @click="isVisible = true">
+    <div class="drawer__button" @click="open">
       <div class="burger">
-        <span />
-        <span />
-        <span />
+        <span/>
+        <span/>
+        <span/>
       </div>
     </div>
-    <div class="drawer__overlay" @click="isVisible = false" />
+    <div class="drawer__overlay" @click="close"/>
     <div class="drawer__container">
       <div class="drawer__inner">
-        <slot />
+        <slot></slot>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { useToggleClassName } from '@/helpers'
+import {useToggleClassName} from '@/helpers';
+import {disableScroll, enableScroll} from '~/helpers/scrollLock';
 
 export default {
   name: 'AppDrawer',
@@ -25,15 +26,27 @@ export default {
   data() {
     return {
       isVisible: false
-    }
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.isVisible, 'drawer', 'active')
+      return useToggleClassName(this.isVisible, 'drawer', 'active');
+    }
+  },
+
+  methods: {
+    open() {
+      this.isVisible = true;
+      disableScroll();
+    },
+
+    close() {
+      this.isVisible = false;
+      enableScroll();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
