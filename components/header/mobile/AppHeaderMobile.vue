@@ -5,7 +5,9 @@
         <div class="content__layout content__layout--md">
           <div class="content__row nested-group">
             <app-mobile-profile/>
-            <app-search/>
+            <nuxt-link to="/search" class="search">
+              <svg-icon name="search" class="search__icon"/>
+            </nuxt-link>
           </div>
         </div>
         <div class="content__layout content__layout--md">
@@ -24,7 +26,9 @@
     </app-drawer>
 
     <app-logo/>
-    <app-search/>
+    <nuxt-link to="/search" class="search">
+      <svg-icon name="search" class="search__icon"/>
+    </nuxt-link>
     <app-call/>
     <app-cart/>
   </header>
@@ -37,7 +41,6 @@ import {useToggleClassName} from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
 import AppLogo from '~/components/header/AppLogo';
-import AppSearch from '~/components/header/search/AppSearch';
 import AppCall from '~/components/header/AppCall';
 import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
@@ -55,7 +58,6 @@ export default {
     AppMobileProfile,
     AppCart,
     AppCall,
-    AppSearch,
     AppLogo,
     AppDrawer
   },
@@ -155,6 +157,14 @@ header {
       opacity: 0;
       transition: opacity 0.15s ease 0s;
     }
+  }
+}
+
+.search {
+  &__icon {
+    width: 20px;
+    height: 20px;
+    fill: $color-dark-grey;
   }
 }
 </style>

@@ -42,6 +42,10 @@ export default {
 
 <style lang="scss" scoped>
 .list {
+  @include lt-md {
+    margin-top: 7px;
+  }
+
   &__item {
     display: flex;
     align-items: center;
@@ -50,13 +54,20 @@ export default {
     font-size: 16px;
     line-height: 24px;
     color: $color-dark-grey;
-    padding: 4px 8px;
     user-select: none;
     cursor: pointer;
 
-    &:hover {
-      background: $bg-grey;
-      border-radius: 10px;
+    @include gt-sm {
+      padding: 4px 8px;
+
+      &:hover {
+        background: $bg-grey;
+        border-radius: 10px;
+      }
+    }
+
+    @include lt-md {
+      padding: 6px 0;
     }
   }
 }
@@ -64,15 +75,24 @@ export default {
 .button {
   width: 10px;
   height: 10px;
-  padding: 4px;
   margin-left: 10px;
-  opacity: 0;
-  transform: scale(0.8);
-  transition: opacity 0.2s ease-out 0s, transform 0.2s ease-out 0s;
 
-  &:hover {
-    opacity: 1;
-    transform: scale(1);
+  @include gt-sm {
+    opacity: 0;
+    padding: 4px;
+    transform: scale(0.8);
+    transition: opacity 0.2s ease-out 0s, transform 0.2s ease-out 0s;
+
+    &:hover {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @include lt-md {
+    padding: 6px;
+    background: $bg-grey;
+    border-radius: 50%;
   }
 }
 

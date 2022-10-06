@@ -1,18 +1,25 @@
 <template>
-  <div v-click-outside="onHideSearchHistory" class="search">
-    <div class="layout">
-      <form class="search-form" @submit.prevent="onSubmit">
-        <input
-          v-model="query"
-          autocomplete="off"
-          type="text"
-          name="name"
-          placeholder="Search for the best bouquet"
-          class="input"
-          @focus="onShowSearchHistory"
-        />
-        <app-button theme="search" size="lg">Search</app-button>
-      </form>
+  <div v-click-outside="onFocusOut" class="search">
+    <div class="layout layout--md">
+      <div :class="classNames">
+        <form class="search-form" @submit.prevent="onSubmit">
+          <input
+            v-model="query"
+            autocomplete="off"
+            type="text"
+            name="name"
+            placeholder="Search for the best bouquet"
+            class="input"
+            @focus="onFocusIn"
+          />
+          <app-button v-if="$device.isDesktop" theme="search" size="lg" class="search__button">
+            Search
+          </app-button>
+        </form>
+        <button v-if="$device.isMobileOrTablet" class="search__cancel cancel" @click="clearQuery">
+          Cancel
+        </button>
+      </div>
 
       <div v-show="isSearchHistory" class="section">
         <div class="section__title">Search history</div>
@@ -43,6 +50,7 @@ import AppList from './AppList';
 import AppButton from '~/components/shared/AppButton';
 import siteData from '@/data/site-data';
 import AppNotFound from '~/components/header/search/AppNotFound';
+import {useToggleClassName} from '~/helpers';
 
 export default {
   name: 'AppSearchBox',
@@ -57,7 +65,8 @@ export default {
     return {
       query: '',
       data: siteData,
-      showSearchHistory: false
+      showSearchHistory: false,
+      isVisible: false,
     };
   },
 
@@ -82,15 +91,21 @@ export default {
 
     isSearchHistory() {
       return this.searchHistory.length > 0 && this.showSearchHistory && !this.query;
+    },
+
+    classNames() {
+      return useToggleClassName(this.isVisible, 'search-group', 'active')
     }
   },
 
   methods: {
-    onShowSearchHistory() {
+    onFocusIn() {
+      this.isVisible = true;
       this.showSearchHistory = true;
     },
 
-    onHideSearchHistory() {
+    onFocusOut() {
+      this.isVisible = false;
       this.showSearchHistory = false;
     },
 
@@ -99,6 +114,7 @@ export default {
     },
 
     onSubmit() {
+      if(!this.query) return
       this.$store.commit('user/addToHistory', this.query);
       this.clearQuery();
     },
@@ -118,46 +134,103 @@ export default {
 <style lang="scss" scoped>
 .search {
   background: #fff;
-  min-height: 376px;
+
+  @include gt-sm {
+    min-height: 376px;
+  }
+
+  @include lt-md {
+    margin-top: 12px;
+  }
+}
+
+.search-group {
+  display: flex;
+  width: 100%;
+
+  @include lt-md {
+    &--active {
+      & .cancel {
+        display: block;
+      }
+    }
+  }
 }
 
 .search-form {
   display: flex;
+
+  @include lt-md {
+    flex: 1;
+  }
 }
 
 .input {
-  width: 620px;
   font-family: $golos-regular;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.01em;
   background: $bg-grey;
-  padding: 16px;
-  margin-right: 24px;
   outline: none;
   border: none;
   border-radius: 10px;
   box-sizing: border-box;
+
+  @include gt-sm {
+    padding: 16px;
+  }
+
+  @include lt-md {
+    padding: 12px 16px;
+  }
 
   &:focus {
     &::placeholder {
       opacity: 0;
     }
   }
+
+  @include gt-sm {
+    width: 620px;
+    margin-right: 24px;
+  }
+
+  @include lt-md {
+    width: 100%;
+  }
 }
 
 .section {
-  display: flex;
-  margin: 16px 0;
+  @include gt-sm {
+    display: flex;
+    margin: 16px 0;
+  }
+
+  @include lt-md {
+    margin: 24px 0;
+  }
 
   &__title {
-    width: 164px;
-    padding-right: 10px;
     font-family: $golos-regular;
     font-size: 14px;
-    line-height: 24px;
     color: $color-white-grey;
     letter-spacing: -0.01em;
+
+    @include gt-sm {
+      width: 164px;
+      line-height: 24px;
+      padding-right: 10px;
+    }
   }
+}
+
+.cancel {
+  display: none;
+  font-family: $golos-regular;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: -0.01em;
+  color: $color-white-grey;
+  margin-left: 8px;
 }
 </style>

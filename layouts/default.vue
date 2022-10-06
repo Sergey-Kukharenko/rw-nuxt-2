@@ -11,7 +11,6 @@
   </div>
 </template>
 
-
 <script>
 import AppHeader from '@/components/header/AppHeader';
 import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
