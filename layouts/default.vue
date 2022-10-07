@@ -1,10 +1,15 @@
 <template>
   <div>
-    <app-header-mobile v-if="$device.isMobileOrTablet"/>
+    <template v-if="$device.isMobileOrTablet">
+      <app-header-mobile/>
+      <app-notification/>
+    </template>
+
     <template v-else>
       <app-header/>
       <app-nav-bar/>
     </template>
+
     <app-breadcrumbs/>
     <Nuxt/>
     <app-footer/>
@@ -17,10 +22,12 @@ import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 import AppNavBar from '@/components/header/AppNavBar';
 import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
 import AppFooter from '@/components/footer/AppFooter';
+import AppNotification from '~/components/header/AppNotification';
 
 export default {
   name: 'DefaultLayout',
   components: {
+    AppNotification,
     AppNavBar,
     AppHeaderMobile,
     AppHeader,

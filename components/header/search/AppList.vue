@@ -73,8 +73,8 @@ export default {
 }
 
 .button {
-  width: 10px;
-  height: 10px;
+  width: 16px;
+  height: 16px;
   margin-left: 10px;
 
   @include gt-sm {

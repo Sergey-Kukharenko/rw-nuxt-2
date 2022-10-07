@@ -33,6 +33,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 6px;
   }
 
   &__icon {
@@ -40,7 +41,6 @@ export default {
       width: 20px;
       height: 20px;
       fill: $color-dark-grey;
-      padding: 8px;
     }
   }
 }
@@ -49,6 +49,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
+
 
   @include lt-md {
     margin: 0;
@@ -76,4 +77,5 @@ export default {
     }
   }
 }
+
 </style>

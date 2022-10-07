@@ -10,6 +10,9 @@
     <div class="drawer__overlay" @click="close"/>
     <div class="drawer__container">
       <div class="drawer__inner">
+        <div class="drawer__close" @click="close">
+          <svg-icon name="close" class="drawer__icon" />
+        </div>
         <slot></slot>
       </div>
     </div>
@@ -52,28 +55,46 @@ export default {
 <style lang="scss" scoped>
 .drawer {
   &__button {
-    @include lt-md {
-      width: 20px;
-      height: 20px;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__overlay {
-    @include lt-md {
-      width: 100vw;
-      height: 100vh;
-      position: absolute;
-      top: 0;
-      left: -100%;
-      background: rgba(0, 0, 0, 0.7);
-      z-index: 3;
-      opacity: 0;
-      transition: opacity 0.25s ease 0s, transform 0s ease 0.25s;
-    }
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 3;
+    opacity: 0;
+    transition: opacity 0.25s ease 0s, transform 0s ease 0.25s;
+  }
+
+  &__close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    position: absolute;
+    top: 12px;
+    right: -6px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    z-index: 4;
+    transform: translateX(100%);
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    position: absolute;
+    color: #fff;
   }
 
   &__container {
@@ -90,47 +111,42 @@ export default {
   }
 
   &__inner {
-    @include lt-md {
-      display: flex;
-      flex-direction: column;
-      width: 274px;
-      height: 100vh;
-      background: #fff;
-    }
+    display: flex;
+    flex-direction: column;
+    width: 274px;
+    height: 100vh;
+    background: #fff;
+    position: relative;
   }
 }
 
 .burger {
-  @include lt-md {
-    position: relative;
-    width: 16px;
-    height: 12px;
-    margin: 20px auto;
-    cursor: pointer;
-  }
+  position: relative;
+  width: 16px;
+  height: 12px;
+  margin: 20px auto;
+  cursor: pointer;
 
   & span {
-    @include lt-md {
-      width: 100%;
-      height: 2px;
-      position: absolute;
-      left: 0;
-      background-color: black;
-      transition: all 0.3s ease;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    left: 0;
+    background-color: black;
+    transition: all 0.3s ease;
 
-      &:first-child {
-        top: 0;
-      }
+    &:first-child {
+      top: 0;
+    }
 
-      &:nth-child(2) {
-        top: 0;
-        bottom: 0;
-        margin: auto;
-      }
+    &:nth-child(2) {
+      top: 0;
+      bottom: 0;
+      margin: auto;
+    }
 
-      &:last-child {
-        bottom: 0;
-      }
+    &:last-child {
+      bottom: 0;
     }
   }
 }
@@ -157,17 +173,13 @@ export default {
 }
 
 .drawer--active .drawer__overlay {
-  @include lt-md {
-    opacity: 1;
-    transform: translateX(100%);
-    transition: opacity 0.25s ease 0s, transform 0s ease 0s;
-  }
+  opacity: 1;
+  transform: translateX(100%);
+  transition: opacity 0.25s ease 0s, transform 0s ease 0s;
 }
 
 .drawer--active .drawer__container {
-  @include lt-md {
-    transform: translateX(0);
-    transition: transform 0.25s ease 0s;
-  }
+  transform: translateX(0);
+  transition: transform 0.25s ease 0s;
 }
 </style>

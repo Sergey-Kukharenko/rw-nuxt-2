@@ -115,7 +115,7 @@ export default {
     }
 
     & .button {
-      padding: 18px;
+      padding: 12px;
       background: $bg-grey;
       top: 24px;
       right: 0;
@@ -125,8 +125,8 @@ export default {
       }
 
       &__icon {
-        width: 12px;
-        height: 12px;
+        width: 24px;
+        height: 24px;
         color: $color-dark-grey;
         fill: currentColor;
       }
@@ -139,7 +139,7 @@ export default {
   top: 0;
   right: -62px;
   color: #8b8b8b;
-  padding: 20px;
+  padding: 14px;
   background: rgb(0 0 0 / 50%);
   border-radius: 50%;
 
@@ -148,8 +148,8 @@ export default {
   }
 
   &__icon {
-    height: 16px;
-    width: 16px;
+    height: 28px;
+    width: 28px;
     color: #fff;
     fill: currentColor;
   }

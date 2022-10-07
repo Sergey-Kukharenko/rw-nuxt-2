@@ -40,40 +40,23 @@ export default {
 .button {
   display: flex;
   color: $color-dark-grey;
-
-  @include gt-sm {
-    padding: 10px 0;
-  }
-
-  @include lt-md {
-    align-items: center;
-    justify-content: center;
-    padding: 8px;
-  }
+  padding: 10px 0;
 
   &:hover {
     color: lighten($color-dark-grey, 20%);
   }
 
   &__icon {
-    @include gt-sm {
-      width: 18px;
-      height: 18px;
-      color: inherit;
-      fill: currentColor;
-    }
-
-    @include lt-md {
-      width: 20px;
-      height: 20px;
-      fill: $color-dark-grey;
-    }
+    width: 20px;
+    height: 20px;
+    color: inherit;
+    fill: currentColor;
   }
 
   &__text {
     font-family: $golos-medium;
     font-size: 14px;
-    margin-left: 4px;
+    margin-left: 3px;
 
     @include lt-md {
       display: none;

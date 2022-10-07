@@ -36,6 +36,7 @@ export default {
   methods: {
     close() {
       this.isVisible = false
+      console.log(this.isVisible);
     }
   }
 }
