@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button class="button search" @click="isVisible = true">
+    <button class="button search" @click="open">
       <svg-icon name="search" class="button__icon" />
       <span class="button__text">Search in Florа</span>
     </button>
@@ -9,7 +9,7 @@
       v-if="$device.isDesktop"
       :visible="isVisible"
       theme="full"
-      @close="isVisible = false"
+      @close="close"
     >
       <app-search-box/>
     </app-modal>
@@ -19,6 +19,8 @@
 <script>
 import AppModal from '~/components/shared/AppModal.vue'
 import AppSearchBox from '~/components/header/search/AppSearchBox';
+
+import {disableScroll, enableScroll} from '~/helpers/scrollLock';
 
 export default {
   name: 'AppSearch',
@@ -32,6 +34,18 @@ export default {
     return {
       isVisible: false
     }
+  },
+
+  methods: {
+    open() {
+      this.isVisible = true
+      disableScroll()
+    },
+
+    close() {
+      this.isVisible = false
+      enableScroll()
+    },
   }
 }
 </script>
