@@ -2,10 +2,6 @@ export default {
   main: {
     title: 'Special offers',
     count: 58,
-    link: {
-      text: 'Watch all',
-      url: ''
-    }
   },
   list: [
     {
@@ -27,10 +23,7 @@ export default {
       reviews: 120,
       like: false,
       price: 52.76,
-      sale: {
-        status: 'sale',
-        percent: '-30%'
-      }
+      sale: false
     },
     {
       title: 'Bouquet of 251 roses',
@@ -92,17 +85,17 @@ export default {
         percent: '-30%'
       }
     },
-    {
-      title: 'Bouquet of 291 roses',
-      img: 'https://images.unsplash.com/photo-1556807182-1a42c64b8283?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA5fHxmbG93ZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
-      rating: 5.00,
-      reviews: 99,
-      like: false,
-      price: 52.76,
-      sale: {
-        status: 'sale',
-        percent: '-30%'
-      }
-    }
+    // {
+    //   title: 'Bouquet of 291 roses',
+    //   img: 'https://images.unsplash.com/photo-1556807182-1a42c64b8283?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTA5fHxmbG93ZXJzfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60',
+    //   rating: 5.00,
+    //   reviews: 99,
+    //   like: false,
+    //   price: 52.76,
+    //   sale: {
+    //     status: 'sale',
+    //     percent: '-30%'
+    //   }
+    // }
   ]
 }

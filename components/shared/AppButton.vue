@@ -106,39 +106,16 @@ export default {
   &--sm {
     @include gt-sm {
       font-size: 14px;
-      line-height: 22px;
-      padding: 8px 20px;
-      min-height: 38px;
+      min-height: 36px;
+      padding: 6px 27px;
     }
 
     @include lt-md {
-      display: flex;
-      min-width: 32px;
-      min-height: 32px;
-      padding: 2px;
-      border-radius: 8px;
-      box-sizing: border-box;
-    }
-
-    & ::v-deep(svg) {
-      @include gt-sm {
-        display: none;
-      }
-
-      @include lt-md {
-        display: block;
-        margin: auto;
-      }
-    }
-
-    & ::v-deep(svg + span) {
-      @include gt-sm {
-        display: block;
-      }
-
-      @include lt-md {
-        display: none;
-      }
+      min-height: 24px;
+      font-size: 10px;
+      line-height: 12px;
+      padding: 6px 18px;
+      border-radius: 6px;
     }
   }
 

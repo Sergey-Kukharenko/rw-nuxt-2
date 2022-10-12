@@ -1,44 +1,51 @@
 <template>
   <div class="card">
     <div class="card__container">
-      <a class="card__figure figure absolute-grow">
-        <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
-        <div class="figure__overlay figure__overlay--top"></div>
-        <div class="figure__overlay figure__overlay--bottom"></div>
-      </a>
-      <div class="card__header header">
-        <div class="header__rating rating">
-          <div class="rating__text">{{ slide.rating }}</div>
-          <svg-icon name="star" class="rating__icon" />
-        </div>
-
-        <button class="header__like like">
-          <svg-icon name="heart" class="like__icon" />
+      <div class="header">
+        <app-badge v-if="slide.sale" theme="red" class="header__badge">
+          {{ slide.sale.percent }}
+        </app-badge>
+        <button class="like">
+          <svg-icon name="heart" class="like__icon"/>
         </button>
       </div>
-      <div class="card__title">
+      <a class="figure absolute-grow">
+        <img
+          :src="slide.img"
+          class="absolute-center figure__img"
+          :alt="slide.img"
+        />
+      </a>
+    </div>
+    <div class="card__body">
+
+      <div class="rating">
+        <div class="rating__text">{{ slide.rating }}</div>
+        <SvgSprite symbol="star" class="rating__icon"/>
+        <div class="rating__reviews">12 560</div>
+      </div>
+
+      <div class="title">
         {{ slide.title }}
       </div>
-    </div>
-    <div class="card__footer footer">
-      <div class="footer__price price">
-        <div class="price__group group">
-          <div class="group__text">£ {{ slide.price }}</div>
-          <div class="group__badge">
-            <app-badge theme="red">
-              {{ slide.sale.percent }}
-            </app-badge>
+      <div class="content">
+        <div class="price">
+          <div v-if="slide.sale" class="group">
+            <div class="price__old">£ {{ slide.price }}</div>
+            <div class="group__badge">
+              <app-badge theme="red">
+                {{ slide.sale.percent }}
+              </app-badge>
+            </div>
           </div>
+          <div class="price__current">£ {{ slide.price }}</div>
         </div>
-        <div class="price__current">£ {{ slide.price }}</div>
-      </div>
-      <div class="footer__button">
         <app-button theme="green" size="sm">
-          <svg-icon name="bag" class="icon-bag" />
           <span>Send</span>
         </app-button>
       </div>
     </div>
+
   </div>
 </template>
 
@@ -65,8 +72,22 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  &__figure {
-    z-index: 1;
+  overflow: hidden;
+
+  @include gt-sm {
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+    border-radius: 14px;
+  }
+
+  @include lt-md {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+  }
+
+  &__body {
+    background: #fff;
+    position: relative;
+    z-index: 2;
   }
 
   &__container {
@@ -77,67 +98,26 @@ export default {
     border-radius: 12px;
     box-sizing: border-box;
 
-    @include gt-xs {
-      height: 340px;
+    @include gt-sm {
+      height: 254px;
       padding: 8px;
     }
 
-    @include xs {
-      height: 150px;
-      padding: 10px;
+    @include lt-md {
+      height: 144px;
+      padding: 8px;
     }
 
     &:hover {
       .figure__img {
         transform: translate(-50%, -50%) scale(1.1);
       }
-
-      .figure__overlay {
-        height: 20%;
-      }
-    }
-  }
-
-  &__title {
-    position: relative;
-    z-index: 2;
-    color: #fff;
-    text-align: center;
-
-    @include gt-xs {
-      font-family: $golos-bold;
-      font-size: 18px;
-      line-height: 22px;
-      padding: 20px 0;
-    }
-
-    @include xs {
-      font-family: $golos-regular;
-      font-size: 14px;
-      line-height: 14px;
-      padding: 2px 0;
-    }
-  }
-
-  &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include gt-xs {
-      padding: 17px 0 18px;
-      border-bottom: 1px solid #dde0e6;
-    }
-
-    @include xs {
-      padding: 7px 0;
     }
   }
 }
 
 .figure {
-  border-radius: 12px;
-  overflow: hidden;
+  z-index: 1;
 
   &__img {
     display: block;
@@ -148,95 +128,72 @@ export default {
     transform: translate(-50%, -50%) scale(1);
     transition: opacity 0.35s, transform 0.35s;
   }
+}
 
-  &__overlay {
-    position: absolute;
-    z-index: 2;
-    background: linear-gradient(
-        180deg,
-        rgba(0, 0, 0, 7e-5) 0%,
-        rgba(0, 0, 0, 0.0109804) 9.22%,
-        rgba(0, 0, 0, 0.0384314) 18.76%,
-        rgba(0, 0, 0, 0.0823529) 28.48%,
-        rgba(0, 0, 0, 0.14) 38.19%,
-        rgba(0, 0, 0, 0.203137) 47.75%,
-        rgba(0, 0, 0, 0.27451) 56.99%,
-        rgba(0, 0, 0, 0.351373) 65.75%,
-        rgba(0, 0, 0, 0.42549) 73.87%,
-        rgba(0, 0, 0, 0.496863) 81.18%,
-        rgba(0, 0, 0, 0.56) 87.52%,
-        rgba(0, 0, 0, 0.617647) 92.74%,
-        rgba(0, 0, 0, 0.661569) 96.66%,
-        rgba(0, 0, 0, 0.68902) 99.14%,
-        rgba(0, 0, 0, 0.7) 100%
-    );
-    border-radius: 12px;
-    transition: height 0.35s;
+.title {
+  position: relative;
+  z-index: 2;
+  color: #000;
 
-    &--top {
-      left: 0;
-      right: 0;
-      top: 0;
-      transform: matrix(1, 0, 0, -1, 0, 0);
+  @include gt-sm {
+    min-height: 40px;
+    font-family: $golos-bold;
+    font-size: 16px;
+    line-height: 20px;
+    padding: 10px 12px 8px;
+  }
 
-      @include gt-xs {
-        height: 25.29777%;
-      }
-
-      @include xs {
-        height: 32%;
-      }
-    }
-
-    &--bottom {
-      left: 0;
-      right: 0;
-      bottom: 0;
-
-      @include gt-xs {
-        height: 35.29777%;
-      }
-
-      @include xs {
-        height: 42.67%;
-      }
-    }
+  @include lt-md {
+    min-height: 28px;
+    font-family: $golos-regular;
+    font-size: 11px;
+    line-height: 14px;
+    padding: 6px 8px 0;
   }
 }
 
-.header {
-  position: relative;
-  z-index: 2;
+.content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @include gt-sm {
+    padding: 0 12px 12px;
+  }
+
+  @include lt-md {
+    padding: 5px 8px 7px;
+  }
 }
 
 .rating {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  position: absolute;
+  transform: translateY(-50%);
+  color: $color-white-grey;
+  background: #fff;
+  border-radius: 0 8px 0 0;
 
-  @include gt-xs {
-    padding: 4px 8px;
-    background: rgba(0, 0, 0, 0.26);
-    //backdrop-filter: blur(20px);
-    border-radius: 8px;
+  @include gt-sm {
+    min-height: 22px;
+    box-sizing: border-box;
+    padding: 3px 10px 3px 12px;
   }
 
-  @include xs {
+  @include lt-md {
+    padding: 4px 6px 4px 8px;
   }
 
   &__text {
     font-family: $golos-regular;
     letter-spacing: -0.01em;
-    color: #fff;
 
-    @include gt-xs {
+    @include gt-sm {
       font-size: 11px;
-      line-height: 16px;
     }
 
-    @include xs {
+    @include lt-md {
       font-size: 10px;
       line-height: 12px;
     }
@@ -245,16 +202,50 @@ export default {
   &__icon {
     display: block;
 
-    @include gt-xs {
+    @include gt-sm {
       width: 13.32px;
       height: 12.66px;
-      margin-left: 4px;
+      margin: 0 4px;
     }
 
-    @include xs {
+    @include lt-md {
       width: 10px;
       height: 10px;
-      margin-left: 2.24px;
+      margin-left: 2px;
+    }
+  }
+
+  &__reviews {
+    font-family: $golos-regular;
+
+    @include gt-sm {
+      font-size: 10px;
+      line-height: 13px;
+    }
+
+    @include lt-md {
+      display: none;
+    }
+  }
+
+  &:after{
+    content: "";
+    display: block;
+    width: 20px;
+    height: 19px;
+    position: absolute;
+    right: -17px;
+    clip: rect(11px,10px,auto,auto);
+    border: 3px solid #fff;
+    box-sizing: border-box;
+    border-radius: 50%;
+
+    @include gt-sm {
+      top: -5px;
+    }
+
+    @include lt-md {
+      top: -6px;
     }
   }
 }
@@ -262,15 +253,15 @@ export default {
 .like {
   &__icon {
     display: block;
-    color: transparent;
-    stroke: #fff;
+    color: #fff;
+    stroke: #7C7C7C;
 
-    @include gt-xs {
+    @include gt-sm {
       width: 20px;
       height: 18.5px;
     }
 
-    @include xs {
+    @include lt-md {
       width: 13.33px;
       height: 12.33px;
     }
@@ -278,22 +269,81 @@ export default {
 }
 
 .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include gt-sm {
+    min-height: 44px;
+  }
+
+  @include lt-md {
+    min-height: 27px;
+  }
+
+  @include lt-md {
+    display: flex;
+    flex-direction: column;
+  }
+
   &__group {
-    margin: 0;
+    @include lt-md {
+      order: 2;
+    }
+  }
+
+  &__old {
+    position: relative;
+    font-family: $golos-regular;
+    color: $color-white-grey;
+    letter-spacing: 0.01em;
+
+    @include gt-sm {
+      font-size: 16px;
+      line-height: 16px;
+    }
+
+    @include lt-md {
+      font-size: 11px;
+      line-height: 12px;
+    }
+
+    &:before,
+    &:after {
+      content: '';
+      display: block;
+      height: 1px;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+      transform: rotate(-10deg);
+    }
+
+    &:before {
+      top: -1px;
+      background: #fff;
+    }
+
+    &:after {
+      background: #db1838;
+    }
   }
 
   &__current {
     font-family: $golos-bold;
 
-    @include gt-xs {
+    @include gt-sm {
       font-size: 20px;
       line-height: 24px;
       letter-spacing: 0.03px;
     }
 
-    @include xs {
-      font-size: 16px;
-      line-height: 20px;
+    @include lt-md {
+      font-size: 14px;
+      line-height: 16px;
       letter-spacing: -0.01em;
       margin-top: -1px;
     }
@@ -303,55 +353,43 @@ export default {
 .group {
   display: flex;
 
-  @include gt-xs {
+  @include gt-sm {
     align-items: center;
-    font-size: 14px;
-    line-height: 16px;
-  }
-
-  @include xs {
-    font-size: 10px;
-    line-height: 12px;
-  }
-
-  &__text {
-    font-family: $golos-regular;
-    letter-spacing: 0.01em;
-    color: $color-white-grey;
-
-    @include gt-xs {
-      font-size: 14px;
-      line-height: 16px;
-    }
-
-    @include xs {
-      font-size: 10px;
-      line-height: 12px;
-    }
   }
 
   &__badge {
-    @include gt-xs {
+    @include gt-sm {
       margin-left: 8px;
     }
 
-    @include xs {
-      margin-left: 4px;
+    @include lt-md {
+      display: none;
     }
   }
 }
 
-.icon-bag {
-  fill: white;
+.header {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 2;
 
-  @include gt-xs {
-    width: 16px;
-    height: 16.25px;
+  @include gt-sm {
+    justify-content: end;
   }
 
-  @include xs {
-    width: 15px;
-    height: 16.25px;
+  @include lt-md {
+    justify-content: space-between;
+  }
+
+  &__badge {
+    @include gt-sm {
+      display: none;
+    }
+
+    @include lt-md {
+      display: block;
+    }
   }
 }
 </style>

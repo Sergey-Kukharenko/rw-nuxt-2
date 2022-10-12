@@ -53,17 +53,12 @@ export default {
   }
 
   @include xs {
-    font-size: 8px;
-    line-height: 10px;
-    padding: 2px 4.4555px;
+    font-size: 10px;
+    line-height: 12px;
+    padding: 2px 4px;
   }
 
   &--white {
-    //font-size: 11px;
-    //line-height: 16px;
-    //letter-spacing: -0.01em;
-    //padding: 2px 6px;
-
     color: #f63866;
     background: #fff;
     border-radius: 8px;
