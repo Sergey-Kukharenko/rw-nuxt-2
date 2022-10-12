@@ -21,7 +21,7 @@
 
       <div class="rating">
         <div class="rating__text">{{ slide.rating }}</div>
-        <SvgSprite symbol="star" class="rating__icon"/>
+        <svg-icon name="star" class="rating__icon"/>
         <div class="rating__reviews">12 560</div>
       </div>
 
