@@ -9,7 +9,7 @@
 
 <script>
 import dataBestsellers from '@/data/bestsellers'
-import AppSectionHeader from '@/components/AppSectionHeader.vue'
+import AppSectionHeader from '~/components/shared/AppSectionHeader.vue'
 import AppSwiper from '@/components/ui/AppSwiper.vue'
 import AppCard from '@/components/shared/AppCard.vue'
 

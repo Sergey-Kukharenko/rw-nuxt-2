@@ -26,5 +26,5 @@ export default {
     },
     title: '+44 (0)78 0767 8690',
     href: 'https://api.whatsapp.com/send?phone=4407807678690'
-  },
+  }
 }

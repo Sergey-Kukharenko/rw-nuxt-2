@@ -1,16 +1,16 @@
 <template>
   <section>
     <app-section-header v-bind="{ headerProps }" />
-    <app-grid v-slot="slotProps" :slides="slides">
+    <app-section-grid v-slot="slotProps" :slides="slides">
       <app-card :slide="{ ...slotProps }" />
-    </app-grid>
+    </app-section-grid>
   </section>
 </template>
 
 <script>
 import dataSimilar from '@/data/similar'
-import AppSectionHeader from '@/components/AppSectionHeader'
-import AppGrid from '@/components/shared/AppGrid'
+import AppSectionHeader from '~/components/shared/AppSectionHeader'
+import AppSectionGrid from '@/components/shared/AppSectionGrid'
 import AppCard from '@/components/shared/AppCard'
 
 const { main, list } = dataSimilar
@@ -20,7 +20,7 @@ export default {
 
   components: {
     AppSectionHeader,
-    AppGrid,
+    AppSectionGrid,
     AppCard
   },
 

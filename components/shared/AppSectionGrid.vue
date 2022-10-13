@@ -1,10 +1,10 @@
 <template>
-  <div class="grid">
+  <div :class="classNames">
     <div v-for="(slide, idx) in slides" :key="idx" class="grid__item">
-      <slot v-bind="{ ...slide }" />
+      <slot v-bind="{ ...slide }"></slot>
     </div>
 
-    <div class="grid__item">
+    <div v-if="theme" class="grid__item">
       <app-card-show-more/>
     </div>
   </div>
@@ -12,14 +12,26 @@
 
 <script>
 import AppCardShowMore from '~/components/shared/AppCardShowMore';
+import {useClassNameProp} from '~/helpers';
 export default {
-  name: 'AppGrid',
+  name: 'AppSectionGrid',
   components: {AppCardShowMore},
   props: {
     slides: {
       type: Array,
       default: () => []
+    },
+
+    theme: {
+      type: String,
+      default: ''
     }
+  },
+
+  computed: {
+    classNames() {
+      return useClassNameProp(this.theme, 'grid')
+    },
   }
 }
 </script>
