@@ -61,5 +61,28 @@ export default {
       }
     }
   }
+
+  &--custom {
+    .grid__item {
+      @include gt-sm {
+        flex: 1 1 13%;
+      }
+
+      @include lt-md {
+        flex: 1 1 30%;
+      }
+
+      &:nth-child(1),
+      &:nth-child(2) {
+        @include lt-md {
+          flex: 1 1 30%;
+        }
+      }
+    }
+
+    .card__title{
+      margin-top: 8px;
+    }
+  }
 }
 </style>

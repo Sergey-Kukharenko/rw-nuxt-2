@@ -36,7 +36,7 @@ export default {
   grid-gap: $gap-ds;
 
   @include lt-md {
-    margin: 14px 0;
+    margin-top: 14px;
   }
 
   @include sm {

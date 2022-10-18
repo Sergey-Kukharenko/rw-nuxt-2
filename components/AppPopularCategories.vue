@@ -53,6 +53,7 @@ export default {
 
   @include xs {
     display: block;
+    margin-top: 0;
   }
 }
 

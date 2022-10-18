@@ -81,6 +81,7 @@ export default {
       scss: {
         implementation: require('sass')
       }
-    }
+    },
+    postcss: null,
   }
 }
