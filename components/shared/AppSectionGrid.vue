@@ -52,15 +52,17 @@ export default {
     row-gap: 8px;
   }
 
-  &__item {
-    @include lt-md {
-      &:nth-last-child(2) {
-        display: none;
-      }
+  &--custom{
+    .grid__item{
+      @include lt-md {
+        &:nth-last-child(2) {
+          display: none;
+        }
 
-      &:last-child {
-        grid-column: span 2;
-        margin-top: 8px;
+        &:last-child {
+          grid-column: span 2;
+          margin-top: 8px;
+        }
       }
     }
   }
