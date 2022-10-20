@@ -6,6 +6,7 @@
     <app-section-sm :section="recipient"/>
     <app-section :section="specialOffers" theme="custom"/>
     <app-section :section="underPounds" theme="custom"/>
+    <app-shop-by-price />
     <app-section-sm :section="pickBouquet" theme="custom"/>
   </main>
 </template>
