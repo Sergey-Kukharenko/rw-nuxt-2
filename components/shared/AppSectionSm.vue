@@ -59,22 +59,7 @@ export default {
 }
 
 .title {
-  font-family: $Literata;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 28px;
-  line-height: 32px;
   margin: 0;
-
-  @include gt-sm {
-    font-size: 28px;
-    line-height: 32px;
-  }
-
-  @include lt-md {
-    font-size: 20px;
-    line-height: 24px;
-  }
 }
 
 .subtitle {

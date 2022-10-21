@@ -1,6 +1,6 @@
 <template>
   <section class="popular-categories">
-    <h1 class="popular-title">{{ popular.title }}</h1>
+    <h2 class="popular-title">{{ popular.title }}</h2>
     <div class="popular-list">
       <a
         v-for="item in popular.categories"

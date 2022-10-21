@@ -4,8 +4,11 @@ body {
 }
 
 .layout {
-  max-width: 1080px;
   margin: 0 auto;
+
+  @include gt-md {
+    max-width: 1080px;
+  }
 
   @include gt-xs {
     padding: $gap-ds;
@@ -64,22 +67,38 @@ body {
   transform: translate(-50%, -50%);
 }
 
-h1 {
+h1, h2 {
   font-family: $Literata;
-  letter-spacing: -0.01em;
+  font-weight: 700;
+}
 
-  @include gt-xs {
-    font-size: 24px;
-    line-height: 28px;
-    letter-spacing: -0.01em;
-    margin: 8px 0 16px;
+h1 {
+  letter-spacing: -0.01em;
+  color: #0d072e;
+  margin: 0 0 16px 0;
+
+  @include gt-sm {
+    font-size: 38px;
+    line-height: 40px;
   }
 
-  @include xs {
+  @include lt-sm {
+    font-size: 24px;
+    line-height: 24px;
+  }
+}
+
+h2 {
+  @include gt-sm {
+    font-size: 28px;
+    line-height: 32px;
+    margin: 0 0 32px 0;
+  }
+
+  @include lt-md {
     font-size: 20px;
     line-height: 24px;
-    letter-spacing: 0.03px;
-    margin: 16px 0;
+    margin: 0 0 16px 0;
   }
 }
 
@@ -104,6 +123,11 @@ figure {
   margin: 0;
 }
 
+input,
+input:focus {
+  outline: none;
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -117,3 +141,4 @@ input[type=number] {
 .noscroll {
   overflow: hidden;
 }
+

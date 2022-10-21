@@ -140,20 +140,8 @@ export default {
 
 .about {
   &__title {
-    font-family: $Literata;
-    font-style: normal;
-    font-weight: 700;
-
-    color: #000000;
-
     @include gt-sm {
-      font-size: 28px;
-      line-height: 32px;
-    }
-
-    @include lt-md {
-      font-size: 20px;
-      line-height: 24px;
+      margin: 0 0 16px 0;
     }
   }
 
