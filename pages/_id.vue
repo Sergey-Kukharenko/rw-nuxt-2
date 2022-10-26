@@ -6,8 +6,8 @@
       </div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
-
-        <app-form-sizes :product="typeChooseSize" />
+        <app-form-offers v-if="isComposite" :product="getProduct" />
+        <app-service :text="description" />
       </div>
     </div>
 
@@ -39,20 +39,23 @@
 
 <script>
 import bouquetSunshine from '@/data/bouquet-sunshine';
-import AppFormSizes from '~/components/product/AppFormSizes';
+import AppFormOffers from '~/components/product/AppFormOffers';
+import AppService from '~/components/product/AppService';
 
 export default {
   name: 'IdPage',
 
-  components: { AppFormSizes },
+  components: {AppService, AppFormOffers },
 
-  asyncData({route, $axios}) {
+   asyncData({route, $axios}) {
     // const path = route.fullPath;
-    // const bouquet = await $axios.$get(`${path}`);
+    // const {data} = await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`);
 
-    const {data} = bouquetSunshine;
-    const {seo, title, positions} = data;
-    return {seo, title, positions};
+     const {data} = bouquetSunshine
+
+    const {seo, title, description, type, positions} = data;
+
+    return {seo, title, description, type, positions};
   },
 
   head() {
@@ -69,9 +72,13 @@ export default {
   },
 
   computed: {
-    typeChooseSize() {
-      return this.positions.find(item => item.title === 'Choose size')
-    }
+    isComposite() {
+      return this.type === 'composite'
+    },
+
+    getProduct() {
+      return this.isComposite ? this.positions[0] : this.positions[1]
+    },
   }
 };
 </script>

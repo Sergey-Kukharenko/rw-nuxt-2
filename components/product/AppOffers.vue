@@ -1,7 +1,7 @@
 <template>
-  <div class="sizes">
-    <div v-for="(item, idx) in sizes" :key="item.id" class="sizes__item item" @click="onChange(item, idx)">
-      <div class="button" :class="{ active: idx === selectedSize }">
+  <div class="offers">
+    <div v-for="(item, idx) in offers" :key="item.id" class="offers__item item" @click="onChange(item, idx)">
+      <div class="button" :class="{ active: idx === selectedOffer }">
         <div class="figure">
           <div class="radio">
             <div class="radio__shape"></div>
@@ -26,12 +26,12 @@
 import AppBadge from '@/components/shared/AppBadge';
 
 export default {
-  name: 'AppSizes',
+  name: 'AppOffers',
 
   components: {AppBadge},
 
   props: {
-    sizes: {
+    offers: {
       type: Array,
       default: () => []
     }
@@ -39,21 +39,21 @@ export default {
 
   data() {
     return {
-      selectedSize: 0
+      selectedOffer: 0
     };
   },
 
   methods: {
     onChange(item, idx) {
-      this.selectedSize = idx;
-      this.$emit('setSize', item);
+      this.selectedOffer = idx;
+      this.$emit('setOffer', item);
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
-.sizes {
+.offers {
   @include gt-sm {
     margin: 12px 0 24px;
   }

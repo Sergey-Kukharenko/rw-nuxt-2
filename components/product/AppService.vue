@@ -13,8 +13,7 @@
 
     <div class="service__container container">
       <div class="container__text">
-        Our florists redesign these limited-edition bouquets every four weeks, so they’re always changing. Oozing
-        vintage charm, our florist's pick is filled with pretty pastel stems...
+        {{text}} ...
       </div>
 
       <div v-show="isShowMore" class="container__text">
@@ -37,14 +36,43 @@ export default {
   name: 'AppService',
 
   props: {
-    service: {
-      type: Object,
-      default: () => {}
+    text: {
+      type: String,
+      default: ''
     }
   },
 
   data() {
     return {
+      service: {
+        list: [
+          {
+            img: {
+              desktop: '/images/service/desktop/1.png',
+              mobile: '/images/service/mobile/1.png'
+            },
+            alt: '1',
+            title: 'Free London delivery  to your apartment'
+          },
+          {
+            img: {
+              desktop: '/images/service/desktop/2.png',
+              mobile: '/images/service/mobile/2.png'
+            },
+            alt: '2',
+            title: 'We’ll send you bouquet photo. Showing the quality'
+          },
+          {
+            img: {
+              desktop: '/images/service/desktop/3.png',
+              mobile: '/images/service/mobile/3.png'
+            },
+            alt: '3',
+            title: 'Delivery in 2 hours from the order moment'
+          }
+        ],
+        description: ''
+      },
       isShowMore: false,
       toggleText: 'Show more'
     }

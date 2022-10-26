@@ -4,7 +4,7 @@
       <div class="section__item item">
         <div class="item__header">{{product.title}}</div>
         <div class="item__body item__body--sm-include-border">
-          <app-sizes :sizes="product.options" @setSize="onSetSize" />
+          <app-offers :offers="product.options" @setOffer="onSetOffer" />
         </div>
       </div>
     </div>
@@ -12,8 +12,8 @@
     <div class="form__footer">
       <div class="form__footer-price">
         <div class="price">
-          <div class="price__current">£{{ itemSize.price.amount }}</div>
-          <div v-if="itemSize.price.old" class="price__old">£{{ itemSize.price.old }}</div>
+          <div class="price__current">£{{ itemOffer.price.amount }}</div>
+          <div v-if="itemOffer.price.old" class="price__old">£{{ itemOffer.price.old }}</div>
         </div>
         <app-badges v-if="product.badges" :badges="product.badges" />
       </div>
@@ -34,15 +34,15 @@
 
 <script>
 import { useToggleClassName } from '@/helpers'
-import AppSizes from '@/components/product/AppSizes'
+import AppOffers from '~/components/product/AppOffers'
 import AppButton from '@/components/shared/AppButton'
 import AppBadges from '@/components/shared/AppBadges'
 
 export default {
-  name: 'AppFormSizes',
+  name: 'AppFormOffers',
 
   components: {
-    AppSizes,
+    AppOffers,
     AppBadges,
     AppButton
   },
@@ -56,7 +56,7 @@ export default {
 
   data() {
     return {
-      itemSize: this.product?.options?.[0],
+      itemOffer: this.product?.options?.[0],
       like: this.product.like
     }
   },
@@ -68,17 +68,23 @@ export default {
   },
 
   methods: {
-    onSetSize(payload) {
-      this.itemSize = payload
+    onSetOffer(payload) {
+      this.itemOffer = payload
     },
 
     toggleLike() {
       this.like = !this.like
     },
 
-    addToCart() {
-
-    }
+      addToCart() {
+       try {
+         console.log(this.itemOffer);
+         // const response = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', this.itemSize)
+         // console.log(response);
+       } catch (e) {
+         console.log(e);
+       }
+     }
   }
 }
 </script>

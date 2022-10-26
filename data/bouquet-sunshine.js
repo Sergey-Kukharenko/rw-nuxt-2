@@ -1,6 +1,8 @@
 export default {
   data: {
     object: 'Offer',
+    type: 'composite',
+    type2: 'simple',
     id: 'm58xJBM9eM71jlZv',
     title: 'Bouquet Sunshine',
     slug: 'bouquet-sunshine',
@@ -216,6 +218,7 @@ export default {
           }
         ]
       },
+
       {
         title: 'Green leaves',
         isRequired: false,
@@ -238,7 +241,7 @@ export default {
       },
       {
         title: 'Packaging type',
-        isRequired: true,
+        isRequired: false,
         minQuantity: 1,
         maxQuantity: 1,
         allowedInCart: false,
