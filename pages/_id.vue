@@ -6,8 +6,8 @@
       </div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
-        <app-form-offers v-if="isComposite" :product="getProduct" />
-        <app-service :text="description" />
+        <app-form-offers v-if="isComposite" :product="getProduct"/>
+        <app-service :text="description"/>
       </div>
     </div>
 
@@ -38,24 +38,28 @@
 </template>
 
 <script>
-import bouquetSunshine from '@/data/bouquet-sunshine';
+// import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
 export default {
   name: 'IdPage',
 
-  components: {AppService, AppFormOffers },
+  components: {AppService, AppFormOffers},
 
-   asyncData({route, $axios}) {
-    // const path = route.fullPath;
-    // const {data} = await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`);
+  async asyncData({route, $axios, redirect}) {
+    const path = route.fullPath;
 
-     const {data} = bouquetSunshine
-
-    const {seo, title, description, type, positions} = data;
-
-    return {seo, title, description, type, positions};
+    return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+      .then(({data}) => ({
+        seo: data.seo,
+        title: data.title,
+        description: data.description,
+        object: data.object,
+        positions: data.positions,
+      })).catch((e) => {
+        return redirect('/');
+      });
   },
 
   head() {
@@ -73,11 +77,11 @@ export default {
 
   computed: {
     isComposite() {
-      return this.type === 'composite'
+      return this.object === 'Offer';
     },
 
     getProduct() {
-      return this.isComposite ? this.positions[0] : this.positions[1]
+      return this.isComposite ? this.positions[0] : this.positions[1];
     },
   }
 };
