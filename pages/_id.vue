@@ -51,13 +51,15 @@ export default {
     const path = route.fullPath;
 
     return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
-      .then(({data}) => ({
-        seo: data.seo,
-        title: data.title,
-        description: data.description,
-        object: data.object,
-        positions: data.positions,
-      })).catch((e) => {
+      .then(({data}) => {
+        return {
+          seo: data.seo,
+          title: data.title,
+          description: data.description,
+          object: data.object,
+          positions: data.positions,
+        };
+      }).catch((e) => {
         return redirect('/');
       });
   },
