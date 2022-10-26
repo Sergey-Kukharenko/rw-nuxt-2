@@ -6,6 +6,8 @@
       </div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
+
+        <app-form-sizes :product="typeChooseSize" />
       </div>
     </div>
 
@@ -37,17 +39,20 @@
 
 <script>
 import bouquetSunshine from '@/data/bouquet-sunshine';
+import AppFormSizes from '~/components/product/AppFormSizes';
 
 export default {
   name: 'IdPage',
 
+  components: { AppFormSizes },
+
   asyncData({route, $axios}) {
     // const path = route.fullPath;
     // const bouquet = await $axios.$get(`${path}`);
-    const {data} = bouquetSunshine;
-    const {seo, title} = data;
 
-    return {seo, title};
+    const {data} = bouquetSunshine;
+    const {seo, title, positions} = data;
+    return {seo, title, positions};
   },
 
   head() {
@@ -61,6 +66,12 @@ export default {
         }
       ],
     };
+  },
+
+  computed: {
+    typeChooseSize() {
+      return this.positions.find(item => item.title === 'Choose size')
+    }
   }
 };
 </script>

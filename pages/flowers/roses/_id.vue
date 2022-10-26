@@ -6,6 +6,7 @@
         <app-notification :notification="notification" />
       </div>
       <div class="detail-page__col">
+        <h1 class="detail-page__title">{{ product.title }}</h1>
         <app-form-sizes v-if="isSizePage" :product="product" />
         <app-form-lists v-if="isListsPage" :product="product" />
         <app-service :service="service" />
