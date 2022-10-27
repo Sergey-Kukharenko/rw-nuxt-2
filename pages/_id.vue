@@ -47,7 +47,9 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  async asyncData({route, $axios, redirect}) {
+  // middleware: ['not-found'],
+
+   asyncData({route, $axios, redirect}) {
     // const path = route.fullPath;
     //
     // return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
@@ -59,8 +61,8 @@ export default {
     //       object: data.object,
     //       positions: data.positions,
     //     };
-    //   }).catch((e) => {
-    //     return redirect('/');
+    //   }).catch((error) => {
+    //     if (error.response.status === 500) redirect('/')
     //   });
 
     const {data} = bouquetSunshine;
