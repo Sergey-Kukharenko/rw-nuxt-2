@@ -2,9 +2,10 @@
   <div class="form">
     <div class="section">
       <div class="section__item item">
-        <div class="item__header">{{product.title}}</div>
+        <div class="item__header">{{ product.title }}</div>
         <div class="item__body item__body--sm-include-border">
-          <app-offers :offers="product.options" @setOffer="onSetOffer" />
+          <app-offers :offers="product.options" @setOffer="onSetOffer"/>
+          <app-offer-detail :list="itemOffer.item.components"/>
         </div>
       </div>
     </div>
@@ -15,7 +16,7 @@
           <div class="price__current">£{{ itemOffer.price.amount }}</div>
           <div v-if="itemOffer.price.old" class="price__old">£{{ itemOffer.price.old }}</div>
         </div>
-        <app-badges v-if="product.badges" :badges="product.badges" />
+        <app-badges v-if="product.badges" :badges="product.badges"/>
       </div>
 
       <div class="group-buttons">
@@ -24,7 +25,7 @@
         </div>
         <div class="group-buttons__item">
           <app-button theme="grey" @click="toggleLike">
-            <svg-icon name="heart-outline" :class="classNames" />
+            <svg-icon name="heart-outline" :class="classNames"/>
           </app-button>
         </div>
       </div>
@@ -33,15 +34,17 @@
 </template>
 
 <script>
-import { useToggleClassName } from '@/helpers'
-import AppOffers from '~/components/product/AppOffers'
-import AppButton from '@/components/shared/AppButton'
-import AppBadges from '@/components/shared/AppBadges'
+import {useToggleClassName} from '@/helpers';
+import AppOffers from '~/components/product/AppOffers';
+import AppButton from '@/components/shared/AppButton';
+import AppBadges from '@/components/shared/AppBadges';
+import AppOfferDetail from '~/components/product/AppOfferDetail';
 
 export default {
   name: 'AppFormOffers',
 
   components: {
+    AppOfferDetail,
     AppOffers,
     AppBadges,
     AppButton
@@ -50,7 +53,8 @@ export default {
   props: {
     product: {
       type: Object,
-      default: () => {}
+      default: () => {
+      }
     }
   },
 
@@ -58,35 +62,35 @@ export default {
     return {
       itemOffer: this.product?.options?.[0],
       like: this.product.like
-    }
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.like, 'like', 'active')
+      return useToggleClassName(this.like, 'like', 'active');
     }
   },
 
   methods: {
     onSetOffer(payload) {
-      this.itemOffer = payload
+      this.itemOffer = payload;
     },
 
     toggleLike() {
-      this.like = !this.like
+      this.like = !this.like;
     },
 
-      addToCart() {
-       try {
-         console.log(this.itemOffer);
-         // const response = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', this.itemSize)
-         // console.log(response);
-       } catch (e) {
-         console.log(e);
-       }
-     }
+    addToCart() {
+      try {
+        // console.log(this.itemOffer);
+        // const response = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', this.itemSize)
+        // console.log(response);
+      } catch (e) {
+        // console.log(e);
+      }
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -119,7 +123,7 @@ export default {
   border-bottom: 1px solid #eaeaea;
 
   @include gt-sm {
-    padding-bottom: 4px;
+    padding-bottom: 12px;
     margin: 26px 0 0;
   }
 
