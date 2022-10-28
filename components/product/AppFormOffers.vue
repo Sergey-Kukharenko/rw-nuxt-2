@@ -5,7 +5,7 @@
         <div class="item__header">{{ product.title }}</div>
         <div class="item__body item__body--sm-include-border">
           <app-offers :offers="product.options" @setOffer="onSetOffer"/>
-          <app-offer-detail :list="itemOffer.item.components"/>
+          <app-offer-detail :list="offer.item.components"/>
         </div>
       </div>
     </div>
@@ -13,8 +13,8 @@
     <div class="form__footer">
       <div class="form__footer-price">
         <div class="price">
-          <div class="price__current">£{{ itemOffer.price.amount }}</div>
-          <div v-if="itemOffer.price.old" class="price__old">£{{ itemOffer.price.old }}</div>
+          <div class="price__current">£{{ offer.price.amount }}</div>
+          <div v-if="offer.price.old" class="price__old">£{{ offer.price.old }}</div>
         </div>
         <app-badges v-if="product.badges" :badges="product.badges"/>
       </div>
@@ -60,7 +60,7 @@ export default {
 
   data() {
     return {
-      itemOffer: this.product?.options?.[0],
+      offer: this.product?.options[0],
       like: this.product.like
     };
   },
@@ -73,7 +73,7 @@ export default {
 
   methods: {
     onSetOffer(payload) {
-      this.itemOffer = payload;
+      this.offer = payload;
     },
 
     toggleLike() {
@@ -81,13 +81,7 @@ export default {
     },
 
     addToCart() {
-      try {
-        // console.log(this.itemOffer);
-        // const response = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', this.itemSize)
-        // console.log(response);
-      } catch (e) {
-        // console.log(e);
-      }
+      this.$store.dispatch('cart/addToCart', this.offer)
     }
   }
 };

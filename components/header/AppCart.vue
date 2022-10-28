@@ -22,18 +22,13 @@ export default {
     }
   },
 
-  data() {
-    return {
-      cart: {
-        price: '£ 52,76',
-        count: 1
-      }
-    }
-  },
-
   computed: {
     getImg() {
       return this.$device.isMobileOrTablet ? 'cart-bag' : 'cart-outline'
+    },
+
+    cart() {
+      return this.$store.getters['cart/cart']
     },
 
     isCount() {

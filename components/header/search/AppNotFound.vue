@@ -11,9 +11,12 @@
         <p class="not-found__text">Adjust your request or go to the catalog.</p>
       </div>
     </div>
-    <app-button size="pre-lg" class="not-found__button">
-      Go to catalog
-    </app-button>
+
+    <nuxt-link to="/">
+      <app-button size="pre-lg" class="not-found__button">
+        Go to catalog
+      </app-button>
+    </nuxt-link>
   </div>
 </template>
 
