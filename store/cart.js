@@ -1,7 +1,7 @@
 export const state = () => ({
   cart: {
     items: [],
-    price: '£ 52,76',
+    price: null,
     count: null
   }
 });
