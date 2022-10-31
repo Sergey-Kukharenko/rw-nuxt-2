@@ -1,28 +1,38 @@
 <template>
   <div class="profile">
-    <app-dropdown :options="getOptions">
+    <app-dropdown v-if="user.authorized" :options="getOptions">
       <template #button>
         <app-profile-button :user="user" />
       </template>
       <template #dropdown>
-        <app-profile-preview v-if="user.authorized" :user="user" />
-        <app-profile-form v-else :user="user"/>
+        <app-profile-preview :user="user" />
       </template>
     </app-dropdown>
+
+    <template v-else>
+      <app-profile-button :user="user" @click="open" />
+
+      <app-modal :visible="isVisible" @close="close">
+        <app-auth :user="user" />
+      </app-modal>
+    </template>
   </div>
 </template>
 
 <script>
 import AppDropdown from '~/components/shared/AppDropdown.vue'
-import AppProfileButton from '~/components/header/profile/AppProfileButton';
-import AppProfilePreview from '~/components/header/profile/AppProfilePreview';
-import AppProfileForm from '~/components/header/profile/AppProfileForm';
+import AppProfileButton from '~/components/header/profile/AppProfileButton'
+import AppProfilePreview from '~/components/header/profile/AppProfilePreview'
+import AppModal from '~/components/shared/AppModal'
+import AppAuth from '~/components/header/auth/AppAuth';
+import { disableScroll, enableScroll } from '~/helpers/scrollLock'
 
 export default {
   name: 'AppProfile',
 
   components: {
-    AppProfileForm,
+    AppAuth,
+    AppModal,
     AppProfilePreview,
     AppProfileButton,
     AppDropdown
@@ -30,11 +40,12 @@ export default {
 
   data() {
     return {
+      isVisible: false,
       options: {
         top: '-20px',
         right: 0
       }
-    };
+    }
   },
 
   computed: {
@@ -44,6 +55,18 @@ export default {
 
     getOptions() {
       return this.$device.isDesktop ? this.options : null
+    }
+  },
+
+  methods: {
+    open() {
+      this.isVisible = true
+      disableScroll()
+    },
+
+    close() {
+      this.isVisible = false
+      enableScroll()
     }
   }
 }

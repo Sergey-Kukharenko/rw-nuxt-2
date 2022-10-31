@@ -1,9 +1,7 @@
 <template>
   <div class="container">
     <div class="container__header">
-      <div class="container__layout">
-        <h1>Address finder</h1>
-      </div>
+      <h1>Address finder</h1>
     </div>
 
     <div class="container__body">
@@ -61,6 +59,7 @@ export default {
 <style lang="scss" scoped>
 .container {
   @include gt-sm {
+    width: 500px;
     padding-top: 18px;
     box-sizing: border-box;
   }

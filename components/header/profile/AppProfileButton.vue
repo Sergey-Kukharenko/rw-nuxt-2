@@ -1,5 +1,5 @@
 <template>
-  <div :class="classNames">
+  <div :class="classNames" v-on="$listeners">
     <div class="profile-button__figure">
       <template v-if="isAuth">
         {{ char }}

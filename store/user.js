@@ -1,5 +1,5 @@
 export const state = () => ({
-  authorized: true,
+  authorized: false,
   fullName: 'Alfred Penniworth',
   bonuses: '1 280',
   searchHistory: [

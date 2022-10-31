@@ -91,7 +91,8 @@ export default {
     z-index: 2;
 
     @include gt-xs {
-      width: 500px;
+      //width: 500px;
+      width: min-content;
       margin: 2rem auto;
     }
 
