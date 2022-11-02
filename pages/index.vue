@@ -37,6 +37,6 @@ export default {
       specialOffers: dataSpecialOffers,
       underPounds: dataUnderPounds
     }
-  }
+  },
 };
 </script>

@@ -87,7 +87,7 @@ export default {
   methods: {
     toggle() {
       this.isShowMore = !this.isShowMore
-      this.isShowMore ? (this.toggleText = 'Hide') : (this.toggleText = 'Show more')
+      this.toggleText = this.isShowMore ? 'Hide' : 'Show more'
     }
   }
 }

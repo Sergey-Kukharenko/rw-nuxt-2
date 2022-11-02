@@ -1,5 +1,7 @@
 <template>
   <div class="form">
+    <h1 class="form__title">{{ product.title }}</h1>
+
     <div class="section">
       <div class="section__item item">
         <div class="item__header">Choose size</div>
@@ -88,6 +90,16 @@ export default {
 
 <style lang="scss" scoped>
 .form {
+  &__title {
+    @include gt-sm {
+      margin-top: 8px;
+    }
+
+    @include lt-sm {
+      margin-top: 22px;
+    }
+  }
+
   &__footer {
     @include gt-sm {
       display: flex;

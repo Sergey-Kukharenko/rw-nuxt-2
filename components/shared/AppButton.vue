@@ -13,17 +13,26 @@ export default {
   props: {
     theme: {
       type: String,
-      default: ''
+      default: '',
+      validate(value) {
+        return ['grey', 'grey-whitely'].includes(value);
+      }
     },
 
     size: {
       type: String,
-      default: ''
+      default: '',
+      validate(value) {
+        return ['sm', 'pre-lg', 'lg'].includes(value);
+      }
     },
 
     stretch: {
       type: String,
-      default: ''
+      default: '',
+      validate(value) {
+        return ['fix', 'full', 'search'].includes(value);
+      }
     }
   },
 

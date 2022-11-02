@@ -26,7 +26,10 @@ export const mutations = {
 
 export const actions = {
   addToCart({state, commit}, payload) {
-    // const { cart: newCart } = await this.$axios.$post('/carts')
+    // const res = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', payload)
+    //
+    // console.log(res);
+
     commit('ADD_TO_CART', payload);
     commit('UPDATE_CART');
   },

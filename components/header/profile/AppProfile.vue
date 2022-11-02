@@ -13,7 +13,7 @@
       <app-profile-button :user="user" @click="open" />
 
       <app-modal :visible="isVisible" @close="close">
-        <app-auth :user="user" />
+        will be form
       </app-modal>
     </template>
   </div>
@@ -24,14 +24,13 @@ import AppDropdown from '~/components/shared/AppDropdown.vue'
 import AppProfileButton from '~/components/header/profile/AppProfileButton'
 import AppProfilePreview from '~/components/header/profile/AppProfilePreview'
 import AppModal from '~/components/shared/AppModal'
-import AppAuth from '~/components/header/auth/AppAuth';
+
 import { disableScroll, enableScroll } from '~/helpers/scrollLock'
 
 export default {
   name: 'AppProfile',
 
   components: {
-    AppAuth,
     AppModal,
     AppProfilePreview,
     AppProfileButton,

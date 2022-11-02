@@ -6,7 +6,7 @@
       </div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
-        <app-form-offers v-if="isComposite" :product="getProduct"/>
+        <app-form-offers v-if="isTypeComposite" :product="getProduct"/>
         <app-service :text="description"/>
       </div>
     </div>
@@ -77,12 +77,12 @@ export default {
   },
 
   computed: {
-    isComposite() {
+    isTypeComposite() {
       return this.object === 'Offer';
     },
 
     getProduct() {
-      return this.isComposite ? this.positions[0] : this.positions[1];
+      return this.isTypeComposite ? this.positions[0] : this.positions[1];
     },
   }
 };
