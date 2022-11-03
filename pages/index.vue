@@ -5,9 +5,16 @@
     <app-section :section="bestBouquets"/>
     <app-section-sm :section="recipient"/>
     <app-section :section="specialOffers" theme="custom"/>
+    <app-reviews />
     <app-section :section="underPounds" theme="custom"/>
     <app-shop-by-price />
+    <app-section :section="autumnCollection" theme="custom"/>
+    <app-benefits />
     <app-section-sm :section="pickBouquet" theme="custom"/>
+    <app-discount />
+    <app-faq />
+    <app-info />
+    <app-best-offer />
   </main>
 </template>
 
@@ -20,6 +27,7 @@ import dataPickBouquet from '@/data/pick-bouquet';
 import dataBestBouquets from '@/data/best-bouquets';
 import dataSpecialOffers from '@/data/special-offers';
 import dataUnderPounds from '@/data/under-pounds';
+import dataAutumnCollection from '@/data/autumn-collection';
 
 export default {
   name: 'IndexPage',
@@ -27,7 +35,7 @@ export default {
   components: {
     AppSectionSm,
     AppSection,
-  },
+},
 
   data() {
     return {
@@ -35,7 +43,8 @@ export default {
       pickBouquet: dataPickBouquet,
       bestBouquets: dataBestBouquets,
       specialOffers: dataSpecialOffers,
-      underPounds: dataUnderPounds
+      underPounds: dataUnderPounds,
+      autumnCollection: dataAutumnCollection
     }
   },
 };

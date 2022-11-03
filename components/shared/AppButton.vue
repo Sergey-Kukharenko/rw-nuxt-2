@@ -92,6 +92,23 @@ export default {
     }
   }
 
+  &--yellow {
+    color: #000000;
+    background: #FFCD1E;
+
+    @include gt-sm {
+      &:hover:not(:disabled) {
+        background: #ffcd1e;
+        box-shadow: 2px 4px 7px darken(#ffcd1e, 10%);
+        cursor: pointer;
+      }
+
+      &:active:not(:disabled) {
+        box-shadow: 0 0 0 $bg-grey;
+      }
+    }
+  }
+
   &--grey-whitely {
     font-family: $golos-medium;
     font-size: 16px;
