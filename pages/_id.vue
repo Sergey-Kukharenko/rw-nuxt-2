@@ -47,38 +47,21 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  // middleware: ['not-found'],
+  middleware: ['not-found'],
 
     async asyncData({route, $axios, redirect}) {
-      // const path = route.fullPath;
-      //
-      // return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
-      //   .then(({data}) => {
-      //     return {
-      //       seo: data.seo,
-      //       title: data.title,
-      //       description: data.description,
-      //       object: data.object,
-      //       positions: data.positions,
-      //     };
-      //   })
       const path = route.fullPath;
 
-      // await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
-      await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
+      return await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
         .then(({data}) => {
-          console.log(data);
+          return {
+            seo: data.seo,
+            title: data.title,
+            description: data.description,
+            object: data.object,
+            positions: data.positions,
+          };
         })
-
-      const {data} = bouquetSunshine;
-
-      return {
-        seo: data.seo,
-        title: data.title,
-        description: data.description,
-        object: data.object,
-        positions: data.positions,
-      };
     },
 
   head() {
