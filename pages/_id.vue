@@ -38,7 +38,7 @@
 </template>
 
 <script>
-// import bouquetSunshine from '@/data/bouquet-sunshine';
+import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -50,34 +50,48 @@ export default {
   // middleware: ['not-found'],
 
     async asyncData({route, $axios, redirect}) {
-     const path = route.fullPath;
+      // const path = route.fullPath;
+      //
+      // return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+      //   .then(({data}) => {
+      //     return {
+      //       seo: data.seo,
+      //       title: data.title,
+      //       description: data.description,
+      //       object: data.object,
+      //       positions: data.positions,
+      //     };
+      //   })
+      const path = route.fullPath;
 
-     return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
-       .then(({data}) => {
-         return {
-           seo: data.seo,
-           title: data.title,
-           description: data.description,
-           object: data.object,
-           positions: data.positions,
-         };
-       }).catch((error) => {
-         if (error.response.status === 500) redirect('/not-found')
-       });
-   },
+      await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+        .then(({data}) => {
+          console.log(data);
+        })
 
-  // head() {
-  //   return {
-  //     title: this.seo.title,
-  //     meta: [
-  //       {
-  //         hid: 'description',
-  //         name: 'description',
-  //         content: this.seo.description
-  //       }
-  //     ],
-  //   };
-  // },
+      const {data} = bouquetSunshine;
+
+      return {
+        seo: data.seo,
+        title: data.title,
+        description: data.description,
+        object: data.object,
+        positions: data.positions,
+      };
+    },
+
+  head() {
+    return {
+      title: this.seo.title,
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: this.seo.description
+        }
+      ],
+    };
+  },
 
   computed: {
     isTypeComposite() {
