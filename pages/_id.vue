@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -46,21 +47,30 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  middleware: ['not-found'],
+  // middleware: ['not-found'],
 
-   async asyncData({route, $axios, redirect}) {
-     const path = route.fullPath;
+    asyncData({route, $axios, redirect}) {
+     // const path = route.fullPath;
+     //
+     // return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+     //   .then(({data}) => {
+     //     return {
+     //       seo: data.seo,
+     //       title: data.title,
+     //       description: data.description,
+     //       object: data.object,
+     //       positions: data.positions,
+     //     };
+     //   })
+     const {data} = bouquetSunshine;
 
-     return await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
-       .then(({data}) => {
-         return {
-           seo: data.seo,
-           title: data.title,
-           description: data.description,
-           object: data.object,
-           positions: data.positions,
-         };
-       })
+     return {
+       seo: data.seo,
+       title: data.title,
+       description: data.description,
+       object: data.object,
+       positions: data.positions,
+     };
    },
 
   head() {
