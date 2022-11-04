@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import bouquetSunshine from '@/data/bouquet-sunshine';
+// import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -47,7 +47,7 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  middleware: ['not-found'],
+  // middleware: ['not-found'],
 
     async asyncData({route, $axios, redirect}) {
      const path = route.fullPath;
@@ -61,21 +61,23 @@ export default {
            object: data.object,
            positions: data.positions,
          };
-       })
+       }).catch((error) => {
+         if (error.response.status === 500) redirect('/not-found')
+       });
    },
 
-  head() {
-    return {
-      title: this.seo.title,
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: this.seo.description
-        }
-      ],
-    };
-  },
+  // head() {
+  //   return {
+  //     title: this.seo.title,
+  //     meta: [
+  //       {
+  //         hid: 'description',
+  //         name: 'description',
+  //         content: this.seo.description
+  //       }
+  //     ],
+  //   };
+  // },
 
   computed: {
     isTypeComposite() {
