@@ -64,7 +64,8 @@ export default {
       //   })
       const path = route.fullPath;
 
-      await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+      // await $axios.$get(`${process.env.CARD_PRODUCT_DEV_URL}${path}`)
+      await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
         .then(({data}) => {
           console.log(data);
         })
