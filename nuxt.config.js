@@ -82,6 +82,6 @@ export default {
         implementation: require('sass')
       }
     },
-    // postcss: null,
+    postcss: null,
   }
 }
