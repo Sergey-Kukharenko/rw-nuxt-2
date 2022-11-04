@@ -1,27 +1,26 @@
 <template>
   <main>
-<!--    <app-promotions/>-->
-<!--    <app-popular-categories/>-->
-<!--    <app-section :section="bestBouquets"/>-->
-<!--    <app-section-sm :section="recipient"/>-->
-<!--    <app-section :section="specialOffers" theme="custom"/>-->
-<!--    <app-reviews />-->
-<!--    <app-section :section="underPounds" theme="custom"/>-->
-<!--    <app-shop-by-price />-->
-<!--    <app-section :section="autumnCollection" theme="custom"/>-->
-<!--    <app-benefits />-->
-<!--    <app-section-sm :section="pickBouquet" theme="custom"/>-->
-<!--    <app-discount />-->
-<!--    <app-faq />-->
-<!--    <app-info />-->
-<!--    <app-best-offer />-->
-    HERE
+    <app-promotions/>
+    <app-popular-categories/>
+    <app-section :section="bestBouquets"/>
+    <app-section-sm :section="recipient"/>
+    <app-section :section="specialOffers" theme="custom"/>
+    <app-reviews />
+    <app-section :section="underPounds" theme="custom"/>
+    <app-shop-by-price />
+    <app-section :section="autumnCollection" theme="custom"/>
+    <app-benefits />
+    <app-section-sm :section="pickBouquet" theme="custom"/>
+    <app-discount />
+    <app-faq />
+    <app-info />
+    <app-best-offer />
   </main>
 </template>
 
 <script>
-// import AppSection from '@/components/shared/AppSection.vue';
-// import AppSectionSm from '@/components/shared/AppSectionSm';
+import AppSection from '@/components/shared/AppSection.vue';
+import AppSectionSm from '@/components/shared/AppSectionSm';
 
 import dataRecipient from '@/data/recipient';
 import dataPickBouquet from '@/data/pick-bouquet';
@@ -34,8 +33,8 @@ export default {
   name: 'IndexPage',
 
   components: {
-    // AppSectionSm,
-    // AppSection,
+    AppSectionSm,
+    AppSection,
 },
 
   data() {
