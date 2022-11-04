@@ -1,11 +1,11 @@
 <template>
-  <a :class="classNames">
+  <nuxt-link :to="goToCart" :class="classNames">
     <figure class="cart__figure">
       <svg-icon :name="getImg" class="cart__icon" />
       <app-counter v-if="isCount" :count="cart.count" class="cart__counter" />
     </figure>
     <div class="cart__figcaption">{{ isPrice }}</div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
@@ -33,6 +33,10 @@ export default {
 
     isCount() {
       return this.cart.count > 0
+    },
+
+    goToCart() {
+      return this.isCount ? '/basket' : ''
     },
 
     isPrice() {

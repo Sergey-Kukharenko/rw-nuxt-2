@@ -28,7 +28,10 @@ export default {
   props: {
     theme: {
       type: String,
-      default: ''
+      default: '',
+      validate(value) {
+        return ['full'].includes(value);
+      }
     }
   },
 
@@ -91,7 +94,6 @@ export default {
     z-index: 2;
 
     @include gt-xs {
-      //width: 500px;
       width: min-content;
       margin: 2rem auto;
     }
