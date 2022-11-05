@@ -38,9 +38,9 @@
 </template>
 
 <script>
-import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
+import {CARD_PRODUCT_DEV_URL} from '~/constants';
 
 export default {
   name: 'IdPage',
@@ -52,7 +52,9 @@ export default {
     async asyncData({route, $axios, redirect}) {
       const path = route.fullPath;
 
-      return await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
+
+      return await $axios.$get(`${CARD_PRODUCT_DEV_URL}${path}`)
+      // return await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
         .then(({data}) => {
           return {
             seo: data.seo,

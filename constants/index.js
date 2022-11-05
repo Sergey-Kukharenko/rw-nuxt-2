@@ -6,9 +6,11 @@ const FILTER_TYPES = {
     radio: 'radio'
 }
 
+const CARD_PRODUCT_DEV_URL = "https://dev-api.myflowers.co.uk/v1/offers"
 
 export {
     LIST_ITEM_VIEW_COUNT,
-    FILTER_TYPES
+    FILTER_TYPES,
+  CARD_PRODUCT_DEV_URL
 }
 
