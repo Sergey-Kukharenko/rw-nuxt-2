@@ -10,6 +10,8 @@
       </div>
     </div>
 
+    <button class="btn" @click="removeFromCart">Remove From Cart</button>
+
     <div class="form__footer">
       <div class="form__footer-price">
         <div class="price">
@@ -81,12 +83,21 @@ export default {
 
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.offer)
+    },
+
+    removeFromCart() {
+      this.$store.dispatch('cart/removeFromCart', this.offer)
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+.btn{
+  padding: 1em;
+  background: #e9e9e9;
+  border-radius: 6px;
+}
 .form {
   &__footer {
     @include gt-sm {

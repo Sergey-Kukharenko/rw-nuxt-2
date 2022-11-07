@@ -49,22 +49,20 @@ export default {
 
   middleware: ['not-found'],
 
-    async asyncData({route, $axios, redirect}) {
-      const path = route.fullPath;
+  async asyncData({route, $axios, redirect}) {
+    const path = route.fullPath;
 
-
-      return await $axios.$get(`${CARD_PRODUCT_DEV_URL}${path}`)
-      // return await $axios.$get(`https://dev-api.myflowers.co.uk/v1/offers${path}`)
-        .then(({data}) => {
-          return {
-            seo: data.seo,
-            title: data.title,
-            description: data.description,
-            object: data.object,
-            positions: data.positions,
-          };
-        })
-    },
+    return await $axios.$get(`${CARD_PRODUCT_DEV_URL}${path}`)
+      .then(({data}) => {
+        return {
+          seo: data.seo,
+          title: data.title,
+          description: data.description,
+          object: data.object,
+          positions: data.positions,
+        };
+      });
+  },
 
   head() {
     return {

@@ -40,7 +40,7 @@ export default {
     },
 
     isPrice() {
-      return this.cart.price ? this.cart.price : 'Basket'
+      return this.isCount ? this.cart.price : 'Basket'
     },
 
     classNames() {

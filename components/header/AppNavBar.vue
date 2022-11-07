@@ -1,20 +1,20 @@
 <template>
-  <div :class="classNames">
+  <div class="navbar">
     <div class="layout layout--horizontal-dt">
       <div class="navbar-list">
         <div class="navbar-list__item">
-          <app-menu :list="navBar" />
+          <app-menu :list="navBar"/>
         </div>
         <div class="navbar-list__item content">
           <div class="content__static">
-            <app-search />
+            <app-search/>
           </div>
           <div class="content__scrolled list">
             <div class="list__item">
-              <app-call />
+              <app-call/>
             </div>
             <div class="list__item">
-              <app-cart theme="inline" />
+              <app-cart theme="inline"/>
             </div>
           </div>
         </div>
@@ -24,13 +24,11 @@
 </template>
 
 <script>
-import dataNavBar from '@/data/nav-bar'
+import dataNavBar from '@/data/nav-bar';
 import AppMenu from '~/components/header/menu/AppMenu';
-import AppSearch from '~/components/header/search/AppSearch.vue'
-import AppCart from '@/components/header/AppCart.vue'
-import AppCall from '@/components/header/AppCall.vue'
-
-import { useToggleClassName } from '@/helpers'
+import AppSearch from '~/components/header/search/AppSearch.vue';
+import AppCart from '@/components/header/AppCart.vue';
+import AppCall from '@/components/header/AppCall.vue';
 
 export default {
   name: 'AppNavBar',
@@ -45,44 +43,15 @@ export default {
   data() {
     return {
       navBar: dataNavBar,
-      limitPosition: 184,
-      scrolled: false,
-    }
-  },
-
-  computed: {
-    classNames() {
-      return useToggleClassName(this.scrolled, 'navbar', 'modified')
-    }
-  },
-
-  mounted() {
-    this.handleScroll()
-    window.addEventListener('scroll', this.handleScroll)
-  },
-
-  beforeDestroy() {
-    window.removeEventListener('scroll', this.handleScroll)
-  },
-
-  methods: {
-    handleScroll() {
-      this.scrolled = this.limitPosition < window.scrollY;
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .navbar {
   background: #fff;
   padding: 8px 0;
-
-  @include gt-sm {
-    position: sticky;
-    top: 0;
-    z-index: 4;
-  }
 
   @include lt-md {
     border-top: 1px solid #dde0e6;
@@ -91,31 +60,6 @@ export default {
   .content {
     @include lt-md {
       display: none;
-    }
-  }
-
-  &--modified {
-    @include gt-sm {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
-    }
-
-    .content {
-      &__static {
-        display: none;
-      }
-
-      &__scrolled {
-        display: flex;
-      }
-    }
-
-    .list {
-      margin: 0 -16px;
-
-      &__item {
-        display: flex;
-        padding: 10px 16px;
-      }
     }
   }
 }

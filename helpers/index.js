@@ -1,38 +1,40 @@
 const useClassName = (obj, clsNm) => {
   const clsNmObj = Object.entries(obj).reduce(
     (prev, [key, value]) =>
-      key[value] !== 'undefined' ? { ...prev, [`${clsNm}--${value}`]: value } : {},
+      key[value] !== 'undefined' ? {...prev, [`${clsNm}--${value}`]: value} : {},
     {}
-  )
+  );
 
-  return [clsNm, clsNmObj]
-}
+  return [clsNm, clsNmObj];
+};
 
 const useClassNameProp = (value, clsNm) => {
   return value
     ? [`${clsNm} ${clsNm}--${value}`]
-    : clsNm
-}
+    : clsNm;
+};
 
 const useToggleClassName = (value, clsNm, tgClsNm) => {
-  return [value ? `${clsNm} ${clsNm}--${tgClsNm}` : clsNm]
-}
+  return [value ? `${clsNm} ${clsNm}--${tgClsNm}` : clsNm];
+};
 
 const useSetClassName = (value, clsNm) => {
-  return [value && `${clsNm}`]
-}
+  return [value && `${clsNm}`];
+};
 
 const useSortArrayBy = (array, value, prop) => {
   return array.sort((a, b) =>
     value
       ? a[prop] - b[prop]
-      : b[prop] - a[prop])
-}
+      : b[prop] - a[prop]);
+};
 
 const useBreadCrumbs = (route) => {
-  const unusedRoutes = ['/', '/flowers']
+  const unusedRoutes = ['/', '/flowers'];
 
-  if (unusedRoutes.includes(route.path)) { return }
+  if (unusedRoutes.includes(route.path)) {
+    return;
+  }
 
   return route.path
     .split('/')
@@ -45,11 +47,11 @@ const useBreadCrumbs = (route) => {
         : array.push({
           path: array[idx - 1].path + (idx > 1 ? '/' : '') + path,
           text: path
-        })
+        });
 
-      return array
-    }, [])
-}
+      return array;
+    }, []);
+};
 
 export {
   useClassName,
@@ -58,4 +60,4 @@ export {
   useSetClassName,
   useSortArrayBy,
   useBreadCrumbs
-}
+};

@@ -8,13 +8,26 @@ export const state = () => ({
 
 export const mutations = {
   ADD_TO_CART(state, payload) {
-    state.cart.items.push(payload);
+    // state.cart.items.push(payload);
+
+    const duplicate = state.cart.items.find(item => item.title === payload.title)
+    if(duplicate) {
+      duplicate.qty++
+    } else {
+      state.cart.items.push({
+        ...payload,
+        qty: 1
+      })
+    }
+
+    // reduce
+
   },
 
   UPDATE_CART(state) {
     state.cart = {
       ...state.cart,
-      price: `£ ${state.cart.items.reduce((acc, val) => (acc + val.price.amount), 0)}`,
+      price: `£ ${state.cart.items.reduce((acc, val) => (acc + (val.price.amount * val.qty)), 0)}`,
       count: state.cart.items.length,
     };
   },
@@ -27,8 +40,6 @@ export const mutations = {
 export const actions = {
   addToCart({state, commit}, payload) {
     // const res = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', payload)
-    //
-    // console.log(res);
 
     commit('ADD_TO_CART', payload);
     commit('UPDATE_CART');
@@ -36,6 +47,7 @@ export const actions = {
 
   removeFromCart({state, commit}, payload) {
     commit('REMOVE_FROM_CART', payload);
+    commit('UPDATE_CART');
   },
 };
 
