@@ -31,6 +31,7 @@ export default {
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
+  background-color: #ccc;
 
   @include lt-lg {
     width: 64px;

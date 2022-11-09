@@ -3,16 +3,17 @@
     <div class="order__title">Order details</div>
     <div class="order__row" style="margin-top: 16px;">
       <div class="order__text-grey">2 bouquets</div>
-      <div class="order__text-price">£ 94</div>
+
+      <div class="order__text-price">{{cart.price}}</div>
     </div>
-    <div class="order__row" style="margin-top: 6px;">
+    <div class="order__row" style="margin-top: 6px; display: none;">
       <div class="order__text-grey">Sale</div>
       <div class="order__text-sale">- £ 8</div>
     </div>
     <div class="order__delim" style="margin-top: 16px;"></div>
     <div class="order__row" style="margin-top: 18px;">
       <div class="order__text-medium">Summary</div>
-      <div class="order__text-summary">£ 86</div>
+      <div class="order__text-summary">{{cart.price}}</div>
     </div>
     <div class="order__cashback-desktop">
       <svg-icon
@@ -71,6 +72,12 @@
         name: "",
         phone: ""
       };
+    },
+
+    computed: {
+      cart() {
+        return this.$store.getters['cart/cart']
+      },
     }
   };
 </script>

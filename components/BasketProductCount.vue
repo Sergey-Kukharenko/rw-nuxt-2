@@ -4,7 +4,8 @@
       theme="grey"
       size="small"
       :icon-only="true"
-      @click="onClickMinus"
+      :disabled="isMinLimit"
+      @click="decrement"
     >
       <svg-icon
         class="count__icon-minus"
@@ -12,15 +13,17 @@
       />
     </basket-button>
     <basket-input
-      v-model="count"
+      v-model="passedCount"
       align="center"
+      type="number"
       :width="88"
+      :min="1"
     />
     <basket-button
       theme="grey"
       size="small"
       :icon-only="true"
-      @click="onClickPlus"
+      @click="increment"
     >
       <svg-icon
         class="count__icon-plus"
@@ -32,21 +35,39 @@
 
 <script>
 export default {
-  name: "BasketProductCount",
-  data () {
-    return {
-      count: 1
-    };
-  },
-  methods: {
-    onClickMinus () {
-      this.count--;
-      if (this.count < 1) this.count = 1;
+  name: 'BasketProductCount',
+  props: {
+    count: {
+      type: Number,
+      default: 1
     },
-    onClickPlus () {
-      this.count++;
+  },
+
+  computed: {
+    passedCount: {
+      get() {
+        return this.count;
+      },
+
+      set(newVal) {
+        this.$emit('update:count', +newVal);
+      }
+    },
+
+    isMinLimit() {
+      return this.passedCount <= 1;
     }
-  }
+  },
+
+  methods: {
+    increment() {
+      this.passedCount++;
+    },
+
+    decrement() {
+      this.passedCount--;
+    }
+  },
 };
 </script>
 

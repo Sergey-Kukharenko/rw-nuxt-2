@@ -40,7 +40,7 @@
         </div>
         <div class="product__favorite-count">
           <basket-product-favorite/>
-          <basket-product-count/>
+          <basket-product-count :count.sync="count"/>
         </div>
       </div>
     </div>
@@ -54,56 +54,63 @@
 </template>
 
 <script>
-  export default {
-    name: "BasketProduct",
-    props: {
-      imageUrl: {
-        type: String,
-        default: ""
-      },
-      rating: {
-        type: Number,
-        default: 5
-      },
-      title: {
-        type: String,
-        default: ""
-      },
-      price: {
-        type: Number,
-        default: 0
-      },
-      oldPrice: {
-        type: Number,
-        default: 0
-      },
-      size: {
-        type: String,
-        default: ""
-      },
-      color: {
-        type: String,
-        default: ""
-      },
-      pack: {
-        type: String,
-        default: ""
-      },
-      leaves: {
-        type: Boolean,
-        default: false
-      },
-      count: {
-        type: Number,
-        default: 1
-      }
+export default {
+  name: 'BasketProduct',
+  props: {
+    imageUrl: {
+      type: String,
+      default: ''
     },
-    data () {
-      return {
-        leavesSwitch: false
-      };
+    rating: {
+      type: Number,
+      default: 5
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    price: {
+      type: Number,
+      default: 0
+    },
+    oldPrice: {
+      type: Number,
+      default: 0
+    },
+    size: {
+      type: String,
+      default: ''
+    },
+    color: {
+      type: String,
+      default: ''
+    },
+    pack: {
+      type: String,
+      default: ''
+    },
+    leaves: {
+      type: Boolean,
+      default: false
+    },
+    qty: {
+      type: Number,
+      default: 1
     }
-  };
+  },
+  data() {
+    return {
+      leavesSwitch: false,
+      count: this.qty
+    };
+  },
+
+  watch: {
+    count(value) {
+      this.$store.dispatch('cart/updateCartQty', {title: this.title, qty: value});
+    }
+  },
+};
 </script>
 
 <style lang="scss" scoped>

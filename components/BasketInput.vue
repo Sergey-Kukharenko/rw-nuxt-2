@@ -7,6 +7,7 @@
     >
       <input
         :type="type"
+        :min="min"
         :placeholder="placeholder"
         :value="value"
         @input="onInput"
@@ -29,8 +30,12 @@ export default {
       type: String,
       default: "text",
       validate (value) {
-        return ["text", "password"].includes(value);
+        return ["text", "password", "number"].includes(value);
       }
+    },
+    min: {
+      type: [String, Number],
+      default: ""
     },
     value: {
       type: [String, Number],
