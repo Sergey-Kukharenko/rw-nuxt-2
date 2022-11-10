@@ -19,6 +19,7 @@
 <script>
 export default {
   name: "BasketPage",
+  layout: 'basket',
   head: {
     meta: [{
       name: "viewport",

@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer-bottom {
-  border-top: 1px solid #e5e5e5;
+  background: $bg-grey;
 
   @include gt-sm {
     padding: 24px 0;

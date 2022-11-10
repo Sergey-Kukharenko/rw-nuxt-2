@@ -21,7 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
-  background: #fafafa;
+  background: $bg-grey;
 
   @include xs {
     padding: 0 16px;

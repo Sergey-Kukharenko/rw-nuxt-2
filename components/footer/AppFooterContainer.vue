@@ -1,14 +1,16 @@
 <template>
-  <div class="layout layout--horizontal-dt">
-    <div class="footer-container container">
-      <div class="group">
-        <div class="group__logo">FLOR</div>
-        <div class="group__text">We work 24 hours and 7 days a week. Even without break!</div>
-      </div>
+  <div class="footer-main">
+    <div class="layout layout--horizontal-dt">
+      <div class="footer-container container">
+        <div class="group">
+          <div class="group__logo">FLOR</div>
+          <div class="group__text">We work 24 hours and 7 days a week. Even without break!</div>
+        </div>
 
-      <div class="group-lists">
-        <div v-for="(section, idx) in footer.sections" :key="idx" class="group-lists__item">
-          <app-footer-section :section="section" />
+        <div class="group-lists">
+          <div v-for="(section, idx) in footer.sections" :key="idx" class="group-lists__item">
+            <app-footer-section :section="section" />
+          </div>
         </div>
       </div>
     </div>
@@ -33,6 +35,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.footer-main {
+  border-bottom: 1px solid #e5e5e5;
+}
+
 .footer-container {
   @include gt-sm {
     display: flex;
