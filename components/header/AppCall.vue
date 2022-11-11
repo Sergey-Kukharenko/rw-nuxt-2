@@ -2,14 +2,13 @@
   <a class="call" :href="call.href">
     <svg-icon v-if="$device.isMobileOrTablet" name="call-outline" class="call__icon" />
 
-    <div v-else class="content">
-      <div v-if="call.icon" class="content__figure">
-        <svg-icon :name="call.icon.desktop" class="content__icon" />
-      </div>
-      <div class="content__text">
+    <figure v-else class="figure">
+      <svg-icon :name="call.icon.desktop" class="figure__icon" />
+
+      <figcaption class="figure__text">
         {{ call.title }}
-      </div>
-    </div>
+      </figcaption>
+    </figure>
   </a>
 </template>
 
@@ -45,7 +44,7 @@ export default {
   }
 }
 
-.content {
+.figure {
   display: flex;
   align-items: center;
   justify-content: flex-start;
@@ -68,6 +67,7 @@ export default {
   }
 
   &__text {
+    font-family: $golos-regular;
     font-size: 14px;
     line-height: 24px;
     color: $color-dark-grey;
@@ -77,5 +77,4 @@ export default {
     }
   }
 }
-
 </style>

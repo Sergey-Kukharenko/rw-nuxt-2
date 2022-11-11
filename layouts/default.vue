@@ -6,7 +6,8 @@
     </template>
 
     <template v-else>
-      <app-header/>
+      <app-notification/>
+      <app-header class="header-group"/>
       <app-nav-bar/>
     </template>
 
@@ -36,3 +37,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+.header-group {
+  border-bottom: 1px solid #e5e5e5;
+}
+</style>

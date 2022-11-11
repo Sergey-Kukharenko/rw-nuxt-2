@@ -55,7 +55,7 @@ export default {
   grid-template-rows: auto;
   column-gap: 24px;
   max-width: 1080px;
-  margin: 0 auto;
+  margin: 38px auto 72px;
 
   @include lt-lg {
     display: block;

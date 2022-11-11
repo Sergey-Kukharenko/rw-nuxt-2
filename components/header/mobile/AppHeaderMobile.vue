@@ -25,12 +25,15 @@
       </div>
     </app-drawer>
 
-    <app-logo/>
-    <nuxt-link to="/search" class="search">
-      <svg-icon name="search" class="search__icon"/>
-    </nuxt-link>
-    <app-call/>
-    <app-cart/>
+    <app-header-checkout-order v-if="isCheckout"/>
+    <template v-else>
+      <app-logo/>
+      <nuxt-link to="/search" class="search">
+        <svg-icon name="search" class="search__icon"/>
+      </nuxt-link>
+      <app-call/>
+      <app-cart/>
+    </template>
   </header>
 </template>
 
@@ -45,11 +48,13 @@ import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
 import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
+import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
+    AppHeaderCheckoutOrder,
     AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
@@ -75,6 +80,10 @@ export default {
   computed: {
     classNames() {
       return useToggleClassName(this.isVisible, 'content', 'active');
+    },
+
+    isCheckout() {
+      return this.$route.path === '/checkout';
     }
   },
 
@@ -107,6 +116,7 @@ header {
     padding: 0 16px;
     background: #fff;
     box-sizing: border-box;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   }
 }
 

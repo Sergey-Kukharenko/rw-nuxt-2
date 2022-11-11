@@ -28,7 +28,6 @@ export default {
 
     @include lt-md {
       max-width: 111.22px;
-      margin-left: 10px;
     }
   }
 }

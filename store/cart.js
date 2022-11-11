@@ -1,9 +1,3 @@
-const updateObjByProp = (arr, payload, prop, key) => {
-  const duplicate = arr.find(item => item[key] === payload[key]);
-
-  duplicate ? duplicate[prop] += payload[prop] : arr.push(payload);
-};
-
 export const state = () => ({
   cart: {
     items: [],
@@ -14,8 +8,9 @@ export const state = () => ({
 
 export const mutations = {
   ADD_TO_CART(state, payload) {
-    // state.cart.items.push(payload);
-    updateObjByProp(state.cart.items, payload, 'qty', 'title');
+    const duplicate = state.cart.items.find(item => item.title === payload.title);
+
+    duplicate ? duplicate.qty += payload.qty : state.cart.items.push(payload);
   },
 
   UPDATE_CART(state) {
@@ -56,5 +51,6 @@ export const actions = {
 
 export const getters = {
   cart: state => state.cart,
+  price: state => state.cart.price,
   items: state => state.cart.items,
 };
