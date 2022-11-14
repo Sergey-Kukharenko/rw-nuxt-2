@@ -2,7 +2,7 @@
   <section class="layout popular-categories">
     <h2 class="popular-title">New way to show love</h2>
     <div class="popular-list">
-      <nuxt-link v-for="item in popular" :key="item.hashTag" to="/flowers/roses/1" class="popular-list__item card">
+      <a v-for="item in popular" :key="item.hashTag" class="popular-list__item card">
         <div class="absolute-grow card__content">
           <img
             :key="item.hashTag"
@@ -19,7 +19,7 @@
           <span class="card__figcaption-text">{{ item.text }}</span>
           <span class="card__figcaption-hash">{{ item.hashTag }}</span>
         </div>
-      </nuxt-link>
+      </a>
     </div>
   </section>
 </template>

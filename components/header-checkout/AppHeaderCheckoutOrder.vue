@@ -32,6 +32,10 @@ export default {
   flex-shrink: 0;
   display: flex;
 
+  @include lt-md {
+    margin-left: 14px;
+  }
+
   &__item {
     position: relative;
     z-index: 2;

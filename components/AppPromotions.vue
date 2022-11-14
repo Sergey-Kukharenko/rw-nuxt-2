@@ -1,13 +1,13 @@
 <template>
   <section class="layout promotion">
-    <nuxt-link v-for="promotion in promotions" :key="promotion.text" to="/flowers/roses/0" class="promotion__item">
+    <a v-for="promotion in promotions" :key="promotion.text" class="promotion__item">
       <div class="promotion__text">
         {{ promotion.text }}
       </div>
       <figure class="promotion__figure">
         <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text" />
       </figure>
-    </nuxt-link>
+    </a>
   </section>
 </template>
 

@@ -3,7 +3,9 @@
     <app-header-mobile v-if="$device.isMobileOrTablet"/>
     <app-header v-else class="header-group"/>
     <Nuxt/>
-    <app-footer-bottom class="layout"/>
+    <footer>
+      <app-footer-bottom class="layout"/>
+    </footer>
   </div>
 </template>
 
@@ -25,5 +27,9 @@ export default {
 <style lang="scss" scoped>
 .header-group {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+
+footer {
+  background: $bg-grey;
 }
 </style>

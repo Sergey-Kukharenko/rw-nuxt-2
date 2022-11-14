@@ -3,7 +3,9 @@
     <app-header-mobile v-if="$device.isMobileOrTablet"/>
     <app-header-checkout v-else/>
     <Nuxt/>
-    <app-footer-bottom/>
+    <footer>
+      <app-footer-bottom class="layout"/>
+    </footer>
   </div>
 </template>
 <script>
@@ -20,3 +22,9 @@ export default {
   }
 };
 </script>
+
+<style lang="scss" scoped>
+footer {
+  background: $bg-grey;
+}
+</style>
