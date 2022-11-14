@@ -40,7 +40,6 @@
 <script>
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
-import {CARD_PRODUCT_DEV_URL} from '~/constants';
 
 export default {
   name: 'IdPage',
@@ -51,18 +50,29 @@ export default {
 
   async asyncData({route, $axios, redirect}) {
     const path = route.fullPath;
+    const data = {
+      seo: {},
+      title: '',
+      description: '',
+      object: {},
+      positions: []
+    };
 
-    return await $axios.$get(`${CARD_PRODUCT_DEV_URL}${path}`)
-      .then(({data}) => {
-        return {
-          seo: data.seo,
-          title: data.title,
-          description: data.description,
-          object: data.object,
-          positions: data.positions,
-        };
-      });
-  },
+    try {
+      const {data: response} = await $axios.$get(`/offers${path}`);
+
+      data.seo = response.seo;
+      data.title = response.title;
+      data.description = response.description;
+      data.object = response.object;
+      data.positions = response.positions;
+    } catch (error) {
+      console.error(error);
+    }
+
+    return data;
+  }
+  ,
 
   head() {
     return {

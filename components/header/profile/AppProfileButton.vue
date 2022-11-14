@@ -4,14 +4,14 @@
       <template v-if="isAuth">
         {{ char }}
       </template>
-      <svg-icon v-else name="profile" class="profile-button__icon"/>
+      <svg-icon v-else name="profile" class="profile-button__icon" />
     </div>
-    <div class="profile-button__figcaption">{{ getInfo }}</div>
+    <div class="profile-button__figcaption" @click="goToPath">{{ getInfo }}</div>
   </div>
 </template>
 
 <script>
-import {useToggleClassName} from '~/helpers';
+import { useToggleClassName } from '~/helpers';
 
 export default {
   name: 'AppProfileButton',
@@ -19,27 +19,34 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
 
   computed: {
     isAuth() {
-      return this.user.authorized
+      return this.user.authorized;
     },
 
     char() {
-      return this.user.fullName.substring(0, 1)
+      return this.user.fullName.substring(0, 1);
     },
 
     getInfo() {
-      return this.isAuth ? this.user.fullName : 'Log in / Register'
+      return this.isAuth ? this.user.fullName : 'Log in / Register';
     },
 
     classNames() {
-      return useToggleClassName(this.isAuth, 'profile-button', 'active')
-    }
-  }
+      return useToggleClassName(this.isAuth, 'profile-button', 'active');
+    },
+  },
+
+  methods: {
+    goToPath() {
+      this.$router.push({ name: 'signin' });
+      this.$emit('close')
+    },
+  },
 };
 </script>
 

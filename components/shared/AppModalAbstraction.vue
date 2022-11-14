@@ -4,9 +4,9 @@
       <div class="modal__overlay" @click="close"></div>
       <div class="modal__content">
         <div class="modal__layout">
-          <slot/>
+          <slot />
           <button type="button" class="button" @click="close">
-            <svg-icon name="close" class="button__icon"/>
+            <svg-icon name="close" class="button__icon" />
           </button>
         </div>
       </div>
@@ -16,13 +16,13 @@
 
 <script>
 import Teleport from 'vue2-teleport';
-import {useClassName} from '~/helpers';
+import { useClassName } from '~/helpers';
 
 export default {
   name: 'AppModalAbstraction',
 
   components: {
-    Teleport
+    Teleport,
   },
 
   props: {
@@ -38,7 +38,7 @@ export default {
   computed: {
     classNames() {
       return useClassName(this.$props, 'modal');
-    }
+    },
   },
 
   mounted() {
@@ -60,8 +60,8 @@ export default {
       }
 
       this.close();
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -100,6 +100,27 @@ export default {
 
     @include xs {
       margin: 6px;
+    }
+  }
+
+  &--blured {
+    @include gt-sm {
+      .modal__overlay {
+        -webkit-backdrop-filter: blur(6px);
+        backdrop-filter: blur(6px);
+      }
+    }
+  }
+
+  &--centered {
+    @include gt-sm {
+      & .modal__content {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        margin: 0;
+      }
     }
   }
 

@@ -12,29 +12,51 @@
     <template v-else>
       <app-profile-button :user="user" @click="open" />
 
-      <app-modal :visible="isVisible" @close="close">
-        will be form
+      <app-modal :visible="isVisible" theme="blured modal--centered" @close="close">
+        <component :is="currStep" @close="close" />
       </app-modal>
     </template>
   </div>
 </template>
 
 <script>
-import AppDropdown from '~/components/shared/AppDropdown.vue'
-import AppProfileButton from '~/components/header/profile/AppProfileButton'
-import AppProfilePreview from '~/components/header/profile/AppProfilePreview'
-import AppModal from '~/components/shared/AppModal'
+import AppDropdown from '~/components/shared/AppDropdown.vue';
+import AppProfileButton from '~/components/header/profile/AppProfileButton';
+import AppProfilePreview from '~/components/header/profile/AppProfilePreview';
+import AppModal from '~/components/shared/AppModal';
 
-import { disableScroll, enableScroll } from '~/helpers/scrollLock'
+import AppAuth from '~/components/header/auth/AppAuth';
+
+import AppReg from '~/components/header/auth/registration/AppReg';
+import AppRegNotification from '~/components/header/auth/registration/AppRegNotification';
+import AppRegCompleted from '~/components/header/auth/registration/AppRegCompleted';
+
+import AppRestore from '~/components/header/auth/reset-password/AppRestore';
+import AppRestoreNewPassword from '~/components/header/auth/reset-password/AppRestoreNewPassword';
+import AppRestoreNotification from '~/components/header/auth/reset-password/AppRestoreNotification';
+import AppRestoreCompleted from '~/components/header/auth/reset-password/AppRestoreCompleted';
+
+import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 
 export default {
   name: 'AppProfile',
 
   components: {
+    AppAuth,
+
+    AppReg,
+    AppRegNotification,
+    AppRegCompleted,
+
+    AppRestore,
+    AppRestoreNewPassword,
+    AppRestoreNotification,
+    AppRestoreCompleted,
+
     AppModal,
     AppProfilePreview,
     AppProfileButton,
-    AppDropdown
+    AppDropdown,
   },
 
   data() {
@@ -42,33 +64,38 @@ export default {
       isVisible: false,
       options: {
         top: '-20px',
-        right: 0
-      }
-    }
+        right: 0,
+      },
+    };
   },
 
   computed: {
     user() {
-      return this.$store.getters['user/state']
+      return this.$store.getters['user/state'];
     },
 
     getOptions() {
-      return this.$device.isDesktop ? this.options : null
-    }
+      return this.$device.isDesktop ? this.options : null;
+    },
+
+    currStep() {
+      return this.$store.getters['auth/currStep'];
+    },
   },
 
   methods: {
     open() {
-      this.isVisible = true
-      disableScroll()
+      this.isVisible = true;
+      disableScroll();
     },
 
     close() {
-      this.isVisible = false
-      enableScroll()
-    }
-  }
-}
+      this.isVisible = false;
+      this.$store.commit('auth/setCurrStep', '');
+      enableScroll();
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

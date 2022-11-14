@@ -76,7 +76,7 @@ export default {
     note: {
       type: String,
       default: ""
-    }
+    },
   },
   computed: {
     classes () {

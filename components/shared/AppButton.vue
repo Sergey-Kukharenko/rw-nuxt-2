@@ -15,7 +15,7 @@ export default {
       type: String,
       default: '',
       validate(value) {
-        return ['grey', 'grey-whitely'].includes(value);
+        return ['grey', 'green-whitely', 'grey-whitely'].includes(value);
       }
     },
 
@@ -113,6 +113,26 @@ export default {
     font-family: $golos-medium;
     font-size: 16px;
     color: #000;
+    min-height: 48px;
+    background: $bg-grey;
+
+    @include gt-sm {
+      &:hover:not(:disabled) {
+        background: $bg-grey;
+        box-shadow: 2px 4px 7px darken($bg-grey, 10%);
+        cursor: pointer;
+      }
+
+      &:active:not(:disabled) {
+        box-shadow: 0 0 0 $bg-grey;
+      }
+    }
+  }
+
+  &--green-whitely {
+    font-family: $golos-medium;
+    font-size: 16px;
+    color: $color-green;
     min-height: 48px;
     background: $bg-grey;
 

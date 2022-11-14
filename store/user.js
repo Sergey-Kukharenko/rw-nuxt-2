@@ -10,12 +10,17 @@ export const state = () => ({
     'Peonies roses',
     'Bouquets under £30',
     'Cheap bouquets',
-  ]
+  ],
+  user: null
 })
 
 export const mutations = {
   setAuth(state, payload) {
     state.authorized = payload
+  },
+
+  setUser(state, payload) {
+    state.user = payload
   },
 
   addToHistory(state, payload) {
@@ -28,8 +33,9 @@ export const mutations = {
 }
 
 export const actions = {
-  login({commit}) {
+  setAuthData({commit}, payload) {
     commit('setAuth', true)
+    commit('setUser', payload)
   },
 
   logout({commit}) {

@@ -10,9 +10,17 @@ export const mutations = {
   ADD_TO_CART(state, payload) {
     const duplicate = state.cart.items.find(item => item.title === payload.title);
 
-    duplicate ? duplicate.qty += payload.qty : state.cart.items.push(payload);
+    if(duplicate) {
+      duplicate.qty += payload.qty
+    } else {
+      state.cart.items.push(payload)
+    }
   },
 
+
+  /*
+   UPDATE_CART будет удален, как только будет готов backend
+  */
   UPDATE_CART(state) {
     state.cart = {
       ...state.cart,
@@ -26,14 +34,13 @@ export const mutations = {
   },
 
   UPDATE_CART_QTY(state, payload) {
-    state.cart.items.map(item => ((item.title === payload.title) && Object.assign(item, payload)));
+    state.cart.items.forEach(item => ((item.title === payload.title) && Object.assign(item, payload)));
   },
 };
 
 export const actions = {
   addToCart({state, commit}, payload) {
-    // const res = await this.$axios.$post('https://dev-api.myflowers.co.uk/v1/cart', payload)
-
+    // будет запрос
     commit('ADD_TO_CART', {...payload, qty: 1});
     commit('UPDATE_CART');
   },

@@ -4,7 +4,7 @@
       <div :class="classNames">
         <div class="content__layout content__layout--md">
           <div class="content__row nested-group">
-            <app-mobile-profile/>
+            <app-mobile-profile @close="close"/>
             <nuxt-link to="/search" class="search">
               <svg-icon name="search" class="search__icon"/>
             </nuxt-link>
@@ -83,7 +83,7 @@ export default {
     },
 
     isCheckout() {
-      return this.$route.path === '/checkout';
+      return this.$route.name === 'checkout';
     }
   },
 
