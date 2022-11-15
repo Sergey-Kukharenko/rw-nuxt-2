@@ -4,7 +4,7 @@
     <div class="order__row" style="margin-top: 16px;">
       <div class="order__text-grey">2 bouquets</div>
 
-      <div class="order__text-price">{{cart.price}}</div>
+      <div class="order__text-price">{{ cart.price }}</div>
     </div>
     <div class="order__row" style="margin-top: 6px; display: none;">
       <div class="order__text-grey">Sale</div>
@@ -13,7 +13,7 @@
     <div class="order__delim" style="margin-top: 16px;"></div>
     <div class="order__row" style="margin-top: 18px;">
       <div class="order__text-medium">Summary</div>
-      <div class="order__text-summary">{{cart.price}}</div>
+      <div class="order__text-summary">{{ cart.price }}</div>
     </div>
     <div class="order__cashback-desktop">
       <svg-icon
@@ -40,46 +40,76 @@
       <div>Promocode and Bonuses will be available at the next stage of order</div>
     </div>
     <div class="order__title" style="margin-top: 32px;">Your details</div>
-    <basket-input
-      v-model="name"
-      style="margin-top: 16px;"
-      size="large"
-      placeholder="Your name"
-      error="Please fill all fields to continue"
-    />
-    <basket-input
-      v-model="phone"
-      style="margin-top: 8px;"
-      size="large"
-      placeholder="Mobile phone"
-    />
-    <basket-button
-      style="margin-top: 24px;"
-      :stretch="true"
-    >
-      Continue
-    </basket-button>
-    <div class="order__terms">By clicking on the button, you agree to the<br><a href="#" target="_blank">Terms of personal data
-      processing</a></div>
+    <form class="form" @submit.prevent="onSubmit">
+      <basket-input
+        v-model="name"
+        style="margin-top: 16px;"
+        size="large"
+        placeholder="Your name"
+        :error="isErrorName"
+      />
+      <basket-input
+        v-model="phone"
+        style="margin-top: 8px;"
+        size="large"
+        placeholder="Mobile phone"
+      />
+      <basket-button
+        style="margin-top: 24px;"
+        :stretch="true"
+      >
+        Continue
+      </basket-button>
+      <div class="order__terms">By clicking on the button, you agree to the<br><a href="#" target="_blank">Terms of
+        personal data
+        processing</a></div>
+    </form>
+
   </div>
 </template>
 
 <script>
-  export default {
-    name: "BasketOrder",
-    data () {
-      return {
-        name: "",
-        phone: ""
-      };
+import {minLength, required} from 'vuelidate/lib/validators';
+
+export default {
+  name: 'BasketOrder',
+  data() {
+    return {
+      name: '',
+      phone: '',
+    };
+  },
+
+  computed: {
+    cart() {
+      return this.$store.getters['cart/cart'];
     },
 
-    computed: {
-      cart() {
-        return this.$store.getters['cart/cart']
-      },
+    isErrorName() {
+      return this.$v.name.$error ? 'Please fill all fields to continue' : null
+    },
+  },
+
+  methods: {
+    onSubmit() {
+      this.$v.$touch();
+
+      if (!this.$v.$invalid) {
+        // console.log('dsd');
+      }
+    },
+  },
+  validations: {
+    name: {
+      required,
+    },
+
+    phone: {
+      required,
+      minLength: minLength(2)
     }
-  };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
