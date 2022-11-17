@@ -13,8 +13,16 @@
         @input="onInput"
       />
     </div>
+    <!--    <div-->
+    <!--      v-if="error"-->
+    <!--      class="basket-input__error"-->
+    <!--    >-->
+    <!--      {{ error }}-->
+    <!--    </div>-->
+
     <div
-      v-if="error"
+      v-for="(error, idx) in errors"
+      :key="idx"
       class="basket-input__error"
     >
       {{ error }}
@@ -23,62 +31,84 @@
 </template>
 
 <script>
+
+const TEMPLATES_MAP = {
+  alpha: 'Alphanumeric characters only',
+  email: 'Must be a valid email address',
+  minLength: 'Must have a length no less than min',
+  required: 'Required field'
+};
+
+const swapKeyAndValueInString = (url, params) => {
+  let urlResult = url;
+  for (const key in params) {
+    urlResult = urlResult.replace(key, params[key]);
+  }
+
+  return urlResult;
+};
+
 export default {
-  name: "BasketInput",
+  name: 'BasketInput',
   props: {
     type: {
       type: String,
-      default: "text",
-      validate (value) {
-        return ["text", "password", "number"].includes(value);
+      default: 'text',
+      validate(value) {
+        return ['text', 'password', 'number'].includes(value);
       }
     },
     min: {
       type: [String, Number],
-      default: ""
+      default: ''
     },
     value: {
       type: [String, Number],
       required: true,
-      default: ""
+      default: ''
     },
     size: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validate(value) {
-        return ["small", "medium", "large"].includes(value);
+        return ['small', 'medium', 'large'].includes(value);
       }
     },
     placeholder: {
       type: String,
-      default: ""
+      default: ''
     },
     align: {
       type: String,
-      default: "left",
-      validate (value) {
-        return ["left", "center", "right"].includes(value);
+      default: 'left',
+      validate(value) {
+        return ['left', 'center', 'right'].includes(value);
       }
     },
     width: {
       type: [String, Number],
       default: null
     },
-    error: {
+    error3: {
       type: String,
-      default: ""
-    }
+      default: ''
+    },
+
+    validations: {
+      type: Object,
+      default: () => ({})
+    },
   },
   emits: ['input'],
   computed: {
-    classes () {
+    classes() {
       return {
         [`basket-input--size-${this.size}`]: true,
         [`basket-input--align-${this.align}`]: true,
-        "basket-input--error": !!this.error
+        'basket-input--error': !!this.errors.length > 0
       };
     },
-    styles () {
+    styles() {
       const styles = {};
       if (this.width) {
         styles.width = Number.isInteger(this.width)
@@ -86,11 +116,33 @@ export default {
           : this.width;
       }
       return styles;
-    }
+    },
+
+    invalid() {
+      return this.validations?.$dirty && this.validations?.$invalid;
+    },
+
+    errors() {
+      if (!this.invalid) {
+        return [];
+      }
+
+      return Object.keys(this.validations.$params).reduce(
+        (errors, validator) => {
+          if (!this.validations[validator]) {
+            const compiled = swapKeyAndValueInString(TEMPLATES_MAP[validator], this.validations.$params[validator]);
+            errors.push(compiled);
+          }
+
+          return errors;
+        },
+        []
+      );
+    },
   },
   methods: {
-    onInput (event) {
-      this.$emit("input", event.target.value);
+    onInput(event) {
+      this.$emit('input', event.target.value);
     }
   }
 };

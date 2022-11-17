@@ -41,19 +41,31 @@
     </div>
     <div class="order__title" style="margin-top: 32px;">Your details</div>
     <form class="form" @submit.prevent="onSubmit">
+
       <basket-input
         v-model="name"
         style="margin-top: 16px;"
         size="large"
         placeholder="Your name"
-        :error="isErrorName"
+
+        :validations="$v.name"
       />
-      <basket-input
-        v-model="phone"
-        style="margin-top: 8px;"
-        size="large"
-        placeholder="Mobile phone"
-      />
+
+            <basket-input
+              v-model="phone"
+              style="margin-top: 8px;"
+              size="large"
+              placeholder="Mobile phone"
+              :validations="$v.phone"
+            />
+
+
+<!--      <VuePhoneNumberInput-->
+<!--        v-model="phone"-->
+<!--        clearable-->
+<!--      />-->
+<!--      {{phone?.length}}-->
+
       <basket-button
         style="margin-top: 24px;"
         :stretch="true"
@@ -73,6 +85,7 @@ import {minLength, required} from 'vuelidate/lib/validators';
 
 export default {
   name: 'BasketOrder',
+
   data() {
     return {
       name: '',
@@ -85,9 +98,18 @@ export default {
       return this.$store.getters['cart/cart'];
     },
 
-    isErrorName() {
-      return this.$v.name.$error ? 'Please fill all fields to continue' : null
-    },
+    // isErrorName() {
+    //   // return this.$v.name.$error ? 'Please fill all fields to continue' : null
+    //   if (this.$v.name.$dirty && !this.$v.name.required) {
+    //     return 'Please fill all fields to continue';
+    //   }
+    //
+    //   if (this.$v.name.$dirty && !this.$v.name.minLength) {
+    //     return 'This field is incorrect';
+    //   }
+    //
+    //   return null;
+    // },
   },
 
   methods: {
@@ -102,11 +124,12 @@ export default {
   validations: {
     name: {
       required,
+      minLength: minLength(2)
     },
 
     phone: {
       required,
-      minLength: minLength(2)
+      minLength: minLength(4)
     }
   }
 };
