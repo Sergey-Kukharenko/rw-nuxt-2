@@ -47,24 +47,17 @@
         style="margin-top: 16px;"
         size="large"
         placeholder="Your name"
-
         :validations="$v.name"
       />
 
-            <basket-input
-              v-model="phone"
-              style="margin-top: 8px;"
-              size="large"
-              placeholder="Mobile phone"
-              :validations="$v.phone"
-            />
-
-
-<!--      <VuePhoneNumberInput-->
-<!--        v-model="phone"-->
-<!--        clearable-->
-<!--      />-->
-<!--      {{phone?.length}}-->
+      <basket-input
+        v-model="phone"
+        type="number"
+        style="margin-top: 8px;"
+        size="large"
+        placeholder="Mobile phone"
+        :validations="$v.phone"
+      />
 
       <basket-button
         style="margin-top: 24px;"
@@ -97,19 +90,6 @@ export default {
     cart() {
       return this.$store.getters['cart/cart'];
     },
-
-    // isErrorName() {
-    //   // return this.$v.name.$error ? 'Please fill all fields to continue' : null
-    //   if (this.$v.name.$dirty && !this.$v.name.required) {
-    //     return 'Please fill all fields to continue';
-    //   }
-    //
-    //   if (this.$v.name.$dirty && !this.$v.name.minLength) {
-    //     return 'This field is incorrect';
-    //   }
-    //
-    //   return null;
-    // },
   },
 
   methods: {
@@ -117,7 +97,7 @@ export default {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        // console.log('dsd');
+        // Submit Form
       }
     },
   },

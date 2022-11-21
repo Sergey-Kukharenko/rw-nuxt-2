@@ -51,11 +51,21 @@ const useBreadCrumbs = (route) => {
     }, [])
 }
 
+const useStringSwappedValues = (url, params) => {
+  let urlResult = url;
+  for (const key in params) {
+    urlResult = urlResult.replace(key, params[key]);
+  }
+
+  return urlResult;
+};
+
 export {
   useClassName,
   useClassNameProp,
   useToggleClassName,
   useSetClassName,
   useSortArrayBy,
-  useBreadCrumbs
+  useBreadCrumbs,
+  useStringSwappedValues
 }

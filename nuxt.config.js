@@ -37,7 +37,6 @@ export default {
   plugins: [
     { src: '@/plugins/vue-awesome-swiper', ssr: true },
     { src: '~/plugins/vuelidate' },
-    { src: '~/plugins/phone-number' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

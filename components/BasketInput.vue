@@ -1,52 +1,17 @@
 <template>
   <div>
-    <div
-      class="basket-input"
-      :class="classes"
-      :style="styles"
-    >
-      <input
-        :type="type"
-        :min="min"
-        :placeholder="placeholder"
-        :value="value"
-        @input="onInput"
-      />
+    <div class="basket-input" :class="classes" :style="styles">
+      <input :type="type" :min="min" :placeholder="placeholder" :value="value" @input="onInput" />
     </div>
-    <!--    <div-->
-    <!--      v-if="error"-->
-    <!--      class="basket-input__error"-->
-    <!--    >-->
-    <!--      {{ error }}-->
-    <!--    </div>-->
-
-    <div
-      v-for="(error, idx) in errors"
-      :key="idx"
-      class="basket-input__error"
-    >
+    <div v-for="error in errors" :key="error" class="basket-input__error">
       {{ error }}
     </div>
   </div>
 </template>
 
 <script>
-
-const TEMPLATES_MAP = {
-  alpha: 'Alphanumeric characters only',
-  email: 'Must be a valid email address',
-  minLength: 'Must have a length no less than min',
-  required: 'Required field'
-};
-
-const swapKeyAndValueInString = (url, params) => {
-  let urlResult = url;
-  for (const key in params) {
-    urlResult = urlResult.replace(key, params[key]);
-  }
-
-  return urlResult;
-};
+import { useStringSwappedValues } from '~/helpers'
+import { VALIDATE_MESSAGES } from '~/messages'
 
 export default {
   name: 'BasketInput',
@@ -55,7 +20,7 @@ export default {
       type: String,
       default: 'text',
       validate(value) {
-        return ['text', 'password', 'number'].includes(value);
+        return ['text', 'password', 'number'].includes(value)
       }
     },
     min: {
@@ -71,7 +36,7 @@ export default {
       type: String,
       default: 'medium',
       validate(value) {
-        return ['small', 'medium', 'large'].includes(value);
+        return ['small', 'medium', 'large'].includes(value)
       }
     },
     placeholder: {
@@ -82,22 +47,17 @@ export default {
       type: String,
       default: 'left',
       validate(value) {
-        return ['left', 'center', 'right'].includes(value);
+        return ['left', 'center', 'right'].includes(value)
       }
     },
     width: {
       type: [String, Number],
       default: null
     },
-    error3: {
-      type: String,
-      default: ''
-    },
-
     validations: {
       type: Object,
       default: () => ({})
-    },
+    }
   },
   emits: ['input'],
   computed: {
@@ -106,46 +66,45 @@ export default {
         [`basket-input--size-${this.size}`]: true,
         [`basket-input--align-${this.align}`]: true,
         'basket-input--error': !!this.errors.length > 0
-      };
-    },
-    styles() {
-      const styles = {};
-      if (this.width) {
-        styles.width = Number.isInteger(this.width)
-          ? `${this.width}px`
-          : this.width;
       }
-      return styles;
+    },
+
+    styles() {
+      const styles = {}
+      if (this.width) {
+        styles.width = Number.isInteger(this.width) ? `${this.width}px` : this.width
+      }
+      return styles
     },
 
     invalid() {
-      return this.validations?.$dirty && this.validations?.$invalid;
+      return this.validations?.$dirty && this.validations?.$invalid
     },
 
     errors() {
       if (!this.invalid) {
-        return [];
+        return []
       }
 
-      return Object.keys(this.validations.$params).reduce(
-        (errors, validator) => {
-          if (!this.validations[validator]) {
-            const compiled = swapKeyAndValueInString(TEMPLATES_MAP[validator], this.validations.$params[validator]);
-            errors.push(compiled);
-          }
+      return Object.keys(this.validations.$params).reduce((errors, validator) => {
+        if (!this.validations[validator]) {
+          const foundMsg = VALIDATE_MESSAGES[validator]
+          const foundObj = this.validations.$params[validator]
+          const compiled = useStringSwappedValues(foundMsg, foundObj)
 
-          return errors;
-        },
-        []
-      );
-    },
+          errors.push(compiled)
+        }
+
+        return errors
+      }, [])
+    }
   },
   methods: {
     onInput(event) {
-      this.$emit('input', event.target.value);
+      this.$emit('input', event.target.value)
     }
   }
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -225,13 +184,13 @@ export default {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: #DB1838;
+    color: #db1838;
     margin-top: 8px;
     padding-left: 18px;
   }
 
   &--error {
-    border: 1px solid #DB1838;
+    border: 1px solid #db1838;
   }
 }
 </style>
