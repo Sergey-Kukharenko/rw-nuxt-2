@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="basket-input" :class="classes" :style="styles">
-      <input :type="type" :min="min" :placeholder="placeholder" :value="value" @input="onInput" />
+      <input :type="type" :min="min" :placeholder="placeholder" :value="value" @input="onInput"/>
     </div>
     <div v-for="error in errors" :key="error" class="basket-input__error">
       {{ error }}
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import { useStringSwappedValues } from '~/helpers'
-import { VALIDATE_MESSAGES } from '~/messages'
+import {useStringSwappedValues} from '~/helpers';
+import {VALIDATE_MESSAGES} from '~/messages';
 
 export default {
   name: 'BasketInput',
@@ -20,91 +20,100 @@ export default {
       type: String,
       default: 'text',
       validate(value) {
-        return ['text', 'password', 'number'].includes(value)
+        return ['text', 'password', 'number'].includes(value);
       }
     },
+
     min: {
       type: [String, Number],
       default: ''
     },
+
     value: {
       type: [String, Number],
       required: true,
       default: ''
     },
+
     size: {
       type: String,
       default: 'medium',
       validate(value) {
-        return ['small', 'medium', 'large'].includes(value)
+        return ['small', 'medium', 'large'].includes(value);
       }
     },
+
     placeholder: {
       type: String,
       default: ''
     },
+
     align: {
       type: String,
       default: 'left',
       validate(value) {
-        return ['left', 'center', 'right'].includes(value)
+        return ['left', 'center', 'right'].includes(value);
       }
     },
+
     width: {
-      type: [String, Number],
+      type: [String, Number, null],
       default: null
     },
+
     validations: {
       type: Object,
       default: () => ({})
     }
   },
+
   emits: ['input'],
+
   computed: {
     classes() {
       return {
         [`basket-input--size-${this.size}`]: true,
         [`basket-input--align-${this.align}`]: true,
-        'basket-input--error': !!this.errors.length > 0
-      }
+        'basket-input--error': !!this.errors.length
+      };
     },
 
     styles() {
-      const styles = {}
+      const styles = {};
       if (this.width) {
-        styles.width = Number.isInteger(this.width) ? `${this.width}px` : this.width
+        styles.width = Number.isInteger(this.width) ? `${this.width}px` : this.width;
       }
-      return styles
+      return styles;
     },
 
     invalid() {
-      return this.validations?.$dirty && this.validations?.$invalid
+      return this.validations?.$dirty && this.validations?.$invalid;
     },
 
     errors() {
       if (!this.invalid) {
-        return []
+        return [];
       }
 
       return Object.keys(this.validations.$params).reduce((errors, validator) => {
         if (!this.validations[validator]) {
-          const foundMsg = VALIDATE_MESSAGES[validator]
-          const foundObj = this.validations.$params[validator]
-          const compiled = useStringSwappedValues(foundMsg, foundObj)
+          const foundMsg = VALIDATE_MESSAGES[validator];
+          const foundObj = this.validations.$params[validator];
+          const compiled = useStringSwappedValues(foundMsg, foundObj);
 
-          errors.push(compiled)
+          errors.push(compiled);
         }
 
-        return errors
-      }, [])
+        return errors;
+      }, []);
     }
   },
   methods: {
     onInput(event) {
-      this.$emit('input', event.target.value)
+      this.$emit('input', event.target.value);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

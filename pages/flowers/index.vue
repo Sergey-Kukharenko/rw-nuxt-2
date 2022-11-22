@@ -5,36 +5,8 @@
         <div class="filter-panel__header">
           <h1 class="filter-panel__header-title">{{ title }}</h1>
         </div>
-        <div class="filter-panel__menu">
-          <category-filters @change-active-filter="changeActiveFilter" />
-        </div>
       </div>
-
       <div class="category-page__col category-products">
-        <div class="category-products__header" :style="styles">
-          <div class="category-products__header-title">{{ productCount }} bouquets found</div>
-          <category-sorting :sort-list="sortList" :curr-sorting="currSorting" @sort="sortBy" />
-        </div>
-        <div class="category-products__header-bottom">
-          <div class="active-filters">
-            <category-active-filters
-              v-if="activeFilters.length"
-              :list="activeFilters"
-              @remove="removeActiveFilter"
-              @clear="clearActiveFilters"
-            />
-          </div>
-          <category-navigation-sm
-            :sort-list="sortVariants"
-            :curr-sorting="currSorting"
-            :active-filters="activeFilters"
-            :product-count="productCount"
-            @sort="sortBy"
-            @remove-active-filter="removeActiveFilter"
-            @clear-active-filters="clearActiveFilters"
-            @change-active-filter="changeActiveFilter"
-          />
-        </div>
         <category-product-list :products="categoryProducts.list" />
       </div>
     </div>
@@ -43,68 +15,15 @@
 
 <script>
 import dataCategoryProducts from '~/data/category-products';
-import dataCategorySorting from '~/data/category-sorting';
-import dataCategoryFilters from '~/data/category-filters';
 
 export default {
   name: 'CategoryPage',
 
   data() {
     return {
-      categoryFilters: dataCategoryFilters,
       categoryProducts: dataCategoryProducts,
-      sortVariants: dataCategorySorting,
-
-      currSorting: dataCategorySorting[0],
-
       title: dataCategoryProducts.main.title,
-      productCount: dataCategoryProducts.main.count,
-
-      activeFilters: [],
     };
-  },
-
-  computed: {
-    styles() {
-      return this.activeFilters.length ? { marginBottom: '24px' } : { marginBottom: '32px' };
-    },
-
-    sortList() {
-      return this.sortVariants.filter((s) => s !== this.currSorting);
-    },
-  },
-
-  methods: {
-    sortBy(variant) {
-      this.currSorting = variant;
-    },
-
-    changeActiveFilter(payload) {
-      const isCheckbox = payload.type === 'checkbox';
-
-      this.activeFilters = this.activeFilters.filter((f) => f.filterKey !== payload.filterKey);
-
-      if (!isCheckbox) {
-        this.activeFilters.push(payload);
-
-        return;
-      }
-
-      const checkboxFilters = payload.value.map((f) => ({
-        ...payload,
-        value: f,
-      }));
-
-      this.activeFilters.push(...checkboxFilters);
-    },
-
-    removeActiveFilter({ value }) {
-      this.activeFilters = this.activeFilters.filter((f) => f.value !== value);
-    },
-
-    clearActiveFilters() {
-      this.activeFilters = [];
-    },
   },
 };
 </script>
@@ -115,6 +34,7 @@ export default {
 
   &__row {
     display: flex;
+    flex-direction: column;
 
     @include lt-md {
       flex-direction: column;

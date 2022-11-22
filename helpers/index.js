@@ -51,13 +51,13 @@ const useBreadCrumbs = (route) => {
     }, [])
 }
 
-const useStringSwappedValues = (url, params) => {
-  let urlResult = url;
-  for (const key in params) {
-    urlResult = urlResult.replace(key, params[key]);
+const useStringSwappedValues = (str, mapKeys) => {
+  let strResult = str;
+  for (const key in mapKeys) {
+    strResult = strResult.replace(key, mapKeys[key]);
   }
 
-  return urlResult;
+  return strResult;
 };
 
 export {

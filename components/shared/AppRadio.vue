@@ -1,38 +1,45 @@
 <template>
-  <div
-    class="app-radio"
-    @click="$emit('change', name)"
-  >
-    <svg-icon
-      class="app-radio__icon"
-      :name="value === name ? 'radio-on': 'radio-off'"
-    />
-    <slot/>
+  <div class="app-radio" @click="$emit('change', name)">
+    <svg-icon v-if="hasIcon" class="app-radio__icon" :name="statusIcon" />
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
-  name: "AppRadio",
+  name: 'AppRadio',
+
   model: {
-    prop: "value",
-    event: "change"
+    prop: 'value',
+    event: 'change',
   },
+
   props: {
     value: {
       type: [String, Number],
       require: true,
-      default: ""
+      default: '',
     },
+
     name: {
       type: [String, Number],
       require: true,
-      default: ""
-    }
-  }
-}
-</script>
+      default: '',
+    },
 
+    hasIcon: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  computed: {
+    statusIcon() {
+      return this.value === this.name ? 'radio-on' : 'radio-off';
+    },
+  },
+};
+</script>
 
 <style lang="scss" scoped>
 .app-radio {

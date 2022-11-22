@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { useClassName } from '@/helpers'
+import { useClassName } from '@/helpers';
 
 export default {
   name: 'AppButton',
@@ -38,10 +38,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassName(this.$props, 'button')
-    }
-  }
-}
+      return useClassName(this.$props, 'button');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
@@ -73,6 +73,10 @@ export default {
   &:disabled {
     background: #ccc;
     cursor: none;
+  }
+
+  &--rounded {
+    border-radius: 18px;
   }
 
   &--grey {

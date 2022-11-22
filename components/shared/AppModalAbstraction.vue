@@ -31,8 +31,8 @@ export default {
       default: '',
       validate(value) {
         return ['full'].includes(value);
-      }
-    }
+      },
+    },
   },
 
   computed: {
@@ -113,14 +113,26 @@ export default {
   }
 
   &--centered {
-    @include gt-sm {
-      & .modal__content {
-        position: relative;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        margin: 0;
+    & .modal__content {
+      position: relative;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: 0;
+
+      @include lt-md {
+        width: 90%;
+        
+        .button {
+          display: none;
+        }
       }
+    }
+  }
+
+  &--regular {
+    .button {
+      display: none;
     }
   }
 
