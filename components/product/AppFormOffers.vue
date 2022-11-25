@@ -85,7 +85,7 @@ export default {
       // this.$toast.success("Hello!");
 
       this.$toast("Added to cart", {
-        timeout: 5000000,
+        timeout: 3000,
         icon: false,
         class: 'toast',
       });
