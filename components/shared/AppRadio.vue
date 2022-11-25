@@ -49,8 +49,6 @@ export default {
   gap: 8px;
   cursor: default;
   user-select: none;
-  flex-shrink: 0;
-
   font-family: $golos-regular;
   font-style: normal;
   font-weight: 400;
@@ -59,9 +57,14 @@ export default {
   letter-spacing: -0.01em;
   color: #010810;
 
+  @include gt-sm {
+    flex-shrink: 0;
+  }
+
   &__icon {
     width: 24px;
     height: 24px;
+    flex-shrink: 0;
   }
 }
 </style>
