@@ -82,13 +82,13 @@ export default {
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.offer);
 
-      // this.$toast.success("Hello!");
+      this.$toast.success("Added to cart!");
 
-      this.$toast('Added to cart', {
-        timeout: 3000,
-        icon: false,
-        class: ['toast', 'toast--dark'],
-      });
+      // this.$toast('Added to cart', {
+      //   timeout: 3000,
+      //   icon: false,
+      //   class: ['toast', 'toast--dark'],
+      // });
     }
   }
 };
