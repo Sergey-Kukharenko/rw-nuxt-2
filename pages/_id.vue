@@ -38,7 +38,7 @@
 </template>
 
 <script>
-// import bouquetSunshine from '@/data/bouquet-sunshine';
+import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -47,10 +47,10 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  middleware: ['not-found'],
+  // middleware: ['not-found'],
 
-   async asyncData({route, $axios, redirect}) {
-     const path = route.fullPath;
+    asyncData({route, $axios, redirect}) {
+     // const path = route.fullPath;
      const data = {
        seo: {},
        title: '',
@@ -60,8 +60,8 @@ export default {
      };
 
      try {
-       const {data: response} = await $axios.$get(`/offers${path}`);
-       // const {data: response} = bouquetSunshine
+       // const {data: response} = await $axios.$get(`/offers${path}`);
+       const {data: response} = bouquetSunshine
 
        data.seo = response.seo;
        data.title = response.title;
