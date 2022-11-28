@@ -49,20 +49,31 @@ export default {
 
   middleware: ['not-found'],
 
-  async asyncData({route, $axios, redirect}) {
-    const path = route.fullPath;
-    console.log(path);
-    return await $axios.$get(`https://dev-api.myflowers.co.uk/v1${path}`)
-      .then(({data}) => {
-        return {
-          seo: data.seo,
-          title: data.title,
-          description: data.description,
-          object: data.object,
-          positions: data.positions,
-        };
-      });
-  },
+    async asyncData({route, $axios, redirect}) {
+      const path = route.fullPath;
+      const data = {
+        seo: {},
+        title: '',
+        description: '',
+        object: {},
+        positions: []
+      };
+
+      try {
+        const {data: response} = await $axios.$get(`/offers${path}`);
+        // const {data: response} = bouquetSunshine
+
+        data.seo = response.seo;
+        data.title = response.title;
+        data.description = response.description;
+        data.object = response.object;
+        data.positions = response.positions;
+      } catch (error) {
+        // console.error(error.response);
+      }
+
+      return data;
+    },
 
   head() {
     return {
