@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import bouquetSunshine from '@/data/bouquet-sunshine';
+// import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -69,7 +69,7 @@ export default {
        data.object = response.object;
        data.positions = response.positions;
      } catch (error) {
-       console.error(error);
+       console.error(error.response);
      }
 
      return data;
