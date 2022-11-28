@@ -80,14 +80,14 @@ export default {
     },
 
     addToCart() {
-      this.$store.dispatch('cart/addToCart', this.offer)
+      this.$store.dispatch('cart/addToCart', this.offer);
 
       // this.$toast.success("Hello!");
 
-      this.$toast("Added to cart", {
+      this.$toast('Added to cart', {
         timeout: 3000,
         icon: false,
-        class: 'toast',
+        class: ['toast', 'toast--dark'],
       });
     }
   }
@@ -95,22 +95,28 @@ export default {
 </script>
 
 <style lang="scss">
-.toast{
+.toast {
   min-width: 292px;
   min-height: 54px;
   padding: 12px 16px;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: saturate(180%) blur(20px);
 
-  & .Vue-Toastification__toast-body{
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    color: white;
-    font-family: $golos-regular;
-    font-size: 15px;
-    line-height: 24px;
-    letter-spacing: -0.01em;
+  &--dark {
+    & .Vue-Toastification__toast-body {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      color: white;
+      font-family: $golos-regular;
+      font-size: 15px;
+      line-height: 24px;
+      letter-spacing: -0.01em;
+    }
+
+    & .Vue-Toastification__progress-bar {
+      background: rgba(0, 0, 0, 0.2);
+    }
   }
 }
 </style>
