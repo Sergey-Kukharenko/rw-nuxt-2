@@ -99,15 +99,16 @@ export default {
   min-width: 292px;
   min-height: 54px;
   padding: 12px 16px;
-  background: rgba(0, 0, 0, 0.4);
+  background: rgb(0 0 0 / 40%);
   backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
 
   &--dark {
     & .Vue-Toastification__toast-body {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      color: white;
+      color: rgb(255 255 255 / 40%);
       font-family: $golos-regular;
       font-size: 15px;
       line-height: 24px;
