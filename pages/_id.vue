@@ -47,7 +47,7 @@ export default {
 
   components: {AppService, AppFormOffers},
 
-  // middleware: ['not-found'],
+  middleware: ['not-found'],
 
      async asyncData({route, $axios, redirect}) {
        const path = route.fullPath;
@@ -69,11 +69,7 @@ export default {
          data.object = response.object;
          data.positions = response.positions;
        } catch (error) {
-         if (error.response.status >= 400) {
-           console.log('id page catch');
-           console.log(error.response.status === 502);
-           redirect('/not-found');
-         }
+         // console.log(error.response);
        }
 
        return data;
