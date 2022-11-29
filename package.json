@@ -14,6 +14,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
+    "@nuxtjs/proxy": "^2.1.0",
     "@nuxtjs/svg-sprite": "^0.5.2",
     "core-js": "^3.19.3",
     "node-sass": "^7.0.1",
@@ -25,9 +26,9 @@
     "vue-phone-number-input": "^1.12.13",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
+    "vue-toastification": "latest",
     "vue2-teleport": "^1.0.1",
     "vuelidate": "^0.7.7",
-    "vue-toastification": "latest",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
