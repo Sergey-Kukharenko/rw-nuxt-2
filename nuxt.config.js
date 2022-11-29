@@ -77,9 +77,9 @@ export default {
   },
 
   proxy: {
-    '/dev-api/': {
-      target: 'https://dev-api.myflowers.co.uk/v1/',
-      pathRewrite: { '^/dev-api/': '' }
+    '/api/': {
+      target: 'https://dev-api.myflowers.co.uk/v1',
+      pathRewrite: { '^/api/': '' }
     }
   },
 
