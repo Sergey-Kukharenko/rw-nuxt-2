@@ -38,7 +38,7 @@
 </template>
 
 <script>
-// import bouquetSunshine from '@/data/bouquet-sunshine';
+import bouquetSunshine from '@/data/bouquet-sunshine';
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
 
@@ -60,16 +60,23 @@ export default {
       };
 
       try {
-        const {data: response} = await $axios.$get(`/offers${path}`);
-        // const {data: response} = bouquetSunshine
+        // const {data: response} = await $axios.$get(`/offers${path}`);
+        const res = await $axios.$get(`https://api.nuxtjs.dev/mountains/1`);
+
+        if(res) {
+          console.log(res);
+          console.log(path);
+
+        const {data: response} = bouquetSunshine
 
         data.seo = response.seo;
         data.title = response.title;
         data.description = response.description;
         data.object = response.object;
         data.positions = response.positions;
+        }
       } catch (error) {
-        // console.error(error.response);
+        console.error(error.response);
       }
 
       return data;
