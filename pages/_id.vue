@@ -49,7 +49,7 @@ export default {
 
   middleware: ['not-found'],
 
-    async asyncData({route, $axios, redirect}) {
+     asyncData({route, $axios, redirect}) {
       const path = route.fullPath;
       const data = {
         seo: {},
@@ -61,12 +61,6 @@ export default {
 
       try {
         // const {data: response} = await $axios.$get(`/offers${path}`);
-        const res = await $axios.$get(`https://api.nuxtjs.dev/mountains/1`);
-
-        if(res) {
-          console.log(res);
-          console.log(path);
-
         const {data: response} = bouquetSunshine
 
         data.seo = response.seo;
@@ -74,7 +68,6 @@ export default {
         data.description = response.description;
         data.object = response.object;
         data.positions = response.positions;
-        }
       } catch (error) {
         console.error(error.response);
       }
