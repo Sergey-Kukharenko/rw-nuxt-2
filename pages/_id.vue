@@ -60,7 +60,7 @@ export default {
        };
 
        try {
-         const {data: response} = await $axios.$get(`api/offers${path}`);
+         const {data: response} = await $axios.$get(`/offers${path}`);
          // const {data: response} = bouquetSunshine
 
          data.seo = response.seo;
