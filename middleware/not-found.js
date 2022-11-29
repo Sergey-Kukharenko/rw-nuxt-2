@@ -3,6 +3,10 @@ export default function ({$axios, redirect}) {
     console.log('middleware');
     console.log(error);
     // console.log(error.response.status);
+    if (error.response === undefined) {
+      console.log('now redirect');
+    }
+
     if (error.response.status >= 400) {
       redirect('/not-found');
     }
