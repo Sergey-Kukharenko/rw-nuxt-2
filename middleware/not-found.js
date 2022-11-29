@@ -4,7 +4,7 @@ export default function ({$axios, redirect}) {
     console.log(error);
     // console.log(error.response.status);
     if (error.response === undefined) {
-      console.log('now redirect');
+      redirect('/not-found');
     }
 
     if (error.response.status >= 400) {
