@@ -1,8 +1,8 @@
 export function disableScroll() {
-  document.documentElement.style.overflow = 'hidden'
+  document.body.classList.add('no-scroll');
 }
 
 export function enableScroll() {
-  document.documentElement.style.overflow = ''
+  document.body.classList.remove('no-scroll');
 }
 

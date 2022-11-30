@@ -39,6 +39,7 @@ import AppOffers from '~/components/product/AppOffers';
 import AppButton from '@/components/shared/AppButton';
 import AppBadges from '@/components/shared/AppBadges';
 import AppOfferDetail from '~/components/product/AppOfferDetail';
+import ToastDeals from '~/components/toasts/ToastDeals';
 
 export default {
   name: 'AppFormOffers',
@@ -47,7 +48,7 @@ export default {
     AppOfferDetail,
     AppOffers,
     AppBadges,
-    AppButton
+    AppButton,
   },
 
   props: {
@@ -68,6 +69,15 @@ export default {
     classNames() {
       return useToggleClassName(this.like, 'like', 'active');
     }
+  },
+
+  mounted() {
+    this.$toast(ToastDeals, {
+      timeout: 300000,
+      icon: false,
+      closeButton: false,
+      class: ['toast', 'toast--md', 'toast--dark'],
+    });
   },
 
   methods: {
@@ -99,16 +109,23 @@ export default {
   min-width: 292px;
   min-height: 54px;
   padding: 12px 16px;
-  background: rgb(0 0 0 / 40%);
-  backdrop-filter: saturate(180%) blur(20px);
+  backdrop-filter: saturate(180%) blur(4px);
+  -webkit-backdrop-filter: saturate(180%) blur(4px);
   box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
 
+  &--md{
+    min-width: 276px;
+    min-height: 76px;
+  }
+
   &--dark {
+    background: rgb(0 0 0 / 40%);
+
     & .Vue-Toastification__toast-body {
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      color: rgb(255 255 255 / 40%);
+      color: #fff;
       font-family: $golos-regular;
       font-size: 15px;
       line-height: 24px;
