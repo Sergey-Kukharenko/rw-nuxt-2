@@ -36,6 +36,7 @@ export default {
     width: 10px;
     height: 14px;
     margin-right: 11px;
+    color: #FCBC00;
   }
 
   &__text {

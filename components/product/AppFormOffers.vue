@@ -35,11 +35,11 @@
 
 <script>
 import {useToggleClassName} from '@/helpers';
-import AppOffers from '~/components/product/AppOffers';
+import AppOffers from '@/components/product/AppOffers';
 import AppButton from '@/components/shared/AppButton';
 import AppBadges from '@/components/shared/AppBadges';
-import AppOfferDetail from '~/components/product/AppOfferDetail';
-import ToastDeals from '~/components/toasts/ToastDeals';
+import AppOfferDetail from '@/components/product/AppOfferDetail';
+import ToastCardDeals from '@/components/toast-cards/ToastCardDeals';
 
 export default {
   name: 'AppFormOffers',
@@ -72,12 +72,27 @@ export default {
   },
 
   mounted() {
-    this.$toast(ToastDeals, {
-      timeout: 300000,
+    const content = {
+      component: ToastCardDeals,
+      props: {
+        icon: {
+          name: 'lightning',
+          size: {width: 28, height: 28}
+        },
+        title: 'Great product!',
+        text: '943 people have bought this product in the last 7 days',
+      }
+    };
+
+    const options = {
+      timeout: 5000,
       icon: false,
       closeButton: false,
+      position: 'bottom-left',
       class: ['toast', 'toast--md', 'toast--dark'],
-    });
+    };
+
+    this.$toast(content, options);
   },
 
   methods: {
@@ -91,54 +106,10 @@ export default {
 
     addToCart() {
       this.$store.dispatch('cart/addToCart', this.offer);
-
-      // this.$toast.success("Added to cart!");
-
-      this.$toast('Added to cart', {
-        timeout: 3000,
-        icon: false,
-        class: ['toast', 'toast--dark'],
-      });
     }
   }
 };
 </script>
-
-<style lang="scss">
-.toast {
-  min-width: 292px;
-  min-height: 54px;
-  padding: 12px 16px;
-  backdrop-filter: saturate(180%) blur(4px);
-  -webkit-backdrop-filter: saturate(180%) blur(4px);
-  box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-
-  &--md{
-    min-width: 276px;
-    min-height: 76px;
-  }
-
-  &--dark {
-    background: rgb(0 0 0 / 40%);
-
-    & .Vue-Toastification__toast-body {
-      display: flex;
-      align-items: center;
-      justify-content: flex-start;
-      color: #fff;
-      font-family: $golos-regular;
-      font-size: 15px;
-      line-height: 24px;
-      letter-spacing: -0.01em;
-    }
-
-    & .Vue-Toastification__progress-bar {
-      background: rgba(0, 0, 0, 0.2);
-    }
-  }
-}
-</style>
-
 <style lang="scss" scoped>
 .form {
   &__footer {
