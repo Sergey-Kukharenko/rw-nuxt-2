@@ -1,10 +1,10 @@
 export default [
   {
     name: 'Female',
-    img: '/icons/female.png'
+    img: '/icons/genders/female.png'
   },
   {
     name: 'Male',
-    img: '/icons/male.png'
+    img: '/icons/genders/male.png'
   },
 ]

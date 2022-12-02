@@ -20,19 +20,16 @@
 </template>
 
 <script>
-import AppHeader from '@/components/header/AppHeader';
 import OrderFooter from '@/components/OrderFooter';
-import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
-import AppNavBar from '@/components/header/AppNavBar';
 
 export default {
   name: 'OrderLayout',
 
   components: {
-    AppHeader,
     OrderFooter,
-    AppHeaderMobile,
-    AppNavBar,
+    AppHeader: () => import('@/components/header/AppHeader'),
+    AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
+    AppNavBar: () => import('@/components/header/AppNavBar'),
   },
 };
 </script>
@@ -47,7 +44,7 @@ export default {
   }
 
   .footer {
-  flex: 0 0 auto;
-}
+    flex: 0 0 auto;
+  }
 }
 </style>

@@ -1,62 +1,60 @@
 <script>
-import { AUTH_REG_STEPS, AUTH_REG_ERROR_MESSAGES, USER_CREDENTIALS } from '~/constants/index';
-import { isEmailValid, isPasswordValid } from '~/helpers/validators';
+import { AUTH_REG_STEPS, AUTH_REG_TYPES, AUTH_TYPES, AUTH_REG_ERROR_MESSAGES } from '~/constants/index';
+import { isEmailValid } from '~/helpers/validators';
 
 export default {
   name: 'AuthManager',
 
   computed: {
-    getReceiver() {
+    currCodeType() {
+      return this.$store.getters['auth/codeType'];
+    },
+
+    receiver() {
       return this.$store.getters['auth/receiver'];
+    },
+
+    isPhoneFormType() {
+      return this.currCodeType === AUTH_TYPES.phone.name;
+    },
+
+    isEmailFormType() {
+      return this.currCodeType === AUTH_TYPES.email.name;
+    },
+
+    anotherType() {
+      return AUTH_REG_TYPES.filter((t) => t !== this.currCodeType)[0];
+    },
+
+    phoneMask() {
+      return this.$store.getters['auth/phoneMask'];
     },
   },
 
   methods: {
-    getPasswordInputIcon(status) {
-      return status ? 'eye-closed' : 'eye';
-    },
-
     isEmptyField(field) {
       return !field?.length ? AUTH_REG_ERROR_MESSAGES.requiredField : '';
+    },
+
+    hasPhoneError(status) {
+      return !status ? AUTH_REG_ERROR_MESSAGES.phone.invalid : '';
     },
 
     hasEmailError(email) {
       return !isEmailValid(email) ? AUTH_REG_ERROR_MESSAGES.email.invalid : '';
     },
 
-    hasPasswordError(password) {
-      return !isPasswordValid(password) ? AUTH_REG_ERROR_MESSAGES.password.invalid : '';
-    },
+    changeStep({ status, type }) {
+      if (type) this.setCodeType(type);
 
-    checkCredentials(email, password, type) {
-      const emailError = this.checkEmailCredentials(email, type);
-      const passwordError = this.checkPasswordCredentials(password, type);
+      if (this.$device.isMobileOrTablet) this.$router.push({ name: AUTH_REG_STEPS[status].page });
 
-      return { emailError, passwordError };
-    },
-
-    checkEmailCredentials(email, type) {
-      if (email !== USER_CREDENTIALS.email && type === 'auth') {
-        return AUTH_REG_ERROR_MESSAGES.email.notExist;
-      } else if (email === USER_CREDENTIALS.email && type === 'reg') {
-        return AUTH_REG_ERROR_MESSAGES.email.alreadyExist;
-      }
-
-      return '';
-    },
-
-    checkPasswordCredentials(password, type) {
-      return password !== USER_CREDENTIALS.password && type === 'auth' ? AUTH_REG_ERROR_MESSAGES.password.notExist : '';
-    },
-
-    changeStep(step) {
-      if (this.$device.isMobileOrTablet) this.$router.push({ name: AUTH_REG_STEPS[step].page });
-
-      this.$store.commit('auth/setCurrStep', AUTH_REG_STEPS[step].component);
+      this.$store.commit('auth/setCurrStep', AUTH_REG_STEPS[status].component);
     },
 
     resetStep() {
       this.$store.commit('auth/setCurrStep', AUTH_REG_STEPS.auth.component);
+      this.$store.commit('auth/setCodeType', AUTH_REG_TYPES[0]);
     },
 
     setReceiver(payload) {
@@ -79,9 +77,7 @@ export default {
   line-height: 16px;
   color: #db1838;
   padding-left: 18px;
-
-  position: relative;
-  top: -4px;
+  margin-top: 4px;
 
   .error-list {
     margin: 0;

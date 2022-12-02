@@ -1,17 +1,17 @@
 <template>
   <div class="layout">
-    <app-reg-completed />
+    <app-completed />
   </div>
 </template>
 
 <script>
-import AppRegCompleted from '~/components/header/auth/registration/AppRegCompleted';
+import AppCompleted from '~/components/header/auth/registration/AppCompleted';
 
 export default {
   name: 'CompletedPage',
 
   components: {
-    AppRegCompleted,
+    AppCompleted,
   },
 
   layout: 'mobile',

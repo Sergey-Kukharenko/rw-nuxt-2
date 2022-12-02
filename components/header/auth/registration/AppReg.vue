@@ -2,7 +2,7 @@
   <div class="container">
     <div class="container__header">
       <div class="container__layout">
-        <div class="container__title"><app-go-back-mobile />Create an account</div>
+        <div class="container__title"><app-go-back-mobile />Registration</div>
       </div>
     </div>
     <div class="container__body">
@@ -14,68 +14,72 @@
               {{ form.name.errorMsg }}
             </div>
 
+            <app-number-input v-if="isEmailFormType" :error="form.phone.errorMsg" @set-number="setNumber" />
             <app-input
-              v-model="form.surname.value"
+              v-if="isPhoneFormType"
+              v-model="form.phone.value"
+              :mask="phoneMask"
               size="x-large"
               class="form__input"
-              placeholder="Enter your surname"
-            />
-            <div v-show="form.surname.errorMsg" class="form__error">
-              {{ form.surname.errorMsg }}
-            </div>
+              placeholder="Enter your phone"
+              disabled
+            >
+              <template #right>
+                <svg-icon name="lock" class="form__input-icon" />
+              </template>
+            </app-input>
 
-            <app-input v-model="form.email.value" size="x-large" class="form__input" placeholder="Enter your E-mail" />
+            <app-input
+              v-model="form.email.value"
+              size="x-large"
+              class="form__input"
+              placeholder="Enter your E-mail"
+              :disabled="isEmailFormType"
+            >
+              <template v-if="isEmailFormType" #right>
+                <svg-icon name="lock" class="form__input-icon" />
+              </template>
+            </app-input>
             <div v-show="form.email.errorMsg" class="form__error">
               {{ form.email.errorMsg }}
             </div>
-
-            <app-input
-              v-model="form.password.value"
-              :type="getPasswordInputType('password')"
-              size="x-large"
-              class="form__input"
-              placeholder="Enter the password"
-            >
-              <template #right>
-                <svg-icon
-                  v-show="form.password.value"
-                  :name="getPasswordInputIcon(form.password.isVisible)"
-                  class="form__input-icon"
-                  @click="changePasswordVisibility('password')"
-                />
-              </template>
-            </app-input>
-            <div v-show="form.password.errorMsg" class="form__error">
-              {{ form.password.errorMsg.text }}
-              <ul class="form__error-list error-list">
-                <li v-for="item in form.password.errorMsg.items" :key="item" class="error-list__item">{{ item }}</li>
-              </ul>
-            </div>
-
-            <app-input
-              v-model="form.rePassword.value"
-              :type="getPasswordInputType('rePassword')"
-              size="x-large"
-              class="form__input"
-              placeholder="Repeat the password"
-            >
-              <template #right>
-                <svg-icon
-                  v-show="form.rePassword.value"
-                  :name="getPasswordInputIcon(form.rePassword.isVisible)"
-                  class="form__input-icon"
-                  @click="changePasswordVisibility('rePassword')"
-                />
-              </template>
-            </app-input>
-            <div v-show="isPasswordsMismatch" class="form__error">Passwords do not match</div>
           </div>
-          <app-button stretch="full" class="form__button">Sign up</app-button>
+
+          <div class="form__tabs">
+            <div class="form__tabs-title">Specify your gender</div>
+            <div class="form__tabs-row">
+              <div
+                v-for="gender in $options.GENDERS_DATA"
+                :key="gender.name"
+                class="form__tab"
+                :class="{ active: isActiveGender(gender.name) }"
+                @click="setGender(gender.name)"
+              >
+                <img :src="gender.img" class="form__tab-icon" :alt="gender.img" /> {{ gender.name }}
+              </div>
+            </div>
+          </div>
+          <div class="form__checkbox">
+            <app-checkbox
+              class="form__checkbox-item"
+              :value="form.checkbox"
+              name="checkbox_1"
+              @change="handleCheckbox($event, 'checkbox_1')"
+            >
+              <span> I agree with the processing of <a href="#" class="form__checkbox-link"> personal data</a> </span>
+            </app-checkbox>
+            <app-checkbox
+              class="form__checkbox-item"
+              :value="form.checkbox"
+              name="checkbox_2"
+              @change="handleCheckbox($event, 'checkbox_2')"
+            >
+              <span> I agree to receive promotional messages </span>
+            </app-checkbox>
+          </div>
+          <app-button stretch="full" class="form__button" :disabled="isSubmitDisabled">Register</app-button>
         </form>
         <div class="terms">
-          <div href="#" class="terms__signin">
-            Need an account? <a href="#" class="terms__signin-link" @click.prevent="goToSignIn">Sign up now</a>
-          </div>
           <app-personal-data-terms />
         </div>
       </div>
@@ -84,21 +88,26 @@
 </template>
 
 <script>
-import AppInput from '~/components/shared/AppInput';
 import AppButton from '~/components/shared/AppButton';
+import AppCheckbox from '~/components/shared/AppCheckbox';
 import AppPersonalDataTerms from '~/components/header/auth/AppPersonalDataTerms';
 import AppGoBackMobile from '~/components/shared/AppGoBackMobile';
 
 import authManager from '~/mixins/authManager';
+
+import GENDERS_DATA from '~/data/genders';
+import { AUTH_REG_STEPS } from '~/constants';
 
 export default {
   name: 'AppReg',
 
   components: {
     AppButton,
-    AppInput,
+    AppCheckbox,
     AppPersonalDataTerms,
     AppGoBackMobile,
+    AppNumberInput: () => import('~/components/shared/AppNumberInput'),
+    AppInput: () => import('~/components/shared/AppInput'),
   },
 
   mixins: [authManager],
@@ -111,9 +120,10 @@ export default {
           errorMsg: '',
         },
 
-        surname: {
+        phone: {
           value: '',
           errorMsg: '',
+          isValid: false,
         },
 
         email: {
@@ -121,78 +131,81 @@ export default {
           errorMsg: '',
         },
 
-        password: {
-          value: '',
-          errorMsg: '',
-        },
+        gender: '',
 
-        rePassword: {
-          value: '',
-          errorMsg: '',
-        },
+        checkbox: [],
       },
-      
-      isPasswordsMismatch: false,
     };
   },
 
+  GENDERS_DATA,
+
   computed: {
+    isSubmitDisabled() {
+      return !this.form.gender || this.form.checkbox.length < 2;
+    },
+
     isInvalidForm() {
       return Object.keys(this.form).some((key) => this.form[key].errorMsg);
     },
   },
 
+  mounted() {
+    this.initReceiverData();
+  },
+
   methods: {
-    goToSignIn() {
-      this.changeStep('auth');
-      this.resetForm();
+    setNumber({ value, isValid }) {
+      console.log(isValid);
+      this.form.phone = { ...this.form.phone, value, isValid };
     },
 
-    getPasswordInputType(key) {
-      return this.form[key].isVisible ? 'text' : 'password';
+    setGender(name) {
+      this.form.gender = name;
     },
 
-    changePasswordVisibility(key) {
-      this.form[key].isVisible = !this.form[key].isVisible;
+    isActiveGender(name) {
+      return this.form.gender === name;
     },
 
-    matchPasswords() {
-      this.isPasswordsMismatch = this.form.password.value !== this.form.rePassword.value;
-    },
-
-    handleValidate() {
-      const name = this.isEmptyField(this.form.name.value);
-      const surname = this.isEmptyField(this.form.surname.value);
-      const email = this.hasEmailError(this.form.email.value);
-      const password = this.hasPasswordError(this.form.password.value);
-      const rePassword = this.hasPasswordError(this.form.rePassword.value);
-
-      this.setFormErrorMsg(name, surname, email, password, rePassword);
-      this.matchPasswords();
-
-      if (!this.isInvalidForm && !this.isPasswordsMismatch) {
-        this.onSubmit();
+    handleCheckbox(value) {
+      if (!value) {
+        this.form.checkbox.splice(this.form.checkbox.indexOf(value), 1);
+      } else {
+        this.form.checkbox.push(value);
       }
     },
 
+    handleValidate() {
+      this.form.name.errorMsg = this.isEmptyField(this.form.name.value);
+      this.form.email.errorMsg = this.hasEmailError(this.form.email.value);
+      this.form.phone.errorMsg = this.isEmailFormType ? this.hasPhoneError(this.form.phone.isValid) : '';
+
+      if (this.isInvalidForm) {
+        return;
+      }
+
+      this.onSubmit();
+    },
+
     onSubmit() {
-      this.changeStep('regNotification');
-      this.resetForm();
+      this.changeStep({ status: AUTH_REG_STEPS.regCompleted.name });
+      this.resetInputErrors();
     },
 
-    resetForm() {
+    initReceiverData() {
+      if (this.isPhoneFormType) {
+        this.form.phone.value = this.receiver;
+      } else if (this.isEmailFormType) {
+        this.form.email.value = this.receiver;
+      }
+    },
+
+    resetInputErrors() {
       Object.keys(this.form).forEach((key) => {
-        this.form[key].errorMsg = '';
-        this.form[key].value = '';
+        if (this.form[key]?.errorMsg) this.form[key].errorMsg = '';
       });
-    },
-
-    setFormErrorMsg(nameErr = '', surnameErr = '', emailErr = '', passErr = '', rePassErr = '') {
-      this.form.name.errorMsg = nameErr;
-      this.form.surname.errorMsg = surnameErr;
-      this.form.email.errorMsg = emailErr;
-      this.form.password.errorMsg = passErr;
-      this.form.rePassword.errorMsg = rePassErr;
+      this.form.phone.isValid = this.hasFormError = false;
     },
   },
 };
@@ -208,7 +221,6 @@ export default {
   &__layout {
     @include gt-sm {
       padding: 0 24px;
-      overflow: auto;
     }
   }
 
@@ -250,13 +262,8 @@ export default {
       }
 
       &__input-icon {
-        user-select: none;
         width: 24px;
         height: 24px;
-
-        @include gt-sm {
-          cursor: pointer;
-        }
       }
 
       &__fields {
@@ -265,35 +272,125 @@ export default {
         gap: 10px;
         padding-bottom: 24px;
       }
+
+      &__tabs {
+        @include gt-sm {
+          padding-bottom: 50px;
+        }
+
+        @include lt-md {
+          padding-bottom: 25.67px;
+        }
+
+        &-row {
+          display: flex;
+          gap: 8px;
+        }
+
+        &-title {
+          font-family: $golos-medium;
+          font-style: normal;
+          font-weight: 600;
+          color: $color-dark-grey;
+          font-size: 16px;
+          line-height: 20px;
+
+          @include gt-sm {
+            margin-bottom: 16px;
+          }
+
+          @include lt-md {
+            margin-bottom: 12px;
+          }
+        }
+      }
+
+      &__tab {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1;
+
+        background: #f7f7f7;
+        border-radius: 12px;
+        cursor: pointer;
+        user-select: none;
+
+        font-family: $golos-regular;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px;
+        font-size: 14px;
+        letter-spacing: -0.01em;
+        color: $color-dark-grey;
+
+        @include gt-sm {
+          padding-left: 37px;
+          height: 48px;
+        }
+
+        @include lt-md {
+          justify-content: center;
+          height: 52px;
+        }
+
+        &.active {
+          background: $color-green;
+          color: #ffffff;
+        }
+
+        &-icon {
+          width: 24px;
+          height: 24px;
+        }
+      }
+
+      &__checkbox {
+        display: flex;
+        flex-direction: column;
+
+        @include gt-sm {
+          gap: 12px;
+          padding-bottom: 24px;
+        }
+
+        @include lt-md {
+          gap: 7.33px;
+          padding-bottom: 25.67px;
+        }
+
+        &-item {
+          font-family: $golos-regular;
+          font-style: normal;
+          font-weight: 400;
+          color: #7c7c7c;
+          width: 100%;
+
+          @include gt-sm {
+            font-size: 14px;
+            line-height: 20px;
+          }
+
+          @include lt-md {
+            font-size: 11px;
+            line-height: 16px;
+            letter-spacing: -0.01em;
+          }
+        }
+
+        &-link {
+          color: $color-green;
+
+          @include lt-md {
+            display: inline;
+          }
+        }
+      }
     }
 
     .terms {
       @include lt-md {
         padding-top: 16px;
-      }
-
-      &__signin {
-        font-family: $golos-regular;
-        font-weight: 400;
-        font-style: normal;
-        color: $color-dark-grey;
-        text-align: center;
-        font-size: 16px;
-        line-height: 20px;
-
-        padding-bottom: 20px;
-
-        &-link {
-          @include gt-sm {
-            font-family: $golos-bold;
-            font-weight: 600;
-            color: $color-dark-green;
-          }
-
-          @include lt-md {
-            color: $color-green;
-          }
-        }
       }
     }
   }

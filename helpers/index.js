@@ -30,7 +30,7 @@ const useSortArrayBy = (array, value, prop) => {
 }
 
 const useBreadCrumbs = (route) => {
-  const unusedRoutes = ['/', '/flowers']
+  const unusedRoutes = ['/', '/flowers', '/about', '/delivery']
 
   if (unusedRoutes.includes(route.path)) { return }
 

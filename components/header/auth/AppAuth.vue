@@ -2,57 +2,25 @@
   <div class="container">
     <div class="container__header">
       <div class="container__layout">
-        <div class="container__title"><app-go-back-mobile />Log in to your account</div>
+        <div class="container__title"><app-go-back-mobile />Login or registration</div>
       </div>
     </div>
 
     <div class="container__body">
       <div class="container__layout">
         <form class="form" @submit.prevent="handleValidate">
-          <app-input
-            v-model.trim="form.email.value"
-            size="x-large"
-            class="form__input"
-            placeholder="Enter your Email"
-          />
-          <div v-show="form.email.errorMsg" class="form__error">
-            {{ form.email.errorMsg }}
-          </div>
-          <app-input
-            v-model="form.password.value"
-            :type="passwordInputType"
-            size="x-large"
-            class="form__input"
-            placeholder="Enter the password"
-          >
-            <template #right>
-              <svg-icon
-                v-show="form.password.value"
-                :name="getPasswordInputIcon(form.password.isVisible)"
-                class="form__input-icon"
-                @click="changePasswordVisibility"
-              />
-            </template>
-          </app-input>
-          <div v-show="form.password.errorMsg" class="form__error">
-            <template v-if="isPasswordErrorDetail"
-              >{{ form.password.errorMsg.text }}
-              <ul class="form__error-list error-list">
-                <li v-for="item in form.password.errorMsg.items" :key="item" class="error-list__item">{{ item }}</li>
-              </ul>
-            </template>
-            <template v-else>
-              {{ form.password.errorMsg }}
-            </template>
-          </div>
-          <a href="#" class="form__link" @click.prevent="forgotPassword">Forgot your password?</a>
-          <app-button stretch="full" class="form__button">Login</app-button>
+          <app-number-input v-if="isPhoneFormType" :error="input.errorMsg" @set-number="setNumber" />
+          <template v-if="isEmailFormType">
+            <app-input v-model="input.value" size="x-large" class="form__input" placeholder="Enter your E-mail" />
+            <div v-show="input.errorMsg" class="form__error">
+              {{ input.errorMsg }}
+            </div>
+          </template>
+          <app-button stretch="full" class="form__button">{{ authTypeButtonText }}</app-button>
         </form>
-        <div class="info">
-          <div href="#" class="info__signup">
-            Need an account? <a href="#" class="info__signup-link" @click.prevent="goToSignUp">Sign up now</a>
-          </div>
-          <div class="info__term">
+        <div class="form-info">
+          <button type="button" class="form-info__change-type" @click="changeAuthType">{{ authTypeText }}</button>
+          <div class="form-info__term">
             <app-personal-data-terms />
           </div>
         </div>
@@ -62,21 +30,23 @@
 </template>
 
 <script>
-import AppInput from '~/components/shared/AppInput';
 import AppButton from '~/components/shared/AppButton';
 import AppPersonalDataTerms from '~/components/header/auth/AppPersonalDataTerms';
 import AppGoBackMobile from '~/components/shared/AppGoBackMobile';
 
 import authManager from '~/mixins/authManager';
 
+import { AUTH_TYPES, AUTH_REG_STEPS } from '~/constants/index';
+
 export default {
   name: 'AppAuth',
 
   components: {
     AppButton,
-    AppInput,
     AppPersonalDataTerms,
     AppGoBackMobile,
+    AppNumberInput: () => import('~/components/shared/AppNumberInput'),
+    AppInput: () => import('~/components/shared/AppInput'),
   },
 
   mixins: [authManager],
@@ -90,97 +60,71 @@ export default {
 
   data() {
     return {
-      form: {
-        email: {
-          value: '',
-          errorMsg: '',
-        },
-
-        password: {
-          value: '',
-          errorMsg: '',
-          isVisible: false,
-        },
+      input: {
+        value: '',
+        errorMsg: '',
+        isValid: false,
       },
     };
   },
 
   computed: {
-    hasFormError() {
-      return this.form.email.errorMsg || this.form.password.errorMsg;
+    authTypeText() {
+      return `Log in using ${this.anotherType}`;
     },
 
-    passwordInputType() {
-      return this.form.password.isVisible ? 'text' : 'password';
-    },
-
-    isPasswordErrorDetail() {
+    authTypeButtonText() {
       return (
-        typeof this.form.password.errorMsg === 'object' &&
-        !Array.isArray(this.form.password.errorMsg) &&
-        this.form.password.errorMsg !== null
+        'Get ' + (this.isPhoneFormType ? 'an ' + AUTH_TYPES.phone.extraCodeName : 'the ' + AUTH_TYPES.email.codeName)
       );
+    },
+
+    isInvalidForm() {
+      return !!this.input.errorMsg;
     },
   },
 
   methods: {
+    setNumber({ value, isValid }) {
+      this.input = { ...this.input, value, isValid };
+    },
+
     handleValidate() {
-      const formData = {
-        email: this.form.email.value,
-        password: this.form.password.value,
-      };
+      const value = this.input.value;
 
-      this.setFormErrorMsg(this.hasEmailError(formData.email), this.hasPasswordError(formData.password));
+      this.input.errorMsg =
+        (this.isPhoneFormType && this.hasPhoneError(this.input.isValid)) ||
+        (this.isEmailFormType && this.hasEmailError(value));
 
-      if (this.hasFormError) {
+      if (this.isInvalidForm) {
         return;
       }
 
-      const { emailError, passwordError } = this.checkCredentials(formData.email, formData.password, 'auth');
-
-      this.setFormErrorMsg(emailError, passwordError);
-
-      if (!this.hasFormError) {
-        this.onSubmit(formData);
-      }
+      this.onSubmit(value);
     },
 
-    async onSubmit(payload) {
-      await this.$store.dispatch('auth/signIn', payload)
+    onSubmit(value) {
+      // const payload = JSON.stringify({
+      //   [this.currCodeType]: this.input.value,
+      // });
 
-      this.resetForm();
+      // await this.$store.dispatch('auth/getOtp', payload);
 
-      if (this.$device.isMobileOrTablet) {
-        this.$router.push({ name: 'index' });
-      } else {
-        this.$emit('close');
-      }
+      this.changeStep({ status: AUTH_REG_STEPS.code.name, type: this.currCodeType });
+      this.setReceiver(value);
+
+      this.resetInput();
     },
 
-    changePasswordVisibility() {
-      this.form.password.isVisible = !this.form.password.isVisible;
+    changeAuthType() {
+      this.resetInput();
+      this.setCodeType(this.anotherType);
     },
 
-    goToSignUp() {
-      this.changeStep('reg');
-      this.resetForm();
-    },
-
-    resetForm() {
-      for (const key in this.form) {
-        this.form[key].value = '';
-        this.form[key].errorMsg = '';
-      }
-    },
-
-    forgotPassword() {
-      this.changeStep('restorePassword');
-      this.resetForm();
-    },
-
-    setFormErrorMsg(emailErr = '', passErr = '') {
-      this.form.email.errorMsg = emailErr;
-      this.form.password.errorMsg = passErr;
+    resetInput() {
+      this.input.value = '';
+      this.input.errorMsg = '';
+      this.input.isValid = false;
     },
   },
 };
@@ -200,7 +144,6 @@ export default {
   &__layout {
     @include gt-sm {
       padding: 0 24px;
-      overflow: auto;
     }
   }
 
@@ -236,60 +179,29 @@ export default {
       margin: 0;
     }
 
-    .form {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      &__input-icon {
-        user-select: none;
-        width: 24px;
-        height: 24px;
-
-        @include gt-sm {
-          cursor: pointer;
-        }
-      }
-
-      &__link {
-        display: block;
-        padding: 8px 0;
-        font-family: $golos-regular;
-        font-style: normal;
-        font-weight: 400;
-        color: $color-green;
-        font-size: 16px;
-        line-height: 24px;
-
-        @include gt-sm {
-          max-width: 60%;
-        }
-      }
+    .form__button {
+      margin-top: 16px;
     }
 
-    .info {
+    .form-info {
       margin-top: 16px;
 
-      &__signup {
-        font-family: $golos-regular;
-        font-weight: 400;
+      &__change-type {
+        display: block;
+        font-family: $golos-bold;
         font-style: normal;
-        color: $color-dark-grey;
-        text-align: center;
+        font-weight: 600;
         font-size: 16px;
         line-height: 20px;
+        margin: 0 auto;
 
-        &-link {
-          @include gt-sm {
-            font-family: $golos-bold;
-            font-weight: 600;
-            color: $color-dark-green;
-            margin-bottom: 16px;
-          }
+        @include gt-sm {
+          color: $color-dark-green;
+          margin-bottom: 16px;
+        }
 
-          @include lt-md {
-            color: $color-green;
-          }
+        @include lt-md {
+          color: $color-green;
         }
       }
 

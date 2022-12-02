@@ -9,6 +9,7 @@
           :class="{ error }"
           :maxlength="getMaxLength(number)"
           :autocomplete="getAutoCompleteRule(number)"
+          :disabled="disabled"
           @click="resetInputHandler"
           @keypress="isNumberKey"
           @keyup="onInputKeyUp($event, number)"
@@ -33,12 +34,23 @@ export default {
       type: String,
       default: '',
     },
+
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   CODE_INPUT_DEFAULT_COUNT,
 
-  mounted() {
-    this.autoFocus();
+  watch: {
+    disabled(val) {
+      if (val) {
+        return;
+      }
+      
+      this.autoFocus();
+    },
   },
 
   methods: {
@@ -160,6 +172,7 @@ export default {
       border-radius: 10px;
       border: 1px solid transparent;
       outline: none;
+      box-sizing: border-box;
 
       font-family: $golos-regular;
       font-style: normal;
@@ -186,6 +199,7 @@ export default {
 
       &.error {
         border: 1px solid #db1838;
+        padding-left: 0;
       }
     }
   }

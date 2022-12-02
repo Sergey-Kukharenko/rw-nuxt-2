@@ -53,11 +53,16 @@
                 />
               </client-only>
             </div>
-            <div class="review-info__text">{{ currReviewDetails.text }} ...<a href="#" class="link">still</a></div>
+            <div class="review-info__text">
+              {{ reviewText }}
+              <a href="#" class="link" @click.prevent="toggleReviewText">{{ reviewContentToggleText }}</a>
+            </div>
           </div>
         </div>
 
-        <div class="review-content__text">{{ currReviewDetails.text }} ...<a href="#" class="link">still</a></div>
+        <div class="review-content__text">
+          {{ reviewText }} <a href="#" class="link" @click.prevent="toggleReviewText">{{ reviewContentToggleText }}</a>
+        </div>
       </div>
     </div>
   </section>
@@ -78,18 +83,28 @@ export default {
   data() {
     return {
       currReview: 0,
-
       starSpacing: '',
+      reviewList: dataReviews,
     };
   },
 
   computed: {
     currReviewDetails() {
-      return dataReviews[this.currReview];
+      return this.reviewList[this.currReview];
+    },
+
+    reviewText() {
+      return this.currReviewDetails.isTextHidden
+        ? this.currReviewDetails.text.substring(0, 100) + '...'
+        : this.currReviewDetails.text;
+    },
+
+    reviewContentToggleText() {
+      return this.currReviewDetails.isTextHidden ? 'still' : 'hide';
     },
 
     hasNext() {
-      return this.currReview < dataReviews.length - 1;
+      return this.currReview < this.reviewList.length - 1;
     },
 
     hasPrev() {
@@ -102,6 +117,10 @@ export default {
   },
 
   methods: {
+    toggleReviewText() {
+      this.reviewList[this.currReview].isTextHidden = !this.reviewList[this.currReview].isTextHidden;
+    },
+
     nextReview() {
       this.currReview++;
     },
@@ -147,7 +166,7 @@ export default {
 
     .review-service {
       @include gt-sm {
-        min-width: 300px;
+        width: 300px;
       }
 
       @include lt-md {
@@ -257,6 +276,10 @@ export default {
     }
     .review-content {
       position: relative;
+
+      @include gt-sm {
+        flex: 1;
+      }
 
       @include lt-md {
         padding: 14px 16px 0 14px;

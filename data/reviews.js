@@ -9,7 +9,8 @@ export default [
     avatar: 'https://via.placeholder.com/96',
     user_name: 'Isabella Gilbert',
     rating_count: 5.0,
-    text: 'Thank you so much for the timely delivery and for the opportunity to make an orderand delivery day to day'
+    text: 'Thank you so much for the timely delivery and for the opportunity to make an orderand delivery day to day. Thank you so much for the timely delivery and for the opportunity to make an orderand delivery day to day.',
+    isTextHidden: true
   },
 
   {
@@ -22,6 +23,7 @@ export default [
     avatar: 'https://via.placeholder.com/96',
     user_name: 'Michel John',
     rating_count: 4.0,
-    text: 'Thank you so much for the timely delivery and for the opportunity to make an orderand delivery day to day'
+    text: 'Thank you so much for the timely delivery and for the opportunity to make an orderand delivery day to day.',
+    isTextHidden: true
   }
 ]

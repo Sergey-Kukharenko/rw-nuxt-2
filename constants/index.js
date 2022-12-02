@@ -7,60 +7,97 @@ const FILTER_TYPES = {
 }
 
 const AUTH_REG_STEPS = {
-  auth: { component: 'AppAuth', page: 'signin' },
-
-  restorePassword: { component: 'AppRestore', page: 'signin-reset-password' },
-  restorePassNotification: { component: 'AppRestoreNotification', page: 'signin-reset-password-notification' },
-  restorePassNewPassword: { component: 'AppRestoreNewPassword', page: 'signin-reset-password-new-password' },
-  restorePassCompleted: { component: 'AppRestoreCompleted', page: 'signin-reset-password-completed' },
-
-  reg: { component: 'AppReg', page: 'signup' },
-  regNotification: { component: 'AppRegNotification', page: 'signup-notification' },
-  regCompleted: { component: 'AppRegCompleted', page: 'signup-completed' },
+  auth: { name: 'auth', component: 'AppAuth', page: 'signin' },
+  code: { name: 'code', component: 'AppCode', page: 'signin-code' },
+  codeNotReceived: { name: 'codeNotReceived', component: 'AppNotReceived', page: 'signin-code-notReceived' },
+  reg: { name: 'reg', component: 'AppReg', page: 'signup' },
+  regCompleted: { name: 'regCompleted', component: 'AppCompleted', page: 'signup-completed' },
 }
 
 const AUTH_REG_ERROR_MESSAGES = {
   email: {
-    notExist: 'Аccount with the entered email address does not exist',
-    alreadyExist: 'Аccount with the entered email address already exists',
-    invalid: 'Invalid mail format'
+    invalid: 'Invalid mail format',
+    notExists: 'There is no such mail'
   },
-  password: {
-    invalid: {
-      text: 'Invalid password format. The password must contain',
-      items: [
-        '1 capital letter',
-        '1 small letter',
-        '1 digit'
-      ],
-    },
-    notMatch: 'Passwords do not match',
-    notExist: 'Password was entered incorrectly'
+  phone: {
+    invalid: 'Invalid number format',
+    notExists: 'There is no such number'
   },
+  code: 'Invalid code',
   invalidFormat: 'Invalid fomat',
   requiredField: 'Field is required'
 }
 
-const USER_CREDENTIALS = {
-  email: 'test@gmail.com',
-  password: '123123Dd'
+const AUTH_TYPES = {
+  email: {
+    name: 'email',
+    type: 'E-mail',
+    codeName: 'code'
+  },
+  phone: {
+    name: 'phone',
+    type: 'phone',
+    codeName: 'SMS',
+    extraCodeName: 'SMS-code'
+  }
 }
+
+const AUTH_REG_TYPES = ['phone', 'email']
 
 const AUTH_CODE_TIMER = {
   step: 1000,
-  duration: 6000
+  duration: 120000
 }
+
+const AUTH_CORRECT_CODE = '1234'
 
 const CODE_INPUT_DEFAULT_COUNT = 4
 
+const CHECKOUT_FORM_KEYS = {
+  address: 'address',
+  dateTime: 'dateTime',
+  email: 'email'
+}
+
+const INFO_BUTTONS = [
+  {
+    text: 'contacts',
+    images: [
+      '/images/info/avatar-female.png',
+      '/images/info/avatar-male.png'
+    ]
+  },
+  {
+    text: 'delivery',
+    images: [
+      '/images/info/gift.png'
+    ]
+  },
+  {
+    text: 'reviews',
+    images: [
+      '/images/info/like.png'
+    ]
+  }
+]
+
+const REVIEW_CARD_SYMBOLS_COUNT = 70
 
 export {
   LIST_ITEM_VIEW_COUNT,
   FILTER_TYPES,
   AUTH_REG_STEPS,
+  AUTH_REG_TYPES,
   AUTH_CODE_TIMER,
   CODE_INPUT_DEFAULT_COUNT,
+  AUTH_CORRECT_CODE,
   AUTH_REG_ERROR_MESSAGES,
-  USER_CREDENTIALS,
-};
+  AUTH_TYPES,
+
+  CHECKOUT_FORM_KEYS,
+
+  INFO_BUTTONS,
+
+  REVIEW_CARD_SYMBOLS_COUNT
+}
 

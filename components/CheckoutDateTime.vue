@@ -1,19 +1,15 @@
 <template>
-  <checkout-pane
-    title="Date & time"
-    :delim="true"
-  >
+  <checkout-pane title="Date & time" :delim="true">
     <div class="date__tabs">
-      <basket-tab
-        ref="dateTab"
-        :list="dateList"
-        size="large"
-        :stretch="true"
-        @click="onTabClick"
-      >
+      <basket-tab ref="dateTab" :list="dateList" size="large" :stretch="true" @click="onTabClick">
         <template #default="{ item }">
           <div class="date__tabs-item">
-            <div v-if="daySelect === null" :class="item.type === 'fix' ? 'date__tabs-item-title' : 'date__tabs-item-label'">{{ item.title }}</div>
+            <div
+              v-if="daySelect === null"
+              :class="item.type === 'fix' ? 'date__tabs-item-title' : 'date__tabs-item-label'"
+            >
+              {{ item.title }}
+            </div>
             <div v-else class="date__tabs-item-title">{{ dayList[daySelect].weekday }}</div>
             <div class="date__tabs-item-label">
               {{ getDateLabel(item) }}
@@ -23,39 +19,28 @@
       </basket-tab>
     </div>
     <div class="date__select">
-      <app-select
-        placeholder="Choose delivery time"
-        :list="timeList"
-        size="x-large"
-      >
+      <app-select placeholder="Choose delivery time" :list="timeList" size="x-large" dark-label>
         <template #default="{ item, close, setLabel }">
-          <div
-            class="date__select-item"
-            @click="onClickTimeItem(item, close, setLabel)"
-          >
+          <div class="date__select-item" @click="onClickTimeItem(item, close, setLabel)">
             <div>
-              <app-radio
-                v-model="time"
-                :name="item.id"
-              >
+              <app-radio v-model="time" :name="item.id">
                 {{ item.label }}
               </app-radio>
             </div>
-            <div>{{item.price || "Free delivery"}}</div>
+            <div>{{ item.price || 'Free delivery' }}</div>
           </div>
         </template>
       </app-select>
+      <div v-show="error" class="error">
+        {{ error }}
+      </div>
       <div class="date__fasten">
-        <basket-switch v-model="fasten"/>
+        <basket-switch v-model="fasten" />
         <div class="date__fasten-label">Fasten delivery (in 2 hours)</div>
         <div class="date__fasten-price">+ £5</div>
       </div>
     </div>
-    <checkout-modal
-      ref="dateModal"
-      :width="436"
-      @close="onCloseDayModal"
-    >
+    <checkout-modal ref="dateModal" :width="436" @close="onCloseDayModal">
       <template #title>Choose another day</template>
       <template #default>
         <div class="date__modal-day-list">
@@ -65,11 +50,10 @@
             class="date__modal-day-item"
             @click="onClickDayItem(index)"
           >
-            <app-radio
-              v-model="daySelect"
-              :name="index"
-            />
-            <div class="date__modal-day-label">{{ item.month }} {{item.day}}, <span>{{item.weekday}}</span></div>
+            <app-radio v-model="daySelect" :name="index" />
+            <div class="date__modal-day-label">
+              {{ item.month }} {{ item.day }}, <span>{{ item.weekday }}</span>
+            </div>
           </div>
         </div>
       </template>
@@ -79,13 +63,27 @@
 
 <script>
 import AppSelect from '~/components/shared/AppSelect';
-import AppRadio from "~/components/shared/AppRadio";
+import AppRadio from '~/components/shared/AppRadio';
+
+import { CHECKOUT_FORM_KEYS } from '~/constants';
 
 const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 export default {
   name: 'CheckoutDateTime',
-  components: {AppRadio, AppSelect },
+
+  components: {
+    AppRadio,
+    AppSelect,
+  },
+
+  props: {
+    error: {
+      type: String,
+      default: '',
+    },
+  },
+
   data() {
     const date = new Date();
 
@@ -151,26 +149,28 @@ export default {
       ],
       time: 0,
       daySelect: null,
-      fasten: false
+      fasten: false,
     };
   },
+
   computed: {
-    dayList () {
+    dayList() {
       const date = new Date();
-      date.setDate(date.getDate()+2);
+      date.setDate(date.getDate() + 2);
       let dayCount = 7;
       const result = [];
       while (dayCount--) {
         result.push({
-          month: new Intl.DateTimeFormat('en-ES', { month: 'long'}).format(date),
+          month: new Intl.DateTimeFormat('en-ES', { month: 'long' }).format(date),
           day: date.getDate(),
-          weekday: new Intl.DateTimeFormat('en-ES', { weekday: 'long'}).format(date)
+          weekday: new Intl.DateTimeFormat('en-ES', { weekday: 'long' }).format(date),
         });
-        date.setDate(date.getDate()+1);
+        date.setDate(date.getDate() + 1);
       }
       return result;
-    }
+    },
   },
+
   methods: {
     getDateLabel(item) {
       if (item.type === 'fix') {
@@ -182,26 +182,27 @@ export default {
       }
       return item.label;
     },
-    onClickTimeItem (item, close, setLabel) {
+    onClickTimeItem(item, close, setLabel) {
       this.time = item.id;
-      const price = item.price || "free delivery";
+      const price = item.price || 'free delivery';
       setLabel(`${item.label}, ${price}`);
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, value: item.label });
       close();
     },
-    onTabClick (index) {
+    onTabClick(index) {
       if (this.dateList[index].type === 'select') {
         this.$refs.dateModal.open();
       } else {
         this.daySelect = null;
       }
     },
-    onCloseDayModal () {
+    onCloseDayModal() {
       if (this.daySelect === null) this.$refs.dateTab.active = 0;
     },
-    onClickDayItem (index) {
+    onClickDayItem(index) {
       this.daySelect = index;
       this.$refs.dateModal.close();
-    }
+    },
   },
 };
 </script>
@@ -237,7 +238,7 @@ export default {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: #7e8895;
+    color: #7c7c7c;
   }
 
   &__select-item {
@@ -252,7 +253,7 @@ export default {
     margin-top: -24px;
   }
 
-  &__modal-day-item{
+  &__modal-day-item {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -265,18 +266,18 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
     user-select: none;
     cursor: default;
 
     &:not(:last-child) {
-      border-bottom: 1.5px solid #DDE0E6;
+      border-bottom: 1.5px solid #dde0e6;
     }
   }
 
   &__modal-day-label {
     & > span {
-      color: #7C7C7C;
+      color: #7c7c7c;
     }
   }
 
@@ -295,7 +296,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #7C7C7C;
+    color: #7c7c7c;
   }
 
   &__fasten-price {
@@ -305,7 +306,18 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
+  }
+
+  .error {
+    font-family: $golos-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: #db1838;
+    padding-left: 18px;
+    margin-top: 4px;
   }
 }
 </style>

@@ -28,6 +28,7 @@ import dataBestBouquets from '@/data/best-bouquets';
 import dataSpecialOffers from '@/data/special-offers';
 import dataUnderPounds from '@/data/under-pounds';
 import dataAutumnCollection from '@/data/autumn-collection';
+import ToastCardDeals from '~/components/toast-cards/ToastCardDeals';
 
 export default {
   name: 'IndexPage',
@@ -46,6 +47,30 @@ export default {
       underPounds: dataUnderPounds,
       autumnCollection: dataAutumnCollection
     }
+  },
+
+  mounted() {
+    const content = {
+      component: ToastCardDeals,
+      props: {
+        icon: {
+          name: 'lightning',
+          size: {width: 28, height: 28}
+        },
+        title: 'Great product!',
+        text: '943 people have bought this product in the last 7 days',
+      }
+    };
+
+    const options = {
+      timeout: 5000,
+      icon: false,
+      closeButton: false,
+      position: 'bottom-left',
+      class: ['toast', 'toast--md', 'toast--dark'],
+    };
+
+    this.$toast(content, options);
   },
 };
 </script>

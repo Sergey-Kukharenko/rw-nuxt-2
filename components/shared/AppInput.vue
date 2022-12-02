@@ -9,9 +9,11 @@
     >
       <slot name="left"/>
       <input
+        v-mask="mask"
         :type="type"
         :placeholder="placeholder"
         :value="value"
+        :disabled="disabled"
         @input="onInput"
       />
       <slot name="right"/>
@@ -77,6 +79,16 @@ export default {
       type: String,
       default: ""
     },
+
+    mask: {
+      type: String,
+      default: ''
+    },
+
+    disabled: {
+      type: Boolean,
+      default: false
+    }
   },
   computed: {
     classes () {
@@ -128,6 +140,11 @@ export default {
       font-size: 14px;
       line-height: 20px;
       color: $color-white-grey;
+    }
+
+    &:disabled {
+      color: rgba(124, 124, 124, 0.5);
+      user-select: none;
     }
   }
 

@@ -1,31 +1,28 @@
 <template>
   <main class="checkout">
     <div class="checkout__recipient">
-      <checkout-recipient/>
+      <checkout-recipient />
     </div>
     <div class="checkout__delivery-details">
-      <checkout-delivery-details/>
+      <checkout-delivery-details :error="fields.address.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__date-time">
-      <checkout-date-time/>
+      <checkout-date-time :error="fields.dateTime.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__payment-methods">
-      <checkout-payment-methods/>
+      <checkout-payment-methods />
     </div>
     <div class="checkout__gift-card">
-      <checkout-gift-card/>
+      <checkout-gift-card />
     </div>
     <div class="checkout__order">
-      <checkout-order/>
+      <checkout-order />
     </div>
     <div class="checkout__email">
-      <checkout-email/>
+      <checkout-email :error="fields.email.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__submit">
-      <basket-button
-        size="large"
-        :stretch="true"
-      >
+      <basket-button size="large" :stretch="true" @click="handleValidate">
         <div class="checkout__submit-template">
           <div>Place an order</div>
           <div class="checkout__submit-price">£ 86 <span>• Free delivery</span></div>
@@ -36,15 +33,75 @@
 </template>
 
 <script>
+import authManager from '~/mixins/authManager';
+
+import { VALIDATE_MESSAGES } from '~/messages';
+
 export default {
   name: 'CheckoutPage',
+
+  mixins: [authManager],
+
   layout: 'checkout',
-  head: {
-    meta: [{
-      name: 'viewport',
-      content: 'width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
-    }]
-  }
+
+  data() {
+    return {
+      fields: {
+        address: {
+          value: '',
+          errorMsg: '',
+        },
+
+        dateTime: {
+          value: '',
+          errorMsg: '',
+        },
+
+        email: {
+          value: '',
+          errorMsg: '',
+        },
+      },
+    };
+  },
+
+  computed: {
+    isInvalidForm() {
+      return Object.keys(this.fields).some((key) => !this.fields[key].value);
+    },
+  },
+
+  methods: {
+    handleValidate() {
+      this.resetErrors();
+
+      if (!this.isInvalidForm) {
+        return;
+      }
+
+      Object.keys(this.fields).forEach((key) => {
+        if (!this.fields[key].value) {
+          if (key === 'email') {
+            this.fields[key].errorMsg = this.hasEmailError(this.fields[key].value);
+
+            return;
+          }
+
+          this.fields[key].errorMsg = VALIDATE_MESSAGES.required;
+        }
+      });
+    },
+
+    setField({ key, value }) {
+      this.fields[key].value = value;
+    },
+
+    resetErrors() {
+      Object.keys(this.fields).forEach((key) => {
+        this.fields[key].errorMsg = '';
+      });
+    },
+  },
 };
 </script>
 
@@ -108,10 +165,10 @@ export default {
     font-weight: 700;
     font-size: 16px;
     line-height: 24px;
-    color: #FFFFFF;
+    color: #ffffff;
 
     span {
-      color: #FFFFFF77;
+      color: #ffffff77;
     }
 
     @include lt-lg {

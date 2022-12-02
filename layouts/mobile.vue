@@ -6,13 +6,11 @@
 </template>
 
 <script>
-import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
-
 export default {
   name: 'MobileLayout',
 
   components: {
-    AppHeaderMobile,
+    AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
   },
 
   middleware: ['verifyMobileDevice'],

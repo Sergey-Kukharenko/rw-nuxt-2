@@ -1,6 +1,6 @@
 <template>
   <div class="profile">
-    <app-dropdown v-if="user.authorized" :options="getOptions">
+    <app-dropdown v-if="isAuth" :options="getOptions">
       <template #button>
         <app-profile-button :user="user" />
       </template>
@@ -26,15 +26,11 @@ import AppProfilePreview from '~/components/header/profile/AppProfilePreview';
 import AppModal from '~/components/shared/AppModal';
 
 import AppAuth from '~/components/header/auth/AppAuth';
+import AppCode from '~/components/header/auth/code/AppCode';
+import AppNotReceived from '~/components/header/auth/code/AppNotReceived';
 
 import AppReg from '~/components/header/auth/registration/AppReg';
-import AppRegNotification from '~/components/header/auth/registration/AppRegNotification';
-import AppRegCompleted from '~/components/header/auth/registration/AppRegCompleted';
-
-import AppRestore from '~/components/header/auth/reset-password/AppRestore';
-import AppRestoreNewPassword from '~/components/header/auth/reset-password/AppRestoreNewPassword';
-import AppRestoreNotification from '~/components/header/auth/reset-password/AppRestoreNotification';
-import AppRestoreCompleted from '~/components/header/auth/reset-password/AppRestoreCompleted';
+import AppCompleted from '~/components/header/auth/registration/AppCompleted';
 
 import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 
@@ -43,15 +39,11 @@ export default {
 
   components: {
     AppAuth,
+    AppCode,
 
     AppReg,
-    AppRegNotification,
-    AppRegCompleted,
-
-    AppRestore,
-    AppRestoreNewPassword,
-    AppRestoreNotification,
-    AppRestoreCompleted,
+    AppCompleted,
+    AppNotReceived,
 
     AppModal,
     AppProfilePreview,
@@ -74,6 +66,10 @@ export default {
       return this.$store.getters['user/state'];
     },
 
+    isAuth() {
+     return this.$store.getters['auth/isAuthorized'] 
+    },
+
     getOptions() {
       return this.$device.isDesktop ? this.options : null;
     },
@@ -92,6 +88,7 @@ export default {
     close() {
       this.isVisible = false;
       this.$store.commit('auth/setCurrStep', '');
+      this.$store.commit('auth/setCodeType', '');
       enableScroll();
     },
   },

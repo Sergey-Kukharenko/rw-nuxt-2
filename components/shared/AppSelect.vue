@@ -1,61 +1,33 @@
 <template>
-  <div
-    ref="select"
-    class="app-select"
-    :class="classes"
-  >
-    <div
-      class="app-select__field"
-      @click="onClickField"
-    >
-      <div class="app-select__label">
+  <div ref="select" class="app-select" :class="classes">
+    <div class="app-select__field" @click="onClickField">
+      <div v-if="!label" class="app-select__label">
+        <slot name="label">
+          {{ placeholder }}
+        </slot>
+      </div>
+      <div v-else class="app-select__label" :class="{ dark: darkLabel }">
         <slot name="label">
           {{ label }}
         </slot>
       </div>
       <div class="app-select__choose">Choose</div>
       <div class="app-select__chevron">
-        <svg-icon
-          class="app-select__icon"
-          name="chevron-right"
-        />
+        <svg-icon class="app-select__icon" name="chevron-right" />
       </div>
     </div>
     <client-only>
       <teleport to="body">
-        <div
-          v-show="isOpened"
-          ref="dropdown"
-          v-click-outside="close"
-          class="app-select__dropdown"
-        >
+        <div v-show="isOpened" ref="dropdown" v-click-outside="close" class="app-select__dropdown">
           <div class="app-select__dropdown-scroll">
             <div class="app-select__dropdown-title">
               <div>{{ placeholder }}</div>
-              <div
-                class="app-select__dropdown-close"
-                @click="close"
-              >
-                <img
-                  src="~/assets/sprite/svg/close.svg"
-                  width="10"
-                  height="10"
-                  alt="close"
-                />
+              <div class="app-select__dropdown-close" @click="close">
+                <img src="~/assets/sprite/svg/close.svg" width="10" height="10" alt="close" />
               </div>
             </div>
-            <div
-              v-for="(item, index) in list"
-              :key="index"
-              class="app-select__dropdown-item"
-            >
-              <slot
-                :item="item"
-                :index="index"
-                :open="open"
-                :close="close"
-                :set-label="setLabel"
-              />
+            <div v-for="(item, index) in list" :key="index" class="app-select__dropdown-item">
+              <slot :item="item" :index="index" :open="open" :close="close" :set-label="setLabel" />
             </div>
           </div>
         </div>
@@ -90,6 +62,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    darkLabel: {
+      type: Boolean,
+      default: false,
+    },
   },
   data() {
     return {
@@ -112,9 +88,6 @@ export default {
         document.body.classList.remove('noscroll');
       }
     },
-  },
-  mounted() {
-    this.label = this.placeholder;
   },
   methods: {
     open() {
@@ -168,6 +141,10 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
+  }
+
+  &__label.dark {
+    color: $color-dark-grey;
   }
 
   &__choose {

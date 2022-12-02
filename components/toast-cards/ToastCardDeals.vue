@@ -2,10 +2,10 @@
   <div class="toast-card">
     <svg-icon v-if="icon" :name="icon.name" v-bind="icon.size" class="toast-card__icon"/>
     <div class="toast-card__caption">
-      <div class="toast-card__caption-title">
+      <div v-if="title" class="toast-card__caption-title">
         {{ title }}
       </div>
-      <div class="toast-card__caption-text">
+      <div v-if="text" class="toast-card__caption-text">
         {{ text }}
       </div>
     </div>
@@ -53,6 +53,7 @@ export default {
     font-size: 12px;
     line-height: 16px;
     letter-spacing: -0.01em;
+    margin-bottom: 4px;
   }
 
   &__caption-text {
@@ -60,7 +61,13 @@ export default {
     font-size: 11px;
     line-height: 16px;
     letter-spacing: -0.01em;
-    margin-top: 4px;
+  }
+}
+
+.toast--height-small {
+  & .toast-card__caption-text{
+    font-size: 14px;
+    line-height: 20px;
   }
 }
 </style>

@@ -70,7 +70,7 @@ export default {
 
   methods: {
     logOut() {
-      this.$store.dispatch('user/logout');
+      this.$store.dispatch('auth/logout');
     }
   }
 };

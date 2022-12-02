@@ -25,7 +25,7 @@ export default {
 
   computed: {
     isAuth() {
-      return this.user.authorized;
+      return this.$store.getters['auth/isAuthorized'];
     },
 
     char() {

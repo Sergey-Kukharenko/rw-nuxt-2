@@ -1,45 +1,55 @@
 <template>
   <div class="container">
+    <div class="container__header">
+      <div class="container__layout">
+        <div class="container__title"><app-go-back-mobile />Registration</div>
+      </div>
+    </div>
     <div class="container__body">
-      <div class="container__layout restore-completed">
-        <figure class="restore-completed__figure">
-          <img src="/images/status/success.png" class="restore-completed__img" alt="" />
+      <div class="container__layout reg-completed">
+        <figure class="reg-completed__figure">
+          <img src="/images/status/success.png" class="reg-completed__img" alt="" />
         </figure>
-        <div class="restore-completed__content">
-          <div class="restore-completed__content-title">Password changed</div>
-          <div class="restore-completed__content-text">
-            You have successfully changed <br />
-            your password
+        <div class="reg-completed__content">
+          <div class="reg-completed__content-title">Registration completed successfully</div>
+          <div class="reg-completed__content-text">
+            We are glad to welcome you <br />
+            on our website
           </div>
         </div>
-        <app-button stretch="full" class="restore-completed__button" @click="goToMain">Continue shopping</app-button>
+        <app-button stretch="full" class="reg-completed__button" @click="goToPath('index')"
+          >Go back to the main page</app-button
+        >
+        <a href="#" class="reg-completed__link" @click.prevent="goToPath('cabinet')">Go to personal account</a>
       </div>
     </div>
   </div>
 </template>
 <script>
 import AppButton from '~/components/shared/AppButton';
+import AppGoBackMobile from '~/components/shared/AppGoBackMobile';
 
 import authManager from '~/mixins/authManager';
 
 export default {
-  name: 'AppRestoreCompleted',
+  name: 'AppRegCompleted',
 
   components: {
     AppButton,
+    AppGoBackMobile,
   },
 
   mixins: [authManager],
 
   methods: {
-    goToMain() {
+    goToPath(pathName) {
+      this.resetStep();
+
       if (this.$device.isMobileOrTablet) {
-        this.$router.push({ name: 'index' });
+        this.$router.push({ name: pathName });
 
         return;
       }
-
-      this.resetStep();
 
       this.$emit('close');
     },
@@ -61,8 +71,29 @@ export default {
     }
   }
 
+  &__title {
+    @include lt-md {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+  }
+
+  &__header {
+    @include gt-sm {
+      display: none;
+    }
+
+    @include lt-md {
+      font-family: $golos-bold;
+      font-size: 24px;
+      line-height: 28px;
+      padding: 20px 0;
+    }
+  }
+
   &__body {
-    .restore-completed {
+    .reg-completed {
       display: flex;
       flex-direction: column;
       gap: 24px;
@@ -129,6 +160,23 @@ export default {
             line-height: 20px;
             letter-spacing: -0.01em;
           }
+        }
+      }
+
+      &__link {
+        @include gt-sm {
+          display: none;
+        }
+
+        @include lt-md {
+          display: block;
+          font-family: $golos-bold;
+          font-style: normal;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 20px;
+          text-align: center;
+          color: #26ad4f;
         }
       }
     }

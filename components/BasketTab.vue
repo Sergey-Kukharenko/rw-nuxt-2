@@ -68,9 +68,9 @@ export default {
 
     outline: none;
     background: #ffffff;
-    color: #000000;
+    color: $color-dark-grey;
     border-radius: 12px;
-    border: 2px solid #dde0e6;
+    border: 1.5px solid #EAEAEA;
     padding: 0 18px;
 
     @include lt-lg {
@@ -79,7 +79,7 @@ export default {
     }
 
     &--active {
-      border-color: $color-green;
+      border-color: $color-dark-green;
     }
   }
 
