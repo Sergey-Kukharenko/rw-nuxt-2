@@ -1,6 +1,7 @@
 <template>
   <div class="toast-card">
-    <svg-icon v-if="icon" :name="icon.name" v-bind="icon.size" class="toast-card__icon"/>
+    <svg-icon v-if="isIcon" :name="icon.name" v-bind="icon.size" class="toast-card__icon"/>
+    <img v-if="isImg" :src="img.src" v-bind="img.size" :alt="img.src" class="toast-card__img">
     <div class="toast-card__caption">
       <div v-if="title" class="toast-card__caption-title">
         {{ title }}
@@ -13,10 +14,17 @@
 </template>
 
 <script>
+import {useObjectNotEmpty} from '~/helpers';
+
 export default {
   name: 'ToastCardDeals',
   props: {
     icon: {
+      type: Object,
+      default: () => ({})
+    },
+
+    img: {
       type: Object,
       default: () => ({})
     },
@@ -30,6 +38,16 @@ export default {
       type: String,
       default: '',
     }
+  },
+
+  computed: {
+    isIcon() {
+      return useObjectNotEmpty(this.icon);
+    },
+
+    isImg() {
+      return useObjectNotEmpty(this.img);
+    }
   }
 };
 </script>
@@ -41,6 +59,11 @@ export default {
 
   &__icon {
     flex-shrink: 0;
+  }
+
+  &__img {
+    border-radius: 8px;
+    overflow: hidden;
   }
 
   &__caption {
@@ -65,7 +88,7 @@ export default {
 }
 
 .toast--height-small {
-  & .toast-card__caption-text{
+  & .toast-card__caption-text {
     font-size: 14px;
     line-height: 20px;
   }

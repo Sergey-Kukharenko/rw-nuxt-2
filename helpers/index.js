@@ -60,6 +60,10 @@ const useStringSwappedValues = (str, mapKeys) => {
   return strResult;
 };
 
+const useObjectNotEmpty = (obj) => {
+  return Object.keys(obj).length !== 0;
+};
+
 export {
   useClassName,
   useClassNameProp,
@@ -67,5 +71,6 @@ export {
   useSetClassName,
   useSortArrayBy,
   useBreadCrumbs,
-  useStringSwappedValues
+  useStringSwappedValues,
+  useObjectNotEmpty
 }

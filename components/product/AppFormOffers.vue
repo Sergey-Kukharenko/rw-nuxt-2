@@ -72,6 +72,27 @@ export default {
   },
 
   mounted() {
+    const content = {
+      component: ToastCardDeals,
+      props: {
+        img: {
+          src: 'https://via.placeholder.com/252x300',
+          size: {width: 32, height: 32}
+        },
+        text: 'Postcard added to the order',
+      }
+    };
+
+    const options = {
+      timeout: 5000000,
+      icon: false,
+      closeButton: false,
+      position: 'bottom-left',
+      class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small'],
+    };
+
+    this.$toast(content, options);
+
     // const content = {
     //   component: ToastCardDeals,
     //   props: {
@@ -79,41 +100,20 @@ export default {
     //       name: 'lightning',
     //       size: {width: 28, height: 28}
     //     },
-    //     text: 'Postcard added to the order',
+    //     title: 'Great product!',
+    //     text: '943 people have bought this product in the last 7 days',
     //   }
     // };
     //
     // const options = {
-    //   timeout: 5000000,
+    //   timeout: 1000,
     //   icon: false,
     //   closeButton: false,
     //   position: 'bottom-left',
-    //   class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small'],
+    //   class: ['toast', 'toast--width-md', 'toast--theme-dark'],
     // };
     //
     // this.$toast(content, options);
-
-    const content = {
-      component: ToastCardDeals,
-      props: {
-        icon: {
-          name: 'lightning',
-          size: {width: 28, height: 28}
-        },
-        title: 'Great product!',
-        text: '943 people have bought this product in the last 7 days',
-      }
-    };
-
-    const options = {
-      timeout: 1000,
-      icon: false,
-      closeButton: false,
-      position: 'bottom-left',
-      class: ['toast', 'toast--width-md', 'toast--theme-dark'],
-    };
-
-    this.$toast(content, options);
   },
 
   methods: {
