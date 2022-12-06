@@ -17,6 +17,8 @@
 </template>
 
 <script>
+import ToastCardDeals from '~/components/toast-cards/ToastCardDeals';
+
 export default {
   name: "BasketPage",
   layout: 'basket',
@@ -25,7 +27,30 @@ export default {
       name: "viewport",
       content: "width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
     }]
-  }
+  },
+
+  mounted() {
+    const content = {
+      component: ToastCardDeals,
+      props: {
+        img: {
+          src: 'https://via.placeholder.com/252x300',
+          size: {width: 32, height: 32}
+        },
+        text: 'Postcard added to the order',
+      }
+    };
+
+    const options = {
+      timeout: 3000000,
+      icon: false,
+      closeButton: false,
+      position: 'bottom-left',
+      class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small'],
+    };
+
+    this.$toast(content, options);
+  },
 };
 </script>
 

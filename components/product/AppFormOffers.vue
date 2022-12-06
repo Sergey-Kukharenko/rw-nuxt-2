@@ -75,45 +75,24 @@ export default {
     const content = {
       component: ToastCardDeals,
       props: {
-        img: {
-          src: 'https://via.placeholder.com/252x300',
-          size: {width: 32, height: 32}
+        icon: {
+          name: 'lightning',
+          size: {width: 28, height: 28}
         },
-        text: 'Postcard added to the order',
+        title: 'Great product!',
+        text: '943 people have bought this product in the last 7 days',
       }
     };
 
     const options = {
-      timeout: 5000000,
+      timeout: 3000,
       icon: false,
       closeButton: false,
       position: 'bottom-left',
-      class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small'],
+      class: ['toast', 'toast--width-md', 'toast--theme-dark'],
     };
 
     this.$toast(content, options);
-
-    // const content = {
-    //   component: ToastCardDeals,
-    //   props: {
-    //     icon: {
-    //       name: 'lightning',
-    //       size: {width: 28, height: 28}
-    //     },
-    //     title: 'Great product!',
-    //     text: '943 people have bought this product in the last 7 days',
-    //   }
-    // };
-    //
-    // const options = {
-    //   timeout: 1000,
-    //   icon: false,
-    //   closeButton: false,
-    //   position: 'bottom-left',
-    //   class: ['toast', 'toast--width-md', 'toast--theme-dark'],
-    // };
-    //
-    // this.$toast(content, options);
   },
 
   methods: {
@@ -131,66 +110,6 @@ export default {
   }
 };
 </script>
-
-<style lang="scss">
-.Vue-Toastification__container {
-  & .bottom-left {
-    @include gt-sm {
-      left: 32px;
-    }
-
-    @include lt-md {
-      left: 12px;
-    }
-  }
-}
-
-.toast {
-  width: 292px;
-  max-width: inherit;
-  min-width: inherit;
-  //min-height: inherit;
-
-  padding: 12px 16px;
-  backdrop-filter: saturate(180%) blur(4px);
-  -webkit-backdrop-filter: saturate(180%) blur(4px);
-  border-radius: 8px;
-  box-shadow: 0 10px 15px rgb(0 0 0 / 20%);
-
-  &--width-large {
-    @include gt-sm {
-      width: 344px;
-    }
-  }
-
-  &--width-medium {
-    width: 261px;
-  }
-
-  &--height-small {
-    min-height: 48px;
-    padding: 8px 12px;
-  }
-
-  &--theme-dark {
-    color: #fff;
-    background: rgb(0 0 0 / 40%);
-
-    & .Vue-Toastification__progress-bar {
-      background: rgba(0, 0, 0, 0.2);
-    }
-  }
-
-  &--theme-yellow {
-    color: $color-dark-grey;
-    background: #FDDF76;
-    backdrop-filter: blur(20px);
-    -weblit-backdrop-filter: blur(20px);
-  }
-}
-
-</style>
-
 <style lang="scss" scoped>
 .form {
   &__footer {

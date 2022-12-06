@@ -49,7 +49,7 @@ export default {
 
   middleware: ['not-found'],
 
-  asyncData({route, $axios, redirect}) {
+   asyncData({route, $axios, redirect}) {
     // const path = route.fullPath;
     const data = {
       seo: {},
