@@ -53,6 +53,10 @@ export default {
   background: #fff;
   padding: 8px 0;
 
+  @include gt-sm {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+  }
+
   @include lt-md {
     border-top: 1px solid #dde0e6;
   }

@@ -35,8 +35,10 @@ export default {
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-gap: $gap-ds;
 
-  @include lt-md {
-    margin-top: 14px;
+
+  @include gt-sm {
+    margin-top: 24px;
+    margin-bottom: 6px;
   }
 
   @include sm {
@@ -71,17 +73,17 @@ export default {
 
     &:nth-child(1) {
       .promotion__image {
-        top: -78px;
-        right: -52px;
+        top: -37px;
+        right: 0;
 
         @include sm {
-          top: -53px;
-          right: -98px;
+          top: -24px;
+          right: -4px;
         }
 
         @include xs {
-          top: -53px;
-          right: -98px;
+          top: -24px;
+          right: -4px;
         }
       }
 
@@ -114,17 +116,17 @@ export default {
 
     &:nth-child(2) {
       .promotion__image {
-        top: -74px;
+        top: -63px;
         right: -30px;
 
         @include sm {
-          top: -38px;
-          right: -17px;
+          top: -46px;
+          right: -32px;
         }
 
         @include xs {
-          top: -38px;
-          right: -17px;
+          top: -46px;
+          right: -32px;
         }
       }
 
@@ -137,17 +139,17 @@ export default {
 
     &:nth-child(3) {
       .promotion__image {
-        top: -52px;
-        right: -12px;
+        top: -60px;
+        right: -24px;
 
         @include sm {
-          top: -33px;
-          right: -8px;
+          top: -47px;
+          right: -36px;
         }
 
         @include xs {
-          top: -33px;
-          right: -8px;
+          top: -47px;
+          right: -36px;
         }
       }
 

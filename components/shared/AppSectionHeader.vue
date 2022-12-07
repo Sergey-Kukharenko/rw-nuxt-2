@@ -24,7 +24,7 @@ export default {
   align-items: center;
 
   &__text {
-    color: #000;
+    color: $color-dark-grey;
   }
 
   &__number {

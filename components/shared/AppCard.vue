@@ -18,7 +18,6 @@
       </a>
     </div>
     <div class="card__body">
-
       <div class="rating">
         <div class="rating__text">{{ slide.rating }}</div>
         <svg-icon name="star" class="rating__icon"/>
@@ -133,7 +132,7 @@ export default {
 .title {
   position: relative;
   z-index: 2;
-  color: #000;
+  color: $color-dark-grey;
 
   @include gt-sm {
     min-height: 40px;
@@ -254,6 +253,7 @@ export default {
   &__icon {
     display: block;
     color: #fff;
+    mix-blend-mode: normal;
     stroke: #7C7C7C;
 
     @include gt-sm {
