@@ -69,7 +69,7 @@ export default {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  margin: 0 -12px;
+  margin: 0 -18px;
 
   &__item {
     cursor: default;
@@ -77,13 +77,8 @@ export default {
     padding: 0;
     border-radius: 12px 12px 0 0;
 
-    &:hover {
-      color: lighten($color-dark-green, 5%);
-    }
-
     &.has-sub-level {
       &:hover {
-        color: $color-dark-green;
         box-shadow: 0 4px 16px #0000001f;
         z-index: 3;
 
@@ -97,11 +92,19 @@ export default {
       &:not(:hover) {
         color: $color-dark-green;
       }
+
+      &:hover {
+        color: lighten($color-dark-green, 5%);
+      }
     }
 
     &:last-of-type {
       &:not(:hover) {
-        color: #f63866;
+        color: $color-link-pink;
+      }
+
+      &:hover {
+        color: lighten($color-link-pink, 5%);
       }
     }
   }

@@ -41,7 +41,7 @@ export default {
   cursor: pointer;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.6;
   }
 
   @include lt-md {

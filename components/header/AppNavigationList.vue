@@ -39,9 +39,9 @@ export default {
   &__item {
     display: block;
     font-family: $golos-regular;
-    color: $color-dark-grey;
     font-size: 14px;
     line-height: 24px;
+    color: $color-dark-grey;
     padding: 10px 12px;
     margin: 0;
 

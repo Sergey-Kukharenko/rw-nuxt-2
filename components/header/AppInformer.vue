@@ -46,6 +46,7 @@ export default {
       font-family: $golos-medium;
       font-size: 12px;
       line-height: 16px;
+      letter-spacing: -.01em;
       color: $color-dark-grey;
       margin-left: 14px;
     }

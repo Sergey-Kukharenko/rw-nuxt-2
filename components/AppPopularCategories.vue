@@ -113,10 +113,10 @@ export default {
         box-sizing: border-box;
 
         @include gt-xs {
-          max-width: 252px;
+          max-width: 261px;
           font-size: 38px;
+          font-weight: 700;
           line-height: 40px;
-          font-weight: 600;
         }
       }
 

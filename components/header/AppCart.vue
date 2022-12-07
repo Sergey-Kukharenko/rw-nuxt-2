@@ -56,9 +56,6 @@ export default {
 <style lang="scss" scoped>
 .cart {
   cursor: pointer;
-  @include gt-sm {
-    color: $color-light-grey;
-  }
 
   @include lt-md {
     display: flex;
@@ -71,7 +68,7 @@ export default {
   }
 
   &:hover {
-    opacity: 0.9;
+    opacity: 0.6;
   }
 
   &__figure {
@@ -80,6 +77,7 @@ export default {
     justify-content: center;
     position: relative;
     margin: 0 auto;
+    color: #ccc;
 
     @include gt-sm {
       width: 28px;
@@ -107,8 +105,8 @@ export default {
       font-size: 14px;
       line-height: 16px;
       text-align: center;
-      color: currentColor;
       margin-top: 7px;
+      color: $color-light-grey;
     }
 
     @include lt-md {

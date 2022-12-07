@@ -1,6 +1,6 @@
 <template>
   <nuxt-link to="/" class="logo">
-    <img src="/images/logo.jpg" class="logo__img" alt="logo" />
+    <img src="/images/logo.svg" class="logo__img" alt="logo" />
   </nuxt-link>
 </template>
 
@@ -23,7 +23,7 @@ export default {
 
     @include gt-sm {
       max-width: 154px;
-      margin-left: -6px;
+      margin-left: 1px;
     }
 
     @include lt-md {

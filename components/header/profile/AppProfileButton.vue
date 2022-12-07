@@ -54,6 +54,10 @@ export default {
 .profile-button {
   cursor: pointer;
 
+  &:hover {
+    opacity: 0.6;
+  }
+
   @include lt-md {
     display: flex;
     align-items: center;
@@ -80,7 +84,7 @@ export default {
   }
 
   &__icon {
-    fill: $color-light-grey;
+    fill: #ccc;
 
     @include gt-sm {
       width: 26.45px;
@@ -103,10 +107,6 @@ export default {
       line-height: 16px;
       text-align: center;
       margin-top: 7px;
-
-      &:hover {
-        opacity: 0.75;
-      }
     }
 
     @include lt-md {

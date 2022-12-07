@@ -42,7 +42,7 @@ export default {
     };
 
     const options = {
-      timeout: 3000000,
+      timeout: 3000,
       icon: false,
       closeButton: false,
       position: 'bottom-left',

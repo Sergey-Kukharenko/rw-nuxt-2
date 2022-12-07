@@ -3,8 +3,8 @@ export default [
     title: 'Flowers',
     icon: 'tile',
     style: {
-      width: 16.67,
-      height: 16.67
+      width: 20,
+      height: 20
     },
 
     hasSubLevel: true,

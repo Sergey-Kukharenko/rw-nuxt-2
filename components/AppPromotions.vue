@@ -2,31 +2,31 @@
   <section class="layout promotion">
     <a v-for="promotion in promotions" :key="promotion.text" class="promotion__item">
       <div class="promotion__text">
-        {{ promotion.text }}
+        <div v-for="(item, idx) in promotion.text" :key="idx">{{ item }}</div>
       </div>
       <figure class="promotion__figure">
-        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text" />
+        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text"/>
       </figure>
     </a>
   </section>
 </template>
 
-<script >
-import dataPromotions from '@/data/promotions'
+<script>
+import dataPromotions from '@/data/promotions';
 
 export default {
   data() {
     return {
       promotions: dataPromotions
-    }
+    };
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">
@@ -59,7 +59,7 @@ export default {
     @include gt-xs {
       display: flex;
       align-items: center;
-      min-height: 96px;
+      min-height: 80px;
       padding: 20px;
     }
 
@@ -72,7 +72,7 @@ export default {
     &:nth-child(1) {
       .promotion__image {
         top: -78px;
-        right: -162px;
+        right: -52px;
 
         @include sm {
           top: -53px;
@@ -88,6 +88,26 @@ export default {
       .promotion__text {
         @include gt-xs {
           max-width: 162px;
+        }
+
+        &:nth-child(1) {
+          & > div {
+            &:nth-child(1) {
+              font-family: $golos-bold;
+              color: $color-dark-green;
+            }
+          }
+        }
+      }
+    }
+
+    &:not(:nth-child(1)) {
+      .promotion__text {
+        & > div {
+          &:nth-child(2) {
+            font-family: $golos-bold;
+            color: $color-dark-green;
+          }
         }
       }
     }
@@ -148,7 +168,7 @@ export default {
 
     @include gt-xs {
       max-width: 60%;
-      font-family: $golos-bold;
+      font-family: $golos-medium;
       letter-spacing: -0.01em;
     }
 
@@ -172,6 +192,7 @@ export default {
 
   &__image {
     position: absolute;
+    mix-blend-mode: darken;
   }
 }
 </style>
