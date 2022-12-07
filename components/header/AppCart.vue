@@ -77,11 +77,11 @@ export default {
     justify-content: center;
     position: relative;
     margin: 0 auto;
-    color: #ccc;
 
     @include gt-sm {
       width: 28px;
       height: 28px;
+      color: #ccc;
     }
   }
 
