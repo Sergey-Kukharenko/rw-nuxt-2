@@ -43,9 +43,9 @@
 import {useToggleClassName} from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
-import AppLogo from '~/components/header/AppLogo';
-import AppCall from '~/components/header/AppCall';
-import AppCart from '~/components/header/AppCart';
+// import AppLogo from '~/components/header/AppLogo';
+// import AppCall from '~/components/header/AppCall';
+// import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
@@ -61,9 +61,9 @@ export default {
     AppHeaderMobileMenu,
     AppMobileLocation,
     AppMobileProfile,
-    AppCart,
-    AppCall,
-    AppLogo,
+    // AppCart,
+    // AppCall,
+    // AppLogo,
     AppDrawer
   },
 
