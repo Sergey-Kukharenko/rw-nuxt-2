@@ -1,7 +1,7 @@
 <template>
   <div v-if="breadCrumbs" class="layout layout--horizontal">
     <div class="breadcrumbs">
-      <NuxtLink v-for="(item, idx) in breadCrumbs" :key="idx" :to="item.path" class="breadcrumbs__item">
+      <NuxtLink v-for="item in breadCrumbs" :key="item.text" :to="item.path" class="breadcrumbs__item">
         <svg-icon name="arrow-left" class="breadcrumbs__icon" />
         {{ item.text }}
       </NuxtLink>
