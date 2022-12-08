@@ -35,11 +35,11 @@
 <!--      <app-cart/>-->
 <!--    </template>-->
 
-    <app-logo/>
-    <nuxt-link to="/search" class="search">
-      <svg-icon name="search" class="search__icon"/>
-    </nuxt-link>
-    <app-call/>
+<!--    <app-logo/>-->
+<!--    <nuxt-link to="/search" class="search">-->
+<!--      <svg-icon name="search" class="search__icon"/>-->
+<!--    </nuxt-link>-->
+<!--    <app-call/>-->
     <app-cart/>
   </header>
 </template>
@@ -48,8 +48,8 @@
 import {useToggleClassName} from '~/helpers';
 
 // import AppDrawer from '~/components/shared/AppDrawer';
-import AppLogo from '~/components/header/AppLogo';
-import AppCall from '~/components/header/AppCall';
+// import AppLogo from '~/components/header/AppLogo';
+// import AppCall from '~/components/header/AppCall';
 import AppCart from '~/components/header/AppCart';
 // import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 // import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
@@ -67,8 +67,8 @@ export default {
     // AppMobileLocation,
     // AppMobileProfile,
     AppCart,
-    AppCall,
-    AppLogo,
+    // AppCall,
+    // AppLogo,
     // AppDrawer
   },
 
