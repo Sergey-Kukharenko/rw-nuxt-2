@@ -86,8 +86,8 @@ export default {
     },
 
     isCheckout() {
-      console.log(this.$route);
-      return this.$route;
+      console.log(this.$route.name);
+      return this.$route.name;
       // return this.$route.name === 'checkout';
     }
   },
