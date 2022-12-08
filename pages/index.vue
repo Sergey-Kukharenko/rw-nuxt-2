@@ -1,25 +1,25 @@
 <template>
   <main>
     <app-promotions class="promotions"/>
-    <app-popular-categories class="popular-categories"/>
-    <app-section :section="bestBouquets" class="best-bouquets"/>
-    <app-section-sm :section="recipient" class="recipient"/>
-    <app-section :section="specialOffers" theme="custom" class="special-offers"/>
-    <app-reviews class="reviews"/>
-    <app-section :section="underPounds" theme="custom" class="under-pounds"/>
-    <app-shop-by-price class="shop-by-price" />
-    <app-section :section="autumnCollection" theme="custom" class="autumn-collection"/>
-    <app-benefits class="benefits"/>
-    <app-section-sm :section="pickBouquet" theme="custom" class="pick-bouquet"/>
-    <app-discount class="discount"/>
-    <app-faq class="faq" />
-    <app-info class="info"/>
+<!--    <app-popular-categories class="popular-categories"/>-->
+<!--    <app-section :section="bestBouquets" class="best-bouquets"/>-->
+<!--    <app-section-sm :section="recipient" class="recipient"/>-->
+<!--    <app-section :section="specialOffers" theme="custom" class="special-offers"/>-->
+<!--    <app-reviews class="reviews"/>-->
+<!--    <app-section :section="underPounds" theme="custom" class="under-pounds"/>-->
+<!--    <app-shop-by-price class="shop-by-price" />-->
+<!--    <app-section :section="autumnCollection" theme="custom" class="autumn-collection"/>-->
+<!--    <app-benefits class="benefits"/>-->
+<!--    <app-section-sm :section="pickBouquet" theme="custom" class="pick-bouquet"/>-->
+<!--    <app-discount class="discount"/>-->
+<!--    <app-faq class="faq" />-->
+<!--    <app-info class="info"/>-->
   </main>
 </template>
 
 <script>
-import AppSection from '@/components/shared/AppSection.vue';
-import AppSectionSm from '@/components/shared/AppSectionSm';
+// import AppSection from '@/components/shared/AppSection.vue';
+// import AppSectionSm from '@/components/shared/AppSectionSm';
 
 import dataRecipient from '@/data/recipient';
 import dataPickBouquet from '@/data/pick-bouquet';
@@ -32,8 +32,8 @@ export default {
   name: 'IndexPage',
 
   components: {
-    AppSectionSm,
-    AppSection,
+    // AppSectionSm,
+    // AppSection,
 },
 
   data() {
