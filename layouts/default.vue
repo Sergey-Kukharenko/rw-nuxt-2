@@ -2,11 +2,11 @@
   <div>
     <template v-if="$device.isMobileOrTablet">
       <app-header-mobile/>
-      <app-notification/>
+<!--      <app-notification/>-->
     </template>
 
     <template v-else>
-      <app-notification/>
+<!--      <app-notification/>-->
       <app-header class="header-group"/>
       <app-nav-bar/>
     </template>
@@ -23,12 +23,12 @@ import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 import AppNavBar from '@/components/header/AppNavBar';
 // import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
 // import AppFooter from '@/components/footer/AppFooter';
-import AppNotification from '~/components/header/AppNotification';
+// import AppNotification from '~/components/header/AppNotification';
 
 export default {
   name: 'DefaultLayout',
   components: {
-    AppNotification,
+    // AppNotification,
     AppNavBar,
     AppHeaderMobile,
     AppHeader,
