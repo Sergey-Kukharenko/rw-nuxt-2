@@ -1,9 +1,6 @@
 <template>
   <div>
-    <template v-if="$device.isMobileOrTablet">
-      <app-header-mobile/>
-      <app-notification/>
-    </template>
+    <app-header-mobile v-if="$device.isMobileOrTablet"/>
 
     <template v-else>
       <app-notification/>
