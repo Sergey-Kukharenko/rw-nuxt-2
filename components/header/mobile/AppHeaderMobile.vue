@@ -30,7 +30,7 @@
 <!--      -->
 <!--    </template>-->
 
-    <app-logo/>
+<!--    <app-logo/>-->
 <!--    <nuxt-link to="/search" class="search">-->
 <!--      <svg-icon name="search" class="search__icon"/>-->
 <!--    </nuxt-link>-->
@@ -43,7 +43,7 @@
 import {useToggleClassName} from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
-import AppLogo from '~/components/header/AppLogo';
+// import AppLogo from '~/components/header/AppLogo';
 // import AppCall from '~/components/header/AppCall';
 // import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
@@ -63,7 +63,7 @@ export default {
     AppMobileProfile,
     // AppCart,
     // AppCall,
-    AppLogo,
+    // AppLogo,
     AppDrawer
   },
 
