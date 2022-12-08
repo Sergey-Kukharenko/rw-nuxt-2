@@ -11,7 +11,7 @@
       <app-nav-bar/>
     </template>
 
-<!--    <app-breadcrumbs/>-->
+    <app-breadcrumbs/>
     <Nuxt/>
     <app-footer/>
   </div>
@@ -21,7 +21,7 @@
 import AppHeader from '@/components/header/AppHeader';
 import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 import AppNavBar from '@/components/header/AppNavBar';
-// import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
+import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
 import AppFooter from '@/components/footer/AppFooter';
 import AppNotification from '~/components/header/AppNotification';
 
@@ -32,7 +32,7 @@ export default {
     AppNavBar,
     AppHeaderMobile,
     AppHeader,
-    // AppBreadcrumbs,
+    AppBreadcrumbs,
     AppFooter,
   }
 };
