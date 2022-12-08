@@ -26,7 +26,7 @@
     </app-drawer>
 
     <pre>
-      {{$route}}
+      {{isCheckout}}
     </pre>
 <!--    <app-header-checkout-order v-show="isCheckout"/>-->
 <!--    <div v-show="!isCheckout" class="header-row">-->
@@ -86,7 +86,9 @@ export default {
     },
 
     isCheckout() {
-      return this.$route.name === 'checkout';
+      console.log(this.$route);
+      return this.$route;
+      // return this.$route.name === 'checkout';
     }
   },
 
