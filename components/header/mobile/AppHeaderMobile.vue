@@ -25,15 +25,15 @@
       </div>
     </app-drawer>
 
-<!--    <app-header-checkout-order v-if="isCheckout"/>-->
-<!--    <template v-else>-->
-<!--      <app-logo/>-->
-<!--      <nuxt-link to="/search" class="search">-->
-<!--        <svg-icon name="search" class="search__icon"/>-->
-<!--      </nuxt-link>-->
-<!--      <app-call/>-->
-<!--      <app-cart/>-->
-<!--    </template>-->
+    <app-header-checkout-order v-if="isCheckout"/>
+    <template v-else>
+      <app-logo/>
+      <nuxt-link to="/search" class="search">
+        <svg-icon name="search" class="search__icon"/>
+      </nuxt-link>
+      <app-call/>
+      <app-cart/>
+    </template>
   </header>
 </template>
 
@@ -41,27 +41,27 @@
 import {useToggleClassName} from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
-// import AppLogo from '~/components/header/AppLogo';
-// import AppCall from '~/components/header/AppCall';
-// import AppCart from '~/components/header/AppCart';
+import AppLogo from '~/components/header/AppLogo';
+import AppCall from '~/components/header/AppCall';
+import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
 import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
-// import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
+import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
-    // AppHeaderCheckoutOrder,
+    AppHeaderCheckoutOrder,
     AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
     AppMobileProfile,
-    // AppCart,
-    // AppCall,
-    // AppLogo,
+    AppCart,
+    AppCall,
+    AppLogo,
     AppDrawer
   },
 
@@ -82,9 +82,9 @@ export default {
       return useToggleClassName(this.isVisible, 'content', 'active');
     },
 
-    // isCheckout() {
-    //   return this.$route.name === 'checkout';
-    // }
+    isCheckout() {
+      return this.$route.name === 'checkout';
+    }
   },
 
   methods: {
