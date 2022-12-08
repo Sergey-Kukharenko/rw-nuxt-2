@@ -25,18 +25,15 @@
       </div>
     </app-drawer>
 
-    <pre>
-      {{isCheckout}}
-    </pre>
-<!--    <app-header-checkout-order v-show="isCheckout"/>-->
-<!--    <div v-show="!isCheckout" class="header-row">-->
-<!--      <app-logo/>-->
-<!--      <nuxt-link to="/search" class="search">-->
-<!--        <svg-icon name="search" class="search__icon"/>-->
-<!--      </nuxt-link>-->
-<!--      <app-call/>-->
-<!--      <app-cart/>-->
-<!--    </div>-->
+    <app-header-checkout-order v-if="isCheckout"/>
+    <template v-else>
+      <app-logo/>
+      <nuxt-link to="/search" class="search">
+        <svg-icon name="search" class="search__icon"/>
+      </nuxt-link>
+      <app-call/>
+      <app-cart/>
+    </template>
   </header>
 </template>
 
@@ -44,27 +41,27 @@
 import {useToggleClassName} from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
-// import AppLogo from '~/components/header/AppLogo';
-// import AppCall from '~/components/header/AppCall';
-// import AppCart from '~/components/header/AppCart';
+import AppLogo from '~/components/header/AppLogo';
+import AppCall from '~/components/header/AppCall';
+import AppCart from '~/components/header/AppCart';
 import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
 import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
-// import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
+import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
-    // AppHeaderCheckoutOrder,
+    AppHeaderCheckoutOrder,
     AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
     AppMobileProfile,
-    // AppCart,
-    // AppCall,
-    // AppLogo,
+    AppCart,
+    AppCall,
+    AppLogo,
     AppDrawer
   },
 
@@ -86,9 +83,7 @@ export default {
     },
 
     isCheckout() {
-      console.log(this.$route.name);
-      return this.$route.name;
-      // return this.$route.name === 'checkout';
+      return this.$route.name === 'checkout';
     }
   },
 
@@ -123,12 +118,6 @@ header {
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   }
-}
-
-.header-row {
-  flex: 1;
-  display: flex;
-  align-items: center;
 }
 
 .content {

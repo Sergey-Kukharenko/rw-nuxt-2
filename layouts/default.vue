@@ -1,7 +1,8 @@
 <template>
   <div>
     <template v-if="$device.isMobileOrTablet">
-      <app-header-mobile/>
+<!--      <app-header-mobile/>-->
+      {{$route}}
       <app-notification/>
     </template>
 
@@ -12,17 +13,17 @@
     </template>
 
     <app-breadcrumbs/>
-    <Nuxt/>
-    <app-footer/>
+<!--    <Nuxt/>-->
+<!--    <app-footer/>-->
   </div>
 </template>
 
 <script>
 import AppHeader from '@/components/header/AppHeader';
-import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
+// import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 import AppNavBar from '@/components/header/AppNavBar';
 import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
-import AppFooter from '@/components/footer/AppFooter';
+// import AppFooter from '@/components/footer/AppFooter';
 import AppNotification from '~/components/header/AppNotification';
 
 export default {
@@ -30,10 +31,10 @@ export default {
   components: {
     AppNotification,
     AppNavBar,
-    AppHeaderMobile,
+    // AppHeaderMobile,
     AppHeader,
     AppBreadcrumbs,
-    AppFooter,
+    // AppFooter,
   }
 };
 </script>
