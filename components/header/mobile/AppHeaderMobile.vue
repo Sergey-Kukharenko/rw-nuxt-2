@@ -25,15 +25,15 @@
       </div>
     </app-drawer>
 
-<!--    <app-header-checkout-order v-show="isCheckout"/>-->
-    <template v-if="!isCheckout">
+    <!--    <app-header-checkout-order v-show="isCheckout"/>-->
+    <div class="header-row">
       <app-logo/>
       <nuxt-link to="/search" class="search">
         <svg-icon name="search" class="search__icon"/>
       </nuxt-link>
       <app-call/>
       <app-cart/>
-    </template>
+    </div>
   </header>
 </template>
 
@@ -118,6 +118,12 @@ header {
     box-sizing: border-box;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   }
+}
+
+.header-row{
+  flex: 1;
+  display: flex;
+  align-items: center;
 }
 
 .content {
