@@ -1,68 +1,75 @@
 <template>
   <header>
-    <app-drawer>
-      <div :class="classNames">
-        <div class="content__layout content__layout--md">
-          <div class="content__row nested-group">
-            <app-mobile-profile @close="close"/>
-            <nuxt-link to="/search" class="search">
-              <svg-icon name="search" class="search__icon"/>
-            </nuxt-link>
-          </div>
-        </div>
-        <div class="content__layout content__layout--md">
-          <app-mobile-location/>
-        </div>
-        <div class="content__layout">
-          <app-header-mobile-menu/>
-        </div>
-        <div class="content__group">
-          <div class="content__separator"/>
-          <div class="content__layout">
-            <app-header-mobile-nav/>
-          </div>
-        </div>
-      </div>
-    </app-drawer>
+<!--    <app-drawer>-->
+<!--      <div :class="classNames">-->
+<!--        <div class="content__layout content__layout&#45;&#45;md">-->
+<!--          <div class="content__row nested-group">-->
+<!--            <app-mobile-profile @close="close"/>-->
+<!--            <nuxt-link to="/search" class="search">-->
+<!--              <svg-icon name="search" class="search__icon"/>-->
+<!--            </nuxt-link>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        <div class="content__layout content__layout&#45;&#45;md">-->
+<!--          <app-mobile-location/>-->
+<!--        </div>-->
+<!--        <div class="content__layout">-->
+<!--          <app-header-mobile-menu/>-->
+<!--        </div>-->
+<!--        <div class="content__group">-->
+<!--          <div class="content__separator"/>-->
+<!--          <div class="content__layout">-->
+<!--            <app-header-mobile-nav/>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </app-drawer>-->
 
-    <app-header-checkout-order v-if="isCheckout"/>
-    <template v-else>
-      <app-logo/>
-      <nuxt-link to="/search" class="search">
-        <svg-icon name="search" class="search__icon"/>
-      </nuxt-link>
-      <app-call/>
-      <app-cart/>
-    </template>
+<!--    <app-header-checkout-order v-if="isCheckout"/>-->
+<!--    <template v-else>-->
+<!--      <app-logo/>-->
+<!--      <nuxt-link to="/search" class="search">-->
+<!--        <svg-icon name="search" class="search__icon"/>-->
+<!--      </nuxt-link>-->
+<!--      <app-call/>-->
+<!--      <app-cart/>-->
+<!--    </template>-->
+
+    <app-logo/>
+    <nuxt-link to="/search" class="search">
+      <svg-icon name="search" class="search__icon"/>
+    </nuxt-link>
+    <app-call/>
+    <app-cart/>
   </header>
 </template>
 
 <script>
 import {useToggleClassName} from '~/helpers';
 
-import AppDrawer from '~/components/shared/AppDrawer';
+// import AppDrawer from '~/components/shared/AppDrawer';
 import AppLogo from '~/components/header/AppLogo';
 import AppCall from '~/components/header/AppCall';
 import AppCart from '~/components/header/AppCart';
-import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
-import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
-import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
-import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
-import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
+// import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
+// import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
+// import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
+// import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
+// import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
-    AppHeaderCheckoutOrder,
-    AppHeaderMobileNav,
-    AppHeaderMobileMenu,
-    AppMobileLocation,
-    AppMobileProfile,
+    // AppHeaderCheckoutOrder,
+    // AppHeaderMobileNav,
+    // AppHeaderMobileMenu,
+    // AppMobileLocation,
+    // AppMobileProfile,
     AppCart,
     AppCall,
     AppLogo,
-    AppDrawer
+    // AppDrawer
   },
 
   provide() {
