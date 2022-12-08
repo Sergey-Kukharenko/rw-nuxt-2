@@ -25,6 +25,16 @@
       </div>
     </app-drawer>
 
+<!--    <app-header-checkout-order v-if="isCheckout"/>-->
+<!--    <template v-else>-->
+<!--      <app-logo/>-->
+<!--      <nuxt-link to="/search" class="search">-->
+<!--        <svg-icon name="search" class="search__icon"/>-->
+<!--      </nuxt-link>-->
+<!--      <app-call/>-->
+<!--      <app-cart/>-->
+<!--    </template>-->
+
     <app-logo/>
     <nuxt-link to="/search" class="search">
       <svg-icon name="search" class="search__icon"/>
