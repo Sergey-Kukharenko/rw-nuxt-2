@@ -2,38 +2,38 @@
   <div>
     <template v-if="$device.isMobileOrTablet">
       <app-header-mobile/>
-<!--      <app-notification/>-->
+      <app-notification/>
     </template>
 
-<!--    <template v-else>-->
-<!--      <app-notification/>-->
-<!--      <app-header class="header-group"/>-->
-<!--      <app-nav-bar/>-->
-<!--    </template>-->
+    <template v-else>
+      <app-notification/>
+      <app-header class="header-group"/>
+      <app-nav-bar/>
+    </template>
 
     <app-breadcrumbs/>
-<!--    <Nuxt/>-->
-<!--    <app-footer/>-->
+    <Nuxt/>
+    <app-footer/>
   </div>
 </template>
 
 <script>
-// import AppHeader from '@/components/header/AppHeader';
+import AppHeader from '@/components/header/AppHeader';
 import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
-// import AppNavBar from '@/components/header/AppNavBar';
+import AppNavBar from '@/components/header/AppNavBar';
 import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
-// import AppFooter from '@/components/footer/AppFooter';
-// import AppNotification from '~/components/header/AppNotification';
+import AppFooter from '@/components/footer/AppFooter';
+import AppNotification from '~/components/header/AppNotification';
 
 export default {
   name: 'DefaultLayout',
   components: {
-    // AppNotification,
-    // AppNavBar,
+    AppNotification,
+    AppNavBar,
     AppHeaderMobile,
-    // AppHeader,
+    AppHeader,
     AppBreadcrumbs,
-    // AppFooter,
+    AppFooter,
   }
 };
 </script>
