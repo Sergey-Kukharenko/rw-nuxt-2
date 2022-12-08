@@ -9,11 +9,11 @@
     <app-section :section="underPounds" theme="custom" class="under-pounds"/>
     <app-shop-by-price class="shop-by-price" />
     <app-section :section="autumnCollection" theme="custom" class="autumn-collection"/>
-    <app-benefits class="benefits"/>
+<!--    <app-benefits class="benefits"/>-->
     <app-section-sm :section="pickBouquet" theme="custom" class="pick-bouquet"/>
-    <app-discount class="discount"/>
-    <app-faq class="faq" />
-    <app-info class="info"/>
+<!--    <app-discount class="discount"/>-->
+<!--    <app-faq class="faq" />-->
+<!--    <app-info class="info"/>-->
   </main>
 </template>
 
