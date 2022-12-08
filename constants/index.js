@@ -83,6 +83,8 @@ const INFO_BUTTONS = [
 
 const REVIEW_CARD_SYMBOLS_COUNT = 70
 
+const EMAIL = 'info@Myflowers.ru'
+
 export {
   LIST_ITEM_VIEW_COUNT,
   FILTER_TYPES,
@@ -98,6 +100,8 @@ export {
 
   INFO_BUTTONS,
 
-  REVIEW_CARD_SYMBOLS_COUNT
+  REVIEW_CARD_SYMBOLS_COUNT,
+
+  EMAIL
 }
 

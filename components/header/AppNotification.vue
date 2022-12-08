@@ -41,19 +41,20 @@ export default {
   &__title {
     font-family: $lora;
     font-style: normal;
-    font-weight: 700;
     color: #ffffff;
     letter-spacing: -0.01em;
     text-align: center;
 
-    @include gt-xs {
+    @include gt-sm {
+      font-weight: 700;
       font-size: 14px;
       line-height: 24px;
       padding: 10px 0;
     }
 
-    @include xs {
+    @include lt-sm {
       max-width: 230px;
+      font-weight: 500;
       font-size: 13px;
       line-height: 16px;
       padding: 8px 6px;

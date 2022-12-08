@@ -21,6 +21,7 @@ export default {
 
 <style lang="scss" scoped>
 footer {
+  position: relative;
   background: $bg-grey;
 
   @include xs {

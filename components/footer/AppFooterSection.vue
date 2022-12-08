@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import { useToggleClassName } from '@/helpers'
+import { useToggleClassName } from '@/helpers';
 
 export default {
   name: 'AppFooterSection',
@@ -20,29 +20,29 @@ export default {
   props: {
     section: {
       type: Object,
-      default: () => ({})
-    }
+      default: () => ({}),
+    },
   },
 
   data() {
     return {
-      isVisible: false
-    }
+      isVisible: false,
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.isVisible, 'section', 'active')
-    }
-  }
-}
+      return useToggleClassName(this.isVisible, 'section', 'active');
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>
 .section {
   @include xs {
     padding: 13px 0;
-    border-top: 1px solid #e5e5e5;
+    border-bottom: 1px solid #e5e5e5;
   }
 
   &__title {
@@ -74,7 +74,7 @@ export default {
   }
 
   &__list {
-    margin-top: 14px;
+    margin-top: 8px;
 
     @include xs {
       display: none;
@@ -85,20 +85,20 @@ export default {
     & .list {
       @include xs {
         display: flex;
-        flex-wrap: wrap;
+        flex-direction: column;
       }
 
       &__item {
         @include xs {
-          flex: 1 1 30%;
+          // flex: 1 1 30%;
 
-          &:nth-child(3n + 2) {
-            text-align: center;
-          }
+          // &:nth-child(3n + 2) {
+          //   text-align: center;
+          // }
 
-          &:nth-child(3n + 3) {
-            text-align: right;
-          }
+          // &:nth-child(3n + 3) {
+          //   text-align: right;
+          // }
         }
       }
     }
@@ -109,11 +109,17 @@ export default {
   &__item {
     display: block;
     font-family: $golos-regular;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.01em;
+    color: $color-dark-grey;
 
     @include gt-xs {
       font-size: 15px;
       line-height: 24px;
-      padding: 8px 0;
+      padding: 6px 0;
     }
 
     @include xs {

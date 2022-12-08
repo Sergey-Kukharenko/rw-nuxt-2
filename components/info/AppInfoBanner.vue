@@ -96,10 +96,13 @@ export default {
 <style lang="scss" scoped>
 .banner {
   padding-bottom: 0;
+
+  @include gt-sm {
+    background-size: contain;
+  }
   &.delivery-banner {
     @include gt-sm {
       background-position: 100% 100%;
-      background-size: 50%;
     }
 
     @include lt-md {

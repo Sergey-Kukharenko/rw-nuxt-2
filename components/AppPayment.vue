@@ -29,13 +29,22 @@ export default {
 .payment {
   display: flex;
   align-items: center;
+  
+  @include lt-md {
+    justify-content: space-between;
+  }
 
   &__item {
-    background: white;
     border-radius: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include xs {
+      background: white;
+      flex: 1;
+      padding: 7px 0;
+    }
 
     &:not(:last-child) {
       @include gt-xs {

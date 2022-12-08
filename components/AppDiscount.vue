@@ -45,8 +45,8 @@ export default {
       position: relative;
       z-index: 2;
       padding: 24px 42px 24px 32px;
-      background: #ffeec6 url('~/assets/sprite/svg/gift-bg.svg') no-repeat 297px 8px;
-      box-shadow: 0px 6px 16px rgba(51, 51, 50, 0.08);
+      background: #FFFCE0 url('~/assets/sprite/svg/gift-bg.svg') no-repeat 297px 8px;
+      box-shadow: 0 6px 16px rgba(51, 51, 50, 0.08);
       border-radius: 24px;
 
       .info {

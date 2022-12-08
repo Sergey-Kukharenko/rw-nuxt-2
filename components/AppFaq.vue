@@ -19,7 +19,9 @@
           :class="{ active: item.is_active }"
         >
           <div class="item__top" @click="toggleFaqItem(index, item.is_active)">
-            {{ item.question }}
+            <span class="item__top-text">
+              {{ item.question }}
+            </span>
             <svg-icon name="arrow-down" class="item__top-icon" />
           </div>
           <div class="item__bottom">
@@ -189,23 +191,26 @@ export default {
         &__top {
           display: flex;
           justify-content: space-between;
-          align-items: center;
           cursor: pointer;
+          flex: 1;
 
-          font-family: $golos-bold;
-          font-style: normal;
-          font-weight: 600;
-          color: $color-dark-grey;
+          &-text {
+            font-family: $golos-bold;
+            font-style: normal;
+            font-weight: 600;
+            color: $color-dark-grey;
+            flex: 1;
 
-          @include gt-sm {
-            font-size: 24px;
-            line-height: 28px;
-            letter-spacing: 0.01em;
-          }
+            @include gt-sm {
+              font-size: 24px;
+              line-height: 28px;
+              letter-spacing: 0.01em;
+            }
 
-          @include lt-md {
-            font-size: 14px;
-            line-height: 20px;
+            @include lt-md {
+              font-size: 14px;
+              line-height: 20px;
+            }
           }
 
           &-icon {

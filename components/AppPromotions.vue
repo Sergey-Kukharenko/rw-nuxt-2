@@ -1,8 +1,8 @@
 <template>
   <section class="layout promotion">
-    <a v-for="promotion in promotions" :key="promotion.text" class="promotion__item">
+    <a v-for="(promotion, idx) in promotions" :key="idx" class="promotion__item">
       <div class="promotion__text">
-        <div v-for="(item, idx) in promotion.text" :key="idx">{{ item }}</div>
+        <div v-for="(item, index) in promotion.text" :key="index">{{ item }}</div>
       </div>
       <figure class="promotion__figure">
         <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text"/>
