@@ -25,8 +25,8 @@
       </div>
     </app-drawer>
 
-    <!--    <app-header-checkout-order v-show="isCheckout"/>-->
-    <div class="header-row">
+    <app-header-checkout-order v-show="isCheckout"/>
+    <div v-show="!isCheckout" class="header-row">
       <app-logo/>
       <nuxt-link to="/search" class="search">
         <svg-icon name="search" class="search__icon"/>
@@ -48,13 +48,13 @@ import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
 import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
-// import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
+import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
-    // AppHeaderCheckoutOrder,
+    AppHeaderCheckoutOrder,
     AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
@@ -120,7 +120,7 @@ header {
   }
 }
 
-.header-row{
+.header-row {
   flex: 1;
   display: flex;
   align-items: center;
