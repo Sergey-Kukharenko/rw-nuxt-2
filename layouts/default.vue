@@ -1,9 +1,9 @@
 <template>
   <div>
-<!--    <template v-if="$device.isMobileOrTablet">-->
-<!--      <app-header-mobile/>-->
+    <template v-if="$device.isMobileOrTablet">
+      <app-header-mobile/>
 <!--      <app-notification/>-->
-<!--    </template>-->
+    </template>
 
 <!--    <template v-else>-->
 <!--      <app-notification/>-->
@@ -19,7 +19,7 @@
 
 <script>
 // import AppHeader from '@/components/header/AppHeader';
-// import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
+import AppHeaderMobile from '~/components/header/mobile/AppHeaderMobile';
 // import AppNavBar from '@/components/header/AppNavBar';
 import AppBreadcrumbs from '~/components/shared/AppBreadcrumbs';
 // import AppFooter from '@/components/footer/AppFooter';
@@ -30,7 +30,7 @@ export default {
   components: {
     // AppNotification,
     // AppNavBar,
-    // AppHeaderMobile,
+    AppHeaderMobile,
     // AppHeader,
     AppBreadcrumbs,
     // AppFooter,
