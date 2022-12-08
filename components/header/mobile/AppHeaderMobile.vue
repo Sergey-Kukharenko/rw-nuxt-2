@@ -25,7 +25,9 @@
       </div>
     </app-drawer>
 
-    {{$route.name}}
+    <pre>
+      {{$route}}
+    </pre>
 <!--    <app-header-checkout-order v-show="isCheckout"/>-->
 <!--    <div v-show="!isCheckout" class="header-row">-->
 <!--      <app-logo/>-->
