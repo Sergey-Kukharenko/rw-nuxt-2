@@ -90,10 +90,6 @@ export default {
     }
   },
 
-  mounted() {
-    console.log(this.$route.name);
-  },
-
   methods: {
     open() {
       this.isVisible = true;
