@@ -82,9 +82,9 @@ export default {
       return useToggleClassName(this.isVisible, 'content', 'active');
     },
 
-    isCheckout() {
-      return this.$route.name === 'checkout';
-    }
+    // isCheckout() {
+    //   return this.$route.name === 'checkout';
+    // }
   },
 
   methods: {
