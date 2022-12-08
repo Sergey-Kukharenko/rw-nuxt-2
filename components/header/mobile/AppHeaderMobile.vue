@@ -30,7 +30,6 @@
 <!--      -->
 <!--    </template>-->
 
-
     <app-logo/>
     <nuxt-link to="/search" class="search">
       <svg-icon name="search" class="search__icon"/>
