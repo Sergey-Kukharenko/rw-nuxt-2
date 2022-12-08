@@ -2,7 +2,7 @@
   <div>
     <template v-if="$device.isMobileOrTablet">
 <!--      <app-header-mobile/>-->
-      {{$route}}
+{{$route}}
       <app-notification/>
     </template>
 
@@ -35,7 +35,7 @@ export default {
     AppHeader,
     AppBreadcrumbs,
     // AppFooter,
-  }
+  },
 };
 </script>
 

@@ -25,15 +25,18 @@
       </div>
     </app-drawer>
 
-    <app-header-checkout-order v-if="isCheckout"/>
-    <template v-else>
-      <app-logo/>
-      <nuxt-link to="/search" class="search">
-        <svg-icon name="search" class="search__icon"/>
-      </nuxt-link>
-      <app-call/>
-      <app-cart/>
-    </template>
+<!--    <app-header-checkout-order v-if="isCheckout"/>-->
+<!--    <template v-else>-->
+<!--      -->
+<!--    </template>-->
+
+
+    <app-logo/>
+    <nuxt-link to="/search" class="search">
+      <svg-icon name="search" class="search__icon"/>
+    </nuxt-link>
+    <app-call/>
+    <app-cart/>
   </header>
 </template>
 
@@ -48,13 +51,13 @@ import AppMobileProfile from '~/components/header/mobile/AppMobileProfile';
 import AppMobileLocation from '~/components/header/mobile/AppMobileLocation';
 import AppHeaderMobileMenu from '~/components/header/mobile/AppHeaderMobileMenu';
 import AppHeaderMobileNav from '~/components/header/mobile/AppHeaderMobileNav';
-import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
+// import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderCheckoutOrder';
 
 export default {
   name: 'AppHeaderMobile',
 
   components: {
-    AppHeaderCheckoutOrder,
+    // AppHeaderCheckoutOrder,
     AppHeaderMobileNav,
     AppHeaderMobileMenu,
     AppMobileLocation,
