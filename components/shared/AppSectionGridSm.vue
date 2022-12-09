@@ -37,27 +37,31 @@ export default {
   flex-wrap: wrap;
 
   @include gt-sm {
-    gap: 24px;
+    //gap: 24px;
+    margin: -12px;
   }
 
   @include lt-md {
-    row-gap: 12px;
-    column-gap: 6px;
+    //row-gap: 12px;
+    //column-gap: 6px;
+    margin: -6px -3px;
   }
 
   &__item {
     @include gt-sm {
       flex: 1 1 17%;
+      margin: 12px;
     }
 
     @include lt-md {
       flex: 1 1 31%;
+      margin: 6px 3px;
     }
 
     &:nth-child(1),
     &:nth-child(2) {
       @include lt-md {
-        flex: 1 1 40%;
+        flex: 1 1 48%;
       }
     }
   }
