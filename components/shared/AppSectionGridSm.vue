@@ -57,7 +57,7 @@ export default {
     &:nth-child(1),
     &:nth-child(2) {
       @include lt-md {
-        flex: 1 1 48%;
+        flex: 1 1 40%;
       }
     }
   }
