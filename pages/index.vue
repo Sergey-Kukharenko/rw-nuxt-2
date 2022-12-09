@@ -1,6 +1,5 @@
 <template>
   <main>
-    so
     <app-promotions class="promotions"/>
     <app-popular-categories class="popular-categories"/>
     <app-section :section="bestBouquets" class="best-bouquets"/>
