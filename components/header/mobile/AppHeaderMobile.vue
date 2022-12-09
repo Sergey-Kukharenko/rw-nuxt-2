@@ -35,12 +35,6 @@
       <app-cart/>
     </template>
 
-    <app-logo/>
-    <nuxt-link to="/search" class="search">
-      <svg-icon name="search" class="search__icon"/>
-    </nuxt-link>
-    <app-call/>
-    <app-cart/>
   </header>
 </template>
 
