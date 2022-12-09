@@ -35,7 +35,6 @@
         <app-call/>
         <app-cart/>
       </template>
-
     </header>
     <app-notification/>
   </div>
