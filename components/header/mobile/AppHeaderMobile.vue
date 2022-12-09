@@ -24,7 +24,7 @@
         </div>
       </div>
     </app-drawer>
-
+{{isCheckout}}
     <app-header-checkout-order v-if="$route.name === 'checkout'"/>
     <template v-else>
       <app-logo/>
@@ -83,9 +83,9 @@ export default {
       return useToggleClassName(this.isVisible, 'content', 'active');
     },
 
-    // isCheckout() {
-    //   return this.$route.name === 'checkout';
-    // }
+    isCheckout() {
+      return this.$route.name === 'checkout';
+    }
   },
 
   methods: {
