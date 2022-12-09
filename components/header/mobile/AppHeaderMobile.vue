@@ -35,7 +35,7 @@
 <!--      <app-cart/>-->
 <!--    </template>-->
 
-    <h1>{{$route.name}}</h1>
+    <h1>{{$route.name === 'checkout'}}</h1>
     <app-logo/>
     <nuxt-link to="/search" class="search">
       <svg-icon name="search" class="search__icon"/>
