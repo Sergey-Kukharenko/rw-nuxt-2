@@ -37,13 +37,10 @@ export default {
   flex-wrap: wrap;
 
   @include gt-sm {
-    //gap: 24px;
     margin: -12px;
   }
 
   @include lt-md {
-    //row-gap: 12px;
-    //column-gap: 6px;
     margin: -6px -3px;
   }
 
