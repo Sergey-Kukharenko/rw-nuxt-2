@@ -2,7 +2,7 @@
   <div>
     <template v-if="$device.isMobileOrTablet">
       <app-header-mobile/>
-      <app-notification/>
+<!--      <app-notification/>-->
     </template>
 
     <template v-else>
