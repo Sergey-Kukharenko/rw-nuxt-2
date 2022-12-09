@@ -25,7 +25,7 @@
       </div>
     </app-drawer>
 {{isCheckout}}
-    <app-header-checkout-order v-if="$route.name === 'checkout'"/>
+    <app-header-checkout-order v-if="isCheckout"/>
     <template v-else>
       <app-logo/>
       <nuxt-link to="/search" class="search">
