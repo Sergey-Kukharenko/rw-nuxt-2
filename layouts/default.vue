@@ -1,17 +1,15 @@
 <template>
   <div>
-    <template v-if="$device.isDesktop">
-      <!--      <app-notification/>-->
-      <app-header class="header-group"/>
-      <app-nav-bar/>
-    </template>
-
-    <template v-else>
+    <template v-if="$device.isMobileOrTablet">
       <app-header-mobile/>
 <!--      <app-notification/>-->
     </template>
 
-
+    <template v-else>
+<!--      <app-notification/>-->
+      <app-header class="header-group"/>
+      <app-nav-bar/>
+    </template>
 
 <!--    <app-breadcrumbs/>-->
 <!--    <Nuxt/>-->
