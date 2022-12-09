@@ -24,7 +24,7 @@
         </div>
       </div>
     </app-drawer>
-{{isCheckout}}
+
     <app-header-checkout-order v-if="isCheckout"/>
     <template v-else>
       <app-logo/>
