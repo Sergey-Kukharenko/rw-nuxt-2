@@ -5,7 +5,7 @@
 <!--      <app-notification/>-->
     </template>
 
-    <template v-else>
+    <template v-if="$device.isDesktop">
 <!--      <app-notification/>-->
       <app-header class="header-group"/>
       <app-nav-bar/>
