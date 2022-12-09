@@ -1,20 +1,22 @@
 <template>
   <div>
-    <template v-if="$device.isMobileOrTablet">
-      <app-header-mobile/>
-<!--      <app-notification/>-->
-    </template>
+    <!--    <template >-->
+    <!--      <app-header-mobile v-if="$device.isMobileOrTablet"/>-->
+    <!--      <app-notification/>-->
+    <!--    </template>-->
 
-    <template v-else>
-<!--      <app-notification/>-->
-      <app-header class="header-group"/>
-      <h1>DESKTOP</h1>
-<!--      <app-nav-bar/>-->
-    </template>
+    <!--    <template v-else>-->
+    <!--      <app-notification/>-->
+    <!--      <app-header class="header-group"/>-->
+    <!--      <app-nav-bar/>-->
+    <!--    </template>-->
 
-<!--    <app-breadcrumbs/>-->
-<!--    <Nuxt/>-->
-<!--    <app-footer/>-->
+    <app-header-mobile v-if="$device.isMobileOrTablet"/>
+    <app-header v-else class="header-group"/>
+
+    <!--    <app-breadcrumbs/>-->
+    <!--    <Nuxt/>-->
+    <!--    <app-footer/>-->
   </div>
 </template>
 
