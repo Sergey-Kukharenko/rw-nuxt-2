@@ -113,7 +113,7 @@ main {
   }
 
   > section {
-    @include lt-md {
+    @include lt-md{
       width: 100%;
       box-sizing: border-box;
     }

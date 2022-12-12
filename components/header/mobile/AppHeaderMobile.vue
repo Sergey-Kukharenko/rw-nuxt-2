@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <fragment>
     <header>
       <app-drawer>
         <div :class="classNames">
@@ -37,7 +37,7 @@
       </template>
     </header>
     <app-notification/>
-  </div>
+  </fragment>
 </template>
 
 <script>

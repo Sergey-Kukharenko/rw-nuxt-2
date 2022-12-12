@@ -27,17 +27,17 @@
         <div class="review-content__nav">
           <div class="arrows">
             <div class="arrows__btn left" :class="{ active: hasPrev }" @click="prevReview">
-              <svg-icon class="arrows__btn-icon" name="arrow-right" />
+              <svg-icon class="arrows__btn-icon" name="arrow-right"/>
             </div>
             <div class="arrows__btn right" :class="{ active: hasNext }" @click="nextReview">
-              <svg-icon class="arrows__btn-icon" name="arrow-right" />
+              <svg-icon class="arrows__btn-icon" name="arrow-right"/>
             </div>
           </div>
         </div>
         <div class="review-content__body">
           <div class="review-content__body-col review-avatar">
             <figure class="review-avatar__figure">
-              <img :src="currReviewDetails.avatar" class="review-avatar__image" :alt="currReviewDetails.avatar" />
+              <img :src="currReviewDetails.avatar" class="review-avatar__image" :alt="currReviewDetails.avatar"/>
             </figure>
           </div>
           <div class="review-content__body-col review-info">
@@ -46,7 +46,7 @@
               <client-only>
                 <stars-rating
                   :model-value="currReviewDetails.rating_count"
-                  star-size="15.22"
+                  star-size="13.32"
                   :spacing="starSpacing"
                   inactive-color="#ffffff"
                   disable-click
@@ -274,6 +274,7 @@ export default {
         }
       }
     }
+
     .review-content {
       position: relative;
 
@@ -339,13 +340,13 @@ export default {
               pointer-events: all;
               background-color: #ffffff;
 
-              &-icon {
-                opacity: 1;
+              & .icon {
+                color: $color-dark-grey;
               }
             }
 
             &-icon {
-              opacity: 0.5;
+              color: $color-white-grey;
 
               @include gt-sm {
                 width: 13.33px;
@@ -353,8 +354,8 @@ export default {
               }
 
               @include lt-md {
-                width: 10.67px;
-                height: 10.37px;
+                width: 16px;
+                height: 16px;
               }
             }
           }
@@ -450,12 +451,11 @@ export default {
         }
 
         @include lt-md {
-          padding-top: 10px;
+          padding-top: 8px;
           font-family: $golos-regular;
           font-style: normal;
-          font-weight: 400;
           font-size: 12px;
-          line-height: 20px;
+          line-height: 16px;
           letter-spacing: 0.01em;
           color: $color-white-grey;
         }

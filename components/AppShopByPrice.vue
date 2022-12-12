@@ -106,6 +106,7 @@ export default {
 
     @include lt-md {
       font-size: 13px;
+      line-height: 16px;
       padding: 3px 7px;
       position: absolute;
       top: 0;

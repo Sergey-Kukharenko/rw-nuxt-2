@@ -45,7 +45,7 @@ export default {
   color: #ffffff;
   padding: 2px 6px;
   background: #343434;
-  border-radius: 8px;
+  border-radius: 6px;
 
   @include gt-xs {
     font-size: 11px;

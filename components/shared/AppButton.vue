@@ -175,7 +175,7 @@ export default {
 
   &--sm {
     font-family: $golos-medium;
-    
+
     @include gt-sm {
       font-size: 14px;
       min-height: 36px;

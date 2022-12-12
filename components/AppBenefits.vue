@@ -3,7 +3,7 @@
     <div class="layout">
       <div class="benefits__title">Our benefits</div>
       <div class="benefits__tabs">
-        <app-benefits-tabs :tabs="benefitsTabs" :active-tab="activeTab" @set-active-tab="setActiveTab" />
+        <app-benefits-tabs :tabs="benefitsTabs" :active-tab="activeTab" @set-active-tab="setActiveTab"/>
       </div>
       <div class="benefits__container">
         <app-benefits-card
@@ -13,7 +13,7 @@
           @prev="prevTab"
           @next="nextTab"
         />
-        <app-benefits-slider v-if="$device.isMobileOrTablet" :slides="$options.DATA_BENEFITS" />
+        <app-benefits-slider v-if="$device.isMobileOrTablet" :slides="$options.DATA_BENEFITS"/>
       </div>
     </div>
   </section>
@@ -65,7 +65,7 @@ export default {
   }
 
   @include lt-md {
-    margin: 24px 0;
+    margin: 24px 0 -6px;
   }
 
   .layout {
@@ -74,24 +74,14 @@ export default {
   }
 
   &__title {
-    line-height: 24px;
+    font-family: $Literata;
     font-size: 20px;
     font-style: normal;
-    margin-bottom: 24px;
-
-    @include gt-sm {
-      font-family: $Literata;
       font-weight: 700;
-      letter-spacing: -0.01em;
-      color: #000000;
-    }
-
-    @include lt-md {
-      font-family: $golos-regular;
-      font-weight: 600;
-      letter-spacing: 0.03px;
-      color: #2f2b20;
-    }
+    line-height: 24px;
+    letter-spacing: -0.01em;
+    color: $color-dark-grey;
+    margin-bottom: 24px;
   }
 
   &__tabs {
