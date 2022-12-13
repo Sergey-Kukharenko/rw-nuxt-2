@@ -2,23 +2,23 @@ export default {
   title: 'Choose your recipient',
   list: [
     {
-      img: 'https://via.placeholder.com/200',
+      img: '/images/recipient/1.jpg',
       title: 'For Mom',
     },
     {
-      img: 'https://via.placeholder.com/200',
+      img: '/images/recipient/2.jpg',
       title: 'For Partner',
     },
     {
-      img: 'https://via.placeholder.com/200',
+      img: '/images/recipient/3.jpg',
       title: 'For Friends',
     },
     {
-      img: 'https://via.placeholder.com/200',
+      img: '/images/recipient/4.jpg',
       title: 'For Colleagues',
     },
     {
-      img: 'https://via.placeholder.com/200',
+      img: '/images/recipient/5.jpg',
       title: 'For Relatives',
     },
   ]
