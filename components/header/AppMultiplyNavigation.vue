@@ -43,6 +43,7 @@ export default {
     position: relative;
     z-index: 5;
     padding: 24px 0 20px;
+    border-bottom: 1px solid #EAEAEA;
   }
 }
 

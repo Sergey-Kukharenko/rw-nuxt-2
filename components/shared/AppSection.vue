@@ -1,10 +1,12 @@
 <template>
-  <section class="layout section">
-    <app-section-header :header-props="section.main" />
-    <app-section-grid v-slot="slotProps" :slides="section.list" :theme="theme">
-      <app-card :slide="{ ...slotProps }" />
-    </app-section-grid>
-  </section>
+  <div :class="classNames">
+    <section class="section">
+      <app-section-header :header-props="section.main" />
+      <app-section-grid v-slot="slotProps" :slides="section.list" :theme="theme">
+        <app-card :slide="{ ...slotProps }" />
+      </app-section-grid>
+    </section>
+  </div>
 </template>
 
 <script>
@@ -30,7 +32,18 @@ export default {
     theme: {
       type: String,
       default: ''
+    },
+
+    name: {
+      type: String,
+      default: ''
     }
+  },
+
+  computed: {
+    classNames() {
+      return ['layout', this.name]
+    },
   }
 }
 </script>

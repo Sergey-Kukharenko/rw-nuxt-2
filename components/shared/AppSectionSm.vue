@@ -1,6 +1,6 @@
 <template>
-  <div class="layout">
-    <section :class="classNames">
+  <div :class="classNames">
+    <section :class="classNamesSection">
       <div class="header">
         <h2 class="title">{{ section.title }}</h2>
         <p v-if="section.subTitle" class="subtitle">{{ section.subTitle }}</p>
@@ -36,12 +36,21 @@ export default {
     theme: {
       type: String,
       default: ''
+    },
+
+    name: {
+      type: String,
+      default: ''
     }
   },
 
   computed: {
-    classNames() {
+    classNamesSection() {
       return useClassNameProp(this.theme, 'section')
+    },
+
+    classNames() {
+      return ['layout', this.name]
     },
   }
 };
