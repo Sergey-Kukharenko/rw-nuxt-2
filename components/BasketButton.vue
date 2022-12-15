@@ -122,7 +122,7 @@ export default {
     border-radius: 12px;
     font-size: 14px;
     line-height: 20px;
-    text-align: center;
+    justify-content: center;
 
     &.basket-button--icon-only {
       width: 36px;

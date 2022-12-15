@@ -24,6 +24,7 @@
           :size="$device.isMobileOrTablet ? 'medium' : 'small'"
           theme="green"
           :disabled="false"
+          align="center"
           style="margin-right: -8px;"
         >
           Apply

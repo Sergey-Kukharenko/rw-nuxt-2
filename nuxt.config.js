@@ -1,5 +1,12 @@
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  env: {
+    baseUrl: process.env.BASE_URL,
+    stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
+    paypalSecretKey: process.env.PAYPAL_SECRET_KEY,
+    paypalClientId: process.env.PAYPAL_CLIENT_ID,
+  },
+
   head: {
     title: 'rw-nuxt-2',
     htmlAttrs: {
@@ -36,6 +43,8 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     { src: '@/plugins/vue-awesome-swiper', ssr: true },
+    '@/plugins/v-mask',
+    '~/plugins/axios',
     { src: '~/plugins/vuelidate' },
   ],
 
