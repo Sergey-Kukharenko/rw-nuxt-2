@@ -70,7 +70,7 @@ export default {
     background: #ffffff;
     color: $color-dark-grey;
     border-radius: 12px;
-    border: 1.5px solid #EAEAEA;
+    border: 1.5px solid #DDE0E6;
     padding: 0 18px;
 
     @include lt-lg {

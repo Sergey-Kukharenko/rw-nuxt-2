@@ -147,6 +147,7 @@ export default {
 
     @include lt-lg {
       display: flex;
+      justify-content: center;
     }
   }
 }

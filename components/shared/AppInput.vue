@@ -156,8 +156,8 @@ export default {
 
     box-sizing: border-box;
     background: $bg-grey;
-    color: $color-dark-grey;
-    border-radius: 10px;
+    color: $color-white-grey;
+    border-radius: 12px;
     width: 100%;
 
     font-family: $golos-regular;

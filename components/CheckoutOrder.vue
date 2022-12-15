@@ -22,7 +22,7 @@
       <template #right>
         <basket-button
           :size="$device.isMobileOrTablet ? 'medium' : 'small'"
-          theme="white"
+          theme="green"
           :disabled="false"
           style="margin-right: -8px;"
         >
@@ -106,11 +106,10 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    gap: 12px;
 
     background: #FFF6E1;
     border-radius: 10px;
-    padding: 16px 12px;
+    padding: 12px;
 
     font-family: $golos-medium;
     font-style: normal;
@@ -132,6 +131,7 @@
   }
 
   &__bonuses-note {
+    max-width: 146px;
     font-family: $golos-regular;
     font-style: normal;
     font-weight: 400;
@@ -139,6 +139,7 @@
     line-height: 16px;
     letter-spacing: -0.01em;
     color: #342700;
+    margin-top: 2px;
   }
 
   &__title {
@@ -176,18 +177,16 @@
   }
 
   &__text-price {
-    font-family: $golos-regular;
+    font-family: $golos-medium;
     font-style: normal;
-    font-weight: 600;
     font-size: 14px;
     line-height: 20px;
-    color: #010810;
+    color: $color-dark-grey;
   }
 
   &__text-sale {
-    font-family: $golos-regular;
+    font-family: $golos-medium;
     font-style: normal;
-    font-weight: 600;
     font-size: 14px;
     line-height: 20px;
     color: #009959;
@@ -206,10 +205,9 @@
   &__text-summary {
     font-family: $golos-bold;
     font-style: normal;
-    font-weight: 600;
     font-size: 16px;
     line-height: 20px;
-    color: #000000;
+    color: $color-dark-grey;
   }
 
   &__total {

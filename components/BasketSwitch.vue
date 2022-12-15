@@ -53,12 +53,13 @@ export default {
   border-radius: 12px;
   background-color: #DDE0E6;
   cursor: pointer;
+  box-sizing: border-box;
   transition: all 150ms ease-in-out;
 
   &__pointer {
     position: absolute;
     z-index: 1;
-    top: 2px;
+    top: 1px;
     left: 2px;
     width: 20px;
     height: 20px;

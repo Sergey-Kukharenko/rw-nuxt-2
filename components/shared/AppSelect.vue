@@ -128,9 +128,9 @@ export default {
     justify-content: space-between;
 
     box-sizing: border-box;
-    background: #f7f7f7;
-    color: #7c7c7c;
-    border-radius: 10px;
+    background: $bg-grey;
+    color: $color-white-grey;
+    border-radius: 12px;
     width: 100%;
     cursor: default;
     user-select: none;
@@ -151,13 +151,15 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
+    justify-content: center;
 
     box-sizing: border-box;
+    min-width: 102px;
     height: 36px;
-    padding: 0 12px;
+    padding: 0 8px;
     color: $color-dark-green;
     background-color: #ffffff;
-    border-radius: 8px;
+    border-radius: 12px;
     font-family: $golos-medium;
     font-weight: 500;
     cursor: default;
@@ -312,14 +314,14 @@ export default {
   &--size-x-large {
     .app-select__field {
       height: 52px;
-      padding: 0 6px 0 16px;
+      padding: 0 8px 0 16px;
     }
   }
 
   &--size-x-large {
     .app-select__field {
       height: 52px;
-      padding: 0 6px 0 16px;
+      padding: 0 8px 0 16px;
     }
   }
 

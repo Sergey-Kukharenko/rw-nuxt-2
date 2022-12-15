@@ -54,7 +54,8 @@ export default {
   padding: 8px 0;
 
   @include gt-sm {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+    border-top: 1px solid #EAEAEA;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   }
 
   @include lt-md {

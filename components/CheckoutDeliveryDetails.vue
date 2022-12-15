@@ -1,5 +1,5 @@
 <template>
-  <checkout-pane title="Delivery details" delim>
+  <checkout-pane title="Delivery details">
     <div class="delivery-details__note">Specify in more detail how to get the courier to you</div>
     <div class="delivery-details__address">
       <app-select placeholder="Choose delivery address" size="x-large" :list="addressList">

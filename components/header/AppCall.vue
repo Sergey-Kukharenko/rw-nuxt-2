@@ -1,6 +1,6 @@
 <template>
   <a class="call" :href="call.href">
-    <svg-icon v-if="$device.isMobileOrTablet" name="call-outline" class="call__icon" />
+    <svg-icon v-if="$device.isMobileOrTablet" :name="call.icon.mobile" class="call__icon" />
 
     <figure v-else class="figure">
       <svg-icon :name="call.icon.desktop" class="figure__icon" />

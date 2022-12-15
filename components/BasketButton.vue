@@ -116,11 +116,13 @@ export default {
   }
 
   &--size-small {
+    min-width: 102px;
     height: 36px;
-    padding: 0 16px;
-    border-radius: 8px;
+    padding: 0 8px;
+    border-radius: 12px;
     font-size: 14px;
     line-height: 20px;
+    text-align: center;
 
     &.basket-button--icon-only {
       width: 36px;

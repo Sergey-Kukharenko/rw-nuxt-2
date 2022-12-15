@@ -74,9 +74,7 @@
             </div>
           </template>
         </order-panel>
-        <div class="payment__button">
-          <app-button theme="green" stretch="full">Go to payment</app-button>
-        </div>
+        <order-payment-button :payment-method="paymentMethod" />
         <div class="payment__promo">
           <order-promo />
         </div>
@@ -98,13 +96,13 @@ import OrderDetail from '~/components/OrderDetails';
 import OrderPromo from '~/components/OrderPromo';
 import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
-import AppButton from '~/components/shared/AppButton';
-
 import AppModal from '~/components/shared/AppModal';
 
 import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 
 import paymentMethodsData from '~/data/payment-methods';
+
+const [STRIPE_METHOD] = paymentMethodsData;
 
 export default {
   name: 'OrderPage',
@@ -114,7 +112,6 @@ export default {
     OrderPromo,
     AppSelect,
     AppRadio,
-    AppButton,
     AppModal,
   },
 
@@ -122,7 +119,9 @@ export default {
 
   data() {
     return {
-      paymentMethod: paymentMethodsData[0],
+      loading: false,
+
+      paymentMethod: { ...STRIPE_METHOD },
       currModal: '',
       isDetailVisible: false,
       isModalVisible: false,
@@ -142,9 +141,10 @@ export default {
   },
 
   methods: {
-    onClickPaymentSystem(item, close, setLabel) {
-      setLabel(item.label);
-      this.setIcon(item.logo);
+    onClickPaymentSystem({ label, logo, name }, close, setLabel) {
+      setLabel(label);
+      this.setIcon(logo);
+      this.paymentMethod.name = name;
       close();
     },
 

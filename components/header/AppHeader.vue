@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <div class="header-group">
     <app-navigation />
     <app-multiply-navigation />
-    <app-nav-bar/>
+    <app-nav-bar v-if="$route.name !== 'basket'"/>
   </div>
 </template>
 
@@ -20,3 +20,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.header-group {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
+}
+</style>

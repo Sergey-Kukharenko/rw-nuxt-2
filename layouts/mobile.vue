@@ -13,6 +13,6 @@ export default {
     AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
   },
 
-  middleware: ['verifyMobileDevice'],
+  middleware: ['verify-mobile-device'],
 };
 </script>
