@@ -35,9 +35,11 @@
         {{ error }}
       </div>
       <div class="date__fasten">
-        <basket-switch v-model="fasten" />
-        <div class="date__fasten-label">Fasten delivery (in 2 hours)</div>
-        <div class="date__fasten-price">+ £5</div>
+        <basket-switch v-model="fasten"/>
+        <div class="date__fasten-group-text">
+          <div class="date__fasten-label">Fasten delivery (in 2 hours)</div>
+          <div class="date__fasten-price">+ £5</div>
+        </div>
       </div>
     </div>
     <checkout-modal ref="dateModal" :width="436" @close="onCloseDayModal">
@@ -50,7 +52,7 @@
             class="date__modal-day-item"
             @click="onClickDayItem(index)"
           >
-            <app-radio v-model="daySelect" :name="index" />
+            <app-radio v-model="daySelect" :name="index"/>
             <div class="date__modal-day-label">
               {{ item.month }} {{ item.day }}, <span>{{ item.weekday }}</span>
             </div>
@@ -65,7 +67,7 @@
 import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
 
-import { CHECKOUT_FORM_KEYS } from '~/constants';
+import {CHECKOUT_FORM_KEYS} from '~/constants';
 
 const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -161,9 +163,9 @@ export default {
       const result = [];
       while (dayCount--) {
         result.push({
-          month: new Intl.DateTimeFormat('en-ES', { month: 'long' }).format(date),
+          month: new Intl.DateTimeFormat('en-ES', {month: 'long'}).format(date),
           day: date.getDate(),
-          weekday: new Intl.DateTimeFormat('en-ES', { weekday: 'long' }).format(date),
+          weekday: new Intl.DateTimeFormat('en-ES', {weekday: 'long'}).format(date),
         });
         date.setDate(date.getDate() + 1);
       }
@@ -186,7 +188,7 @@ export default {
       this.time = item.id;
       const price = item.price || 'free delivery';
       setLabel(`${item.label}, ${price}`);
-      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, value: item.label });
+      this.$emit('set-field', {key: CHECKOUT_FORM_KEYS.dateTime, value: item.label});
       close();
     },
     onTabClick(index) {
@@ -210,11 +212,24 @@ export default {
 <style lang="scss" scoped>
 .date {
   &__tabs {
-    margin-top: 24px;
+    @include gt-md() {
+      margin-top: 24px;
+    }
+
+    @include lt-lg {
+      margin-top: 12px;
+    }
   }
 
   &__select {
-    margin-top: 28px;
+
+    @include gt-md() {
+      margin-top: 28px;
+    }
+
+    @include lt-lg() {
+      margin-top: 16px;
+    }
   }
 
   &__tabs-item {
@@ -225,20 +240,34 @@ export default {
 
   &__tabs-item-title {
     font-family: $golos-medium;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 20px;
-    color: #010810;
+    color: $color-dark-grey;
+
+    @include gt-md() {
+      font-size: 16px;
+      line-height: 20px;
+    }
+
+    @include lt-lg() {
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.01em;
+    }
   }
 
   &__tabs-item-label {
     font-family: $golos-regular;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: #CCCCCC;
+    color: $color-white-grey;
+
+    @include gt-md() {
+      font-size: 14px;
+      line-height: 20px;
+    }
+
+    @include lt-lg() {
+      font-size: 12px;
+      line-height: 14px;
+      letter-spacing: -0.01em;
+    }
   }
 
   &__select-item {
@@ -285,8 +314,33 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 12px;
-    margin-top: 34px;
+
+    @include gt-md {
+      margin-top: 34px;
+    }
+
+    @include lt-lg {
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+
+    & .switch {
+      @include lt-lg {
+        flex-shrink: 0;
+        order: 1;
+      }
+    }
+  }
+
+  &__fasten-group-text {
+    display: flex;
+    align-items: center;
+
+    @include lt-lg {
+      order: 0;
+      display: block;
+      max-width: 188px;
+    }
   }
 
   &__fasten-label {
@@ -297,6 +351,10 @@ export default {
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #7c7c7c;
+
+    @include gt-sm() {
+      margin: 0 8px 0 12px;
+    }
   }
 
   &__fasten-price {
@@ -306,7 +364,8 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1f2226;
+    color: $color-dark-grey;
+    white-space: nowrap;
   }
 
   .error {

@@ -112,11 +112,15 @@ export default {
   grid-template-rows: auto;
   column-gap: 24px;
   max-width: 1080px;
-  margin: 38px auto 72px;
+
+  @include gt-md {
+    margin: 38px auto 44px;
+  }
 
   @include lt-lg {
     display: block;
     padding: 0 16px;
+    margin: 16px auto 44px;
   }
 
   &__recipient {

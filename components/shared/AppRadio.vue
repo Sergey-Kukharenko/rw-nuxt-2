@@ -1,7 +1,7 @@
 <template>
   <div class="app-radio" @click="$emit('change', name)">
-    <svg-icon v-if="hasIcon" class="app-radio__icon" :name="statusIcon" />
-    <slot />
+    <svg-icon v-if="hasIcon" class="app-radio__icon" :name="statusIcon"/>
+    <slot/>
   </div>
 </template>
 
@@ -46,7 +46,7 @@ export default {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   cursor: default;
   user-select: none;
   font-family: $golos-regular;
@@ -55,11 +55,7 @@ export default {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.01em;
-  color: #010810;
-
-  @include gt-sm {
-    flex-shrink: 0;
-  }
+  color: $color-dark-grey;
 
   &__icon {
     width: 24px;

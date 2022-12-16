@@ -24,7 +24,7 @@ export default {
       type: String,
       default: 'medium',
       validator(value) {
-        return ['small', 'medium', 'large'].includes(value);
+        return ['small', 'medium', 'large', 'extra-large'].includes(value);
       },
     },
     stretch: {
@@ -73,9 +73,14 @@ export default {
     border: 1.5px solid #DDE0E6;
     padding: 0 18px;
 
+    @include gt-md {
+      border-radius: 12px;
+    }
+
     @include lt-lg {
       height: 36px;
       padding: 0 10px;
+      border-radius: 10px;
     }
 
     &--active {
@@ -93,10 +98,20 @@ export default {
 
   &__size-large {
     height: 56px;
+
+    @include lt-lg {
+      height: 40px;
+      padding: 0 6px;
+    }
+  }
+
+  &__size-extra-large {
+    height: 60px;
   }
 
   &__item--stretch {
-    flex: 1 0 auto;
+    flex: 1 1 0;
+    width: 0;
     justify-content: center;
   }
 }

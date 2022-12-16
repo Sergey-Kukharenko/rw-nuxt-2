@@ -35,26 +35,30 @@ export default {
 
 <style lang="scss" scoped>
 .checkout-pane {
-  padding-bottom: 40px;
   width: 100%;
-
   font-family: $golos-regular;
-  font-style: normal;
-  font-weight: 400;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.01em;
   color: #010810;
+
+  @include gt-md {
+    padding-bottom: 38px;
+  }
 
   @include lt-lg {
     padding-bottom: 16px;
   }
 
   &--delim {
-    border-bottom: 1.5px solid #DDE0E6;
     margin-bottom: 40px;
 
+    @include gt-md {
+      border-bottom: 1.5px solid #EAEAEA;
+    }
+
     @include lt-lg {
+      border-bottom: 1px solid #EAEAEA;
       margin-bottom: 16px;
     }
   }
@@ -63,7 +67,6 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
 
     font-family: $Literata;
     font-style: normal;

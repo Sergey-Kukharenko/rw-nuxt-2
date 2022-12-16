@@ -59,9 +59,7 @@ export default {
 .email {
   display: flex;
   flex-direction: row;
-  gap: 29px;
   width: 100%;
-  margin-top: 28px;
 
   font-family: $golos-regular;
   font-style: normal;
@@ -71,17 +69,24 @@ export default {
   letter-spacing: -0.01em;
   color: #1f2226;
 
-  @include lt-lg {
-    flex-direction: column;
+  @include gt-md {
+    gap: 29px;
+    margin-top: 28px;
   }
+
+  @include lt-lg {
+    gap: 12px;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+
 
   &__radio {
     display: flex;
     flex-direction: row;
-    align-items: center;
-    gap: 12px;
+    align-items: flex-start;
     flex: 1 0 auto;
-    margin-top: 12px;
+    padding: 12px 6px 0;
 
     .app-radio {
       font-family: $golos-regular;
@@ -90,13 +95,16 @@ export default {
       font-size: 12px;
       line-height: 16px;
       color: #1f2226;
+
+      @include lt-lg {
+        gap: 12px;
+      }
     }
   }
 
   &__field-column {
     display: flex;
     flex-direction: column;
-    gap: 8px;
     width: 50%;
 
     @include lt-lg {
@@ -108,13 +116,31 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    gap: 8px;
+    margin-bottom: 8px;
+
+    @include gt-md {
+      gap: 8px;
+    }
+
+    @include lt-lg {
+      gap: 12px;
+      font-family: $golos-regular;
+      font-size: 11px;
+      line-height: 16px;
+    }
   }
 
   &__icon-newsfeed,
   &__icon-place {
-    width: 20px;
-    height: 20px;
+    @include gt-md {
+      width: 20px;
+      height: 20px;
+    }
+
+    @include lt-lg {
+      width: 24px;
+      height: 24px;
+    }
   }
 
   .error {

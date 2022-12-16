@@ -3,7 +3,7 @@
     <div class="payment">
       <div class="payment__tabs">
         <basket-tab
-          size="large"
+          size="extra-large"
           :list="list"
         >
           <template #default="{item}">
@@ -91,7 +91,13 @@ export default {
 
 <style lang="scss" scoped>
 .payment {
-  margin-top: 24px;
+  @include gt-md {
+    margin-top: 24px;
+  }
+
+  @include lt-lg {
+    margin-top: 12px;
+  }
 
   &__tabs {
     @include lt-lg {
@@ -106,13 +112,10 @@ export default {
     gap: 16px;
     flex: 1 1 auto;
     width: 100%;
-
-    font-family: $golos-medium;
-    font-style: normal;
-    font-weight: 400;
+    font-family: $golos-regular;
     font-size: 16px;
     line-height: 24px;
-    color: #010810;
+    color: $color-dark-grey;
   }
 
   &__select {

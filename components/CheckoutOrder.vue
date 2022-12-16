@@ -14,7 +14,6 @@
     </div>
     <app-input
       v-model="name"
-      style="margin-top: 16px;"
       size="x-large"
       placeholder="Promocode"
       note="Unavailable with bonuses"
@@ -54,7 +53,7 @@
       <div class="order__text-medium">Total</div>
       <div class="order__text-summary">£ 86</div>
     </div>
-    <div class="order__row" style="margin-top: 10px;">
+    <div class="order__row">
       <div class="order__text-grey">Cashback</div>
       <div class="order__text-cashback">
         <svg-icon
@@ -68,19 +67,19 @@
 </template>
 
 <script>
-  import AppInput from "~/components/shared/AppInput";
+import AppInput from '~/components/shared/AppInput';
 
-  export default {
-    name: "CheckoutOrder",
-    components: {AppInput},
-    data () {
-      return {
-        bonuses: false,
-        name: "",
-        phone: ""
-      };
-    }
-  };
+export default {
+  name: 'CheckoutOrder',
+  components: {AppInput},
+  data() {
+    return {
+      bonuses: false,
+      name: '',
+      phone: ''
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -90,15 +89,18 @@
   height: fit-content;
   padding: 24px;
   flex-shrink: 0;
-  border: 1.5px solid #DDE0E6;
   border-radius: 12px;
+
+  @include gt-md {
+    border: 1.5px solid #DDE0E6;
+  }
 
   @include lt-lg {
     border: none;
     width: 100%;
     padding: 0 0 16px 0;
     margin-bottom: 16px;
-    border-bottom: 1.5px solid #DDE0E6;
+    border-bottom: 1px solid #DDE0E6;
     border-radius: 0;
   }
 
@@ -107,18 +109,24 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-
-    background: #FFF6E1;
     border-radius: 10px;
-    padding: 12px;
-
     font-family: $golos-medium;
-    font-style: normal;
-    font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #1F2226;
+
+    @include gt-md {
+      background: #FFF6E1;
+      padding: 12px;
+      margin-bottom: 16px;
+    }
+
+    @include lt-lg {
+      background: #FFF3D9;
+      padding: 12px 16px;
+      margin-bottom: 12px;
+    }
   }
 
   &__bonuses-title {
@@ -129,6 +137,10 @@
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #342700;
+
+    @include lt-lg {
+      opacity: 0.6;
+    }
   }
 
   &__bonuses-note {
@@ -141,6 +153,10 @@
     letter-spacing: -0.01em;
     color: #342700;
     margin-top: 2px;
+
+    @include lt-lg {
+      opacity: 0.6;
+    }
   }
 
   &__title {
@@ -212,9 +228,17 @@
   }
 
   &__total {
-    margin-top: 16px;
-    padding-top: 18px;
     border-top: 1.5px solid #DDE0E6;
+
+    @include gt-md {
+      padding-top: 18px;
+      margin: 16px 0 10px;
+    }
+
+    @include lt-lg {
+      padding-top: 12px;
+      margin: 12px 0 2px;
+    }
   }
 
   &__text-cashback {
@@ -223,18 +247,17 @@
     align-items: center;
     gap: 8px;
 
-    font-family: $golos-regular;
-    font-style: normal;
-    font-weight: 600;
+    font-family: $golos-bold;
     font-size: 14px;
     line-height: 20px;
     font-feature-settings: 'ss08' on;
-    color: #F8B900;
+    color: #FFCD1E;
   }
 
   &__icon-chevron {
     width: 10px;
     height: 6px;
+    color: #F8B900;
   }
 
   &__icon-coins {

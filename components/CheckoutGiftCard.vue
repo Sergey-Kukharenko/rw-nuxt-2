@@ -49,10 +49,14 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 12px;
-  margin-top: 24px;
+
+  @include gt-md {
+    margin-top: 24px;
+  }
 
   @include lt-lg {
     flex-direction: column;
+    margin-top: 12px;
   }
 
   &__title-tag {
@@ -66,6 +70,7 @@ export default {
     padding: 4px 8px;
     background-color: #26ad4f;
     border-radius: 8px;
+    margin-left: 7px;
   }
 
   &__cover {
@@ -74,13 +79,11 @@ export default {
     align-items: center;
     justify-content: center;
     gap: 9px;
-    background-color: #eafbeb;
+    background-color: $bg-green;
     border-radius: 12px;
     width: 160px;
 
-    font-family: $golos-regular;
-    font-style: normal;
-    font-weight: 500;
+    font-family: $golos-medium;
     font-size: 14px;
     line-height: 20px;
     text-align: center;
@@ -141,10 +144,7 @@ export default {
   &__dashed {
     border-radius: 12px;
     margin-top: 8px;
-    padding: 16px 14px;
-    height: 124px;
     flex: 1;
-
     font-family: $golos-regular;
     font-style: normal;
     font-weight: 400;
@@ -152,13 +152,19 @@ export default {
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #7c7c7c;
-    border: 2px dashed #EAEAEA;
     background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23EAEAEA' stroke-width='4' stroke-dasharray='6%2c 14' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
     border: none;
     outline: none;
     resize: none;
 
+    @include gt-md {
+      height: 124px;
+      padding: 16px 14px;
+    }
+
     @include lt-lg {
+      height: 72px;
+      padding: 14px 16px;
       margin-top: 12px;
     }
   }

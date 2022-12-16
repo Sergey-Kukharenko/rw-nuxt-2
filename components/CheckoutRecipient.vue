@@ -68,6 +68,12 @@ export default {
     flex-direction: row;
     align-items: center;
     gap: 8px;
+
+    @include lt-lg {
+      &:not(:last-child) {
+        margin-bottom: -4px;
+      }
+    }
   }
 
   &__another-name {

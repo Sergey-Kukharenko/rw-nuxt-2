@@ -4,16 +4,16 @@
     :class="classes"
     @click="onClick"
   >
-    <div class="switch__pointer" />
+    <div class="switch__pointer"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketSwitch",
+  name: 'BasketSwitch',
   model: {
-    prop: "value",
-    event: "change"
+    prop: 'value',
+    event: 'change'
   },
   props: {
     value: {
@@ -22,24 +22,24 @@ export default {
     },
     color: {
       type: String,
-      default: "green",
-      validator (value) {
-        return ["green", "yellow"].includes(value);
+      default: 'green',
+      validator(value) {
+        return ['green', 'yellow'].includes(value);
       }
     }
   },
-  emits: ["change"],
+  emits: ['change'],
   computed: {
-    classes () {
+    classes() {
       return {
-        "switch--active": this.value,
+        'switch--active': this.value,
         [`switch--color-${this.color}`]: true
       };
     }
   },
   methods: {
-    onClick () {
-      this.$emit("change", !this.value);
+    onClick() {
+      this.$emit('change', !this.value);
     }
   }
 };
@@ -53,14 +53,17 @@ export default {
   border-radius: 12px;
   background-color: #DDE0E6;
   cursor: pointer;
+  border: 1px solid #DDE0E6;
   box-sizing: border-box;
   transition: all 150ms ease-in-out;
 
   &__pointer {
     position: absolute;
     z-index: 1;
-    top: 1px;
-    left: 2px;
+    top: 0;
+    bottom: 0;
+    left: 1px;
+    margin: auto;
     width: 20px;
     height: 20px;
     border-radius: 10px;
@@ -70,7 +73,7 @@ export default {
 
   &--color-yellow {
     background-color: #FFFFFF;
-    border: 1.5px solid #F4D065;
+    border: 1px solid #F4D065;
 
     .switch__pointer {
       background-color: #FCBC00;
@@ -84,13 +87,14 @@ export default {
 
     &.switch--color-yellow {
       background-color: #FCBC00;
+
       .switch__pointer {
         background-color: #FFFFFF;
       }
     }
 
     & > .switch__pointer {
-      left: 21px;
+      transform: translateX(100%);
     }
   }
 }

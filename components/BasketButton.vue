@@ -158,7 +158,7 @@ export default {
   }
 
   &--size-large {
-    height: 56px;
+    height: 52px;
     padding: 0 32px;
     font-size: 16px;
     line-height: 24px;
