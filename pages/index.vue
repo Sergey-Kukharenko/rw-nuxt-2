@@ -1,51 +1,75 @@
 <template>
   <main>
-    <app-promotions/>
-    <app-popular-categories/>
-    <app-section :section="bestBouquets" name="best-bouquets"/>
-    <app-section-sm :section="recipient" name="recipient"/>
-    <app-section :section="specialOffers" theme="custom" name="special-offers"/>
-    <app-reviews/>
-    <app-section :section="underPounds" theme="custom" name="under-pounds"/>
-    <app-shop-by-price/>
-    <app-section :section="autumnCollection" theme="custom" name="autumn-collection"/>
-    <app-benefits/>
-    <app-section-sm :section="pickBouquet" theme="custom" name="pick-bouquet"/>
-    <app-discount/>
-    <app-faq/>
-    <app-info/>
+    <app-promotions />
+    <app-popular-categories />
+    <app-section v-if="isBestBouquets" :section="bestBouquets" name="best-bouquets" />
+    <app-section-sm v-if="isRecipient" :section="recipient" name="recipient" />
+    <app-section v-if="isSpecialOffers" :section="specialOffers" name="special-offers" theme="custom" />
+    <app-reviews />
+    <app-section v-if="isUnderPounds" :section="underPounds" name="under-pounds" theme="custom" />
+    <app-shop-by-price />
+    <app-section v-if="isAutumnCollection" :section="autumnCollection" name="autumn-collection" theme="custom" />
+    <app-benefits />
+    <app-section-sm v-if="isPickBouquet" :section="pickBouquet" name="pick-bouquet" theme="custom" />
+    <app-discount />
+    <app-faq />
+    <app-info />
   </main>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { useObjectNotEmpty } from '~/helpers';
+
 import AppSection from '@/components/shared/AppSection.vue';
 import AppSectionSm from '@/components/shared/AppSectionSm';
-
-import dataRecipient from '@/data/recipient';
-import dataPickBouquet from '@/data/pick-bouquet';
-import dataBestBouquets from '@/data/best-bouquets';
-import dataSpecialOffers from '@/data/special-offers';
-import dataUnderPounds from '@/data/under-pounds';
-import dataAutumnCollection from '@/data/autumn-collection';
 
 export default {
   name: 'IndexPage',
 
   components: {
-    AppSectionSm,
     AppSection,
+    AppSectionSm
   },
 
-  data() {
-    return {
-      recipient: dataRecipient,
-      pickBouquet: dataPickBouquet,
-      bestBouquets: dataBestBouquets,
-      specialOffers: dataSpecialOffers,
-      underPounds: dataUnderPounds,
-      autumnCollection: dataAutumnCollection
-    };
+  computed: {
+    ...mapGetters({
+      bestBouquets: 'index-page/getBestBouquets',
+      recipient: 'index-page/getRecipient',
+      specialOffers: 'index-page/getSpecialOffers',
+      underPounds: 'index-page/getUnderPounds',
+      autumnCollection: 'index-page/getAutumnCollection',
+      pickBouquet: 'index-page/getPickBouquet'
+    }),
+
+    isBestBouquets() {
+      return useObjectNotEmpty(this.bestBouquets);
+    },
+
+    isRecipient() {
+      return useObjectNotEmpty(this.recipient);
+    },
+
+    isSpecialOffers() {
+      return useObjectNotEmpty(this.specialOffers);
+    },
+
+    isUnderPounds() {
+      return useObjectNotEmpty(this.underPounds);
+    },
+
+    isAutumnCollection() {
+      return useObjectNotEmpty(this.autumnCollection);
+    },
+
+    isPickBouquet() {
+      return useObjectNotEmpty(this.pickBouquet);
+    }
   },
+
+  mounted() {
+    this.$store.dispatch('index-page/fetchMainPage');
+  }
 };
 </script>
 
@@ -112,7 +136,8 @@ main {
     }
   }
 
-  > section, > .layout {
+  > section,
+  > .layout {
     @include lt-md {
       width: 100%;
       box-sizing: border-box;

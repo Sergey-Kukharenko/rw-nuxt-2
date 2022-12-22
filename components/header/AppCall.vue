@@ -13,17 +13,22 @@
 </template>
 
 <script>
-import dataNavigation from '@/data/navigation'
-
 export default {
   name: 'AppCall',
 
   data() {
     return {
-      call: dataNavigation.call
-    }
+      call: {
+        icon: {
+          desktop: 'whatsapp',
+          mobile: 'call-outline'
+        },
+        title: '+44 (0)78 0767 8690',
+        href: 'https://api.whatsapp.com/send?phone=4407807678690'
+      }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -48,7 +53,6 @@ export default {
   display: flex;
   align-items: center;
   justify-content: flex-start;
-
 
   @include lt-md {
     margin: 0;

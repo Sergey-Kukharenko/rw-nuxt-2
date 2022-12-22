@@ -36,7 +36,7 @@ export default {
 
   components: {
     AppButton,
-    AppGoBackMobile,
+    AppGoBackMobile
   },
 
   mixins: [authManager],
@@ -52,8 +52,8 @@ export default {
       }
 
       this.$emit('close');
-    },
-  },
+    }
+  }
 };
 </script>
 

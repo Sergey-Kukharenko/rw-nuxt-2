@@ -17,29 +17,29 @@ export default {
   name: 'AppAdvertisingCard',
 
   components: {
-    AppButton,
+    AppButton
   },
 
   props: {
     bgColor: {
       type: String,
-      default: '',
+      default: ''
     },
 
     image: {
       type: String,
-      default: '',
+      default: ''
     },
 
     title: {
       type: String,
-      default: '',
+      default: ''
     },
 
     text: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   computed: {
@@ -48,8 +48,8 @@ export default {
         background: `${this.bgColor} url(${this.image}) no-repeat 100% 0`,
         backgroundSize: this.$device.isMobileOrTablet ? '50%' : '60%'
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

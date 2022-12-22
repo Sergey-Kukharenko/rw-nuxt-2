@@ -2,7 +2,10 @@
   <div class="layout completed">
     <div class="completed__info">
       <div class="completed__info-title">Registration passed successfully</div>
-      <div class="completed__info-text">We are glad to welcome you<br /> on our website!</div>
+      <div class="completed__info-text">
+        We are glad to welcome you<br/>
+        on our website!
+      </div>
     </div>
     <div class="completed__btn">
       <app-button theme="green-whitely" stretch="full">Go shopping</app-button>
@@ -17,10 +20,10 @@ export default {
   name: 'CompletedExtraPage',
 
   components: {
-    AppButton,
+    AppButton
   },
 
-  layout: 'mobile',
+  layout: 'mobile'
 };
 </script>
 

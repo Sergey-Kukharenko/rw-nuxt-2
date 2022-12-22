@@ -34,10 +34,10 @@ export default {
   name: 'AboutSomething',
 
   components: {
-    AppInfoCard,
+    AppInfoCard
   },
 
-  SOMETHING_IMPORTANT,
+  SOMETHING_IMPORTANT
 };
 </script>
 
@@ -121,7 +121,7 @@ export default {
         font-style: normal;
         font-weight: 600;
         color: $color-dark-grey;
-        
+
         @include gt-sm {
           min-height: 48px;
           font-size: 20px;

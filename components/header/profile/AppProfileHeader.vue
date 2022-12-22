@@ -18,7 +18,7 @@ export default {
 
   computed: {
     char() {
-      return this.user.fullName.substring(0, 1)
+      return this.user.fullName.substring(0, 1);
     }
   }
 };

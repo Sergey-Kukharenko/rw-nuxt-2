@@ -2,7 +2,7 @@
   <a :class="classNames">
     <div class="favorite__figure">
       <svg-icon name="heart" class="favorite__icon" />
-      <app-counter v-if="isCount" :count="count" class="favorite__counter"/>
+      <app-counter v-if="isCount" :count="count" class="favorite__counter" />
     </div>
     <div class="favorite__figcaption">Favorite</div>
   </a>
@@ -10,29 +10,29 @@
 
 <script>
 import AppCounter from '@/components/shared/AppCounter';
-import {useToggleClassName} from '@/helpers';
+import { useToggleClassName } from '@/helpers';
 
 export default {
   name: 'AppFavorite',
 
-  components: {AppCounter},
+  components: { AppCounter },
 
   data() {
     return {
       count: 12
-    }
+    };
   },
 
   computed: {
     isCount() {
-      return this.count > 0
+      return this.count > 0;
     },
 
     classNames() {
-      return useToggleClassName(this.isCount, 'favorite', 'active')
+      return useToggleClassName(this.isCount, 'favorite', 'active');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -81,7 +81,7 @@ export default {
     color: $color-favorite;
 
     &:hover {
-      .favorite__figcaption{
+      .favorite__figcaption {
         color: inherit;
       }
     }

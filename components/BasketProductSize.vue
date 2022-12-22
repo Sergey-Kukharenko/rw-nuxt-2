@@ -1,21 +1,16 @@
 <template>
-  <div
-    v-if="value.length"
-    class="size"
-  >
-    Bouquet size: {{ value }}
-  </div>
+  <div v-if="value.length" class="size">Bouquet size: {{ value }}</div>
 </template>
 
 <script>
 export default {
-  name: "BasketProductSize",
+  name: 'BasketProductSize',
   props: {
     value: {
       type: String,
-      default: "",
-      validate (value) {
-        return ["", "Premium"].includes(value);
+      default: '',
+      validate(value) {
+        return ['', 'Premium'].includes(value);
       }
     }
   }
@@ -29,7 +24,7 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #7C7C7C;
+  color: #7c7c7c;
 
   @include lt-lg {
     font-size: 12px;

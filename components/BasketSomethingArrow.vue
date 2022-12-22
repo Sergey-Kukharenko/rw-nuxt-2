@@ -1,15 +1,12 @@
 <template>
   <div class="arrow" v-on="$listeners">
-    <svg-icon
-      class="arrow__icon"
-      name="arrow-right"
-    />
+    <svg-icon class="arrow__icon" name="arrow-right" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketSomethingArrow"
+  name: 'BasketSomethingArrow'
 };
 </script>
 
@@ -23,7 +20,7 @@ export default {
   width: 40px;
   height: 40px;
   border-radius: 20px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
   cursor: pointer;
 

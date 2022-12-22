@@ -17,8 +17,8 @@ export default {
   name: 'OrderFooter',
 
   components: {
-    AppStoreButton,
-  },
+    AppStoreButton
+  }
 };
 </script>
 
@@ -31,8 +31,8 @@ export default {
   display: flex;
   align-items: center;
   height: 72px;
-  border-top: 1px solid #EAEAEA;
-  
+  border-top: 1px solid #eaeaea;
+
   &__container {
     display: flex;
     align-items: center;

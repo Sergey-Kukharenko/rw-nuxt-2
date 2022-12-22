@@ -5,13 +5,13 @@ const STRIPE = {
     lineItems: [
       {
         price: 'price_1MD0VAF7plSNwbQ3CdzsqMYI',
-        quantity: 2,
-      },
+        quantity: 2
+      }
     ],
     successURL: 'http://192.168.3.4:4000/order',
-    cancelURL: 'http://192.168.3.4:4000/',
+    cancelURL: 'http://192.168.3.4:4000/'
   }
-}
+};
 
 // PAYPAL
 const PAYPAL = {
@@ -31,13 +31,13 @@ const PAYPAL = {
       name: 'hat',
       description: 'Brown hat.',
       quantity: '1',
-      price: '5',
+      price: '5'
     },
     {
       name: 'handbag',
       description: 'Black handbag.',
       quantity: '1',
-      price: '5',
+      price: '5'
     }
   ],
   styles: {
@@ -46,10 +46,7 @@ const PAYPAL = {
     shape: 'pill',
     color: 'silver',
     height: 40
-  },
-}
+  }
+};
 
-export {
-  STRIPE,
-  PAYPAL
-}
+export { STRIPE, PAYPAL };

@@ -5,8 +5,8 @@ const PROMO = {
   },
   backgroundColor: '#EBFAF0',
   title: 'Payment and delivery',
-  text: 'MyFlowers has its own courier service, which allows you to deliver flowers to you in the shortest possible time',
-}
+  text: 'MyFlowers has its own courier service, which allows you to deliver flowers to you in the shortest possible time'
+};
 
 const TEXT_INFO = {
   columns: [
@@ -20,7 +20,7 @@ const TEXT_INFO = {
     }
   ],
   mainText: 'We deliver at a time convenient for you and accept payment in any form'
-}
+};
 
 const HERO_ITEMS = [
   {
@@ -34,37 +34,37 @@ const HERO_ITEMS = [
   {
     title: 'Delivery time',
     text: 'If the delivery address is located beyond the London, then for such orders, the delivery time interval is increased by an hour'
-  },
-]
+  }
+];
 
 const SOMETHING_IMPORTANT = {
   title: 'Delivery in London',
   columns: [
     {
       title: 'Select the delivery date',
-      text: 'Choose the day on which you want to receive a bouquet',
+      text: 'Choose the day on which you want to receive a bouquet'
     },
     {
       title: 'Specify the delivery distance',
-      text: 'Choose the delivery area, the time it will take the courier to deliver the bouquet to you will depend on it',
+      text: 'Choose the delivery area, the time it will take the courier to deliver the bouquet to you will depend on it'
     },
     {
       title: 'Select the delivery time',
-      text: 'Specify the time, we will offer a suitable option for free, or choose the exact time yourself',
-    },
+      text: 'Specify the time, we will offer a suitable option for free, or choose the exact time yourself'
+    }
   ]
-}
+};
 
 const PAYMENT = [
   {
     title: 'Personally in hand',
-    text: 'You choose any 3-hour period of time in which we will deliver the bouquet',
+    text: 'You choose any 3-hour period of time in which we will deliver the bouquet'
   },
   {
     title: 'Payment',
     text: 'We accept cards Apple & Google pay, Paypal'
   }
-]
+];
 
 const ADVERTISING = [
   {
@@ -78,14 +78,7 @@ const ADVERTISING = [
     backgroundColor: '#F9E0E4',
     title: 'Dutch tulips',
     text: 'Special offer'
-  },
-]
+  }
+];
 
-export {
-  PROMO,
-  TEXT_INFO,
-  HERO_ITEMS,
-  SOMETHING_IMPORTANT,
-  PAYMENT,
-  ADVERTISING
-}
+export { PROMO, TEXT_INFO, HERO_ITEMS, SOMETHING_IMPORTANT, PAYMENT, ADVERTISING };

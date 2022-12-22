@@ -4,8 +4,8 @@
       <div class="section__item item">
         <div class="item__header">{{ product.title }}</div>
         <div class="item__body item__body--sm-include-border">
-          <app-offers :offers="product.options" @setOffer="onSetOffer"/>
-          <app-offer-detail :list="offer.item.components"/>
+          <app-offers :offers="product.options" @setOffer="onSetOffer" />
+          <app-offer-detail :list="offer.item.components" />
         </div>
       </div>
     </div>
@@ -16,7 +16,7 @@
           <div class="price__current">£{{ offer.price.amount }}</div>
           <div v-if="offer.price.old" class="price__old">£{{ offer.price.old }}</div>
         </div>
-        <app-badges v-if="product.badges" :badges="product.badges"/>
+        <app-badges v-if="product.badges" :badges="product.badges" />
       </div>
 
       <div class="group-buttons">
@@ -25,7 +25,7 @@
         </div>
         <div class="group-buttons__item">
           <app-button theme="grey" @click="toggleLike">
-            <svg-icon name="heart-outline" :class="classNames"/>
+            <svg-icon name="heart-outline" :class="classNames" />
           </app-button>
         </div>
       </div>
@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {useToggleClassName} from '@/helpers';
+import { useToggleClassName } from '@/helpers';
 import AppOffers from '@/components/product/AppOffers';
 import AppButton from '@/components/shared/AppButton';
 import AppBadges from '@/components/shared/AppBadges';
@@ -48,7 +48,7 @@ export default {
     AppOfferDetail,
     AppOffers,
     AppBadges,
-    AppButton,
+    AppButton
   },
 
   props: {
@@ -77,10 +77,10 @@ export default {
       props: {
         icon: {
           name: 'lightning',
-          size: {width: 28, height: 28}
+          size: { width: 28, height: 28 }
         },
         title: 'Great product!',
-        text: '943 people have bought this product in the last 7 days',
+        text: '943 people have bought this product in the last 7 days'
       }
     };
 
@@ -89,7 +89,7 @@ export default {
       icon: false,
       closeButton: false,
       position: 'bottom-left',
-      class: ['toast', 'toast--width-md', 'toast--theme-dark'],
+      class: ['toast', 'toast--width-md', 'toast--theme-dark']
     };
 
     this.$toast(content, options);

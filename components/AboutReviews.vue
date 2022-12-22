@@ -49,10 +49,10 @@ export default {
   name: 'AboutReviews',
 
   components: {
-    StarsRating,
+    StarsRating
   },
 
-  REVIEWS,
+  REVIEWS
 };
 </script>
 

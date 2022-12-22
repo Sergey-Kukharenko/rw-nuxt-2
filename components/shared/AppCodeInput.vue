@@ -32,13 +32,13 @@ export default {
   props: {
     error: {
       type: String,
-      default: '',
+      default: ''
     },
 
     disabled: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
 
   CODE_INPUT_DEFAULT_COUNT,
@@ -48,9 +48,9 @@ export default {
       if (val) {
         return;
       }
-      
+
       this.autoFocus();
-    },
+    }
   },
 
   methods: {
@@ -154,8 +154,8 @@ export default {
       if (code.length === CODE_INPUT_DEFAULT_COUNT) {
         this.$emit('set-code', code);
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

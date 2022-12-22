@@ -31,8 +31,8 @@
   </div>
 </template>
 <script>
-import AppStars from '@/components/shared/AppStars'
-import AppLike from '@/components/shared/AppLike'
+import AppStars from '@/components/shared/AppStars';
+import AppLike from '@/components/shared/AppLike';
 
 export default {
   name: 'AppReviewsList',
@@ -47,7 +47,7 @@ export default {
       type: Array,
       default: () => []
     }
-  },
+  }
 };
 </script>
 

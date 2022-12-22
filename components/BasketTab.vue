@@ -18,23 +18,23 @@ export default {
   props: {
     list: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     size: {
       type: String,
       default: 'medium',
       validator(value) {
         return ['small', 'medium', 'large', 'extra-large'].includes(value);
-      },
+      }
     },
     stretch: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
-      active: 0,
+      active: 0
     };
   },
   methods: {
@@ -42,14 +42,14 @@ export default {
       return {
         'basket-tab__item--active': this.active === index,
         'basket-tab__item--stretch': this.stretch,
-        [`basket-tab__size-${this.size}`]: true,
+        [`basket-tab__size-${this.size}`]: true
       };
     },
     onClick(index) {
       this.active = index;
       this.$emit('click', index);
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -70,7 +70,7 @@ export default {
     background: #ffffff;
     color: $color-dark-grey;
     border-radius: 12px;
-    border: 1.5px solid #DDE0E6;
+    border: 1.5px solid #dde0e6;
     padding: 0 18px;
 
     @include gt-md {

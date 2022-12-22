@@ -1,18 +1,9 @@
 <template>
   <div class="menu">
-    <div
-      v-for="item in list"
-      :key="item.title"
-      class="menu__item"
-      :class="{ 'has-sub-level': item.hasSubLevel }"
-    >
+    <div v-for="item in list" :key="item.title" class="menu__item" :class="{ 'has-sub-level': item.hasSubLevel }">
       <div class="content">
         <div class="content__figure">
-          <svg-icon
-            :name="item.icon"
-            v-bind="item.style"
-            class="content__icon"
-          />
+          <svg-icon :name="item.icon" v-bind="item.style" class="content__icon" />
         </div>
         <div class="content__text">
           {{ item.title }}
@@ -21,10 +12,7 @@
 
       <app-menu-dropdown v-if="item.hasSubLevel">
         <app-menu-sections v-slot="slotProps" :section="item.by">
-          <app-menu-section
-            :theme="setColumnSize(item.title)"
-            :section="{ ...slotProps }"
-          />
+          <app-menu-section :theme="setColumnSize(item.title)" :section="{ ...slotProps }" />
         </app-menu-sections>
       </app-menu-dropdown>
     </div>
@@ -39,7 +27,7 @@ import AppMenuSection from '~/components/header/menu/AppMenuSection';
 export default {
   name: 'AppMenuNavigation',
 
-  components: {AppMenuSection, AppMenuSections, AppMenuDropdown},
+  components: { AppMenuSection, AppMenuSections, AppMenuDropdown },
 
   props: {
     list: {

@@ -22,7 +22,7 @@ export default {
   name: 'AppModalAbstraction',
 
   components: {
-    Teleport,
+    Teleport
   },
 
   props: {
@@ -31,14 +31,14 @@ export default {
       default: '',
       validate(value) {
         return ['full'].includes(value);
-      },
-    },
+      }
+    }
   },
 
   computed: {
     classNames() {
       return useClassName(this.$props, 'modal');
-    },
+    }
   },
 
   mounted() {
@@ -60,8 +60,8 @@ export default {
       }
 
       this.close();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -122,7 +122,7 @@ export default {
 
       @include lt-md {
         width: 90%;
-        
+
         .button {
           display: none;
         }

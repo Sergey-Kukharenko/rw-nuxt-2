@@ -20,41 +20,41 @@ export default {
       seconds: null,
       isEnded: null,
       endDate: null
-    }
+    };
   },
 
   mounted() {
-    const time = new Date()
-    time.setHours(time.getHours() + 3)
-    this.endDate = time
-    this.tick()
-    this.timer = setInterval(this.tick.bind(this), 1000)
+    const time = new Date();
+    time.setHours(time.getHours() + 3);
+    this.endDate = time;
+    this.tick();
+    this.timer = setInterval(this.tick.bind(this), 1000);
   },
 
   beforeDestroy() {
-    clearInterval(this.timer)
+    clearInterval(this.timer);
   },
 
   methods: {
     updateRemaining(distance) {
-      this.days = Math.floor(distance / (1000 * 60 * 60 * 24))
-      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))
-      this.seconds = Math.floor((distance % (1000 * 60)) / 1000)
+      this.days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      this.hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      this.minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      this.seconds = Math.floor((distance % (1000 * 60)) / 1000);
     },
 
     tick() {
-      const currentTime = new Date()
-      const distance = Math.max(this.endDate - currentTime, 0)
-      this.updateRemaining(distance)
+      const currentTime = new Date();
+      const distance = Math.max(this.endDate - currentTime, 0);
+      this.updateRemaining(distance);
 
       if (distance === 0) {
-        clearInterval(this.timer)
-        this.isEnded = true
+        clearInterval(this.timer);
+        this.isEnded = true;
       }
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

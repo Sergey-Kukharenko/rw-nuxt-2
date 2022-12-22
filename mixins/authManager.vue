@@ -1,6 +1,6 @@
 <script>
-import { AUTH_REG_STEPS, AUTH_REG_TYPES, AUTH_TYPES, AUTH_REG_ERROR_MESSAGES } from '~/constants/index';
-import { isEmailValid } from '~/helpers/validators';
+import {AUTH_REG_STEPS, AUTH_REG_TYPES, AUTH_TYPES, AUTH_REG_ERROR_MESSAGES} from '~/constants/index';
+import {isEmailValid} from '~/helpers/validators';
 
 export default {
   name: 'AuthManager',
@@ -28,7 +28,7 @@ export default {
 
     phoneMask() {
       return this.$store.getters['auth/phoneMask'];
-    },
+    }
   },
 
   methods: {
@@ -44,10 +44,10 @@ export default {
       return !isEmailValid(email) ? AUTH_REG_ERROR_MESSAGES.email.invalid : '';
     },
 
-    changeStep({ status, type }) {
+    changeStep({status, type}) {
       if (type) this.setCodeType(type);
 
-      if (this.$device.isMobileOrTablet) this.$router.push({ name: AUTH_REG_STEPS[status].page });
+      if (this.$device.isMobileOrTablet) this.$router.push({name: AUTH_REG_STEPS[status].page});
 
       this.$store.commit('auth/setCurrStep', AUTH_REG_STEPS[status].component);
     },
@@ -63,8 +63,8 @@ export default {
 
     setCodeType(payload) {
       this.$store.commit('auth/setCodeType', payload);
-    },
-  },
+    }
+  }
 };
 </script>
 

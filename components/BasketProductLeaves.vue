@@ -1,13 +1,13 @@
 <template>
   <div class="leaves">
-    <basket-switch :value="value" @change="onChange"/>
+    <basket-switch :value="value" @change="onChange" />
     <div>Add green leaves for £2</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketProductLeaves",
+  name: 'BasketProductLeaves',
   model: {
     prop: 'value',
     event: 'change'
@@ -20,7 +20,7 @@ export default {
   },
   emits: ['change'],
   methods: {
-    onChange () {
+    onChange() {
       this.$emit('change', !this.value);
     }
   }

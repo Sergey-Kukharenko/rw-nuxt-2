@@ -2,11 +2,7 @@
   <div class="list">
     <div v-for="(item, idx) in list" :key="idx" class="list__item">
       <div class="figure">
-        <svg-icon
-          :name="item.icon"
-          class="figure__icon"
-          :class="item.icon"
-        />
+        <svg-icon :name="item.icon" class="figure__icon" :class="item.icon" />
       </div>
       <div class="figcaption">{{ item.text }}</div>
     </div>

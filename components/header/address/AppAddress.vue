@@ -17,42 +17,42 @@
 <script>
 import AppInput from './AppInput';
 import AppList from './AppList';
-import { woosMapService } from '@/services/woosMapService'
+import { woosMapService } from '@/services/woosMapService';
 import AppCitiesByDefault from '~/components/header/address/AppCitiesByDefault';
 
 export default {
   name: 'AppAddress',
 
-  components: {AppCitiesByDefault, AppList, AppInput},
+  components: { AppCitiesByDefault, AppList, AppInput },
 
   data() {
     return {
       query: '',
       list: []
-    }
+    };
   },
 
   computed: {
     isList() {
-      return this.list.length > 0
+      return this.list.length > 0;
     },
 
     isCitiesByDefault() {
-      return this.$device.isMobileOrTablet && !this.isList
+      return this.$device.isMobileOrTablet && !this.isList;
     }
   },
 
   watch: {
     async query(value) {
-      this.list = value ? await woosMapService(value) : []
+      this.list = value ? await woosMapService(value) : [];
     }
   },
 
   methods: {
     onClearQuery() {
-      this.query = ''
+      this.query = '';
     }
-  },
+  }
 };
 </script>
 

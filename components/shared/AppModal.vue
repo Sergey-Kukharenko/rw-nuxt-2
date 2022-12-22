@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AppModalAbstraction from '@/components/shared/AppModalAbstraction.vue'
+import AppModalAbstraction from '@/components/shared/AppModalAbstraction.vue';
 
 export default {
   name: 'AppModal',
@@ -28,9 +28,8 @@ export default {
 
   methods: {
     close() {
-      this.$emit('close')
+      this.$emit('close');
     }
   }
-}
+};
 </script>
-

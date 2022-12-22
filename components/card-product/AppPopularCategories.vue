@@ -2,11 +2,7 @@
   <section class="popular-categories">
     <h2 class="popular-title">{{ popular.title }}</h2>
     <div class="popular-list">
-      <a
-        v-for="item in popular.categories"
-        :key="item.name"
-        class="popular-list__item"
-      >
+      <a v-for="item in popular.categories" :key="item.name" class="popular-list__item">
         {{ item.name }}
       </a>
     </div>

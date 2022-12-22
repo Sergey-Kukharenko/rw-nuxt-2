@@ -6,10 +6,7 @@
           <app-stars :stars="item.stars" class="stars--content-right" />
         </div>
         <div class="card__progress progress">
-          <div
-            class="progress__bar"
-            :style="getProgressWidth(item.count)"
-          ></div>
+          <div class="progress__bar" :style="getProgressWidth(item.count)"></div>
         </div>
         <div class="card__number">
           {{ item.count }}
@@ -20,7 +17,7 @@
 </template>
 
 <script>
-import AppStars from '@/components/shared/AppStars.vue'
+import AppStars from '@/components/shared/AppStars.vue';
 
 export default {
   name: 'AppRatingList',
@@ -36,8 +33,8 @@ export default {
 
   methods: {
     getProgressWidth(count) {
-      const total = this.rating.reviews
-      return 'width:' + ((count / total) * 100).toFixed(4) + '%'
+      const total = this.rating.reviews;
+      return 'width:' + ((count / total) * 100).toFixed(4) + '%';
     }
   }
 };

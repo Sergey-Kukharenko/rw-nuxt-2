@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import dataRecently from '@/data/recently'
-import AppSectionHeader from '~/components/shared/AppSectionHeader'
-import AppSectionGrid from '@/components/shared/AppSectionGrid'
-import AppCard from '@/components/shared/AppCard'
+import dataRecently from '@/data/recently';
+import AppSectionHeader from '~/components/shared/AppSectionHeader';
+import AppSectionGrid from '@/components/shared/AppSectionGrid';
+import AppCard from '@/components/shared/AppCard';
 
-const { main, list } = dataRecently
+const { main, list } = dataRecently;
 
 export default {
   name: 'AppSimilar',
@@ -27,12 +27,10 @@ export default {
   data() {
     return {
       headerProps: main,
-      slides: list,
-    }
+      slides: list
+    };
   }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

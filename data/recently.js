@@ -2,7 +2,6 @@ export default {
   main: {
     title: 'Recently watched',
     count: 58
-
   },
   list: [
     {
@@ -30,4 +29,4 @@ export default {
       }
     }
   ]
-}
+};

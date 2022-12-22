@@ -1,13 +1,7 @@
 <template>
-  <div
-    class="app-input"
-    :class="classes"
-  >
-    <div
-      class="app-input__field"
-      :style="styles"
-    >
-      <slot name="left"/>
+  <div class="app-input" :class="classes">
+    <div class="app-input__field" :style="styles">
+      <slot name="left" />
       <input
         v-mask="mask"
         :type="type"
@@ -16,18 +10,12 @@
         :disabled="disabled"
         @input="onInput"
       />
-      <slot name="right"/>
+      <slot name="right" />
     </div>
-    <div
-      v-if="error"
-      class="app-input__error"
-    >
+    <div v-if="error" class="app-input__error">
       {{ error }}
     </div>
-    <div
-      v-if="note"
-      class="app-input__note"
-    >
+    <div v-if="note" class="app-input__note">
       {{ note }}
     </div>
   </div>
@@ -35,36 +23,36 @@
 
 <script>
 export default {
-  name: "AppInput",
+  name: 'AppInput',
   props: {
     type: {
       type: String,
-      default: "text",
-      validate (value) {
-        return ["text", "password"].includes(value);
+      default: 'text',
+      validate(value) {
+        return ['text', 'password'].includes(value);
       }
     },
     value: {
       type: [String, Number],
       required: true,
-      default: ""
+      default: ''
     },
     size: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validate(value) {
-        return ["small", "medium", "large", "x-large"].includes(value);
+        return ['small', 'medium', 'large', 'x-large'].includes(value);
       }
     },
     placeholder: {
       type: String,
-      default: ""
+      default: ''
     },
     align: {
       type: String,
-      default: "left",
-      validate (value) {
-        return ["left", "center", "right"].includes(value);
+      default: 'left',
+      validate(value) {
+        return ['left', 'center', 'right'].includes(value);
       }
     },
     width: {
@@ -73,11 +61,11 @@ export default {
     },
     error: {
       type: String,
-      default: ""
+      default: ''
     },
     note: {
       type: String,
-      default: ""
+      default: ''
     },
 
     mask: {
@@ -91,26 +79,24 @@ export default {
     }
   },
   computed: {
-    classes () {
+    classes() {
       return {
         [`app-input--size-${this.size}`]: true,
         [`app-input--align-${this.align}`]: true,
-        "app-input--error": !!this.error
+        'app-input--error': !!this.error
       };
     },
-    styles () {
+    styles() {
       const styles = {};
       if (this.width) {
-        styles.width = Number.isInteger(this.width)
-          ? `${this.width}px`
-          : this.width;
+        styles.width = Number.isInteger(this.width) ? `${this.width}px` : this.width;
       }
       return styles;
     }
   },
   methods: {
-    onInput (event) {
-      this.$emit("input", event.target.value);
+    onInput(event) {
+      this.$emit('input', event.target.value);
     }
   }
 };
@@ -219,13 +205,13 @@ export default {
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
-    color: #DB1838;
+    color: #db1838;
     padding-left: 18px;
   }
 
   &--error {
     .app-input__field {
-      border: 1px solid #DB1838;
+      border: 1px solid #db1838;
     }
   }
 

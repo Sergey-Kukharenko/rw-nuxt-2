@@ -1,17 +1,17 @@
 <template>
   <div :class="classNames">
     <div class="header" @click="close">
-      <svg-icon name="arrow-back" class="header__icon"/>
+      <svg-icon name="arrow-back" class="header__icon" />
       <div class="header__title">{{ title }}</div>
     </div>
     <div class="container">
-      <slot/>
+      <slot />
     </div>
   </div>
 </template>
 
 <script>
-import {useToggleClassName} from '~/helpers';
+import { useToggleClassName } from '~/helpers';
 
 export default {
   name: 'AppDrawerNested',
@@ -30,13 +30,13 @@ export default {
 
   computed: {
     classNames() {
-      return useToggleClassName(this.visible, 'nested', 'active')
+      return useToggleClassName(this.visible, 'nested', 'active');
     }
   },
 
   methods: {
     close() {
-      this.$emit('close')
+      this.$emit('close');
     }
   }
 };

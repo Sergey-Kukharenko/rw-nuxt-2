@@ -35,13 +35,13 @@ export default {
   props: {
     tabs: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
 
     activeTab: {
       type: Number,
-      default: 0,
-    },
+      default: 0
+    }
   },
 
   computed: {
@@ -55,7 +55,7 @@ export default {
 
     hasNext() {
       return this.activeTab < this.tabs?.length - 1;
-    },
+    }
   },
 
   methods: {
@@ -69,8 +69,8 @@ export default {
         case this.hasNext && 'next':
           this.$emit('next');
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

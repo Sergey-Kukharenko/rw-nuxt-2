@@ -5,4 +5,4 @@ const VALIDATE_MESSAGES = {
   required: 'Required field'
 };
 
-export {VALIDATE_MESSAGES};
+export { VALIDATE_MESSAGES };

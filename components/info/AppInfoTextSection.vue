@@ -17,16 +17,16 @@ export default {
   props: {
     content: {
       type: Object,
-      default: () => ({}),
-    },
-  },
+      default: () => ({})
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
 .row {
   display: flex;
-  
+
   @include gt-sm {
     gap: 134px;
   }
@@ -101,7 +101,7 @@ export default {
     font-style: normal;
     font-weight: 700;
     color: $color-dark-grey;
-    
+
     @include gt-sm {
       width: 528px;
       font-size: 48px;

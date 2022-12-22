@@ -23,14 +23,14 @@ export default {
 
   data() {
     return {
-      filterForm: {},
+      filterForm: {}
     };
   },
 
   computed: {
     filtersList() {
       return dataCategoryFilters;
-    },
+    }
   },
 
   mounted() {
@@ -46,7 +46,7 @@ export default {
           case FILTER_TYPES.range:
             filterFormValue = {
               from: null,
-              before: null,
+              before: null
             };
 
             break;
@@ -76,8 +76,8 @@ export default {
       if (idx !== -1) {
         dataCategoryFilters[idx][key] = !status;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

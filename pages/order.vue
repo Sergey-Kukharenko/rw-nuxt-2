@@ -2,7 +2,7 @@
   <main class="order">
     <section class="order__wrapper">
       <div class="order__main">
-        <order-title />
+        <order-title/>
         <order-panel
           title="Order Details"
           :icon="detailsIcon"
@@ -23,7 +23,7 @@
             <div class="order-items">
               <div v-for="item in 3" :key="item" class="order-items__item item">
                 <div class="item__picture">
-                  <img src="https://via.placeholder.com/48" class="item__img" alt="" />
+                  <img src="https://via.placeholder.com/48" class="item__img" alt=""/>
                 </div>
                 <div class="item__text">A bouquet of 29 peonies with addition of greenery</div>
               </div>
@@ -40,7 +40,7 @@
           </template>
           <template #full>
             <div class="select-payment">
-              <svg-icon :name="paymentMethod.logo" class="select-payment__icon" />
+              <svg-icon :name="paymentMethod.logo" class="select-payment__icon"/>
               <app-select
                 ref="payment-select"
                 :placeholder="paymentMethod.label"
@@ -52,12 +52,12 @@
                     <app-radio v-model="paymentMethod.label" :name="item.label" :has-icon="hasRadioIcon">
                       <div class="payment-item">
                         <div class="payment-item__logo">
-                          <svg-icon :name="item.logo" class="payment-item__logo-icon" />
+                          <svg-icon :name="item.logo" class="payment-item__logo-icon"/>
                         </div>
                         {{ item.label }}
                         <div class="payment-item__icons">
                           <div v-for="icon in item.methodIcons" :key="icon" class="payment-item__icon-item">
-                            <svg-icon :name="icon" class="payment-item__icon" />
+                            <svg-icon :name="icon" class="payment-item__icon"/>
                           </div>
                         </div>
                       </div>
@@ -70,23 +70,23 @@
               {{ paymentMethod.label }}
             </div>
             <div class="order__notification">
-              <order-notification> You can change the payment method and pay online </order-notification>
+              <order-notification> You can change the payment method and pay online</order-notification>
             </div>
           </template>
         </order-panel>
-        <order-payment-button :payment-method="paymentMethod" />
+        <order-payment-button :payment-method="paymentMethod"/>
         <div class="payment__promo">
-          <order-promo />
+          <order-promo/>
         </div>
       </div>
-      <order-detail @cancel="openModal" />
+      <order-detail @cancel="openModal"/>
     </section>
     <div class="payment__promo--mobile">
-      <order-promo />
+      <order-promo/>
     </div>
     <div class="order-cancel" @click="openModal('OrderCancel')">Cancel the order</div>
     <app-modal :visible="isModalVisible" theme="centered" @close="closeModal">
-      <component :is="currModal" @close="closeModal" @cancel-order="cancelOrder" />
+      <component :is="currModal" @close="closeModal" @cancel-order="cancelOrder"/>
     </app-modal>
   </main>
 </template>
@@ -98,7 +98,7 @@ import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
 import AppModal from '~/components/shared/AppModal';
 
-import { disableScroll, enableScroll } from '~/helpers/scrollLock';
+import {disableScroll, enableScroll} from '~/helpers/scrollLock';
 
 import paymentMethodsData from '~/data/payment-methods';
 
@@ -112,7 +112,7 @@ export default {
     OrderPromo,
     AppSelect,
     AppRadio,
-    AppModal,
+    AppModal
   },
 
   layout: 'order',
@@ -121,10 +121,10 @@ export default {
     return {
       loading: false,
 
-      paymentMethod: { ...STRIPE_METHOD },
+      paymentMethod: {...STRIPE_METHOD},
       currModal: '',
       isDetailVisible: false,
-      isModalVisible: false,
+      isModalVisible: false
     };
   },
 
@@ -137,11 +137,11 @@ export default {
 
     hasRadioIcon() {
       return this.$device.isMobile;
-    },
+    }
   },
 
   methods: {
-    onClickPaymentSystem({ label, logo, name }, close, setLabel) {
+    onClickPaymentSystem({label, logo, name}, close, setLabel) {
       setLabel(label);
       this.setIcon(logo);
       this.paymentMethod.name = name;
@@ -174,9 +174,9 @@ export default {
 
     cancelOrder() {
       this.closeModal();
-      this.$router.push({ name: 'index' });
-    },
-  },
+      this.$router.push({name: 'index'});
+    }
+  }
 };
 </script>
 

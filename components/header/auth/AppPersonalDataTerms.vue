@@ -1,13 +1,13 @@
 <template>
   <div class="info">
-    By clicking on the button, you agree<br /> to the
-    с <a href="#" class="info__link">Terms of personal data</a> processing
+    By clicking on the button, you agree<br />
+    to the с <a href="#" class="info__link">Terms of personal data</a> processing
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AppPersonalDataTerms',
+  name: 'AppPersonalDataTerms'
 };
 </script>
 

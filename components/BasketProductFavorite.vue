@@ -1,14 +1,7 @@
 <template>
   <div class="favorite">
-    <basket-button
-      theme="grey"
-      size="small"
-      :icon-only="true"
-    >
-      <svg-icon
-        class="favorite__icon-like"
-        name="like"
-      />
+    <basket-button theme="grey" size="small" :icon-only="true">
+      <svg-icon class="favorite__icon-like" name="like" />
     </basket-button>
     <div>Add to favorite</div>
   </div>
@@ -16,7 +9,7 @@
 
 <script>
 export default {
-  name: "BasketProductFavorite"
+  name: 'BasketProductFavorite'
 };
 </script>
 
@@ -33,7 +26,7 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
-  color: #1F2226;
+  color: #1f2226;
 
   &__icon-like {
     width: 20px;

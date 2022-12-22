@@ -3,18 +3,18 @@
     <div class="layout layout--horizontal-dt">
       <div class="navbar-list">
         <div class="navbar-list__item">
-          <app-menu :list="navBar"/>
+          <app-menu :list="navBar" />
         </div>
         <div class="navbar-list__item content">
           <div class="content__static">
-            <app-search/>
+            <app-search />
           </div>
           <div class="content__scrolled list">
             <div class="list__item">
-              <app-call/>
+              <app-call />
             </div>
             <div class="list__item">
-              <app-cart theme="inline"/>
+              <app-cart theme="inline" />
             </div>
           </div>
         </div>
@@ -24,7 +24,8 @@
 </template>
 
 <script>
-import dataNavBar from '@/data/nav-bar';
+import { mapGetters } from 'vuex';
+
 import AppMenu from '~/components/header/menu/AppMenu';
 import AppSearch from '~/components/header/search/AppSearch.vue';
 import AppCart from '@/components/header/AppCart.vue';
@@ -40,10 +41,8 @@ export default {
     AppCall
   },
 
-  data() {
-    return {
-      navBar: dataNavBar,
-    };
+  computed: {
+    ...mapGetters({ navBar: 'layout/getNavBar' })
   }
 };
 </script>
@@ -54,7 +53,7 @@ export default {
   padding: 8px 0;
 
   @include gt-sm {
-    border-top: 1px solid #EAEAEA;
+    border-top: 1px solid #eaeaea;
     //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   }
 

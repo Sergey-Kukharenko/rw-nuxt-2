@@ -40,11 +40,7 @@
             {{ option.name }}
           </app-checkbox>
         </div>
-        <div
-          v-if="isVisibleToggler(filter)"
-          class="show"
-          @click="toggleFilter('list')"
-        >
+        <div v-if="isVisibleToggler(filter)" class="show" @click="toggleFilter('list')">
           {{ getToggleFilterListText(filter.isListOpened) }}
         </div>
       </div>
@@ -56,11 +52,7 @@
           </app-radio>
         </div>
 
-        <div
-          v-if="isVisibleToggler(filter)"
-          class="show"
-          @click="toggleFilter('list')"
-        >
+        <div v-if="isVisibleToggler(filter)" class="show" @click="toggleFilter('list')">
           {{ getToggleFilterListText(filter.isListOpened) }}
         </div>
       </div>
@@ -81,26 +73,26 @@ export default {
 
   components: {
     AppCheckbox,
-    AppRadio,
+    AppRadio
   },
 
   props: {
     filter: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
-  
+
   data() {
     return {
       form: {
         range: {
           from: null,
-          before: null,
+          before: null
         },
         radio: null,
-        checkbox: [],
-      },
+        checkbox: []
+      }
     };
   },
 
@@ -109,7 +101,7 @@ export default {
   computed: {
     maxHeightOfContent() {
       return this.filter.isActive && { maxHeight: this.$refs['filter-content']?.scrollHeight + 120 + 'px' };
-    },
+    }
   },
 
   methods: {
@@ -130,13 +122,13 @@ export default {
     toggleFilter(key) {
       const toggleKeys = {
         filter: 'isActive',
-        list: 'isListOpened',
+        list: 'isListOpened'
       };
 
       this.$emit('toggle-filter', {
         title: this.filter.title,
         key: toggleKeys[key],
-        status: this.filter[toggleKeys[key]],
+        status: this.filter[toggleKeys[key]]
       });
     },
 
@@ -175,13 +167,13 @@ export default {
       this.form = {
         range: {
           from: null,
-          before: null,
+          before: null
         },
         radio: null,
-        checkbox: [],
+        checkbox: []
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

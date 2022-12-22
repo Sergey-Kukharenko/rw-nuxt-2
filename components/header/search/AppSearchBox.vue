@@ -12,23 +12,15 @@
             class="input"
             @focus="onFocusIn"
           />
-          <app-button v-if="$device.isDesktop" theme="search" size="lg" class="search__button">
-            Search
-          </app-button>
+          <app-button v-if="$device.isDesktop" theme="search" size="lg" class="search__button"> Search</app-button>
         </form>
-        <button v-if="$device.isMobileOrTablet" class="search__cancel cancel" @click="clearQuery">
-          Cancel
-        </button>
+        <button v-if="$device.isMobileOrTablet" class="search__cancel cancel" @click="clearQuery">Cancel</button>
       </div>
 
       <div v-show="isSearchHistory" class="section">
         <div class="section__title">Search history</div>
         <div class="section__list">
-          <app-list
-            :list="searchHistory"
-            has-remove-btn
-            @removeItem="onRemoveItem"
-          />
+          <app-list :list="searchHistory" has-remove-btn @removeItem="onRemoveItem" />
         </div>
       </div>
 
@@ -45,17 +37,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import vClickOutside from 'v-click-outside';
 import AppList from './AppList';
 import AppButton from '~/components/shared/AppButton';
 import siteData from '@/data/site-data';
 import AppNotFound from '~/components/header/search/AppNotFound';
-import {useToggleClassName} from '~/helpers';
+import { useToggleClassName } from '~/helpers';
 
 export default {
   name: 'AppSearchBox',
 
-  components: {AppNotFound, AppList, AppButton},
+  components: { AppNotFound, AppList, AppButton },
 
   directives: {
     clickOutside: vClickOutside.directive
@@ -66,14 +59,12 @@ export default {
       query: '',
       data: siteData,
       showSearchHistory: false,
-      isVisible: false,
+      isVisible: false
     };
   },
 
   computed: {
-    searchHistory() {
-      return this.$store.getters['user/searchHistory'];
-    },
+    ...mapGetters({ searchHistory: 'user/getSearchHistory' }),
 
     filteredList() {
       return this.data.filter((item) => {
@@ -94,7 +85,7 @@ export default {
     },
 
     classNames() {
-      return useToggleClassName(this.isVisible, 'search-group', 'active')
+      return useToggleClassName(this.isVisible, 'search-group', 'active');
     }
   },
 
@@ -114,7 +105,7 @@ export default {
     },
 
     onSubmit() {
-      if(!this.query) return
+      if (!this.query) return;
       this.$store.commit('user/addToHistory', this.query);
       this.clearQuery();
     },

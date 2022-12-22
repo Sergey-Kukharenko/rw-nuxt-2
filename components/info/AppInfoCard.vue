@@ -19,14 +19,14 @@ export default {
   props: {
     number: {
       type: [Number, String],
-      default: '',
+      default: ''
     },
 
     bgColor: {
       type: String,
-      default: '#F7F7F7',
-    },
-  },
+      default: '#F7F7F7'
+    }
+  }
 };
 </script>
 
@@ -44,10 +44,9 @@ export default {
     gap: 24px;
     min-height: 250px;
   }
-  
+
   @include lt-md {
     gap: 16px;
-
   }
 
   &__number {

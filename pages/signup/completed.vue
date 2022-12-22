@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <app-completed />
+    <app-completed/>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ export default {
   name: 'CompletedPage',
 
   components: {
-    AppCompleted,
+    AppCompleted
   },
 
-  layout: 'mobile',
+  layout: 'mobile'
 };
 </script>

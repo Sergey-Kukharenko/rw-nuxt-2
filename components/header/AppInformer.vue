@@ -14,9 +14,9 @@ export default {
   data() {
     return {
       title: 'We work daily for 24 hours without a break'
-    }
+    };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -46,7 +46,7 @@ export default {
       font-family: $golos-medium;
       font-size: 12px;
       line-height: 16px;
-      letter-spacing: -.01em;
+      letter-spacing: -0.01em;
       color: $color-dark-grey;
       margin-left: 14px;
     }

@@ -6,46 +6,35 @@
         <div class="order__bonuses-note">Use 2 680 of them to pay up 50% from this order</div>
       </div>
       <div>
-        <basket-switch
-          v-model="bonuses"
-          color="yellow"
-        />
+        <basket-switch v-model="bonuses" color="yellow" />
       </div>
     </div>
-    <app-input
-      v-model="name"
-      size="x-large"
-      placeholder="Promocode"
-      note="Unavailable with bonuses"
-    >
+    <app-input v-model="name" size="x-large" placeholder="Promocode" note="Unavailable with bonuses">
       <template #right>
         <basket-button
           :size="$device.isMobileOrTablet ? 'medium' : 'small'"
           theme="green"
           :disabled="false"
           align="center"
-          style="margin-right: -8px;"
+          style="margin-right: -8px"
         >
           Apply
         </basket-button>
       </template>
     </app-input>
     <div class="order__title">Order details</div>
-    <div class="order__row" style="margin-top: 16px;">
+    <div class="order__row" style="margin-top: 16px">
       <div class="order__text-grey order__row-gap">
         <div>4 items</div>
-        <svg-icon
-          class="order__icon-chevron"
-          name="chevron"
-        />
+        <svg-icon class="order__icon-chevron" name="chevron" />
       </div>
       <div class="order__text-price">£ 94</div>
     </div>
-    <div class="order__row" style="margin-top: 8px;">
+    <div class="order__row" style="margin-top: 8px">
       <div class="order__text-grey">Sale</div>
       <div class="order__text-sale">- £ 8</div>
     </div>
-    <div class="order__row" style="margin-top: 8px;">
+    <div class="order__row" style="margin-top: 8px">
       <div class="order__text-grey">Delivery</div>
       <div class="order__text-price">Free</div>
     </div>
@@ -56,10 +45,7 @@
     <div class="order__row">
       <div class="order__text-grey">Cashback</div>
       <div class="order__text-cashback">
-        <svg-icon
-          class="order__icon-coins"
-          name="coins"
-        />
+        <svg-icon class="order__icon-coins" name="coins" />
         <div>£0.4</div>
       </div>
     </div>
@@ -71,7 +57,7 @@ import AppInput from '~/components/shared/AppInput';
 
 export default {
   name: 'CheckoutOrder',
-  components: {AppInput},
+  components: { AppInput },
   data() {
     return {
       bonuses: false,
@@ -92,7 +78,7 @@ export default {
   border-radius: 12px;
 
   @include gt-md {
-    border: 1.5px solid #DDE0E6;
+    border: 1.5px solid #dde0e6;
   }
 
   @include lt-lg {
@@ -100,7 +86,7 @@ export default {
     width: 100%;
     padding: 0 0 16px 0;
     margin-bottom: 16px;
-    border-bottom: 1px solid #DDE0E6;
+    border-bottom: 1px solid #dde0e6;
     border-radius: 0;
   }
 
@@ -114,16 +100,16 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
 
     @include gt-md {
-      background: #FFF6E1;
+      background: #fff6e1;
       padding: 12px;
       margin-bottom: 16px;
     }
 
     @include lt-lg {
-      background: #FFF3D9;
+      background: #fff3d9;
       padding: 12px 16px;
       margin-bottom: 12px;
     }
@@ -190,7 +176,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #7C7C7C;
+    color: #7c7c7c;
   }
 
   &__text-price {
@@ -216,7 +202,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
   }
 
   &__text-summary {
@@ -228,7 +214,7 @@ export default {
   }
 
   &__total {
-    border-top: 1.5px solid #DDE0E6;
+    border-top: 1.5px solid #dde0e6;
 
     @include gt-md {
       padding-top: 18px;
@@ -251,13 +237,13 @@ export default {
     font-size: 14px;
     line-height: 20px;
     font-feature-settings: 'ss08' on;
-    color: #FFCD1E;
+    color: #ffcd1e;
   }
 
   &__icon-chevron {
     width: 10px;
     height: 6px;
-    color: #F8B900;
+    color: #f8b900;
   }
 
   &__icon-coins {

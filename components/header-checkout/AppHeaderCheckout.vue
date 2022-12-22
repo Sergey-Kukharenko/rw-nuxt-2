@@ -2,9 +2,9 @@
   <div class="header-checkout">
     <div class="layout layout--horizontal-dt">
       <div class="header">
-        <app-header-checkout-order/>
-        <app-logo/>
-        <app-call/>
+        <app-header-checkout-order />
+        <app-logo />
+        <app-call />
       </div>
     </div>
   </div>
@@ -17,7 +17,7 @@ import AppHeaderCheckoutOrder from '~/components/header-checkout/AppHeaderChecko
 
 export default {
   name: 'AppHeaderCheckout',
-  components: {AppHeaderCheckoutOrder, AppCall, AppLogo}
+  components: { AppHeaderCheckoutOrder, AppCall, AppLogo }
 };
 </script>
 

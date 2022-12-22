@@ -3,37 +3,27 @@
     <div class="title__label">Basket</div>
     <div class="title__rating">
       <div class="title__stars">
-        <svg-icon
-          v-for="(_, index) in 5"
-          :key="index"
-          name="star"
-          class="title__icon-star"
-        />
+        <svg-icon v-for="(_, index) in 5" :key="index" name="star" class="title__icon-star" />
       </div>
       <div class="title__star">
-        <img
-          src="~/assets/sprite/svg/star.svg"
-          width="16"
-          height="16"
-          alt="star"
-        />
+        <img src="~/assets/sprite/svg/star.svg" width="16" height="16" alt="star" />
         <div class="title__star-rating">{{ rating }}</div>
       </div>
-      <div class="title__reviews">{{reviews.toLocaleString('ru')}} reviews</div>
+      <div class="title__reviews">{{ reviews.toLocaleString('ru') }} reviews</div>
     </div>
   </div>
 </template>
 
 <script>
-  export default {
-    name: "BasketTitle",
-    data () {
-      return {
-        reviews: 13074,
-        rating: 4.9
-      };
-    }
-  };
+export default {
+  name: 'BasketTitle',
+  data() {
+    return {
+      reviews: 13074,
+      rating: 4.9
+    };
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -72,7 +62,7 @@
     font-size: 14px;
     font-weight: 400;
     line-height: 22px;
-    color: #7C7C7C;
+    color: #7c7c7c;
     letter-spacing: -0.01em;
 
     @include lt-lg {

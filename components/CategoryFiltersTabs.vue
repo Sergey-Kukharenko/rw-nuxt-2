@@ -21,14 +21,14 @@ export default {
   data() {
     return {
       tabs: dataCategoryTabs,
-      activeTab: '',
+      activeTab: ''
     };
   },
 
   computed: {
     isActive() {
       return (tab) => tab === this.activeTab;
-    },
+    }
   },
 
   methods: {
@@ -40,8 +40,8 @@ export default {
       }
 
       this.activeTab = tab;
-    },
-  },
+    }
+  }
 };
 </script>
 

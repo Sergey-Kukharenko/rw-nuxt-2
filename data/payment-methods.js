@@ -1,20 +1,17 @@
 export default [
   {
     logo: 'bank-card',
-    name: 'card',
     label: 'By bank card online',
-    methodIcons: ['mastercard', 'visa'],
+    methodIcons: ['mastercard', 'visa']
   },
   {
     logo: 'coins-outline',
-    name: 'wallet',
     label: 'E-wallets, installment cards, etc.',
-    methodIcons: ['paypal'],
+    methodIcons: ['webmoney', 'unionpay', 'qiwi']
   },
   {
     logo: 'pound',
-    name: 'cash',
     label: 'Cash on delivery',
-    methodIcons: ['pound'],
-  },
-]
+    methodIcons: ['pound']
+  }
+];

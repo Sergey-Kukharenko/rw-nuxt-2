@@ -46,18 +46,18 @@
 
 <script>
 import AppButton from '@/components/shared/AppButton';
-import OrderCancel from '@/components/OrderCancel'
+import OrderCancel from '@/components/OrderCancel';
 
 export default {
   name: 'OrderDetail',
 
   components: {
-    AppButton,
+    AppButton
   },
 
   data() {
     return {
-      itemsVisibility: false,
+      itemsVisibility: false
     };
   },
 
@@ -67,9 +67,9 @@ export default {
     },
 
     cancelOrder() {
-      this.$emit('cancel', OrderCancel.name)
+      this.$emit('cancel', OrderCancel.name);
     }
-  },
+  }
 };
 </script>
 

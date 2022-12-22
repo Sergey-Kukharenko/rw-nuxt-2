@@ -1,7 +1,7 @@
 export default {
   main: {
     title: 'Special offers',
-    count: 46,
+    count: 46
   },
 
   list: [
@@ -11,7 +11,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
     {
       title: 'We Grew Too Many Bright Roses',
@@ -19,7 +19,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
     {
       title: 'The Tegan',
@@ -30,8 +30,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'The Frankie',
@@ -42,8 +42,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'We Grew Too Many Bright Roses',
@@ -51,7 +51,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
     {
       title: 'We Grew Too Many Bright Roses',
@@ -59,7 +59,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
 
     {
@@ -71,8 +71,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'We Grew Too Many Bright Roses',
@@ -80,7 +80,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
     {
       title: 'The Frankie',
@@ -91,8 +91,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
 
     {
@@ -101,7 +101,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
+      price: 52.76
     },
     {
       title: 'The Tegan',
@@ -112,8 +112,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'The Frankie',
@@ -124,8 +124,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'The Tegan',
@@ -136,8 +136,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'The Frankie',
@@ -148,8 +148,8 @@ export default {
       price: 52.76,
       sale: {
         status: 'sale',
-        percent: '-30%',
-      },
+        percent: '-30%'
+      }
     },
     {
       title: 'We Grew Too Many Bright Roses',
@@ -157,7 +157,7 @@ export default {
       rating: 4.95,
       reviews: 170,
       like: false,
-      price: 52.76,
-    },
-  ],
-}
+      price: 52.76
+    }
+  ]
+};

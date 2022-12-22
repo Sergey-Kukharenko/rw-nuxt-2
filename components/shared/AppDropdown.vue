@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import vClickOutside from 'v-click-outside'
+import vClickOutside from 'v-click-outside';
 
 export default {
   name: 'AppDropdown',
@@ -30,15 +30,15 @@ export default {
   data() {
     return {
       isVisible: false
-    }
+    };
   },
 
   methods: {
     close() {
-      this.isVisible = false
+      this.isVisible = false;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

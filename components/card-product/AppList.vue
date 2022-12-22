@@ -1,22 +1,12 @@
 <template>
   <div class="list">
-    <div
-      v-for="(item, idx) in list"
-      :key="idx"
-      class="list__item"
-      @click="onChange(item, idx)"
-    >
+    <div v-for="(item, idx) in list" :key="idx" class="list__item" @click="onChange(item, idx)">
       <div class="card" :class="{ active: idx === selectedItem }">
         <div v-if="item.sale" class="badge">
-          <img
-            v-if="item.sale.icon_path"
-            :src="item.sale.icon_path"
-            :alt="item.sale.icon_path"
-            class="badge__icon"
-          />
+          <img v-if="item.sale.icon_path" :src="item.sale.icon_path" :alt="item.sale.icon_path" class="badge__icon" />
         </div>
         <div class="card__figure figure">
-          <img :src="item.img" class="figure__img"  :alt="item.img"/>
+          <img :src="item.img" class="figure__img" :alt="item.img" />
           <div class="figure__border" />
         </div>
         <div v-if="item.description" class="card__figcaption figcaption">
@@ -40,12 +30,12 @@ export default {
   data() {
     return {
       selectedItem: 0
-    }
+    };
   },
   methods: {
     onChange(item, idx) {
-      this.selectedItem = idx
-      this.$emit('setItem', item)
+      this.selectedItem = idx;
+      this.$emit('setItem', item);
     }
   }
 };

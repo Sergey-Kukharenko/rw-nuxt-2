@@ -17,7 +17,7 @@ export default {
       type: Object,
       default: () => ({})
     }
-  },
+  }
 };
 </script>
 
@@ -64,4 +64,3 @@ export default {
   }
 }
 </style>
-

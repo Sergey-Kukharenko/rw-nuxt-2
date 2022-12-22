@@ -6,4 +6,4 @@ export default [
   'Peonies roses',
   'Bouquets under £30',
   'Cheap bouquets'
-]
+];

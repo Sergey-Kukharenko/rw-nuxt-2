@@ -5,7 +5,7 @@ export default [
     type: 'range',
     from: 0,
     before: 500,
-    isActive: false,
+    isActive: false
   },
 
   {
@@ -21,8 +21,8 @@ export default [
       { name: 'Peonies', value: 'peonies' },
       { name: 'Alstroemeria', value: 'alstroemeria' },
       { name: 'Daisies 2', value: 'daisies 2' },
-      { name: 'Alstroemeria 2', value: 'alstroemeria 2' },
-    ],
+      { name: 'Alstroemeria 2', value: 'alstroemeria 2' }
+    ]
   },
 
   {
@@ -38,8 +38,8 @@ export default [
       { name: 'Yellow', value: 'yellow' },
       { name: 'Pink', value: 'pink' },
       { name: 'Purple', value: 'purple' },
-      { name: 'Green', value: 'green' },
-    ],
+      { name: 'Green', value: 'green' }
+    ]
   },
 
   {
@@ -55,8 +55,8 @@ export default [
       { name: 'Date', value: 'date' },
       { name: 'Extract from the hospital', value: 'extract from the hospital' },
       { name: 'Birthday 2', value: 'birthday 2' },
-      { name: 'Anniversary 2', value: 'anniversary 2' },
-    ],
+      { name: 'Anniversary 2', value: 'anniversary 2' }
+    ]
   },
 
   {
@@ -72,8 +72,8 @@ export default [
       { name: 'Gift', value: 'gift' },
       { name: 'Colleague', value: 'colleague' },
       { name: 'To a sister', value: 'sister' },
-      { name: 'To a daughter', value: 'daughter' },
-    ],
+      { name: 'To a daughter', value: 'daughter' }
+    ]
   },
 
   {
@@ -88,8 +88,8 @@ export default [
       { name: 'Monobooks', value: 'monobooks' },
       { name: 'Dried flowers', value: 'dried' },
       { name: 'Wedding', value: 'wedding' },
-      { name: 'Dating', value: 'dating' },
-    ],
+      { name: 'Dating', value: 'dating' }
+    ]
   },
 
   {
@@ -98,6 +98,6 @@ export default [
     type: 'checkbox',
     isActive: false,
     isListOpened: false,
-    list: [{ name: 'Discounted products', value: 'discounted' }],
-  },
-]
+    list: [{ name: 'Discounted products', value: 'discounted' }]
+  }
+];

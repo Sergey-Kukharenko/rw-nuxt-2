@@ -26,26 +26,26 @@ export default {
   props: {
     text: {
       type: String,
-      default: '',
+      default: ''
     },
 
     images: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   computed: {
     computedMargin() {
       return this.images.length < 2 ? { marginRight: '21px' } : null;
-    },
+    }
   },
 
   methods: {
     goToPath(path) {
       this.$router.push({ path });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -110,7 +110,6 @@ export default {
   &__image {
     pointer-events: none;
     user-select: none;
-    
   }
 }
 </style>

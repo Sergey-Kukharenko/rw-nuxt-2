@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <app-code />
+    <app-code/>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ export default {
   name: 'CodePage',
 
   components: {
-    AppCode,
+    AppCode
   },
 
-  layout: 'mobile',
+  layout: 'mobile'
 };
 </script>

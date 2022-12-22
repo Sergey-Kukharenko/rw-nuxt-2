@@ -1,10 +1,6 @@
 <template>
-  <div
-    class="switch"
-    :class="classes"
-    @click="onClick"
-  >
-    <div class="switch__pointer"/>
+  <div class="switch" :class="classes" @click="onClick">
+    <div class="switch__pointer" />
   </div>
 </template>
 
@@ -51,9 +47,9 @@ export default {
   width: 44px;
   height: 24px;
   border-radius: 12px;
-  background-color: #DDE0E6;
+  background-color: #dde0e6;
   cursor: pointer;
-  border: 1px solid #DDE0E6;
+  border: 1px solid #dde0e6;
   box-sizing: border-box;
   transition: all 150ms ease-in-out;
 
@@ -67,29 +63,29 @@ export default {
     width: 20px;
     height: 20px;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     transition: all 150ms ease-in-out;
   }
 
   &--color-yellow {
-    background-color: #FFFFFF;
-    border: 1px solid #F4D065;
+    background-color: #ffffff;
+    border: 1px solid #f4d065;
 
     .switch__pointer {
-      background-color: #FCBC00;
+      background-color: #fcbc00;
     }
   }
 
   &--active {
     &.switch--color-green {
-      background-color: #26AD4F;
+      background-color: #26ad4f;
     }
 
     &.switch--color-yellow {
-      background-color: #FCBC00;
+      background-color: #fcbc00;
 
       .switch__pointer {
-        background-color: #FFFFFF;
+        background-color: #ffffff;
       }
     }
 

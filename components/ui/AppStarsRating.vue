@@ -15,17 +15,15 @@ export default {
   computed: {
     passedCount: {
       get() {
-        return this.count
+        return this.count;
       },
 
       set(newVal) {
-        this.$emit('update:count', +newVal)
+        this.$emit('update:count', +newVal);
       }
     }
-  },
+  }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

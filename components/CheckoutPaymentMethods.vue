@@ -2,54 +2,31 @@
   <checkout-pane title="Payment methods">
     <div class="payment">
       <div class="payment__tabs">
-        <basket-tab
-          size="extra-large"
-          :list="list"
-        >
-          <template #default="{item}">
+        <basket-tab size="extra-large" :list="list">
+          <template #default="{ item }">
             <div class="payment__tab-item">
-              <svg-icon
-                class="payment__icon-item"
-                :name="item.icon"
-              />
-              <div>{{item.label}}</div>
+              <svg-icon class="payment__icon-item" :name="item.icon" />
+              <div>{{ item.label }}</div>
             </div>
           </template>
         </basket-tab>
       </div>
       <div class="payment__select">
-        <app-select
-          ref="paymentSelect"
-          size="x-large"
-          placeholder="Payment methods"
-          :list="list"
-        >
+        <app-select ref="paymentSelect" size="x-large" placeholder="Payment methods" :list="list">
           <template #label>
             <div class="payment__select-label">
-              <svg-icon
-                class="payment__icon-select"
-                :name="list[select].iconSelect"
-              />
+              <svg-icon class="payment__icon-select" :name="list[select].iconSelect" />
               <div>{{ list[select].label }}</div>
             </div>
           </template>
-          <template #default="{item, index, close}">
-            <div
-              class="payment__select-item"
-              @click="onClickSelect(index, close)"
-            >
+          <template #default="{ item, index, close }">
+            <div class="payment__select-item" @click="onClickSelect(index, close)">
               <div class="payment__select-item-left">
-                <app-radio
-                  :value="select"
-                  :name="index"
-                />
-                <div>{{item.label}}</div>
+                <app-radio :value="select" :name="index" />
+                <div>{{ item.label }}</div>
               </div>
               <div class="payment__select-item-right">
-                <svg-icon
-                  class="payment__icon-select"
-                  :name="item.icon"
-                />
+                <svg-icon class="payment__icon-select" :name="item.icon" />
               </div>
             </div>
           </template>
@@ -60,33 +37,36 @@
 </template>
 
 <script>
-import AppSelect from "~/components/shared/AppSelect";
-import AppRadio from "~/components/shared/AppRadio";
+import AppSelect from '~/components/shared/AppSelect';
+import AppRadio from '~/components/shared/AppRadio';
 
 export default {
-  name: "CheckoutPaymentMethods",
+  name: 'CheckoutPaymentMethods',
   components: { AppRadio, AppSelect },
-  data () {
+  data() {
     return {
-      list: [{
-        icon: 'credit-card-bg',
-        iconSelect: 'bank-card',
-        label: "Bank cards"
-      }, {
-        icon: 'paypal-bg',
-        iconSelect: 'paypal',
-        label: "PayPal account"
-      }],
+      list: [
+        {
+          icon: 'credit-card-bg',
+          iconSelect: 'bank-card',
+          label: 'Bank cards'
+        },
+        {
+          icon: 'paypal-bg',
+          iconSelect: 'paypal',
+          label: 'PayPal account'
+        }
+      ],
       select: 0
     };
   },
   methods: {
-    onClickSelect (index, close) {
+    onClickSelect(index, close) {
       this.select = index;
       close();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

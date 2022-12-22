@@ -1,80 +1,64 @@
 <template>
   <div class="order">
     <div class="order__title">Order details</div>
-    <div class="order__row" style="margin-top: 16px;">
+    <div class="order__row" style="margin-top: 16px">
       <div class="order__text-grey">2 bouquets</div>
-
       <div class="order__text-price">{{ cart.price }}</div>
     </div>
-    <div class="order__row" style="margin-top: 6px; display: none;">
+    <div class="order__row" style="margin-top: 6px; display: none">
       <div class="order__text-grey">Sale</div>
       <div class="order__text-sale">- £ 8</div>
     </div>
-    <div class="order__delim" style="margin-top: 16px;"></div>
-    <div class="order__row" style="margin-top: 18px;">
+    <div class="order__delim" style="margin-top: 16px"></div>
+    <div class="order__row" style="margin-top: 18px">
       <div class="order__text-medium">Summary</div>
       <div class="order__text-summary">{{ cart.price }}</div>
     </div>
     <div class="order__cashback-desktop">
-      <svg-icon
-        class="order__icon-coins"
-        name="coins"
-      />
+      <svg-icon class="order__icon-coins" name="coins" />
       <div>£0.4 Cashback from this order</div>
     </div>
-    <div class="order__row order__cashback-mobile" style="margin-top: 5px;">
+    <div class="order__row order__cashback-mobile" style="margin-top: 5px">
       <div class="order__text-grey">Cashback</div>
       <div class="order__text-cashback">
-        <svg-icon
-          class="order__icon-coins-2"
-          name="coins"
-        />
+        <svg-icon class="order__icon-coins-2" name="coins" />
         <div>£0.4</div>
       </div>
     </div>
     <div class="order__promocode">
-      <svg-icon
-        class="order__icon-percent-green"
-        name="percent-green"
-      />
+      <svg-icon class="order__icon-percent-green" name="percent-green" />
       <div>Promocode and Bonuses will be available at the next stage of order</div>
     </div>
-    <div class="order__title" style="margin-top: 32px;">Your details</div>
+    <div class="order__title" style="margin-top: 32px">Your details</div>
     <form class="form" @submit.prevent="onSubmit">
-
       <basket-input
         v-model="name"
-        style="margin-top: 16px;"
+        style="margin-top: 16px"
         size="large"
         placeholder="Your name"
         :validations="$v.name"
       />
-
       <basket-input
         v-model="phone"
         type="number"
-        style="margin-top: 8px;"
+        style="margin-top: 8px"
         size="large"
         placeholder="Mobile phone"
         :validations="$v.phone"
       />
-
-      <basket-button
-        style="margin-top: 24px;"
-        :stretch="true"
-      >
-        Continue
-      </basket-button>
-      <div class="order__terms">By clicking on the button, you agree to the<br><a href="#" target="_blank">Terms of
-        personal data
-        processing</a></div>
+      <basket-button style="margin-top: 24px" :stretch="true"> Continue </basket-button>
+      <div class="order__terms">
+        By clicking on the button, you agree to the<br /><a href="#" target="_blank"
+          >Terms of personal data processing</a
+        >
+      </div>
     </form>
-
   </div>
 </template>
 
 <script>
-import {minLength, required} from 'vuelidate/lib/validators';
+import { mapGetters } from 'vuex';
+import { minLength, required } from 'vuelidate/lib/validators';
 
 export default {
   name: 'BasketOrder',
@@ -82,14 +66,12 @@ export default {
   data() {
     return {
       name: '',
-      phone: '',
+      phone: ''
     };
   },
 
   computed: {
-    cart() {
-      return this.$store.getters['cart/cart'];
-    },
+    ...mapGetters({ cart: 'cart/cart' })
   },
 
   methods: {
@@ -99,8 +81,9 @@ export default {
       if (!this.$v.$invalid) {
         // Submit Form
       }
-    },
+    }
   },
+
   validations: {
     name: {
       required,
@@ -122,7 +105,7 @@ export default {
   height: fit-content;
   padding: 24px;
   flex-shrink: 0;
-  border: 1px solid #DDE0E6;
+  border: 1px solid #dde0e6;
   border-radius: 12px;
 
   @include lt-lg {
@@ -154,7 +137,7 @@ export default {
 
   &__delim {
     width: 100%;
-    border-top: 1px solid #DDE0E6;
+    border-top: 1px solid #dde0e6;
   }
 
   &__text-grey {
@@ -164,7 +147,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #7C7C7C;
+    color: #7c7c7c;
   }
 
   &__text-medium {
@@ -174,7 +157,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
   }
 
   &__text-price {
@@ -210,7 +193,7 @@ export default {
     align-items: center;
     gap: 12px;
 
-    background: #FFF6E1;
+    background: #fff6e1;
     border-radius: 16px;
     padding: 18px 16px;
     margin-top: 24px;
@@ -221,7 +204,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
+    color: #1f2226;
 
     @include lt-lg {
       display: none;
@@ -248,7 +231,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     font-feature-settings: 'ss08' on;
-    color: #F8B900;
+    color: #f8b900;
   }
 
   &__promocode {
@@ -265,7 +248,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #7C7C7C;
+    color: #7c7c7c;
 
     @include lt-lg {
       font-size: 12px;
@@ -280,7 +263,7 @@ export default {
     font-size: 12px;
     line-height: 16px;
     text-align: center;
-    color: #7C7C7C;
+    color: #7c7c7c;
     margin-top: 16px;
 
     & > a {

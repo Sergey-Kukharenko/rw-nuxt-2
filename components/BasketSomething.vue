@@ -1,255 +1,293 @@
 <template>
   <div class="something">
-    <basket-something-title/>
-    <basket-tab
-      :list="tabList"
-      @click="onClickTab"
-    >
+    <basket-something-title />
+    <basket-tab :list="tabList" @click="onClickTab">
       <template #default="{ item }">
         <div class="something__tabs">
-          <svg-icon
-            class="something__tab-img"
-            :name="item.icon"
-          />
+          <svg-icon class="something__tab-img" :name="item.icon" />
           <div>{{ item.label }}</div>
         </div>
       </template>
     </basket-tab>
-    <basket-something-list :list="computedSomethingList"/>
+    <basket-something-list :list="computedSomethingList" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketSomething",
-  data () {
+  name: 'BasketSomething',
+  data() {
     return {
-      tabList: [{
-        label: "Candies",
-        icon: "candies"
-      },{
-        label: "Soft toys",
-        icon: "soft-toys"
-      },{
-        label: "Balloons",
-        icon: "balloons"
-      },{
-        label: "Toppers",
-        icon: "toppers"
-      }],
+      tabList: [
+        {
+          label: 'Candies',
+          icon: 'candies'
+        },
+        {
+          label: 'Soft toys',
+          icon: 'soft-toys'
+        },
+        {
+          label: 'Balloons',
+          icon: 'balloons'
+        },
+        {
+          label: 'Toppers',
+          icon: 'toppers'
+        }
+      ],
       tabActive: 0,
       somethingList: [
         {
-          tab: "candies",
-          img: "/examples/somethings/1.jpg",
-          title: "Extra item name 1",
+          tab: 'candies',
+          img: '/examples/somethings/1.jpg',
+          title: 'Extra item name 1',
           price: 9.76
-        },{
-          tab: "candies",
-          img: "/examples/somethings/2.jpg",
-          title: "Extra item name 2",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/2.jpg',
+          title: 'Extra item name 2',
           price: 9.77
-        },{
-          tab: "candies",
-          img: "/examples/somethings/3.jpg",
-          title: "Extra item name 3",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/3.jpg',
+          title: 'Extra item name 3',
           price: 9.78
-        },{
-          tab: "candies",
-          img: "/examples/somethings/4.jpg",
-          title: "Extra item name 4",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/4.jpg',
+          title: 'Extra item name 4',
           price: 9.79
-        },{
-          tab: "candies",
-          img: "/examples/somethings/5.jpg",
-          title: "Extra item name 5",
-          price: 9.80
-        },{
-          tab: "candies",
-          img: "/examples/somethings/6.jpg",
-          title: "Extra item name 6",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/5.jpg',
+          title: 'Extra item name 5',
+          price: 9.8
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/6.jpg',
+          title: 'Extra item name 6',
           price: 9.81
-        },{
-          tab: "candies",
-          img: "/examples/somethings/7.jpg",
-          title: "Extra item name 7",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/7.jpg',
+          title: 'Extra item name 7',
           price: 9.82
-        },{
-          tab: "candies",
-          img: "/examples/somethings/8.jpg",
-          title: "Extra item name 8",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/8.jpg',
+          title: 'Extra item name 8',
           price: 9.83
-        },{
-          tab: "candies",
-          img: "/examples/somethings/9.jpg",
-          title: "Extra item name 9",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/9.jpg',
+          title: 'Extra item name 9',
           price: 9.84
-        },{
-          tab: "candies",
-          img: "/examples/somethings/10.jpg",
-          title: "Extra item name 10",
+        },
+        {
+          tab: 'candies',
+          img: '/examples/somethings/10.jpg',
+          title: 'Extra item name 10',
           price: 9.85
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/11.jpg",
-          title: "Extra item name 1",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/11.jpg',
+          title: 'Extra item name 1',
           price: 9.76
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/12.jpg",
-          title: "Extra item name 2",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/12.jpg',
+          title: 'Extra item name 2',
           price: 9.77
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/13.jpg",
-          title: "Extra item name 3",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/13.jpg',
+          title: 'Extra item name 3',
           price: 9.78
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/14.jpg",
-          title: "Extra item name 4",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/14.jpg',
+          title: 'Extra item name 4',
           price: 9.79
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/15.jpg",
-          title: "Extra item name 5",
-          price: 9.80
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/16.jpg",
-          title: "Extra item name 6",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/15.jpg',
+          title: 'Extra item name 5',
+          price: 9.8
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/16.jpg',
+          title: 'Extra item name 6',
           price: 9.81
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/17.jpg",
-          title: "Extra item name 7",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/17.jpg',
+          title: 'Extra item name 7',
           price: 9.82
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/18.jpg",
-          title: "Extra item name 8",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/18.jpg',
+          title: 'Extra item name 8',
           price: 9.83
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/19.jpg",
-          title: "Extra item name 9",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/19.jpg',
+          title: 'Extra item name 9',
           price: 9.84
-        },{
-          tab: "softToys",
-          img: "/examples/somethings/20.jpg",
-          title: "Extra item name 10",
+        },
+        {
+          tab: 'softToys',
+          img: '/examples/somethings/20.jpg',
+          title: 'Extra item name 10',
           price: 9.85
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/21.jpg",
-          title: "Extra item name 1",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/21.jpg',
+          title: 'Extra item name 1',
           price: 9.76
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/22.jpg",
-          title: "Extra item name 2",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/22.jpg',
+          title: 'Extra item name 2',
           price: 9.77
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/23.jpg",
-          title: "Extra item name 3",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/23.jpg',
+          title: 'Extra item name 3',
           price: 9.78
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/24.jpg",
-          title: "Extra item name 4",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/24.jpg',
+          title: 'Extra item name 4',
           price: 9.79
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/25.jpg",
-          title: "Extra item name 5",
-          price: 9.80
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/26.jpg",
-          title: "Extra item name 6",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/25.jpg',
+          title: 'Extra item name 5',
+          price: 9.8
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/26.jpg',
+          title: 'Extra item name 6',
           price: 9.81
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/27.jpg",
-          title: "Extra item name 7",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/27.jpg',
+          title: 'Extra item name 7',
           price: 9.82
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/28.jpg",
-          title: "Extra item name 8",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/28.jpg',
+          title: 'Extra item name 8',
           price: 9.83
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/29.jpg",
-          title: "Extra item name 9",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/29.jpg',
+          title: 'Extra item name 9',
           price: 9.84
-        },{
-          tab: "balloons",
-          img: "/examples/somethings/30.jpg",
-          title: "Extra item name 10",
+        },
+        {
+          tab: 'balloons',
+          img: '/examples/somethings/30.jpg',
+          title: 'Extra item name 10',
           price: 9.85
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/31.jpg",
-          title: "Extra item name 1",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/31.jpg',
+          title: 'Extra item name 1',
           price: 9.76
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/32.jpg",
-          title: "Extra item name 2",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/32.jpg',
+          title: 'Extra item name 2',
           price: 9.77
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/33.jpg",
-          title: "Extra item name 3",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/33.jpg',
+          title: 'Extra item name 3',
           price: 9.78
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/34.jpg",
-          title: "Extra item name 4",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/34.jpg',
+          title: 'Extra item name 4',
           price: 9.79
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/35.jpg",
-          title: "Extra item name 5",
-          price: 9.80
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/36.jpg",
-          title: "Extra item name 6",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/35.jpg',
+          title: 'Extra item name 5',
+          price: 9.8
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/36.jpg',
+          title: 'Extra item name 6',
           price: 9.81
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/37.jpg",
-          title: "Extra item name 7",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/37.jpg',
+          title: 'Extra item name 7',
           price: 9.82
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/38.jpg",
-          title: "Extra item name 8",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/38.jpg',
+          title: 'Extra item name 8',
           price: 9.83
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/39.jpg",
-          title: "Extra item name 9",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/39.jpg',
+          title: 'Extra item name 9',
           price: 9.84
-        },{
-          tab: "toppers",
-          img: "/examples/somethings/40.jpg",
-          title: "Extra item name 10",
+        },
+        {
+          tab: 'toppers',
+          img: '/examples/somethings/40.jpg',
+          title: 'Extra item name 10',
           price: 9.85
         }
       ]
     };
   },
   computed: {
-    computedSomethingList () {
-      return this.somethingList.filter(item => item.tab === this.tabList[this.tabActive].icon);
+    computedSomethingList() {
+      return this.somethingList.filter((item) => item.tab === this.tabList[this.tabActive].icon);
     }
   },
   methods: {
-    onClickTab (index) {
+    onClickTab(index) {
       this.tabActive = index;
     }
   }

@@ -33,20 +33,20 @@ export default {
 
   components: {
     VuePhoneNumberInput,
-    AppInput,
+    AppInput
   },
 
   props: {
     error: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   data() {
     return {
       number: ' ',
-      phoneMask: '',
+      phoneMask: ''
     };
   },
 
@@ -74,16 +74,16 @@ export default {
       const inputStyles = [
         {
           prop: 'padding',
-          value: '0 0 0 30px',
+          value: '0 0 0 30px'
         },
         {
           prop: 'width',
-          value: '64px',
+          value: '64px'
         },
         {
           prop: 'borderRadius',
-          value: '10px',
-        },
+          value: '10px'
+        }
       ];
 
       inputStyles.forEach((s) => {
@@ -95,8 +95,8 @@ export default {
 
         input.style[s.prop] = s.value;
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

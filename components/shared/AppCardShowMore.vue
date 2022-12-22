@@ -10,11 +10,9 @@
       </div>
     </div>
     <div class="footer">
-      <div class="footer__text">
-        Show more bouquets
-      </div>
+      <div class="footer__text">Show more bouquets</div>
       <div class="footer__circle">
-        <svg-icon name="arrow-right" class="icon"/>
+        <svg-icon name="arrow-right" class="icon" />
       </div>
     </div>
   </a>
@@ -31,7 +29,7 @@ export default {
   display: block;
   width: 100%;
   height: 100%;
-  background: #EBFAF0;
+  background: #ebfaf0;
   box-sizing: border-box;
   color: $color-dark-green;
 
@@ -54,7 +52,7 @@ export default {
     align-items: center;
     justify-content: center;
     height: 240px;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 12px 12px 64px 12px;
   }
 

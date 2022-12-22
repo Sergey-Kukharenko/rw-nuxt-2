@@ -11,20 +11,20 @@ import { EMAIL } from '~/constants';
 export default {
   name: 'AppEmailButton',
 
-  EMAIL,
+  EMAIL
 };
 </script>
 
 <style lang="scss" scoped>
 .email {
-	display: flex;
-	align-items: center;
-	gap: 11px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
   background: #ffffff;
   border-radius: 10px;
-	height: 48px;
-	padding: 0 18px;
-	box-sizing: border-box;
+  height: 48px;
+  padding: 0 18px;
+  box-sizing: border-box;
 
   &__icon {
     width: 18px;

@@ -17,6 +17,7 @@
     "@nuxtjs/svg-sprite": "^0.5.2",
     "@vue-stripe/vue-stripe": "^4.4.4",
     "core-js": "^3.19.3",
+    "js-cookie": "^3.0.1",
     "node-sass": "^7.0.1",
     "nuxt": "^2.15.8",
     "swiper": "^5.3.6",
@@ -31,6 +32,7 @@
     "vue-toastification": "latest",
     "vue2-teleport": "^1.0.1",
     "vuelidate": "^0.7.7",
+    "vuex-persistedstate": "^4.1.0",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
@@ -41,6 +43,7 @@
     "@nuxtjs/eslint-module": "^3.0.2",
     "@nuxtjs/style-resources": "^1.2.1",
     "autoprefixer": "^10.4.12",
+    "axios-logger": "^2.6.2",
     "eslint": "8.22.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-nuxt": "^3.1.0",

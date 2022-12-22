@@ -48,8 +48,8 @@ export default {
 
   components: {
     AppButton,
-    AppStoreButton,
-  },
+    AppStoreButton
+  }
 };
 </script>
 
@@ -68,7 +68,7 @@ export default {
   &__row {
     display: flex;
     justify-content: space-between;
-    
+
     @include lt-md {
       position: relative;
       z-index: 2;
@@ -208,13 +208,13 @@ export default {
       display: none;
     }
 
-    background: #ebfaf0  url('/images/order/bg.png') no-repeat 40%;
+    background: #ebfaf0 url('/images/order/bg.png') no-repeat 40%;
     border-radius: 50%;
     width: 315px;
     height: 315px;
     top: -25px;
     position: absolute;
-    right: -30%
+    right: -30%;
   }
 }
 </style>

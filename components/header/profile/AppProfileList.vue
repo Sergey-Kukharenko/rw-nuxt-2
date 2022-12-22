@@ -1,19 +1,13 @@
 <template>
   <div class="list">
     <div v-for="(item, idx) in settings" :key="idx" class="list__item">
-      <svg-icon :name="item.icon" :class="item.name" class="icon"/>
+      <svg-icon :name="item.icon" :class="item.name" class="icon" />
       <div class="text">{{ item.text }}</div>
-      <app-badge
-        v-if="item.name === 'bonuses'"
-        theme="yellow"
-        size="sm"
-        icon="cashback"
-        class="badge"
-      >
+      <app-badge v-if="item.name === 'bonuses'" theme="yellow" size="sm" icon="cashback" class="badge">
         {{ user.bonuses }}
       </app-badge>
 
-      <div v-if="item.hasBtn" class="absolute-grow" @click="logOut"/>
+      <div v-if="item.hasBtn" class="absolute-grow" @click="logOut" />
     </div>
   </div>
 </template>
@@ -23,7 +17,7 @@ import AppBadge from '~/components/shared/AppBadge';
 
 export default {
   name: 'AppProfileList',
-  components: {AppBadge},
+  components: { AppBadge },
   props: {
     user: {
       type: Object,
@@ -64,7 +58,7 @@ export default {
           text: 'Log out',
           name: 'logout'
         }
-      ],
+      ]
     };
   },
 

@@ -24,25 +24,25 @@ export default {
   computed: {
     passedCount: {
       get() {
-        return this.count
+        return this.count;
       },
 
       set(newVal) {
-        this.$emit('update:count', +newVal)
+        this.$emit('update:count', +newVal);
       }
     }
   },
 
   methods: {
     increment() {
-      this.passedCount++
+      this.passedCount++;
     },
 
     decrement() {
-      this.passedCount--
+      this.passedCount--;
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

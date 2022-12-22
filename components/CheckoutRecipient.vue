@@ -1,57 +1,32 @@
 <template>
-  <checkout-pane
-    title="Recipient"
-    :delim="true"
-  >
+  <checkout-pane title="Recipient" :delim="true">
     <div class="recipient__select">
       <div class="recipient__radio-row">
-        <app-radio
-          v-model="recipient"
-          name="myself"
-        >
-          I’ll get order by myself
-        </app-radio>
+        <app-radio v-model="recipient" name="myself"> I’ll get order by myself </app-radio>
       </div>
       <div class="recipient__radio-row">
-        <app-radio
-          v-model="recipient"
-          name="another"
-        >
-          Another recipient
-        </app-radio>
+        <app-radio v-model="recipient" name="another"> Another recipient </app-radio>
       </div>
     </div>
-    <div
-      v-if="recipient === 'another'"
-      class="recipient__another-name"
-    >
-      <app-input
-        placeholder="Recipient name"
-        value=""
-        size="x-large"
-
-      />
-      <app-input
-        placeholder="And phone number"
-        value=""
-        size="x-large"
-      />
+    <div v-if="recipient === 'another'" class="recipient__another-name">
+      <app-input placeholder="Recipient name" value="" size="x-large" />
+      <app-input placeholder="And phone number" value="" size="x-large" />
     </div>
   </checkout-pane>
 </template>
 
 <script>
-import AppRadio from "~/components/shared/AppRadio";
-import AppInput from "~/components/shared/AppInput";
+import AppRadio from '~/components/shared/AppRadio';
+import AppInput from '~/components/shared/AppInput';
 export default {
-  name: "CheckoutRecipient",
-  components: {AppRadio, AppInput},
-  data () {
+  name: 'CheckoutRecipient',
+  components: { AppRadio, AppInput },
+  data() {
     return {
-      recipient: "myself"
+      recipient: 'myself'
     };
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

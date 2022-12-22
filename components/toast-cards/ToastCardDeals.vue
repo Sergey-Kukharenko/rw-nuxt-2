@@ -1,7 +1,7 @@
 <template>
   <div class="toast-card">
-    <svg-icon v-if="isIcon" :name="icon.name" v-bind="icon.size" class="toast-card__icon"/>
-    <img v-if="isImg" :src="img.src" v-bind="img.size" :alt="img.src" class="toast-card__img">
+    <svg-icon v-if="isIcon" :name="icon.name" v-bind="icon.size" class="toast-card__icon" />
+    <img v-if="isImg" :src="img.src" v-bind="img.size" :alt="img.src" class="toast-card__img" />
     <div class="toast-card__caption">
       <div v-if="title" class="toast-card__caption-title">
         {{ title }}
@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import {useObjectNotEmpty} from '~/helpers';
+import { useObjectNotEmpty } from '~/helpers';
 
 export default {
   name: 'ToastCardDeals',
@@ -31,12 +31,12 @@ export default {
 
     title: {
       type: String,
-      default: '',
+      default: ''
     },
 
     text: {
       type: String,
-      default: '',
+      default: ''
     }
   },
 

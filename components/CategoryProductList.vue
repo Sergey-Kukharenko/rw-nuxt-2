@@ -25,15 +25,15 @@ export default {
     AppGrid,
     AppCard,
     AppButton,
-    AppPagination,
+    AppPagination
   },
 
   props: {
     products: {
       type: Array,
-      default: () => [],
-    },
-  },
+      default: () => []
+    }
+  }
 };
 </script>
 

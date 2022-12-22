@@ -1,54 +1,39 @@
 <template>
   <div class="wrapper">
     <div class="product">
-      <basket-product-image :url="imageUrl"/>
+      <basket-product-image :url="imageUrl" />
       <div class="product__info">
         <div class="product__info-price">
           <div>
             <div class="product__title">
-              <basket-product-rating :value="rating"/>
+              <basket-product-rating :value="rating" />
               <basket-product-title>{{ title }}</basket-product-title>
             </div>
-            <basket-product-size :value="size"/>
-            <basket-product-color :value="color"/>
-            <basket-product-package :value="pack"/>
+            <basket-product-size :value="size" />
+            <basket-product-color :value="color" />
+            <basket-product-package :value="pack" />
           </div>
           <div class="product__price-main">
-            <basket-product-price
-              :price="price"
-              :old-price="oldPrice"
-            />
+            <basket-product-price :price="price" :old-price="oldPrice" />
             <div class="product__items">
-              <basket-button
-                size="small"
-                theme="grey"
-              >
+              <basket-button size="small" theme="grey">
                 <div>1 item</div>
-                <svg-icon
-                  class="product__item-icon"
-                  name="chevron"
-                />
+                <svg-icon class="product__item-icon" name="chevron" />
               </basket-button>
             </div>
           </div>
         </div>
         <div class="product__leaves-desktop">
-          <basket-product-leaves
-            v-if="leaves"
-            v-model="leavesSwitch"
-          />
+          <basket-product-leaves v-if="leaves" v-model="leavesSwitch" />
         </div>
         <div class="product__favorite-count">
-          <basket-product-favorite/>
-          <basket-product-count :count.sync="count"/>
+          <basket-product-favorite />
+          <basket-product-count :count.sync="count" />
         </div>
       </div>
     </div>
     <div class="product__leaves-mobile">
-      <basket-product-leaves
-        v-if="leaves"
-        v-model="leavesSwitch"
-      />
+      <basket-product-leaves v-if="leaves" v-model="leavesSwitch" />
     </div>
   </div>
 </template>
@@ -107,9 +92,9 @@ export default {
 
   watch: {
     count(value) {
-      this.$store.dispatch('cart/updateCartQty', {title: this.title, qty: value});
+      this.$store.dispatch('cart/updateCartQty', { title: this.title, qty: value });
     }
-  },
+  }
 };
 </script>
 
@@ -118,7 +103,7 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 24px;
-  border-top: 1px solid #DDE0E6;
+  border-top: 1px solid #dde0e6;
   padding: 24px 0;
 
   @include lt-lg {

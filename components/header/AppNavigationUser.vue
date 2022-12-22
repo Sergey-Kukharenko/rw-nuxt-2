@@ -13,9 +13,9 @@
 </template>
 
 <script>
-import AppFavorite from '@/components/header/AppFavorite'
-import AppCart from '@/components/header/AppCart.vue'
-import AppProfile from '@/components/header/profile/AppProfile.vue'
+import AppFavorite from '@/components/header/AppFavorite';
+import AppCart from '@/components/header/AppCart.vue';
+import AppProfile from '@/components/header/profile/AppProfile.vue';
 
 export default {
   name: 'AppNavigationUser',
@@ -25,7 +25,7 @@ export default {
     AppCart,
     AppProfile
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

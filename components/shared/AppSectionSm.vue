@@ -6,11 +6,7 @@
         <p v-if="section.subTitle" class="subtitle">{{ section.subTitle }}</p>
       </div>
 
-      <app-section-grid-sm
-        v-slot="slotProps"
-        :slides="section.list"
-        :theme="theme"
-      >
+      <app-section-grid-sm v-slot="slotProps" :slides="section.list" :theme="theme">
         <app-card-sm :slide="{ ...slotProps }" />
       </app-section-grid-sm>
     </section>
@@ -20,12 +16,12 @@
 <script>
 import AppSectionGridSm from '~/components/shared/AppSectionGridSm';
 import AppCardSm from '~/components/shared/AppCardSm';
-import {useClassNameProp} from '~/helpers';
+import { useClassNameProp } from '~/helpers';
 
 export default {
   name: 'AppSectionSm',
 
-  components: {AppCardSm, AppSectionGridSm},
+  components: { AppCardSm, AppSectionGridSm },
 
   props: {
     section: {
@@ -46,12 +42,12 @@ export default {
 
   computed: {
     classNamesSection() {
-      return useClassNameProp(this.theme, 'section')
+      return useClassNameProp(this.theme, 'section');
     },
 
     classNames() {
-      return ['layout', this.name]
-    },
+      return ['layout', this.name];
+    }
   }
 };
 </script>
@@ -99,7 +95,7 @@ export default {
       }
     }
 
-    .title{
+    .title {
       @include lt-md {
         letter-spacing: -0.01em;
       }

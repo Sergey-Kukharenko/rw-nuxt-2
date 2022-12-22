@@ -19,18 +19,18 @@ export default {
   props: {
     currSorting: {
       type: String,
-      default: '',
+      default: ''
     },
 
     sortList: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   data() {
     return {
-      isOpen: false,
+      isOpen: false
     };
   },
 
@@ -57,8 +57,8 @@ export default {
       if (!e.target.classList.contains('category-sorting__input')) {
         this.isOpen = false;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -39,8 +39,8 @@ export default {
   computed: {
     classNames() {
       return useClassName(this.$props, 'button');
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -98,7 +98,7 @@ export default {
 
   &--yellow {
     color: #000000;
-    background: #FFCD1E;
+    background: #ffcd1e;
 
     @include gt-sm {
       &:hover:not(:disabled) {

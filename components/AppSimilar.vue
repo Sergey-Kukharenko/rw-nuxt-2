@@ -8,12 +8,12 @@
 </template>
 
 <script>
-import dataSimilar from '@/data/similar'
-import AppSectionHeader from '~/components/shared/AppSectionHeader'
-import AppSectionGrid from '@/components/shared/AppSectionGrid'
-import AppCard from '@/components/shared/AppCard'
+import dataSimilar from '@/data/similar';
+import AppSectionHeader from '~/components/shared/AppSectionHeader';
+import AppSectionGrid from '@/components/shared/AppSectionGrid';
+import AppCard from '@/components/shared/AppCard';
 
-const { main, list } = dataSimilar
+const { main, list } = dataSimilar;
 
 export default {
   name: 'AppSimilar',
@@ -28,10 +28,9 @@ export default {
     return {
       headerProps: main,
       slides: list
-    }
+    };
   }
-}
+};
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <app-auth />
+    <app-auth/>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ export default {
   name: 'IndexPage',
 
   components: {
-    AppAuth,
+    AppAuth
   },
 
-  layout: 'mobile',
+  layout: 'mobile'
 };
 </script>

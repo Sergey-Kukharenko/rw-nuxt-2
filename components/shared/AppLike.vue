@@ -1,9 +1,6 @@
 <template>
   <div class="like" @click="toggle(passedLike)">
-    <svg-icon
-      name="like"
-      :class="['like__icon', { active: passedLike.by_user }]"
-    />
+    <svg-icon name="like" :class="['like__icon', { active: passedLike.by_user }]" />
     {{ like.count }}
   </div>
 </template>
@@ -21,22 +18,22 @@ export default {
 
   computed: {
     passedLike() {
-      return this.like
+      return this.like;
     }
   },
 
   methods: {
     toggleLike(like) {
-      like.by_user = !like.by_user
+      like.by_user = !like.by_user;
     },
 
     toggleCount(like) {
-      like.by_user ? like.count-- : like.count++
+      like.by_user ? like.count-- : like.count++;
     },
 
     toggle(like) {
-      this.toggleCount(like)
-      this.toggleLike(like)
+      this.toggleCount(like);
+      this.toggleLike(like);
     }
   }
 };

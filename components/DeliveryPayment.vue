@@ -30,7 +30,7 @@ export default {
   name: 'DeliveryPayment',
 
   components: {
-    AppButton,
+    AppButton
   },
 
   PAYMENT,
@@ -39,8 +39,8 @@ export default {
   computed: {
     getImg() {
       return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
-    },
-  },
+    }
+  }
 };
 </script>
 

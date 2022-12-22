@@ -107,7 +107,7 @@ export default {
     AppPersonalDataTerms,
     AppGoBackMobile,
     AppNumberInput: () => import('~/components/shared/AppNumberInput'),
-    AppInput: () => import('~/components/shared/AppInput'),
+    AppInput: () => import('~/components/shared/AppInput')
   },
 
   mixins: [authManager],
@@ -117,24 +117,24 @@ export default {
       form: {
         name: {
           value: '',
-          errorMsg: '',
+          errorMsg: ''
         },
 
         phone: {
           value: '',
           errorMsg: '',
-          isValid: false,
+          isValid: false
         },
 
         email: {
           value: '',
-          errorMsg: '',
+          errorMsg: ''
         },
 
         gender: '',
 
-        checkbox: [],
-      },
+        checkbox: []
+      }
     };
   },
 
@@ -147,7 +147,7 @@ export default {
 
     isInvalidForm() {
       return Object.keys(this.form).some((key) => this.form[key].errorMsg);
-    },
+    }
   },
 
   mounted() {
@@ -206,8 +206,8 @@ export default {
         if (this.form[key]?.errorMsg) this.form[key].errorMsg = '';
       });
       this.form.phone.isValid = this.hasFormError = false;
-    },
-  },
+    }
+  }
 };
 </script>
 

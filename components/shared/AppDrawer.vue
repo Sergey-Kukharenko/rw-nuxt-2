@@ -2,12 +2,12 @@
   <div :class="classNames">
     <div class="drawer__button" @click="open">
       <div class="burger">
-        <span/>
-        <span/>
-        <span/>
+        <span />
+        <span />
+        <span />
       </div>
     </div>
-    <div class="drawer__overlay" @click="close"/>
+    <div class="drawer__overlay" @click="close" />
     <div class="drawer__container">
       <div class="drawer__inner">
         <div class="drawer__close" @click="close">
@@ -20,8 +20,8 @@
 </template>
 
 <script>
-import {useToggleClassName} from '@/helpers';
-import {disableScroll, enableScroll} from '~/helpers/scrollLock';
+import { useToggleClassName } from '@/helpers';
+import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 
 export default {
   name: 'AppDrawer',

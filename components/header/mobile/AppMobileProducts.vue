@@ -5,13 +5,9 @@
     </div>
 
     <div :class="classNames">
-      <div
-        v-for="(item, idx) in section.list"
-        :key="idx"
-        class="list__item"
-      >
+      <div v-for="(item, idx) in section.list" :key="idx" class="list__item">
         <div class="figure">
-          <img :src="item.img" class="figure__img" :alt="item.title"/>
+          <img :src="item.img" class="figure__img" :alt="item.title" />
 
           <app-badge v-if="item.status" class="figure__badge" theme="white" size="xs">
             {{ item.status }}
@@ -22,11 +18,7 @@
 
       <div v-if="isAdditionally" class="list__item list__item--additionally">
         <div class="figure">
-          <img
-            :src="section.additionally.img"
-            class="figure__img"
-            :alt="section.additionally.title"
-          />
+          <img :src="section.additionally.img" class="figure__img" :alt="section.additionally.title" />
         </div>
         <div class="figcaption">{{ section.additionally.title }}</div>
       </div>
@@ -36,12 +28,12 @@
 
 <script>
 import AppBadge from '~/components/shared/AppBadge';
-import {useClassNameProp} from '~/helpers';
+import { useClassNameProp } from '~/helpers';
 
 export default {
   name: 'AppMobileProducts',
 
-  components: {AppBadge},
+  components: { AppBadge },
 
   props: {
     section: {
@@ -57,11 +49,11 @@ export default {
 
   computed: {
     classNames() {
-      return useClassNameProp(this.size, 'list')
+      return useClassNameProp(this.size, 'list');
     },
 
     isAdditionally() {
-      return this.section?.additionally?.title
+      return this.section?.additionally?.title;
     }
   }
 };

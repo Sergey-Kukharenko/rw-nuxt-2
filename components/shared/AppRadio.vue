@@ -1,7 +1,7 @@
 <template>
   <div class="app-radio" @click="$emit('change', name)">
-    <svg-icon v-if="hasIcon" class="app-radio__icon" :name="statusIcon"/>
-    <slot/>
+    <svg-icon v-if="hasIcon" class="app-radio__icon" :name="statusIcon" />
+    <slot />
   </div>
 </template>
 
@@ -11,33 +11,33 @@ export default {
 
   model: {
     prop: 'value',
-    event: 'change',
+    event: 'change'
   },
 
   props: {
     value: {
       type: [String, Number],
       require: true,
-      default: '',
+      default: ''
     },
 
     name: {
       type: [String, Number],
       require: true,
-      default: '',
+      default: ''
     },
 
     hasIcon: {
       type: Boolean,
-      default: true,
-    },
+      default: true
+    }
   },
 
   computed: {
     statusIcon() {
       return this.value === this.name ? 'radio-on' : 'radio-off';
-    },
-  },
+    }
+  }
 };
 </script>
 

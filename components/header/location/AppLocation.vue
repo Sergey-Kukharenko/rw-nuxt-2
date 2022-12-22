@@ -1,6 +1,6 @@
 <template>
   <div class="location">
-    <app-location-button :location="location" @click="open"/>
+    <app-location-button :location="location" @click="open" />
 
     <app-modal :visible="isVisible" @close="close">
       <app-address />
@@ -9,9 +9,9 @@
 </template>
 
 <script>
-import AppModal from '~/components/shared/AppModal.vue'
+import AppModal from '~/components/shared/AppModal.vue';
 import AppLocationButton from '~/components/header/location/AppLocationButton';
-import {disableScroll, enableScroll} from '~/helpers/scrollLock';
+import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 import AppAddress from '~/components/header/address/AppAddress';
 
 export default {
@@ -26,7 +26,7 @@ export default {
   provide() {
     return {
       updateLocation: this.updateLocation
-    }
+    };
   },
 
   data() {
@@ -36,27 +36,27 @@ export default {
         city: '',
         address: ''
       }
-    }
+    };
   },
 
   methods: {
     open() {
-      this.isVisible = true
-      disableScroll()
+      this.isVisible = true;
+      disableScroll();
     },
 
     close() {
-      this.isVisible = false
-      enableScroll()
+      this.isVisible = false;
+      enableScroll();
     },
 
     updateLocation(payload) {
-      this.location = payload
-      this.isVisible = false
-      enableScroll()
+      this.location = payload;
+      this.isVisible = false;
+      enableScroll();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

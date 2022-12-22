@@ -2,7 +2,7 @@
   <div :class="classNames">
     <div class="title" @click="isVisible = !isVisible">
       <span class="title__text">Bouquet stems</span>
-      <svg-icon name="arrow-down-thin" class="title__icon icon"/>
+      <svg-icon name="arrow-down-thin" class="title__icon icon" />
     </div>
     <div class="list">
       <div v-for="(item, idx) in list" :key="idx" class="list__item">
@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import {useToggleClassName} from '@/helpers';
+import { useToggleClassName } from '@/helpers';
 
 export default {
   name: 'AppFooterSection',
@@ -94,19 +94,19 @@ export default {
   }
 }
 
-.card{
+.card {
   display: flex;
   align-items: baseline;
 
-  &__text{
+  &__text {
     flex-shrink: 0;
     font-size: 16px;
     line-height: 24px;
   }
 
-  &__points{
+  &__points {
     flex: 1;
-   border-bottom: 1px dotted #ccc;
+    border-bottom: 1px dotted #ccc;
   }
 }
 </style>

@@ -40,7 +40,7 @@ import AppInput from '~/components/shared/AppInput';
 
 export default {
   name: 'CheckoutGiftCard',
-  components: { AppInput },
+  components: { AppInput }
 };
 </script>
 

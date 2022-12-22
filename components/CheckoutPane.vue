@@ -1,22 +1,19 @@
 <template>
-<section
-  class="checkout-pane"
-  :class="classes"
->
-  <div class="checkout-pane__title">
-    <slot name="title">{{ title }}</slot>
-  </div>
-  <slot/>
-</section>
+  <section class="checkout-pane" :class="classes">
+    <div class="checkout-pane__title">
+      <slot name="title">{{ title }}</slot>
+    </div>
+    <slot />
+  </section>
 </template>
 
 <script>
 export default {
-  name: "CheckoutPane",
+  name: 'CheckoutPane',
   props: {
     title: {
       type: String,
-      default: ""
+      default: ''
     },
     delim: {
       type: Boolean,
@@ -24,13 +21,13 @@ export default {
     }
   },
   computed: {
-    classes () {
+    classes() {
       return {
         'checkout-pane--delim': this.delim
       };
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -54,11 +51,11 @@ export default {
     margin-bottom: 40px;
 
     @include gt-md {
-      border-bottom: 1.5px solid #EAEAEA;
+      border-bottom: 1.5px solid #eaeaea;
     }
 
     @include lt-lg {
-      border-bottom: 1px solid #EAEAEA;
+      border-bottom: 1px solid #eaeaea;
       margin-bottom: 16px;
     }
   }

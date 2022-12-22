@@ -1,5 +1,5 @@
 <template>
-  <section class="layout reviews">
+  <section v-if="isReviewsList" class="layout reviews">
     <div class="reviews__row">
       <div class="reviews__col review-service">
         <div class="review-service__top">
@@ -27,17 +27,17 @@
         <div class="review-content__nav">
           <div class="arrows">
             <div class="arrows__btn left" :class="{ active: hasPrev }" @click="prevReview">
-              <svg-icon class="arrows__btn-icon" name="arrow-right"/>
+              <svg-icon class="arrows__btn-icon" name="arrow-right" />
             </div>
             <div class="arrows__btn right" :class="{ active: hasNext }" @click="nextReview">
-              <svg-icon class="arrows__btn-icon" name="arrow-right"/>
+              <svg-icon class="arrows__btn-icon" name="arrow-right" />
             </div>
           </div>
         </div>
         <div class="review-content__body">
           <div class="review-content__body-col review-avatar">
             <figure class="review-avatar__figure">
-              <img :src="currReviewDetails.avatar" class="review-avatar__image" :alt="currReviewDetails.avatar"/>
+              <img :src="currReviewDetails.avatar" class="review-avatar__image" :alt="currReviewDetails.avatar" />
             </figure>
           </div>
           <div class="review-content__body-col review-info">
@@ -69,26 +69,31 @@
 </template>
 
 <script>
-import StarsRating from '@/components/shared/stars-rating/StarsRating';
+import { mapGetters } from 'vuex';
 
-import dataReviews from '@/data/reviews';
+import StarsRating from '@/components/shared/stars-rating/StarsRating';
 
 export default {
   name: 'AppReviews',
 
   components: {
-    StarsRating,
+    StarsRating
   },
 
   data() {
     return {
       currReview: 0,
-      starSpacing: '',
-      reviewList: dataReviews,
+      starSpacing: ''
     };
   },
 
   computed: {
+    ...mapGetters({ reviewList: 'index-page/getReviews' }),
+
+    isReviewsList() {
+      return this.reviewList.length;
+    },
+
     currReviewDetails() {
       return this.reviewList[this.currReview];
     },
@@ -109,7 +114,7 @@ export default {
 
     hasPrev() {
       return this.currReview > 0;
-    },
+    }
   },
 
   mounted() {
@@ -136,8 +141,8 @@ export default {
       }
 
       this.starSpacing = '0.68';
-    },
-  },
+    }
+  }
 };
 </script>
 

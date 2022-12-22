@@ -1,7 +1,7 @@
 <template>
   <div class="location-button" v-on="$listeners">
     <div class="location-button__icon icon">
-      <svg-icon name="location" class="icon__location"/>
+      <svg-icon name="location" class="icon__location" />
     </div>
     <div class="location__description description">
       <div class="description__text">
@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="location-button__icon icon">
-      <svg-icon name="pencil" class="icon__pencil"/>
+      <svg-icon name="pencil" class="icon__pencil" />
     </div>
   </div>
 </template>

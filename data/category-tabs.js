@@ -1,5 +1,1 @@
-export default [
-    'Flowers',
-    'Roses',
-    'Gifts'
-]
+export default ['Flowers', 'Roses', 'Gifts'];

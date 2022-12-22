@@ -24,19 +24,19 @@ export default {
   name: 'CategoryFiltersSm',
 
   components: {
-    AppButton,
+    AppButton
   },
 
   props: {
     activeFilters: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
 
     productCount: {
       type: [Number, String],
-      default: 0,
-    },
+      default: 0
+    }
   },
 
   methods: {
@@ -50,8 +50,8 @@ export default {
 
     close() {
       this.$emit('close');
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -4,15 +4,15 @@
 
 <script>
 export default {
-  name: "BasketProductImage",
+  name: 'BasketProductImage',
   props: {
     url: {
       type: String,
-      default: ""
+      default: ''
     }
   },
   computed: {
-    styles () {
+    styles() {
       return {
         backgroundImage: `url(${this.url})`
       };

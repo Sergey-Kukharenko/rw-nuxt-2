@@ -1,20 +1,20 @@
 <template>
   <div>
-    <app-mobile-link v-if="isLink" :link="link"/>
-    <app-mobile-list v-if="isList" :list="list"/>
+    <app-mobile-link v-if="isLink" :link="link" />
+    <app-mobile-list v-if="isList" :list="list" />
 
     <template v-if="isAll">
-      <app-mobile-tiles :section="categories"/>
-      <app-mobile-section :section="by.price"/>
-      <app-mobile-products :section="products"/>
+      <app-mobile-tiles :section="categories" />
+      <app-mobile-section :section="by.price" />
+      <app-mobile-products :section="products" />
     </template>
 
     <div v-if="isRoses" class="group-sections">
-      <app-mobile-section :section="by.quantity"/>
-      <app-mobile-tiles :section="categories" theme="outline"/>
-      <app-mobile-products :section="products" size="md"/>
-      <app-mobile-section :section="by.look"/>
-      <app-mobile-section :section="by.height"/>
+      <app-mobile-section :section="by.quantity" />
+      <app-mobile-tiles :section="categories" theme="outline" />
+      <app-mobile-products :section="products" size="md" />
+      <app-mobile-section :section="by.look" />
+      <app-mobile-section :section="by.height" />
     </div>
   </div>
 </template>

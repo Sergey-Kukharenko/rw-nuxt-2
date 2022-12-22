@@ -10,13 +10,11 @@
             {{ item.title }}
           </div>
           <app-badge v-if="item.sale" :theme="item.sale.color" size="md-dt" class="badge">
-            <img :src="item.sale.icon_path" class="badge__icon" alt="item.sale.icon_path"/>
+            <img :src="item.sale.icon_path" class="badge__icon" alt="item.sale.icon_path" />
             <span class="badge__text">{{ item.sale.text }}</span>
           </app-badge>
         </div>
-        <div class="price">
-          £{{ item.price.amount }}
-        </div>
+        <div class="price">£{{ item.price.amount }}</div>
       </div>
     </div>
   </div>
@@ -28,7 +26,7 @@ import AppBadge from '@/components/shared/AppBadge';
 export default {
   name: 'AppOffers',
 
-  components: {AppBadge},
+  components: { AppBadge },
 
   props: {
     offers: {

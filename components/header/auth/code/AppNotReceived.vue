@@ -48,7 +48,7 @@ export default {
     AppPersonalDataTerms,
     AppGoBackMobile,
     AppNumberInput: () => import('~/components/shared/AppNumberInput'),
-    AppInput: () => import('~/components/shared/AppInput'),
+    AppInput: () => import('~/components/shared/AppInput')
   },
 
   mixins: [authManager],
@@ -56,8 +56,8 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
 
   data() {
@@ -65,8 +65,8 @@ export default {
       input: {
         value: '',
         errorMsg: '',
-        isValid: false,
-      },
+        isValid: false
+      }
     };
   },
 
@@ -83,7 +83,7 @@ export default {
 
     isInvalidForm() {
       return !!this.input.errorMsg;
-    },
+    }
   },
 
   methods: {
@@ -121,8 +121,8 @@ export default {
       this.input.value = '';
       this.input.errorMsg = '';
       this.input.isValid = false;
-    },
-  },
+    }
+  }
 };
 </script>
 

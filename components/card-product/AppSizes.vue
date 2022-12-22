@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import AppBadge from '@/components/shared/AppBadge'
+import AppBadge from '@/components/shared/AppBadge';
 
 export default {
   name: 'AppSizes',
@@ -40,16 +40,16 @@ export default {
   data() {
     return {
       selectedSize: 0
-    }
+    };
   },
 
   methods: {
     onChange(item, idx) {
-      this.selectedSize = idx
-      this.$emit('setSize', item)
+      this.selectedSize = idx;
+      this.$emit('setSize', item);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

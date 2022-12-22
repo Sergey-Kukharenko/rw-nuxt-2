@@ -35,10 +35,10 @@
 </template>
 
 <script>
-import { useToggleClassName } from '@/helpers'
-import AppSizes from '@/components/card-product/AppSizes'
-import AppButton from '@/components/shared/AppButton'
-import AppBadges from '@/components/shared/AppBadges'
+import { useToggleClassName } from '@/helpers';
+import AppSizes from '@/components/card-product/AppSizes';
+import AppButton from '@/components/shared/AppButton';
+import AppBadges from '@/components/shared/AppBadges';
 
 export default {
   name: 'AppFormSizes',
@@ -60,32 +60,32 @@ export default {
     return {
       itemSize: this.product?.choose_size?.[0],
       like: this.product.like
-    }
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.like, 'like', 'active')
+      return useToggleClassName(this.like, 'like', 'active');
     }
   },
 
   methods: {
     onSetSize(payload) {
-      this.itemSize = payload
+      this.itemSize = payload;
     },
 
     toggleLike() {
-      this.like = !this.like
+      this.like = !this.like;
     },
 
     addToCart() {
       console.log({
         size: this.itemSize.title,
         like: this.like
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

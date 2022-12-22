@@ -1,11 +1,11 @@
 <template>
   <div class="counter">
-    <div class="counter__number">{{count}}</div>
+    <div class="counter__number">{{ count }}</div>
   </div>
 </template>
 
 <script>
-import {useClassName} from '~/helpers';
+import { useClassName } from '~/helpers';
 
 export default {
   name: 'AppCounter',
@@ -19,7 +19,7 @@ export default {
 
   computed: {
     classNames() {
-      return useClassName(this.count, 'counter')
+      return useClassName(this.count, 'counter');
     }
   }
 };

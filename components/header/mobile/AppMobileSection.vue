@@ -4,7 +4,7 @@
       <div class="header__title">
         {{ section.title }}
       </div>
-      <svg-icon name="arrow-down" class="header__icon"/>
+      <svg-icon name="arrow-down" class="header__icon" />
     </div>
     <div class="section__list list">
       <a v-for="(item, idx) in section.list" :key="idx" class="list__item">
@@ -12,12 +12,12 @@
         <span v-if="item.from" class="text-grey">{{ item.from }}</span>
       </a>
     </div>
-    <a v-if="isLink" class="section__link">{{section.link.text}}</a>
+    <a v-if="isLink" class="section__link">{{ section.link.text }}</a>
   </div>
 </template>
 
 <script>
-import {useToggleClassName} from '~/helpers';
+import { useToggleClassName } from '~/helpers';
 
 export default {
   name: 'AppMobileSection',
@@ -32,7 +32,7 @@ export default {
   data() {
     return {
       isVisible: true
-    }
+    };
   },
 
   computed: {
@@ -41,9 +41,9 @@ export default {
     },
 
     isLink() {
-      return this.section?.link?.text
+      return this.section?.link?.text;
     }
-  },
+  }
 };
 </script>
 

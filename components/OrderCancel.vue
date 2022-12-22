@@ -32,8 +32,8 @@ export default {
   name: 'OrderCancel',
 
   components: {
-    AppButton,
-  },
+    AppButton
+  }
 };
 </script>
 

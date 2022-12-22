@@ -1,26 +1,17 @@
 <template>
   <div class="people">
-    <basket-people-title/>
+    <basket-people-title />
     <div class="people__list">
-      <basket-people-item
-        img="path"
-        text="Free delivery right to your apartment on nominated day"
-      />
-      <basket-people-item
-        img="coins"
-        text="Cashback 10% with each order. Without any secret 'but'"
-      />
-      <basket-people-item
-        img="photo"
-        text="Bouquet photo before delivery. Showing the quality"
-      />
+      <basket-people-item img="path" text="Free delivery right to your apartment on nominated day" />
+      <basket-people-item img="coins" text="Cashback 10% with each order. Without any secret 'but'" />
+      <basket-people-item img="photo" text="Bouquet photo before delivery. Showing the quality" />
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketPeople"
+  name: 'BasketPeople'
 };
 </script>
 

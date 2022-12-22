@@ -20,13 +20,15 @@
 import ToastCardDeals from '~/components/toast-cards/ToastCardDeals';
 
 export default {
-  name: "BasketPage",
+  name: 'BasketPage',
   layout: 'basket',
   head: {
-    meta: [{
-      name: "viewport",
-      content: "width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    }]
+    meta: [
+      {
+        name: 'viewport',
+        content: 'width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no'
+      }
+    ]
   },
 
   mounted() {
@@ -37,7 +39,7 @@ export default {
           src: 'https://via.placeholder.com/252x300',
           size: {width: 32, height: 32}
         },
-        text: 'Postcard added to the order',
+        text: 'Postcard added to the order'
       }
     };
 
@@ -46,11 +48,11 @@ export default {
       icon: false,
       closeButton: false,
       position: 'bottom-left',
-      class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small'],
+      class: ['toast', 'toast--width-large', 'toast--theme-yellow', 'toast--height-small']
     };
 
     this.$toast(content, options);
-  },
+  }
 };
 </script>
 

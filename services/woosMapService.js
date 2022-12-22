@@ -29,7 +29,7 @@ export async function woosMapService(query) {
     };
 
     const response = await fetch(`${url}?${params}`);
-    const {localities} = await response.json();
+    const { localities } = await response.json();
     result.push(...transformArray(localities));
   } catch (error) {
     throw new Error(error);

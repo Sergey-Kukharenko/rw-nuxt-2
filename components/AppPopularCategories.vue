@@ -1,15 +1,10 @@
 <template>
-  <section class="layout popular-categories">
+  <section v-if="isPopularCategories" class="layout popular-categories">
     <h2 class="popular-title">New way to show love</h2>
     <div class="popular-list">
-      <a v-for="item in popular" :key="item.hashTag" class="popular-list__item card">
+      <a v-for="item in popularCategories" :key="item.hashTag" class="popular-list__item card">
         <div class="absolute-grow card__content">
-          <img
-            :key="item.hashTag"
-            :src="item.img[getImg]"
-            class="absolute-center card__image"
-            :alt="item.hashTag"
-          />
+          <img :key="item.hashTag" :src="item.img[getImg]" class="absolute-center card__image" :alt="item.hashTag" />
           <div v-if="item.timer" class="card__timer">
             <app-timer />
           </div>
@@ -24,27 +19,28 @@
   </section>
 </template>
 
-<script >
-import dataPopularCategories from '@/data/popular-categories'
-import AppTimer from '@/components/shared/AppTimer'
+<script>
+import { mapGetters } from 'vuex';
+
+import AppTimer from '@/components/shared/AppTimer';
 
 export default {
   components: {
     AppTimer
   },
 
-  data() {
-    return {
-      popular: dataPopularCategories
-    }
-  },
-
   computed: {
+    ...mapGetters({ popularCategories: 'index-page/getPopularCategories' }),
+
+    isPopularCategories() {
+      return this.popularCategories.length;
+    },
+
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

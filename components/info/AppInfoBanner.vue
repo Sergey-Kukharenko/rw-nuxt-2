@@ -31,44 +31,44 @@ export default {
   name: 'AppInfoBanner',
 
   components: {
-    AppButton,
+    AppButton
   },
 
   props: {
     backgroundColor: {
       type: String,
-      default: '#EBFAF0',
+      default: '#EBFAF0'
     },
 
     backgroundImage: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
 
     title: {
       type: String,
-      default: '',
+      default: ''
     },
 
     text: {
       type: String,
-      default: '',
+      default: ''
     },
 
     buttons: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
 
     hasButtons: {
       type: Boolean,
-      default: false,
+      default: false
     },
 
     page: {
       type: String,
-      default: 'info',
-    },
+      default: 'info'
+    }
   },
 
   computed: {
@@ -80,16 +80,16 @@ export default {
       return {
         backgroundColor: this.backgroundColor,
         backgroundImage: `url(${this.backgroundImageByDevice})`,
-        backgroundRepeat: 'no-repeat',
+        backgroundRepeat: 'no-repeat'
       };
-    },
+    }
   },
 
   methods: {
     goToPath(path) {
       //
-    },
-  },
+    }
+  }
 };
 </script>
 

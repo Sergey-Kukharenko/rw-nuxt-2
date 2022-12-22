@@ -67,7 +67,7 @@ import {
   AUTH_CORRECT_CODE,
   AUTH_REG_ERROR_MESSAGES,
   AUTH_REG_STEPS,
-  AUTH_TYPES,
+  AUTH_TYPES
 } from '~/constants/index';
 
 export default {
@@ -75,7 +75,7 @@ export default {
 
   components: {
     AppCodeInput,
-    AppGoBackMobile,
+    AppGoBackMobile
   },
 
   mixins: [authManager],
@@ -85,7 +85,7 @@ export default {
       timerDuration: AUTH_CODE_TIMER.duration,
       code: '',
       errorMsg: '',
-      isRetried: false,
+      isRetried: false
     };
   },
 
@@ -121,7 +121,7 @@ export default {
 
     retryTextMobile() {
       return this.timerDuration ? 'Resend after ' + this.timer : 'Resend';
-    },
+    }
   },
 
   mounted() {
@@ -185,8 +185,8 @@ export default {
     resetCodeInput() {
       this.code = '';
       this.errorMsg = '';
-    },
-  },
+    }
+  }
 };
 </script>
 

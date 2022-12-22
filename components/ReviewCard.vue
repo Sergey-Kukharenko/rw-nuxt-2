@@ -34,33 +34,33 @@ export default {
   props: {
     fullName: {
       type: String,
-      default: '',
+      default: ''
     },
 
     images: {
       type: Object,
-      default: () => ({}),
+      default: () => ({})
     },
 
     socialIcon: {
       type: String,
-      default: 'google',
+      default: 'google'
     },
 
     ratingCount: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
 
     text: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   data() {
     return {
-      hidden: true,
+      hidden: true
     };
   },
 
@@ -79,14 +79,14 @@ export default {
 
     toggleBtnText() {
       return this.hidden ? 'more' : 'less';
-    },
+    }
   },
 
   methods: {
     toggleText() {
       this.hidden = !this.hidden;
-    },
-  },
+    }
+  }
 };
 </script>
 

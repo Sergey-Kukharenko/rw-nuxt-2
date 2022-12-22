@@ -34,14 +34,14 @@ export default {
 
   components: {
     Swiper,
-    SwiperSlide,
+    SwiperSlide
   },
 
   props: {
     slides: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   data() {
@@ -52,8 +52,8 @@ export default {
         centeredSlides: false,
         spaceBetween: 4,
         slidesPerView: 1,
-        touchRatio: 0.2,
-      },
+        touchRatio: 0.2
+      }
     };
   },
 
@@ -64,8 +64,8 @@ export default {
 
     getCurrStep(index) {
       return index + 1;
-    },
-  },
+    }
+  }
 };
 </script>
 

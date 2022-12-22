@@ -4,7 +4,7 @@
 
 <script>
 export default {
-  name: "BasketSomethingTitle"
+  name: 'BasketSomethingTitle'
 };
 </script>
 
@@ -16,7 +16,7 @@ export default {
   font-size: 20px;
   line-height: 24px;
   letter-spacing: 0.03px;
-  color: #1F2226;
+  color: #1f2226;
 
   @include lt-lg {
     font-size: 16px;

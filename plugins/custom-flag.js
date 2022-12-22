@@ -1,3 +1,3 @@
 export default function ({ $device }) {
-  $device.isCustom = !!$device.userAgent.includes('Custom-Agent')
+  $device.isCustom = !!$device.userAgent.includes('Custom-Agent');
 }

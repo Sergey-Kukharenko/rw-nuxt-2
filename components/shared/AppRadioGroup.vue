@@ -1,22 +1,8 @@
 <template>
   <div class="radio-group">
-    <label
-      v-for="option in options"
-      :key="option"
-      :for="option"
-      class="radio-group__label"
-    >
-      <input
-        :id="option"
-        type="radio"
-        :value="option"
-        :checked="option === selected"
-        @change="onChange(option)"
-      />
-      <span
-        class="radio-group__button"
-        :class="{ active: option === selected }"
-      />
+    <label v-for="option in options" :key="option" :for="option" class="radio-group__label">
+      <input :id="option" type="radio" :value="option" :checked="option === selected" @change="onChange(option)" />
+      <span class="radio-group__button" :class="{ active: option === selected }" />
       <span class="radio-group__text">{{ option }}</span>
     </label>
   </div>
@@ -40,13 +26,13 @@ export default {
 
   methods: {
     onChange(item) {
-      this.$emit('update:selected', item)
+      this.$emit('update:selected', item);
     }
   }
 };
 </script>
 
-<style  lang="scss" scoped>
+<style lang="scss" scoped>
 .radio-group {
   margin: -5px 0;
 

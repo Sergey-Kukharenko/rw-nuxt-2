@@ -1,5 +1,5 @@
 <template>
-  <div class="info layout">
+  <div v-if="isInfo" class="info layout">
     <div class="info__head">
       <div class="info__head-title">
         {{ info.head.title }}
@@ -24,10 +24,12 @@
         class="info__grid-item item"
         :class="{ active: item.is_active }"
       >
-        <div class="item__title" @click="toggleGridItem(index, item.is_active)">{{ item.title }}
+        <div class="item__title" @click="toggleGridItem(index, item.is_active)">
+          {{ item.title }}
           <svg-icon name="arrow-down" class="item__title-icon" />
         </div>
-        <div class="item__text">{{ item.text }}
+        <div class="item__text">
+          {{ item.text }}
           <ul v-if="isListEmpty(item)" class="item__text-list">
             <li v-for="(el, idx) in item.list" :key="idx" class="item__text-list-item">{{ el }}</li>
           </ul>
@@ -38,15 +40,18 @@
 </template>
 
 <script>
-import dataInfo from '~/data/info';
+import { mapGetters } from 'vuex';
+import { useObjectNotEmpty } from '~/helpers';
 
 export default {
   name: 'AppInfo',
 
-  data() {
-    return {
-      info: dataInfo,
-    };
+  computed: {
+    ...mapGetters({ info: 'index-page/getInfo' }),
+
+    isInfo() {
+      return useObjectNotEmpty(this.info);
+    }
   },
 
   methods: {
@@ -56,8 +61,8 @@ export default {
 
     isListEmpty(item) {
       return item?.list?.length;
-    },
-  },
+    }
+  }
 };
 </script>
 

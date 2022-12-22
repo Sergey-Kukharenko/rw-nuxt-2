@@ -9,12 +9,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import AppCounter from '@/components/shared/AppCounter';
-import { useClassName, useSetClassName } from '@/helpers'
+
+import { useClassName, useSetClassName } from '@/helpers';
 
 export default {
   name: 'AppCart',
-  components: {AppCounter},
+  components: { AppCounter },
   props: {
     theme: {
       type: String,
@@ -23,34 +26,29 @@ export default {
   },
 
   computed: {
-    getImg() {
-      return this.$device.isMobileOrTablet ? 'cart-bag' : 'cart-outline'
-    },
+    ...mapGetters({ cart: 'cart/cart' }),
 
-    cart() {
-      return this.$store.getters['cart/cart']
+    getImg() {
+      return this.$device.isMobileOrTablet ? 'cart-bag' : 'cart-outline';
     },
 
     isCount() {
-      return this.cart.count > 0
+      return this.cart.count > 0;
     },
 
     goToCart() {
-      return this.isCount ? '/basket' : ''
+      return this.isCount ? '/basket' : '';
     },
 
     isPrice() {
-      return this.isCount ? this.cart.price : 'Basket'
+      return this.isCount ? this.cart.price : 'Basket';
     },
 
     classNames() {
-      return [
-        useClassName(this.$props, 'cart'),
-        useSetClassName(this.isCount, 'cart--active')
-      ]
+      return [useClassName(this.$props, 'cart'), useSetClassName(this.isCount, 'cart--active')];
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

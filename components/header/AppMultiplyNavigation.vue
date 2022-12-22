@@ -20,10 +20,10 @@
 </template>
 
 <script>
-import AppLogo from '@/components/header/AppLogo'
-import AppLocation from '~/components/header/location/AppLocation'
-import AppInformer from '@/components/header/AppInformer'
-import AppNavigationUser from '@/components/header/AppNavigationUser'
+import AppLogo from '@/components/header/AppLogo';
+import AppLocation from '@/components/header/location/AppLocation';
+import AppInformer from '@/components/header/AppInformer';
+import AppNavigationUser from '@/components/header/AppNavigationUser';
 
 export default {
   name: 'AppMenu',
@@ -34,7 +34,7 @@ export default {
     AppInformer,
     AppNavigationUser
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

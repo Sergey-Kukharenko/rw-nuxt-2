@@ -1,36 +1,32 @@
 <template>
-  <button
-    class="basket-button"
-    :class="classes"
-    @click="onClick"
-  >
-    <slot/>
+  <button class="basket-button" :class="classes" @click="onClick">
+    <slot />
   </button>
 </template>
 
 <script>
 export default {
-  name: "BasketButton",
+  name: 'BasketButton',
   props: {
     theme: {
       type: String,
-      default: "green",
-      validate (value) {
-        ["green", "grey", "white"].includes(value)
+      default: 'green',
+      validate(value) {
+        ['green', 'grey', 'white'].includes(value);
       }
     },
     size: {
       type: String,
-      default: "medium",
+      default: 'medium',
       validate(value) {
-        return ["x-small", "small", "medium", "large"].includes(value);
+        return ['x-small', 'small', 'medium', 'large'].includes(value);
       }
     },
     align: {
       type: String,
-      default: "left",
-      validate (value) {
-        return ["left", "center", "right"].includes(value);
+      default: 'left',
+      validate(value) {
+        return ['left', 'center', 'right'].includes(value);
       }
     },
     stretch: {
@@ -48,20 +44,20 @@ export default {
   },
   emits: ['click'],
   computed: {
-    classes () {
+    classes() {
       return {
         [`basket-button--size-${this.size}`]: true,
         [`basket-button--align-${this.align}`]: true,
         [`basket-button--theme-${this.theme}`]: true,
-        "basket-button--width-stretch": this.stretch,
-        "basket-button--icon-only": this.iconOnly,
-        "basket-button--disabled": this.disabled
+        'basket-button--width-stretch': this.stretch,
+        'basket-button--icon-only': this.iconOnly,
+        'basket-button--disabled': this.disabled
       };
     }
   },
   methods: {
-    onClick () {
-      if (!this.disabled) this.$emit("click");
+    onClick() {
+      if (!this.disabled) this.$emit('click');
     }
   }
 };
@@ -100,7 +96,7 @@ export default {
 
   &--theme-white {
     background: #ffffff;
-    color: #26AD4F;
+    color: #26ad4f;
     border-radius: 10px;
     font-family: $golos-regular;
     font-weight: 600;
@@ -193,8 +189,8 @@ export default {
   }
 
   &--disabled {
-    color: #FFFFFF;
-    background-color: #EAEAEA;
+    color: #ffffff;
+    background-color: #eaeaea;
     cursor: default;
   }
 }

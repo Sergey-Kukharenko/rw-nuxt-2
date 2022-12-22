@@ -1,44 +1,18 @@
 <template>
-  <Teleport
-    v-if="isOpened"
-    to="body"
-  >
-    <div
-      class="checkout-modal"
-      @click="close"
-    >
-      <div
-        class="checkout-modal__window"
-        :style="windowStyles"
-        @click="onWindowClick"
-      >
-        <div
-          v-if="$slots.title"
-          class="checkout-modal__title"
-        >
-          <div
-            class="checkout-modal__arrow-back"
-            @click="close"
-          >
-            <svg-icon
-              class="checkout-modal__icon-back"
-              name="arrow-back"
-            />
+  <Teleport v-if="isOpened" to="body">
+    <div class="checkout-modal" @click="close">
+      <div class="checkout-modal__window" :style="windowStyles" @click="onWindowClick">
+        <div v-if="$slots.title" class="checkout-modal__title">
+          <div class="checkout-modal__arrow-back" @click="close">
+            <svg-icon class="checkout-modal__icon-back" name="arrow-back" />
           </div>
           <div>
-            <slot name="title"/>
+            <slot name="title" />
           </div>
         </div>
-        <slot/>
-        <div
-          v-if="closable"
-          class="checkout-modal__close"
-          @click="close"
-        >
-          <svg-icon
-            class="checkout-modal__icon-close"
-            name="close-white"
-          />
+        <slot />
+        <div v-if="closable" class="checkout-modal__close" @click="close">
+          <svg-icon class="checkout-modal__icon-close" name="close-white" />
         </div>
       </div>
     </div>
@@ -46,10 +20,10 @@
 </template>
 
 <script>
-import Teleport from "vue2-teleport";
+import Teleport from 'vue2-teleport';
 
 export default {
-  name: "CheckoutModal",
+  name: 'CheckoutModal',
   components: { Teleport },
   props: {
     closable: {
@@ -61,38 +35,34 @@ export default {
       default: 'fit-content'
     }
   },
-  data () {
+  data() {
     return {
       isOpened: false
     };
   },
   computed: {
-    windowStyles () {
+    windowStyles() {
       return {
-        'width': window.innerWidth < 1280
-          ? '100%'
-          : typeof this.width === 'string'
-            ? this.width
-            : `${this.width}px`
+        width: window.innerWidth < 1280 ? '100%' : typeof this.width === 'string' ? this.width : `${this.width}px`
       };
     }
   },
   methods: {
-    open () {
+    open() {
       this.isOpened = true;
       if (document) document.body.classList.add('noscroll');
       this.$emit('open');
     },
-    close () {
+    close() {
       this.isOpened = false;
       if (document) document.body.classList.remove('noscroll');
       this.$emit('close');
     },
-    onWindowClick (event) {
+    onWindowClick(event) {
       event.stopPropagation();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -115,7 +85,7 @@ export default {
     position: relative;
     height: auto;
     flex-shrink: 0;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 10px;
     padding: 24px;
     box-sizing: border-box;
@@ -137,7 +107,7 @@ export default {
     align-items: center;
     gap: 12px;
     height: 76px;
-    border-bottom: 1.5px solid #DDE0E6;
+    border-bottom: 1.5px solid #dde0e6;
     margin-top: -16px;
     margin-bottom: 24px;
 

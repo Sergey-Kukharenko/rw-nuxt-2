@@ -1,12 +1,7 @@
 <template>
   <div class="list-wrapper">
     <div class="list">
-      <div
-        v-for="(item, idx) in list"
-        :key="idx"
-        class="list__item"
-        @click="onChange(item)"
-      >
+      <div v-for="(item, idx) in list" :key="idx" class="list__item" @click="onChange(item)">
         <div class="title">{{ item.address }}</div>
         <div class="subtitle">{{ item.city }}</div>
       </div>
@@ -29,8 +24,8 @@ export default {
 
   methods: {
     onChange({ address, city }) {
-      this.$emit('clearQuery')
-      this.updateLocation({ address, city })
+      this.$emit('clearQuery');
+      this.updateLocation({ address, city });
     }
   }
 };
@@ -48,17 +43,12 @@ export default {
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(
-          180deg,
-          transparent,
-          hsl(0deg 0% 100% / 85%) 50%
-      );
+      background: linear-gradient(180deg, transparent, hsl(0deg 0% 100% / 85%) 50%);
       z-index: 1;
     }
   }
 
   @include lt-md {
-
   }
 }
 

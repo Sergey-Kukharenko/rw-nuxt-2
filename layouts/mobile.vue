@@ -1,7 +1,7 @@
 <template>
   <div v-if="$device.isMobileOrTablet">
-    <app-header-mobile />
-    <Nuxt />
+    <app-header-mobile/>
+    <Nuxt/>
   </div>
 </template>
 
@@ -10,9 +10,9 @@ export default {
   name: 'MobileLayout',
 
   components: {
-    AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
+    AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile')
   },
 
-  middleware: ['verify-mobile-device'],
+  middleware: ['verify-mobile-device']
 };
 </script>

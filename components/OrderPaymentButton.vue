@@ -43,24 +43,24 @@ export default {
   components: {
     AppButton,
     StripeCheckout: () => import('@vue-stripe/vue-stripe').then(({ StripeCheckout }) => StripeCheckout),
-    PaypalCheckout: () => import('vue-paypal-checkout'),
+    PaypalCheckout: () => import('vue-paypal-checkout')
   },
 
   props: {
     paymentMethod: {
       type: Object,
-      default: () => STRIPE_METHOD,
-    },
+      default: () => STRIPE_METHOD
+    }
   },
 
   data() {
     return {
-      isMounted: false,
+      isMounted: false
     };
   },
 
   STRIPE,
-  PAYPAL,  
+  PAYPAL,
 
   computed: {
     isPaypalPaymentMethod() {
@@ -69,7 +69,7 @@ export default {
 
     isStripePaymentMethod() {
       return this.paymentMethod.name === STRIPE_METHOD.name;
-    },
+    }
   },
 
   mounted() {
@@ -83,8 +83,8 @@ export default {
 
     paypalPaymentCompleted(response) {
       console.log('Paypal payment has been completed', response);
-    },
-  },
+    }
+  }
 };
 </script>
 

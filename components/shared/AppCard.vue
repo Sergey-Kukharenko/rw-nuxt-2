@@ -6,21 +6,17 @@
           {{ slide.sale.percent }}
         </app-badge>
         <button class="like">
-          <svg-icon name="heart" class="like__icon"/>
+          <svg-icon name="heart" class="like__icon" />
         </button>
       </div>
       <a class="figure absolute-grow">
-        <img
-          :src="slide.img"
-          class="absolute-center figure__img"
-          :alt="slide.img"
-        />
+        <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
       </a>
     </div>
     <div class="card__body">
       <div class="rating">
         <div class="rating__text">{{ slide.rating }}</div>
-        <svg-icon name="star" class="rating__icon"/>
+        <svg-icon name="star" class="rating__icon" />
         <div class="rating__reviews">12 560</div>
       </div>
 
@@ -44,13 +40,12 @@
         </app-button>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
-import AppBadge from './AppBadge.vue'
-import AppButton from './AppButton.vue'
+import AppBadge from './AppBadge.vue';
+import AppButton from './AppButton.vue';
 
 export default {
   name: 'AppCard',
@@ -66,7 +61,7 @@ export default {
       default: () => ({})
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -227,14 +222,14 @@ export default {
     }
   }
 
-  &:after{
-    content: "";
+  &:after {
+    content: '';
     display: block;
     width: 20px;
     height: 19px;
     position: absolute;
     right: -17px;
-    clip: rect(11px,10px,auto,auto);
+    clip: rect(11px, 10px, auto, auto);
     border: 3px solid #fff;
     box-sizing: border-box;
     border-radius: 50%;
@@ -254,7 +249,7 @@ export default {
     display: block;
     color: #fff;
     mix-blend-mode: normal;
-    stroke: #7C7C7C;
+    stroke: #7c7c7c;
 
     @include gt-sm {
       width: 20px;

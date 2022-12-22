@@ -1,9 +1,6 @@
 <template>
   <div class="product-price">
-    <div
-      v-if="oldPrice"
-      class="product-price__old"
-    >
+    <div v-if="oldPrice" class="product-price__old">
       <div class="product-price__old-price">£{{ oldPrice }}</div>
       <div class="product-price__old-percent">-{{ percent.toFixed(0) }}%</div>
     </div>
@@ -12,25 +9,25 @@
 </template>
 
 <script>
-  export default {
-    name: "BasketProductPrice",
-    props: {
-      price: {
-        type: Number,
-        default: 0
-      },
-      oldPrice: {
-        type: Number,
-        default: 0
-      }
+export default {
+  name: 'BasketProductPrice',
+  props: {
+    price: {
+      type: Number,
+      default: 0
     },
-    computed: {
-      percent () {
-        if (!this.oldPrice) return 0;
-        return 100 - this.price / this.oldPrice * 100;
-      }
+    oldPrice: {
+      type: Number,
+      default: 0
     }
-  };
+  },
+  computed: {
+    percent() {
+      if (!this.oldPrice) return 0;
+      return 100 - (this.price / this.oldPrice) * 100;
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +54,7 @@
     font-size: 16px;
     font-weight: 400;
     line-height: 16px;
-    color: #7C7C7C;
+    color: #7c7c7c;
 
     @include lt-lg {
       font-size: 12px;
@@ -65,7 +62,7 @@
     }
 
     &:before {
-      content: "";
+      content: '';
       position: absolute;
       z-index: 100;
       left: -2px;
@@ -73,7 +70,7 @@
       width: 120%;
       height: 1px;
       background-color: #ffffff;
-      border-bottom: 1px solid #DB1838;
+      border-bottom: 1px solid #db1838;
       transform: rotate(-26.07deg);
 
       @include lt-lg {
@@ -87,7 +84,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: #DB1838;
+    background-color: #db1838;
     color: #ffffff;
     border-radius: 8px;
     height: 20px;

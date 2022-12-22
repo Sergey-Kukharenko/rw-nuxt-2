@@ -10,15 +10,13 @@
 </template>
 
 <script>
-import dataNavigation from '@/data/navigationMobile'
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppHeaderMobileNav',
 
-  data() {
-    return {
-      navigation: dataNavigation
-    }
+  computed: {
+    ...mapGetters({ navigation: 'layout/getNavigation' })
   }
 };
 </script>

@@ -12,9 +12,7 @@
     </div>
 
     <div class="service__container container">
-      <div class="container__text">
-        {{text}} ...
-      </div>
+      <div class="container__text">{{ text }} ...</div>
 
       <div v-show="isShowMore" class="container__text">
         i'am hidden text ... <br />
@@ -75,22 +73,22 @@ export default {
       },
       isShowMore: false,
       toggleText: 'Show more'
-    }
+    };
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   },
 
   methods: {
     toggle() {
-      this.isShowMore = !this.isShowMore
-      this.toggleText = this.isShowMore ? 'Hide' : 'Show more'
+      this.isShowMore = !this.isShowMore;
+      this.toggleText = this.isShowMore ? 'Hide' : 'Show more';
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

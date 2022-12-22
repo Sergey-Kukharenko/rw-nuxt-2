@@ -1,42 +1,26 @@
 <template>
   <div class="item">
-    <div
-      class="item__img"
-      :style="imgStyle"
-    />
+    <div class="item__img" :style="imgStyle" />
     <div class="item__title">{{ title }}</div>
     <div class="item__footer">
       <div class="item__price">£ {{ price }}</div>
-      <basket-button
-        theme="grey"
-        size="x-small"
-        class="item__button-desktop"
-      >
-        Add
-      </basket-button>
-      <basket-button
-        theme="grey"
-        size="x-small"
-        :stretch="true"
-        class="item__button-mobile"
-      >
-        +
-      </basket-button>
+      <basket-button theme="grey" size="x-small" class="item__button-desktop"> Add </basket-button>
+      <basket-button theme="grey" size="x-small" :stretch="true" class="item__button-mobile"> + </basket-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketSomethingItem",
+  name: 'BasketSomethingItem',
   props: {
     img: {
       type: String,
-      default: ""
+      default: ''
     },
     title: {
       type: String,
-      default: ""
+      default: ''
     },
     price: {
       type: Number,
@@ -44,7 +28,7 @@ export default {
     }
   },
   computed: {
-    imgStyle () {
+    imgStyle() {
       return {
         backgroundImage: `url(${this.img})`
       };
@@ -87,8 +71,7 @@ export default {
     font-size: 14px;
     line-height: 20px;
     letter-spacing: -0.01em;
-    color: #1F2226;
-
+    color: #1f2226;
 
     @include lt-lg {
       font-family: $golos-medium;
@@ -103,7 +86,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    color: #1F2226;
+    color: #1f2226;
 
     @include lt-lg {
       flex-direction: column;
@@ -143,7 +126,7 @@ export default {
     font-weight: 400;
     font-size: 20px;
     line-height: 16px;
-    color: #1F2226;
+    color: #1f2226;
 
     @include lt-lg {
       display: flex;

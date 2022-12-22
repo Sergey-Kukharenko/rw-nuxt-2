@@ -23,7 +23,7 @@ import { ADVANTAGES } from '~/data/about';
 export default {
   name: 'AboutAdvantages',
 
-  ADVANTAGES,
+  ADVANTAGES
 };
 </script>
 

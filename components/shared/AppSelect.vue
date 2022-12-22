@@ -44,41 +44,41 @@ export default {
   name: 'AppSelect',
   components: { Teleport },
   directives: {
-    clickOutside: vClickOutside.directive,
+    clickOutside: vClickOutside.directive
   },
   props: {
     placeholder: {
       type: String,
-      default: '',
+      default: ''
     },
     size: {
       type: String,
       default: 'medium',
       validate(value) {
         return ['small', 'medium', 'large', 'x-large'].includes(value);
-      },
+      }
     },
     list: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
     darkLabel: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
       isOpened: false,
-      label: '',
+      label: ''
     };
   },
   computed: {
     classes() {
       return {
-        [`app-select--size-${this.size}`]: true,
+        [`app-select--size-${this.size}`]: true
       };
-    },
+    }
   },
   watch: {
     isOpened(value) {
@@ -87,7 +87,7 @@ export default {
       } else {
         document.body.classList.remove('noscroll');
       }
-    },
+    }
   },
   methods: {
     open() {
@@ -112,8 +112,8 @@ export default {
         this.$refs.dropdown.style.width = `${rect.width}px`;
       }
       this.isOpened = true;
-    },
-  },
+    }
+  }
 };
 </script>
 

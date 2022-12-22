@@ -34,29 +34,29 @@ export default {
   props: {
     currSorting: {
       type: String,
-      default: '',
+      default: ''
     },
 
     productCount: {
       type: [Number, String],
-      default: 0,
+      default: 0
     },
 
     sortList: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
 
     activeFilters: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   data() {
     return {
       filterVisibility: false,
-      sortingVisbility: false,
+      sortingVisbility: false
     };
   },
 
@@ -93,8 +93,8 @@ export default {
 
     removeActiveFilter(filter) {
       this.$emit('remove-active-filter', filter);
-    },
-  },
+    }
+  }
 };
 </script>
 

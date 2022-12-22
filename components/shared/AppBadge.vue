@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import { useClassName } from '@/helpers'
+import { useClassName } from '@/helpers';
 
 export default {
   name: 'AppBadge',
@@ -30,10 +30,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassName(this.$props, 'badge')
+      return useClassName(this.$props, 'badge');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

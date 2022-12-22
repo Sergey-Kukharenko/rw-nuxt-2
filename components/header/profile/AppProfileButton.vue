@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import { useToggleClassName } from '~/helpers';
 
 export default {
@@ -19,14 +20,12 @@ export default {
   props: {
     user: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
 
   computed: {
-    isAuth() {
-      return this.$store.getters['auth/isAuthorized'];
-    },
+    ...mapGetters({ isAuth: 'auth/isAuthorized' }),
 
     char() {
       return this.user.fullName.substring(0, 1);
@@ -38,15 +37,15 @@ export default {
 
     classNames() {
       return useToggleClassName(this.isAuth, 'profile-button', 'active');
-    },
+    }
   },
 
   methods: {
     goToPath() {
       this.$router.push({ name: 'signin' });
-      this.$emit('close')
-    },
-  },
+      this.$emit('close');
+    }
+  }
 };
 </script>
 

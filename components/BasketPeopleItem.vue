@@ -1,24 +1,21 @@
 <template>
   <div class="item">
-    <svg-icon
-      class="item__icon"
-      :name="img"
-    />
+    <svg-icon class="item__icon" :name="img" />
     <div>{{ text }}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketPeopleItem",
+  name: 'BasketPeopleItem',
   props: {
     img: {
       type: String,
-      default: ""
+      default: ''
     },
     text: {
       type: String,
-      default: ""
+      default: ''
     }
   }
 };
@@ -31,7 +28,7 @@ export default {
   align-items: center;
   gap: 16px;
 
-  background: #FFF6E1;
+  background: #fff6e1;
   border-radius: 24px;
   height: 80px;
   padding: 0 24px;
@@ -42,7 +39,7 @@ export default {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.01em;
-  color: #1F2226;
+  color: #1f2226;
 
   &__icon {
     width: 56px;

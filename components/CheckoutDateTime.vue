@@ -35,7 +35,7 @@
         {{ error }}
       </div>
       <div class="date__fasten">
-        <basket-switch v-model="fasten"/>
+        <basket-switch v-model="fasten" />
         <div class="date__fasten-group-text">
           <div class="date__fasten-label">Fasten delivery (in 2 hours)</div>
           <div class="date__fasten-price">+ £5</div>
@@ -52,7 +52,7 @@
             class="date__modal-day-item"
             @click="onClickDayItem(index)"
           >
-            <app-radio v-model="daySelect" :name="index"/>
+            <app-radio v-model="daySelect" :name="index" />
             <div class="date__modal-day-label">
               {{ item.month }} {{ item.day }}, <span>{{ item.weekday }}</span>
             </div>
@@ -67,7 +67,7 @@
 import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
 
-import {CHECKOUT_FORM_KEYS} from '~/constants';
+import { CHECKOUT_FORM_KEYS } from '~/constants';
 
 const monthList = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -76,14 +76,14 @@ export default {
 
   components: {
     AppRadio,
-    AppSelect,
+    AppSelect
   },
 
   props: {
     error: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   data() {
@@ -94,64 +94,64 @@ export default {
         {
           type: 'fix',
           title: 'Today',
-          label: date,
+          label: date
         },
         {
           type: 'fix',
           title: 'Tomorrow',
-          label: new Date(new Date(date).setDate(date.getDate() + 1)),
+          label: new Date(new Date(date).setDate(date.getDate() + 1))
         },
         {
           type: 'select',
           title: 'Choose',
-          label: 'another day',
-        },
+          label: 'another day'
+        }
       ],
       timeList: [
         {
           id: 0,
           label: '9:00 - 12:00 am',
-          price: 0,
+          price: 0
         },
         {
           id: 1,
           label: '12:00 - 3:00 pm',
-          price: 0,
+          price: 0
         },
         {
           id: 2,
           label: '3:00 - 6:00 pm',
-          price: 0,
+          price: 0
         },
         {
           id: 3,
           label: '6:00 - 9:00 pm',
-          price: 0,
+          price: 0
         },
         {
           id: 4,
           label: '9:00 - 12:00 pm',
-          price: 0,
+          price: 0
         },
         {
           id: 5,
           label: '12:00 - 3:00 am',
-          price: 0,
+          price: 0
         },
         {
           id: 6,
           label: '3:00 - 6:00 am',
-          price: 0,
+          price: 0
         },
         {
           id: 7,
           label: '6:00 - 9:00 am',
-          price: 0,
-        },
+          price: 0
+        }
       ],
       time: 0,
       daySelect: null,
-      fasten: false,
+      fasten: false
     };
   },
 
@@ -163,14 +163,14 @@ export default {
       const result = [];
       while (dayCount--) {
         result.push({
-          month: new Intl.DateTimeFormat('en-ES', {month: 'long'}).format(date),
+          month: new Intl.DateTimeFormat('en-ES', { month: 'long' }).format(date),
           day: date.getDate(),
-          weekday: new Intl.DateTimeFormat('en-ES', {weekday: 'long'}).format(date),
+          weekday: new Intl.DateTimeFormat('en-ES', { weekday: 'long' }).format(date)
         });
         date.setDate(date.getDate() + 1);
       }
       return result;
-    },
+    }
   },
 
   methods: {
@@ -188,7 +188,7 @@ export default {
       this.time = item.id;
       const price = item.price || 'free delivery';
       setLabel(`${item.label}, ${price}`);
-      this.$emit('set-field', {key: CHECKOUT_FORM_KEYS.dateTime, value: item.label});
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, value: item.label });
       close();
     },
     onTabClick(index) {
@@ -204,8 +204,8 @@ export default {
     onClickDayItem(index) {
       this.daySelect = index;
       this.$refs.dateModal.close();
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -222,7 +222,6 @@ export default {
   }
 
   &__select {
-
     @include gt-md() {
       margin-top: 28px;
     }

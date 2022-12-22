@@ -1,12 +1,6 @@
 <template>
   <div class="navigation-list">
-    <a
-      v-for="item in list"
-      :key="item.title"
-      :href="item.href"
-      target="_blank"
-      class="navigation-list__item"
-    >
+    <a v-for="item in list" :key="item.title" :href="item.href" target="_blank" class="navigation-list__item">
       <div class="content">
         <div class="content__text">{{ item.title }}</div>
         <div v-if="item.count" class="content__count">{{ item.count }}</div>
@@ -25,7 +19,7 @@ export default {
       default: () => []
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -74,4 +68,3 @@ export default {
   }
 }
 </style>
-

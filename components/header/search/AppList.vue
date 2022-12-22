@@ -2,12 +2,7 @@
   <div class="list">
     <div v-for="(item, idx) in list" :key="idx" class="list__item">
       <span class="text" @click="add(item)">{{ item }}</span>
-      <svg-icon
-        v-if="hasRemoveBtn"
-        name="close"
-        class="button"
-        @click="remove(item)"
-      />
+      <svg-icon v-if="hasRemoveBtn" name="close" class="button" @click="remove(item)" />
     </div>
   </div>
 </template>
@@ -30,11 +25,11 @@ export default {
 
   methods: {
     add(item) {
-      this.$emit('addItem', item)
+      this.$emit('addItem', item);
     },
 
     remove(item) {
-      this.$emit('removeItem', item)
+      this.$emit('removeItem', item);
     }
   }
 };

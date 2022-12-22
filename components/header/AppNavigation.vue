@@ -2,10 +2,10 @@
   <nav class="navigation">
     <div class="layout layout--horizontal-dt">
       <div class="navigation__group">
-        <app-navigation-list :list="navigation.main"/>
+        <app-navigation-list :list="navigation.main" />
         <div class="navigation__section">
           <app-navigation-list :list="navigation.other" />
-          <app-call class="navigation-link"/>
+          <app-call class="navigation-link" />
         </div>
       </div>
     </div>
@@ -13,9 +13,10 @@
 </template>
 
 <script>
-import dataNavigation from '@/data/navigation'
-import AppNavigationList from '@/components/header/AppNavigationList'
-import AppCall from '@/components/header/AppCall'
+import { mapGetters } from 'vuex';
+
+import AppNavigationList from '@/components/header/AppNavigationList';
+import AppCall from '@/components/header/AppCall';
 
 export default {
   name: 'AppNavigation',
@@ -24,12 +25,10 @@ export default {
     AppNavigationList
   },
 
-  data() {
-    return {
-      navigation: dataNavigation
-    }
+  computed: {
+    ...mapGetters({ navigation: 'layout/getNavigation' })
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <app-not-received />
+    <app-not-received/>
   </div>
 </template>
 
@@ -11,9 +11,9 @@ export default {
   name: 'CodeNotReceived',
 
   components: {
-    AppNotReceived,
+    AppNotReceived
   },
 
-  layout: 'mobile',
+  layout: 'mobile'
 };
 </script>

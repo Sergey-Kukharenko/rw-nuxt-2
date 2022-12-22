@@ -6,14 +6,14 @@
           <h1 class="filter-panel__header-title">{{ title }}</h1>
         </div>
         <div class="filter-panel__menu">
-          <category-filters @change-active-filter="changeActiveFilter" />
+          <category-filters @change-active-filter="changeActiveFilter"/>
         </div>
       </div>
 
       <div class="category-page__col category-products">
         <div class="category-products__header" :style="styles">
           <div class="category-products__header-title">{{ productCount }} bouquets found</div>
-          <category-sorting :sort-list="sortList" :curr-sorting="sorting.currSorting" @sort="sortBy" />
+          <category-sorting :sort-list="sortList" :curr-sorting="sorting.currSorting" @sort="sortBy"/>
         </div>
         <div class="category-products__header-bottom">
           <div class="active-filters">
@@ -35,7 +35,7 @@
             @change-active-filter="changeActiveFilter"
           />
         </div>
-        <category-product-list :products="categoryProducts.list" />
+        <category-product-list :products="categoryProducts.list"/>
       </div>
     </div>
   </main>
@@ -53,28 +53,28 @@ export default {
     return {
       filters: {
         categoryFilters: dataCategoryFilters,
-        activeFilters: [],
+        activeFilters: []
       },
 
       sorting: {
         sortVariants: dataCategorySorting,
-        currSorting: dataCategorySorting[0],
+        currSorting: dataCategorySorting[0]
       },
 
       title: dataCategoryProducts.main.title,
       categoryProducts: dataCategoryProducts,
-      productCount: dataCategoryProducts.main.count,
+      productCount: dataCategoryProducts.main.count
     };
   },
 
   computed: {
     styles() {
-      return this.filters.activeFilters.length ? { marginBottom: '24px' } : { marginBottom: '32px' };
+      return this.filters.activeFilters.length ? {marginBottom: '24px'} : {marginBottom: '32px'};
     },
 
     sortList() {
       return this.sorting.sortVariants.filter((s) => s !== this.sorting.currSorting);
-    },
+    }
   },
 
   methods: {
@@ -95,20 +95,20 @@ export default {
 
       const checkboxFilters = payload.value.map((f) => ({
         ...payload,
-        value: f,
+        value: f
       }));
 
       this.filters.activeFilters.push(...checkboxFilters);
     },
 
-    removeActiveFilter({ value }) {
+    removeActiveFilter({value}) {
       this.filters.activeFilters = this.filters.activeFilters.filter((f) => f.value !== value);
     },
 
     clearActiveFilters() {
       this.filters.activeFilters = [];
-    },
-  },
+    }
+  }
 };
 </script>
 

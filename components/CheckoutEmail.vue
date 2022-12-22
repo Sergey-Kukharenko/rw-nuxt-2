@@ -37,21 +37,21 @@ export default {
 
   components: {
     AppRadio,
-    AppInput,
+    AppInput
   },
 
   props: {
     error: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   methods: {
     onInput(value) {
       this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.email, value });
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -79,7 +79,6 @@ export default {
     flex-direction: column;
     margin-top: 12px;
   }
-
 
   &__radio {
     display: flex;

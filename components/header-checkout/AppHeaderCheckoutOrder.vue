@@ -1,8 +1,8 @@
 <template>
   <div class="order">
     <div class="order-list">
-      <div class="order-list__item" style="background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59)"/>
-      <div class="order-list__item" style="background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)"/>
+      <div class="order-list__item" style="background: linear-gradient(to right, #12c2e9, #c471ed, #f64f59)" />
+      <div class="order-list__item" style="background: linear-gradient(to right, #c6ffdd, #fbd786, #f7797d)" />
     </div>
     <div class="order-content">
       <div class="order-content__title">Your order</div>
@@ -12,13 +12,13 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'AppHeaderCheckoutOrder',
 
   computed: {
-    price() {
-      return this.$store.getters['cart/price'];
-    },
+    ...mapGetters({ price: 'cart/price' })
   }
 };
 </script>
@@ -105,7 +105,7 @@ export default {
     @include lt-md {
       font-size: 12px;
       line-height: 16px;
-      color: #7C7C7C;
+      color: #7c7c7c;
     }
   }
 }

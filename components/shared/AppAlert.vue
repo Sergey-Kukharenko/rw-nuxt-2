@@ -19,15 +19,15 @@ export default {
       default: 'warning',
       validate(val) {
         return ['warning'].includes(val);
-      },
-    },
+      }
+    }
   },
 
   computed: {
     classes() {
       return { alert: true, [`alert--${this.theme}`]: this.theme };
-    },
-  },
+    }
+  }
 };
 </script>
 

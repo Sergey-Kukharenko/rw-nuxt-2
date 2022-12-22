@@ -40,8 +40,7 @@ export default [
             status: 'Sale',
             percent: '-30%'
           }
-        },
-
+        }
       ],
       thumbs: [
         {
@@ -70,18 +69,18 @@ export default [
     popular: {
       title: 'Popular categories',
       categories: [
-        {name: 'Alstromerias'},
-        {name: 'Mattiollas'},
-        {name: 'Dried flowers'},
-        {name: 'Deluxe & Limited flowers'},
-        {name: 'Delfiniums'},
-        {name: 'Sales'},
-        {name: 'Peonies'},
-        {name: 'Gerberas'},
-        {name: 'Irisis'},
-        {name: 'Carnations'},
-        {name: 'Calla lilies'},
-        {name: 'Roses'}
+        { name: 'Alstromerias' },
+        { name: 'Mattiollas' },
+        { name: 'Dried flowers' },
+        { name: 'Deluxe & Limited flowers' },
+        { name: 'Delfiniums' },
+        { name: 'Sales' },
+        { name: 'Peonies' },
+        { name: 'Gerberas' },
+        { name: 'Irisis' },
+        { name: 'Carnations' },
+        { name: 'Calla lilies' },
+        { name: 'Roses' }
       ]
     },
 
@@ -182,7 +181,8 @@ export default [
             color: '#ffffff'
           },
           rating: 5,
-          message: 'Thank you so much for the timely delivery and for the opportunity to make an order and delivery day to day! The recipient really liked the flowers! Thank you for giving me a good mood!',
+          message:
+            'Thank you so much for the timely delivery and for the opportunity to make an order and delivery day to day! The recipient really liked the flowers! Thank you for giving me a good mood!',
           date: 0,
           formatted_date: 'March 8',
           like: {
@@ -198,7 +198,8 @@ export default [
             color: '#ffffff'
           },
           rating: 4,
-          message: 'I liked everything) Thanks to all the staff. The bouquet is delicious and delivered even ahead of time.',
+          message:
+            'I liked everything) Thanks to all the staff. The bouquet is delicious and delivered even ahead of time.',
           date: 1,
           formatted_date: 'March 3',
           like: {
@@ -214,7 +215,8 @@ export default [
             color: '#ffffff'
           },
           rating: 3,
-          message: 'Thank you very much to the Flor2 team for the next delivery of flowers to my daughter. You are working for 10 points! Beautiful bouquets and top-level delivery.',
+          message:
+            'Thank you very much to the Flor2 team for the next delivery of flowers to my daughter. You are working for 10 points! Beautiful bouquets and top-level delivery.',
           date: 2,
           formatted_date: 'February 14',
           like: {
@@ -301,8 +303,7 @@ export default [
             status: 'Sale',
             percent: '-30%'
           }
-        },
-
+        }
       ],
       thumbs: [
         {
@@ -322,18 +323,18 @@ export default [
     popular: {
       title: 'Popular categories',
       categories: [
-        {name: 'Alstromerias'},
-        {name: 'Mattiollas'},
-        {name: 'Dried flowers'},
-        {name: 'Deluxe & Limited flowers'},
-        {name: 'Delfiniums'},
-        {name: 'Sales'},
-        {name: 'Peonies'},
-        {name: 'Gerberas'},
-        {name: 'Irisis'},
-        {name: 'Carnations'},
-        {name: 'Calla lilies'},
-        {name: 'Roses'}
+        { name: 'Alstromerias' },
+        { name: 'Mattiollas' },
+        { name: 'Dried flowers' },
+        { name: 'Deluxe & Limited flowers' },
+        { name: 'Delfiniums' },
+        { name: 'Sales' },
+        { name: 'Peonies' },
+        { name: 'Gerberas' },
+        { name: 'Irisis' },
+        { name: 'Carnations' },
+        { name: 'Calla lilies' },
+        { name: 'Roses' }
       ]
     },
     count: 51,
@@ -466,7 +467,8 @@ export default [
             color: '#ffffff'
           },
           rating: 5,
-          message: 'Thank you so much for the timely delivery and for the opportunity to make an order and delivery day to day! The recipient really liked the flowers! Thank you for giving me a good mood!',
+          message:
+            'Thank you so much for the timely delivery and for the opportunity to make an order and delivery day to day! The recipient really liked the flowers! Thank you for giving me a good mood!',
           date: 0,
           formatted_date: 'March 8',
           like: {
@@ -482,7 +484,8 @@ export default [
             color: '#ffffff'
           },
           rating: 4,
-          message: 'I liked everything) Thanks to all the staff. The bouquet is delicious and delivered even ahead of time.',
+          message:
+            'I liked everything) Thanks to all the staff. The bouquet is delicious and delivered even ahead of time.',
           date: 1,
           formatted_date: 'March 3',
           like: {
@@ -498,7 +501,8 @@ export default [
             color: '#ffffff'
           },
           rating: 3,
-          message: 'Thank you very much to the Flor2 team for the next delivery of flowers to my daughter. You are working for 10 points! Beautiful bouquets and top-level delivery.',
+          message:
+            'Thank you very much to the Flor2 team for the next delivery of flowers to my daughter. You are working for 10 points! Beautiful bouquets and top-level delivery.',
           date: 2,
           formatted_date: 'February 14',
           like: {

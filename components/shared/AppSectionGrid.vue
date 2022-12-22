@@ -5,17 +5,17 @@
     </div>
 
     <div v-if="theme" class="grid__item">
-      <app-card-show-more/>
+      <app-card-show-more />
     </div>
   </div>
 </template>
 
 <script>
 import AppCardShowMore from '~/components/shared/AppCardShowMore';
-import {useClassNameProp} from '~/helpers';
+import { useClassNameProp } from '~/helpers';
 export default {
   name: 'AppSectionGrid',
-  components: {AppCardShowMore},
+  components: { AppCardShowMore },
   props: {
     slides: {
       type: Array,
@@ -30,10 +30,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassNameProp(this.theme, 'grid')
-    },
+      return useClassNameProp(this.theme, 'grid');
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -52,8 +52,8 @@ export default {
     row-gap: 8px;
   }
 
-  &--custom{
-    .grid__item{
+  &--custom {
+    .grid__item {
       @include lt-md {
         &:nth-last-child(2) {
           display: none;

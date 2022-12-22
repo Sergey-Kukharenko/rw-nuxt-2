@@ -14,7 +14,7 @@
 <script>
 import AppAdvertisingCard from '~/components/info/AppAdvertisingCard';
 
-import {ADVERTISING} from '~/data/delivery'
+import { ADVERTISING } from '~/data/delivery';
 
 export default {
   name: 'DeliveryAd',
@@ -24,18 +24,18 @@ export default {
   },
 
   ADVERTISING
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .delivery-ad {
   display: flex;
-  
+
   @include gt-sm {
     gap: 24px;
     width: 100%;
   }
-  
+
   @include lt-md {
     width: calc(100% - 40px);
     flex-direction: column;

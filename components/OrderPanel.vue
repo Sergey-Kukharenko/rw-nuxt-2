@@ -7,7 +7,7 @@
       <div class="order-panel__content">
         <div class="order-panel__title">
           {{ title }}
-          <div v-if="hasToggle" class="order-panel__toggle" @click="$emit('toggle');">
+          <div v-if="hasToggle" class="order-panel__toggle" @click="$emit('toggle')">
             <svg-icon class="order-panel__toggle-icon" name="chevron" />
           </div>
           <slot name="top" />
@@ -31,24 +31,24 @@ export default {
   props: {
     title: {
       type: String,
-      default: '',
+      default: ''
     },
 
     icon: {
       type: String,
-      default: '',
+      default: ''
     },
 
     hasToggle: {
       type: Boolean,
-      default: false,
+      default: false
     },
 
     toggleStatus: {
       type: Boolean,
-      default: false,
-    },
-  },
+      default: false
+    }
+  }
 };
 </script>
 
@@ -124,9 +124,9 @@ export default {
     line-height: 20px;
     letter-spacing: -0.01em;
     color: $color-dark-grey;
-    
+
     margin-top: 8px;
-    
+
     @include lt-md {
       color: #7c7c7c;
     }

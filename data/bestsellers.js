@@ -96,7 +96,7 @@ export default {
     {
       title: 'Bouquet of 291 roses',
       img: 'https://images.unsplash.com/photo-1462275646964-a0e3386b89fa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTF8fGZsb3dlcnN8ZW58MHx8MHx8&w=1000&q=80',
-      rating: 5.00,
+      rating: 5.0,
       reviews: 890,
       like: false,
       price: 52.76,
@@ -106,4 +106,4 @@ export default {
       }
     }
   ]
-}
+};

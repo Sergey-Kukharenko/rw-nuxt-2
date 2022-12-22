@@ -1,12 +1,12 @@
 <template>
-  <div >
+  <div>
     <div class="star-ratings">
       <button
         v-if="showControl"
         :style="{
           ...generateSameWidthAndHeight(controlSize),
           backgroundColor: controlBg,
-          color: controlColor,
+          color: controlColor
         }"
         @click="decreaseRating"
       >
@@ -14,9 +14,7 @@
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 792.082 792.082"
           :style="{
-            ...generateSameWidthAndHeight(
-              numberMinusFifteenPercent(controlSize)
-            ),
+            ...generateSameWidthAndHeight(numberMinusFifteenPercent(controlSize))
           }"
         >
           <path
@@ -24,19 +22,15 @@
           />
         </svg>
       </button>
-      <div
-        ref="starsContainer"
-        class="stars"
-        :style="{ pointerEvents: disableClick ? 'none' : 'auto' }"
-      >
+      <div ref="starsContainer" class="stars" :style="{ pointerEvents: disableClick ? 'none' : 'auto' }">
         <div class="stars-outer" :style="{ color: inactiveColor }">
           <star-icon
             v-for="i in numberOfStars"
             :key="i"
             :style="{
               ...generateSameWidthAndHeight(starSize),
-               marginLeft: spacing,
-               marginRight: spacing,
+              marginLeft: spacing,
+              marginRight: spacing
             }"
           >
           </star-icon>
@@ -48,7 +42,7 @@
             :style="{
               ...generateSameWidthAndHeight(starSize),
               marginLeft: spacing,
-               marginRight: spacing,
+              marginRight: spacing
             }"
           >
           </star-icon>
@@ -59,7 +53,7 @@
         :style="{
           ...generateSameWidthAndHeight(starSize),
           backgroundColor: controlBg,
-          color: controlColor,
+          color: controlColor
         }"
         @click="increaseRating"
       >
@@ -67,9 +61,7 @@
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 792.082 792.082"
           :style="{
-            ...generateSameWidthAndHeight(
-              numberMinusFifteenPercent(controlSize)
-            ),
+            ...generateSameWidthAndHeight(numberMinusFifteenPercent(controlSize))
           }"
         >
           <path
@@ -90,56 +82,56 @@ export default {
   props: {
     starColor: {
       type: String,
-      default: "#FFCD1E",
+      default: '#FFCD1E'
     },
     inactiveColor: {
       type: String,
-      default: "#F7F7F7",
+      default: '#F7F7F7'
     },
     starSize: {
       type: String,
-      default: "32",
+      default: '32'
     },
     spacing: {
       type: String,
-      default: "0",
+      default: '0'
     },
     controlBg: {
       type: String,
-      default: "#2e5090",
+      default: '#2e5090'
     },
     controlColor: {
       type: String,
-      default: "#fff",
+      default: '#fff'
     },
     controlSize: {
       type: String,
-      default: "24",
+      default: '24'
     },
     numberOfStars: {
       type: Number,
-      default: 5,
+      default: 5
     },
     showControl: {
       type: Boolean,
-      default: false,
+      default: false
     },
     modelValue: {
       type: Number,
-      default: 1,
+      default: 1
     },
     disableClick: {
       type: Boolean,
-      default: false,
+      default: false
     },
     step: {
       type: Number,
-      default: 0.5,
-    },
+      default: 0.5
+    }
   },
   data() {
     return {
-      rating: this.modelValue || 0,
+      rating: this.modelValue || 0
     };
   },
   computed: {
@@ -147,21 +139,21 @@ export default {
       return this.rounded(this.rating, 1);
     },
     percent() {
-      return (this.roundedRating / this.numberOfStars) * 100 + "%";
-    },
+      return (this.roundedRating / this.numberOfStars) * 100 + '%';
+    }
   },
   watch: {
     roundedRating() {
-      this.$emit("update:modelValue", this.roundedRating);
-    },
+      this.$emit('update:modelValue', this.roundedRating);
+    }
   },
   mounted() {
     const el = this.$refs.starsContainer;
-    el.addEventListener('click', this.handleChange)
+    el.addEventListener('click', this.handleChange);
   },
   beforeDestroy() {
     const el = this.$refs.starsContainer;
-    el.removeEventListener('click', this.handleChange)
+    el.removeEventListener('click', this.handleChange);
   },
   methods: {
     handleChange(e) {
@@ -169,10 +161,10 @@ export default {
       this.rating = (relativeX / e.target.offsetWidth) * this.numberOfStars;
     },
     increaseRating() {
-      this.rating = this.rating > this.numberOfStars ? this.numberOfStars : this.rating += this.step
+      this.rating = this.rating > this.numberOfStars ? this.numberOfStars : (this.rating += this.step);
     },
     decreaseRating() {
-      this.rating = this.rating > 0 ? this.rating -= this.step : 0
+      this.rating = this.rating > 0 ? (this.rating -= this.step) : 0;
     },
 
     rounded(value, decimalPlaces) {
@@ -185,11 +177,11 @@ export default {
     },
     generateSameWidthAndHeight(size) {
       return {
-        width: size + "px",
-        height: size + "px",
+        width: size + 'px',
+        height: size + 'px'
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

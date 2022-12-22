@@ -5,22 +5,17 @@
       <span class="button__text">Search in Florа</span>
     </button>
 
-    <app-modal
-      v-if="$device.isDesktop"
-      :visible="isVisible"
-      theme="full"
-      @close="close"
-    >
-      <app-search-box/>
+    <app-modal v-if="$device.isDesktop" :visible="isVisible" theme="full" @close="close">
+      <app-search-box />
     </app-modal>
   </div>
 </template>
 
 <script>
-import AppModal from '~/components/shared/AppModal.vue'
+import AppModal from '~/components/shared/AppModal.vue';
 import AppSearchBox from '~/components/header/search/AppSearchBox';
 
-import {disableScroll, enableScroll} from '~/helpers/scrollLock';
+import { disableScroll, enableScroll } from '~/helpers/scrollLock';
 
 export default {
   name: 'AppSearch',
@@ -33,21 +28,21 @@ export default {
   data() {
     return {
       isVisible: false
-    }
+    };
   },
 
   methods: {
     open() {
-      this.isVisible = true
-      disableScroll()
+      this.isVisible = true;
+      disableScroll();
     },
 
     close() {
-      this.isVisible = false
-      enableScroll()
-    },
+      this.isVisible = false;
+      enableScroll();
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

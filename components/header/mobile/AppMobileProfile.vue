@@ -5,20 +5,18 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import AppProfileButton from '~/components/header/profile/AppProfileButton';
 export default {
   name: 'AppMobileProfile',
 
-  components: {AppProfileButton},
+  components: { AppProfileButton },
 
   computed: {
-    user() {
-      return this.$store.getters['user/state']
-    }
-  },
+    ...mapGetters({ user: 'user/state' })
+  }
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

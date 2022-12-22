@@ -1,34 +1,11 @@
 <template>
   <div class="count">
-    <basket-button
-      theme="grey"
-      size="small"
-      :icon-only="true"
-      :disabled="isMinLimit"
-      @click="decrement"
-    >
-      <svg-icon
-        class="count__icon-minus"
-        name="minus"
-      />
+    <basket-button theme="grey" size="small" :icon-only="true" :disabled="isMinLimit" @click="decrement">
+      <svg-icon class="count__icon-minus" name="minus" />
     </basket-button>
-    <basket-input
-      v-model="passedCount"
-      align="center"
-      type="number"
-      :width="88"
-      :min="1"
-    />
-    <basket-button
-      theme="grey"
-      size="small"
-      :icon-only="true"
-      @click="increment"
-    >
-      <svg-icon
-        class="count__icon-plus"
-        name="plus"
-      />
+    <basket-input v-model="passedCount" align="center" type="number" :width="88" :min="1" />
+    <basket-button theme="grey" size="small" :icon-only="true" @click="increment">
+      <svg-icon class="count__icon-plus" name="plus" />
     </basket-button>
   </div>
 </template>
@@ -40,7 +17,7 @@ export default {
     count: {
       type: Number,
       default: 1
-    },
+    }
   },
 
   computed: {
@@ -67,7 +44,7 @@ export default {
     decrement() {
       this.passedCount--;
     }
-  },
+  }
 };
 </script>
 

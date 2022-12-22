@@ -4,19 +4,19 @@ export default {
     baseUrl: process.env.BASE_URL,
     stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
     paypalSecretKey: process.env.PAYPAL_SECRET_KEY,
-    paypalClientId: process.env.PAYPAL_CLIENT_ID,
+    paypalClientId: process.env.PAYPAL_CLIENT_ID
   },
 
   head: {
-    title: 'rw-nuxt-2',
+    title: 'MyFlowers',
     htmlAttrs: {
-      lang: 'en',
+      lang: 'en'
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' },
+      { name: 'format-detection', content: 'telephone=no' }
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
@@ -24,20 +24,14 @@ export default {
         rel: 'stylesheet',
         href: 'https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,200;0,7..72,300;0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;0,7..72,800;0,7..72,900;1,7..72,200;1,7..72,300;1,7..72,400;1,7..72,500;1,7..72,600;1,7..72,700;1,7..72,800;1,7..72,900&family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet'
       }
-    ],
+    ]
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-    '~/assets/css/normalize.css',
-    '~/assets/css/fonts.css',
-    'swiper/css/swiper.css'
-  ],
+  css: ['~/assets/css/normalize.css', '~/assets/css/fonts.css', 'swiper/css/swiper.css'],
 
   styleResources: {
-    scss: [
-      '~/assets/scss/index.scss'
-    ]
+    scss: ['~/assets/scss/index.scss']
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -46,6 +40,7 @@ export default {
     '@/plugins/v-mask',
     '~/plugins/axios',
     { src: '~/plugins/vuelidate' },
+    '~/plugins/local-storage',
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -69,7 +64,7 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
-    '@nuxtjs/device',
+    '@nuxtjs/device'
   ],
 
   svgSprite: {
@@ -92,7 +87,6 @@ export default {
       scss: {
         implementation: require('sass')
       }
-    },
-    postcss: null,
+    }
   }
 }

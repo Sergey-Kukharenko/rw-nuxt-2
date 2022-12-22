@@ -2,13 +2,13 @@
   <div class="layout layout-dt detail-page">
     <div class="detail-page__row">
       <div class="detail-page__col">
-        <app-gallery :items="items" />
-        <app-notification :notification="notification" />
+        <app-gallery :items="items"/>
+        <app-notification :notification="notification"/>
       </div>
       <div class="detail-page__col">
-        <app-form-sizes v-if="isSizePage" :product="product" />
-        <app-form-lists v-if="isListsPage" :product="product" />
-        <app-service :service="service" />
+        <app-form-sizes v-if="isSizePage" :product="product"/>
+        <app-form-lists v-if="isListsPage" :product="product"/>
+        <app-service :service="service"/>
       </div>
     </div>
 
@@ -18,39 +18,39 @@
       </h2>
       <div class="about__row">
         <div class="about__reviews">
-          <app-reviews :reviews="reviews.list" />
+          <app-reviews :reviews="reviews.list"/>
         </div>
         <div class="about__rating">
-          <app-rating v-if="rating.count" :rating="rating" />
+          <app-rating v-if="rating.count" :rating="rating"/>
         </div>
       </div>
     </div>
 
     <div class="detail-page__section">
-      <app-similar />
+      <app-similar/>
     </div>
     <div class="detail-page__section">
-      <app-recently />
+      <app-recently/>
     </div>
     <div class="detail-page__section">
-      <app-popular-categories :popular="popular" />
+      <app-popular-categories :popular="popular"/>
     </div>
   </div>
 </template>
 
 <script>
-import products from '@/data/products'
+import products from '@/data/products';
 
-import AppGallery from '@/components/ui/AppGallery'
-import AppNotification from '@/components/card-product/AppNotification'
-import AppFormSizes from '@/components/card-product/AppFormSizes'
-import AppFormLists from '@/components/card-product/AppFormLists'
-import AppService from '@/components/card-product/AppService'
-import AppReviews from '@/components/card-product/AppReviews'
-import AppRating from '@/components/card-product/AppRating'
-import AppSimilar from '@/components/AppSimilar'
-import AppRecently from '@/components/AppRecently'
-import AppPopularCategories from '@/components/card-product/AppPopularCategories'
+import AppGallery from '@/components/ui/AppGallery';
+import AppNotification from '@/components/card-product/AppNotification';
+import AppFormSizes from '@/components/card-product/AppFormSizes';
+import AppFormLists from '@/components/card-product/AppFormLists';
+import AppService from '@/components/card-product/AppService';
+import AppReviews from '@/components/card-product/AppReviews';
+import AppRating from '@/components/card-product/AppRating';
+import AppSimilar from '@/components/AppSimilar';
+import AppRecently from '@/components/AppRecently';
+import AppPopularCategories from '@/components/card-product/AppPopularCategories';
 
 export default {
   name: 'IdPage',
@@ -68,16 +68,16 @@ export default {
     AppPopularCategories
   },
 
-  asyncData(context){
-    const id = context.route.params.id
-    const product = products.find((item) => item.id === +id)
-    const items = product.items
-    const notification = product.notification
-    const typeOfPage = product.type_of_page
-    const service = product.service
-    const reviews = product.reviews
-    const rating = product.rating
-    const popular = product.popular
+  asyncData(context) {
+    const id = context.route.params.id;
+    const product = products.find((item) => item.id === +id);
+    const items = product.items;
+    const notification = product.notification;
+    const typeOfPage = product.type_of_page;
+    const service = product.service;
+    const reviews = product.reviews;
+    const rating = product.rating;
+    const popular = product.popular;
 
     return {
       product,
@@ -88,19 +88,19 @@ export default {
       reviews,
       rating,
       popular
-    }
+    };
   },
 
   computed: {
     isSizePage() {
-      return this.typeOfPage === 'size_page'
+      return this.typeOfPage === 'size_page';
     },
 
     isListsPage() {
-      return this.typeOfPage === 'lists_page'
+      return this.typeOfPage === 'lists_page';
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

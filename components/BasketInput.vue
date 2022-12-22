@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="basket-input" :class="classes" :style="styles">
-      <input :type="type" :min="min" :placeholder="placeholder" :value="value" @input="onInput"/>
+      <input :type="type" :min="min" :placeholder="placeholder" :value="value" @input="onInput" />
     </div>
     <div v-for="error in errors" :key="error" class="basket-input__error">
       {{ error }}
@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import {useStringSwappedValues} from '~/helpers';
-import {VALIDATE_MESSAGES} from '~/messages';
+import { useStringSwappedValues } from '~/helpers';
+import { VALIDATE_MESSAGES } from '~/messages';
 
 export default {
   name: 'BasketInput',

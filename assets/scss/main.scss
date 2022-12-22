@@ -77,7 +77,8 @@ body.no-scroll {
   transform: translate(-50%, -50%);
 }
 
-h1, h2 {
+h1,
+h2 {
   font-family: $Literata;
   font-weight: 700;
 }
@@ -144,11 +145,10 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
 
 .noscroll {
   overflow: hidden;
 }
-

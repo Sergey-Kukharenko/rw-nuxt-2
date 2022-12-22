@@ -23,23 +23,23 @@ export default {
   props: {
     roundedTop: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
 
   data() {
     return {
-      email: '',
+      email: ''
     };
   },
 
   computed: {
     panelStyles() {
       return {
-        paddingTop: this.roundedTop ? '62px' : 0,
+        paddingTop: this.roundedTop ? '62px' : 0
       };
-    },
-  },
+    }
+  }
 };
 </script>
 

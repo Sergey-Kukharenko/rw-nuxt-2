@@ -14,20 +14,20 @@ export default {
       required: true,
       validate(val) {
         ['appstore', 'googleplay'].includes(val);
-      },
+      }
     },
 
     isDark: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
 
   computed: {
     storeIcon() {
       return this.isDark ? this.storeType + '-dark' : this.storeType;
-    },
-  },
+    }
+  }
 };
 </script>
 

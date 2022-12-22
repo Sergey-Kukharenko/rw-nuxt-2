@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import {useClassNameProp} from '~/helpers';
+import { useClassNameProp } from '~/helpers';
 export default {
   name: 'AppSectionGridSm',
 
@@ -25,10 +25,10 @@ export default {
 
   computed: {
     classNames() {
-      return useClassNameProp(this.theme, 'grid')
-    },
+      return useClassNameProp(this.theme, 'grid');
+    }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -81,7 +81,7 @@ export default {
       }
     }
 
-    .card__title{
+    .card__title {
       margin-top: 8px;
     }
   }

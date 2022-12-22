@@ -11,20 +11,20 @@ export default {
 
   model: {
     prop: 'value',
-    event: 'change',
+    event: 'change'
   },
 
   props: {
     value: {
       type: [String, Number, Array],
       require: true,
-      default: '',
+      default: ''
     },
     name: {
       type: [String, Number],
       require: true,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   computed: {
@@ -32,8 +32,8 @@ export default {
       return (Array.isArray(this.value) && this.value.includes(this.name)) || this.name === this.value
         ? { value: null, icon: 'checkbox-on' }
         : { value: this.name, icon: 'checkbox-off' };
-    },
-  },
+    }
+  }
 };
 </script>
 

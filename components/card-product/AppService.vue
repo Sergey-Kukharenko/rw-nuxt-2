@@ -47,22 +47,22 @@ export default {
     return {
       isShowMore: false,
       toggleText: 'Show more'
-    }
+    };
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   },
 
   methods: {
     toggle() {
-      this.isShowMore = !this.isShowMore
-      this.isShowMore ? (this.toggleText = 'Hide') : (this.toggleText = 'Show more')
+      this.isShowMore = !this.isShowMore;
+      this.isShowMore ? (this.toggleText = 'Hide') : (this.toggleText = 'Show more');
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

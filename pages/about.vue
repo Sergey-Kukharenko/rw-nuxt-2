@@ -8,14 +8,14 @@
       :page="$route.name"
       has-buttons
     />
-    <about-page-links />
-    <app-info-text-section :content="$options.TEXT_INFO" />
-    <app-info-hero :items="$options.HERO_ITEMS" />
-    <about-something />
-    <div class="split-line layout" />
-    <about-advantages />
-    <div class="split-line layout" />
-    <about-reviews />
+    <about-page-links/>
+    <app-info-text-section :content="$options.TEXT_INFO"/>
+    <app-info-hero :items="$options.HERO_ITEMS"/>
+    <about-something/>
+    <div class="split-line layout"/>
+    <about-advantages/>
+    <div class="split-line layout"/>
+    <about-reviews/>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ import AppInfoBanner from '~/components/info/AppInfoBanner';
 import AppInfoTextSection from '~/components/info/AppInfoTextSection';
 import AppInfoHero from '~/components/info/AppInfoHero';
 
-import { PROMO, TEXT_INFO, HERO_ITEMS } from '~/data/about';
+import {PROMO, TEXT_INFO, HERO_ITEMS} from '~/data/about';
 
 export default {
   name: 'AboutPage',
@@ -32,12 +32,12 @@ export default {
   components: {
     AppInfoBanner,
     AppInfoTextSection,
-    AppInfoHero,
+    AppInfoHero
   },
 
   PROMO,
   TEXT_INFO,
-  HERO_ITEMS,
+  HERO_ITEMS
 };
 </script>
 

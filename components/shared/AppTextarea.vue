@@ -1,33 +1,29 @@
 <template>
   <div class="app-textarea">
-    <textarea
-      :value="value"
-      :placeholder="placeholder"
-      @input="onInput"
-    />
+    <textarea :value="value" :placeholder="placeholder" @input="onInput" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "AppTextarea",
+  name: 'AppTextarea',
   props: {
     value: {
       type: [String, Number],
       required: true,
-      default: ""
+      default: ''
     },
     placeholder: {
       type: String,
-      default: ""
-    },
+      default: ''
+    }
   },
   methods: {
-    onInput (event) {
-      this.$emit("input", event.target.value);
+    onInput(event) {
+      this.$emit('input', event.target.value);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

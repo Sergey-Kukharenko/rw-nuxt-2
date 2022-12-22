@@ -14,7 +14,7 @@ export default {
       default: () => {}
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
@@ -36,7 +36,7 @@ export default {
     width: 10px;
     height: 14px;
     margin-right: 11px;
-    color: #FCBC00;
+    color: #fcbc00;
   }
 
   &__text {

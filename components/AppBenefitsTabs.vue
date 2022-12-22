@@ -20,13 +20,13 @@ export default {
   props: {
     tabs: {
       type: Array,
-      default: () => [],
+      default: () => []
     },
 
     activeTab: {
       type: [Number, String],
-      default: 0,
-    },
+      default: 0
+    }
   },
 
   methods: {
@@ -36,8 +36,8 @@ export default {
 
     setActiveTab(idx) {
       this.$emit('set-active-tab', idx);
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -1,42 +1,46 @@
 <template>
-  <section class="benefits">
+  <section v-if="isBenefits" class="benefits">
     <div class="layout">
       <div class="benefits__title">Our benefits</div>
       <div class="benefits__tabs">
-        <app-benefits-tabs :tabs="benefitsTabs" :active-tab="activeTab" @set-active-tab="setActiveTab"/>
+        <app-benefits-tabs :tabs="benefitsTabs" :active-tab="activeTab" @set-active-tab="setActiveTab" />
       </div>
       <div class="benefits__container">
         <app-benefits-card
           v-if="$device.isDesktop"
           :active-tab="activeTab"
-          :tabs="$options.DATA_BENEFITS"
+          :tabs="benefits"
           @prev="prevTab"
           @next="nextTab"
         />
-        <app-benefits-slider v-if="$device.isMobileOrTablet" :slides="$options.DATA_BENEFITS"/>
+        <app-benefits-slider v-if="$device.isMobileOrTablet" :slides="benefits" />
       </div>
     </div>
   </section>
 </template>
 
 <script>
-import dataBenefits from '~/data/benefits';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppBenefits',
 
   data() {
     return {
-      activeTab: 0,
+      activeTab: 0
     };
   },
 
-  DATA_BENEFITS: dataBenefits,
-
   computed: {
-    benefitsTabs() {
-      return dataBenefits.map((tab) => tab.title);
+    ...mapGetters({ benefits: 'index-page/getBenefits' }),
+
+    isBenefits() {
+      return this.benefits.length;
     },
+
+    benefitsTabs() {
+      return this.benefits.map((tab) => tab.title);
+    }
   },
 
   methods: {
@@ -50,8 +54,8 @@ export default {
 
     nextTab() {
       this.activeTab++;
-    },
-  },
+    }
+  }
 };
 </script>
 
@@ -77,7 +81,7 @@ export default {
     font-family: $Literata;
     font-size: 20px;
     font-style: normal;
-      font-weight: 700;
+    font-weight: 700;
     line-height: 24px;
     letter-spacing: -0.01em;
     color: $color-dark-grey;

@@ -17,8 +17,8 @@ export default {
   props: {
     list: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   methods: {
@@ -36,8 +36,8 @@ export default {
 
     clearFilterActiveList() {
       this.$emit('clear');
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -10,13 +10,13 @@
 </template>
 
 <script>
-import AppPayment from '@/components/AppPayment.vue'
+import AppPayment from '@/components/AppPayment.vue';
 
 export default {
   name: 'AppFooterBottom',
 
   components: { AppPayment }
-}
+};
 </script>
 
 <style lang="scss" scoped>

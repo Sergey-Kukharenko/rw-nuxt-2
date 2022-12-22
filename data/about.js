@@ -5,8 +5,8 @@ const PROMO = {
   },
   backgroundColor: '#EBFAF0',
   title: 'About MyFlowers',
-  text: 'We give flowers. We delight with smiles. We surprise with attention',
-}
+  text: 'We give flowers. We delight with smiles. We surprise with attention'
+};
 
 const TEXT_INFO = {
   columns: [
@@ -20,7 +20,7 @@ const TEXT_INFO = {
     }
   ],
   mainText: 'We work both in large cities of England and in small towns, so that all our customers are satisfied about'
-}
+};
 
 const HERO_ITEMS = [
   {
@@ -34,8 +34,8 @@ const HERO_ITEMS = [
   {
     title: 'Professionals in their field',
     text: 'We have a team of professional florists who will \npick up and make a bright bouquet for every \ntaste and occasion'
-  },
-]
+  }
+];
 
 const SOMETHING_IMPORTANT = {
   title: 'Something important',
@@ -62,7 +62,7 @@ const SOMETHING_IMPORTANT = {
       backgroundColor: '#A0F5AF'
     }
   ]
-}
+};
 
 const ADVANTAGES = [
   {
@@ -82,14 +82,14 @@ const ADVANTAGES = [
     color: '#D3F3FF',
     title: 'Bouquet photo',
     text: 'Photo of the bouquet before \ndelivery, you know exactly what \nyou will get'
-  },
-]
+  }
+];
 
 const REVIEWS = [
   {
     images: {
       desktop: 'https://via.placeholder.com/252x300',
-      mobile: 'https://via.placeholder.com/144',
+      mobile: 'https://via.placeholder.com/144'
     },
     fullName: 'Jessica Davies',
     ratingCount: 4.6,
@@ -98,7 +98,7 @@ const REVIEWS = [
   {
     images: {
       desktop: 'https://via.placeholder.com/252x300',
-      mobile: 'https://via.placeholder.com/144',
+      mobile: 'https://via.placeholder.com/144'
     },
     fullName: 'Jessica Davies',
     ratingCount: 4.6,
@@ -107,7 +107,7 @@ const REVIEWS = [
   {
     images: {
       desktop: 'https://via.placeholder.com/252x300',
-      mobile: 'https://via.placeholder.com/144',
+      mobile: 'https://via.placeholder.com/144'
     },
     fullName: 'Jessica Davies',
     ratingCount: 4.6,
@@ -116,19 +116,12 @@ const REVIEWS = [
   {
     images: {
       desktop: 'https://via.placeholder.com/252x300',
-      mobile: 'https://via.placeholder.com/144',
+      mobile: 'https://via.placeholder.com/144'
     },
     fullName: 'Jessica Davies',
     ratingCount: 4.6,
     text: 'Thank you so much for the bouquet delivered. He was the best. Thanks and to the courier for delivery'
-  },
-]
+  }
+];
 
-export {
-  PROMO,
-  TEXT_INFO,
-  HERO_ITEMS,
-  SOMETHING_IMPORTANT,
-  ADVANTAGES,
-  REVIEWS
-}
+export { PROMO, TEXT_INFO, HERO_ITEMS, SOMETHING_IMPORTANT, ADVANTAGES, REVIEWS };

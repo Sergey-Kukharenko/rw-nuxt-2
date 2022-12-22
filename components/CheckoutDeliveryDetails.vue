@@ -28,7 +28,7 @@
         <div class="delivery-details__modal-content">
           <app-input value="" placeholder="Postcode" size="x-large">
             <template #right>
-              <basket-button size="small" theme="white"> Find </basket-button>
+              <basket-button size="small" theme="white"> Find</basket-button>
             </template>
           </app-input>
           <div class="delivery-details__modal-window-address">
@@ -60,19 +60,19 @@ export default {
     AppRadio,
     AppInput,
     AppSelect,
-    CheckoutModal,
+    CheckoutModal
   },
 
   props: {
     error: {
       type: String,
-      default: '',
-    },
+      default: ''
+    }
   },
 
   data() {
     return {
-      addressSelect: '',
+      addressSelect: ''
     };
   },
 
@@ -80,9 +80,9 @@ export default {
     addressList() {
       return new Array(30).fill({ id: '', label: '' }).map((_, index) => ({
         id: `addr${index}`,
-        label: `address ${index}`,
+        label: `address ${index}`
       }));
-    },
+    }
   },
 
   methods: {
@@ -95,8 +95,8 @@ export default {
     editAddress(item, close) {
       close();
       this.$refs.addressModal.open();
-    },
-  },
+    }
+  }
 };
 </script>
 

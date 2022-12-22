@@ -1,5 +1,5 @@
 <template>
-  <div class="faq layout">
+  <div v-if="isFaqList" class="faq layout">
     <div class="faq-mobile-title">Answers to popular questions</div>
     <div class="faq__row">
       <div class="faq__col head-info">
@@ -7,22 +7,22 @@
 
         <div class="head-info__text">Didn't find the answer to your question? Write to our care service</div>
 
-        <a href="mailto:test@gmail.com" class="head-info__email">
-          <svg-icon name="mail" class="head-info__email-icon" />
+        <a class="head-info__email" href="mailto:test@gmail.com">
+          <svg-icon class="head-info__email-icon" name="mail" />
         </a>
       </div>
       <div class="faq__col content">
         <div
           v-for="(item, index) in faqList"
           :key="index"
+          :class="{ active: isActiveItem(index) }"
           class="content__item item"
-          :class="{ active: item.is_active }"
         >
-          <div class="item__top" @click="toggleFaqItem(index, item.is_active)">
+          <div class="item__top" @click="toggleFaqItem(index)">
             <span class="item__top-text">
               {{ item.question }}
             </span>
-            <svg-icon name="arrow-down" class="item__top-icon" />
+            <svg-icon class="item__top-icon" name="arrow-down" />
           </div>
           <div class="item__bottom">
             {{ item.answer }}
@@ -34,22 +34,37 @@
 </template>
 
 <script>
-import dataFaq from '~/data/faq';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'AppFaq',
 
   data() {
     return {
-      faqList: dataFaq,
+      activeElementsIndex: []
     };
   },
 
-  methods: {
-    toggleFaqItem(index, status) {
-      this.faqList[index].is_active = !status;
-    },
+  computed: {
+    ...mapGetters({ faqList: 'index-page/getFaq' }),
+
+    isFaqList() {
+      return this.faqList.length;
+    }
   },
+
+  methods: {
+    isActiveItem(index) {
+      return this.activeElementsIndex.includes(index);
+    },
+    toggleFaqItem(index) {
+      if (this.isActiveItem(index)) {
+        this.activeElementsIndex = this.activeElementsIndex.filter((activeIndex) => activeIndex !== index);
+      } else {
+        this.activeElementsIndex.push(index);
+      }
+    }
+  }
 };
 </script>
 

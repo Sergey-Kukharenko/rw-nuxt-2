@@ -20,21 +20,21 @@ export default {
   props: {
     section: {
       type: Object,
-      default: () => ({}),
-    },
+      default: () => ({})
+    }
   },
 
   data() {
     return {
-      isVisible: false,
+      isVisible: false
     };
   },
 
   computed: {
     classNames() {
       return useToggleClassName(this.isVisible, 'section', 'active');
-    },
-  },
+    }
+  }
 };
 </script>
 

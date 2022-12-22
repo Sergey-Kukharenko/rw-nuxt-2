@@ -20,15 +20,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import AppDropdown from '~/components/shared/AppDropdown.vue';
 import AppProfileButton from '~/components/header/profile/AppProfileButton';
 import AppProfilePreview from '~/components/header/profile/AppProfilePreview';
 import AppModal from '~/components/shared/AppModal';
-
 import AppAuth from '~/components/header/auth/AppAuth';
 import AppCode from '~/components/header/auth/code/AppCode';
 import AppNotReceived from '~/components/header/auth/code/AppNotReceived';
-
 import AppReg from '~/components/header/auth/registration/AppReg';
 import AppCompleted from '~/components/header/auth/registration/AppCompleted';
 
@@ -40,15 +40,13 @@ export default {
   components: {
     AppAuth,
     AppCode,
-
     AppReg,
     AppCompleted,
     AppNotReceived,
-
     AppModal,
     AppProfilePreview,
     AppProfileButton,
-    AppDropdown,
+    AppDropdown
   },
 
   data() {
@@ -56,27 +54,21 @@ export default {
       isVisible: false,
       options: {
         top: '-20px',
-        right: 0,
-      },
+        right: 0
+      }
     };
   },
 
   computed: {
-    user() {
-      return this.$store.getters['user/state'];
-    },
-
-    isAuth() {
-     return this.$store.getters['auth/isAuthorized'] 
-    },
+    ...mapGetters({
+      user: 'user/state',
+      isAuth: 'auth/isAuthorized',
+      currStep: 'auth/currStep'
+    }),
 
     getOptions() {
       return this.$device.isDesktop ? this.options : null;
-    },
-
-    currStep() {
-      return this.$store.getters['auth/currStep'];
-    },
+    }
   },
 
   methods: {
@@ -90,8 +82,8 @@ export default {
       this.$store.commit('auth/setCurrStep', '');
       this.$store.commit('auth/setCodeType', '');
       enableScroll();
-    },
-  },
+    }
+  }
 };
 </script>
 

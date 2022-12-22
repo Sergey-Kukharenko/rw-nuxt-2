@@ -10,9 +10,9 @@
 </template>
 
 <script>
-import AppSectionHeader from '~/components/shared/AppSectionHeader.vue'
-import AppSectionGrid from '~/components/shared/AppSectionGrid.vue'
-import AppCard from '~/components/shared/AppCard.vue'
+import AppSectionHeader from '~/components/shared/AppSectionHeader.vue';
+import AppSectionGrid from '~/components/shared/AppSectionGrid.vue';
+import AppCard from '~/components/shared/AppCard.vue';
 
 export default {
   name: 'AppSpecialOffers',
@@ -42,10 +42,10 @@ export default {
 
   computed: {
     classNames() {
-      return ['layout', this.name]
-    },
+      return ['layout', this.name];
+    }
   }
-}
+};
 </script>
 
 <style lang="scss">

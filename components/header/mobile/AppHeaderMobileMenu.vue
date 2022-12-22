@@ -1,20 +1,15 @@
 <template>
   <div>
-    <app-mobile-menu
-      :list="menu"
-      class="nested-group"
-      @selectItem="onSelectItem"
-    />
+    <app-mobile-menu :list="menu" class="nested-group" @selectItem="onSelectItem" />
     <app-drawer-nested :visible="isVisible" :title="title" @close="close">
-      <app-mobile-sub-menu
-        v-bind="{ list, link, categories, by, products, type }"
-      />
+      <app-mobile-sub-menu v-bind="{ list, link, categories, by, products, type }" />
     </app-drawer-nested>
   </div>
 </template>
 
 <script>
-import dataMenu from '@/data/menu.js';
+import { mapGetters } from 'vuex';
+
 import AppMobileMenu from '~/components/header/mobile/AppMobileMenu';
 import AppDrawerNested from '~/components/header/mobile/AppDrawerNested';
 import AppMobileSubMenu from '~/components/header/mobile/AppMobileSubMenu';
@@ -32,13 +27,14 @@ export default {
 
   data() {
     return {
-      menu: dataMenu,
       isVisible: false,
       selected: 0
     };
   },
 
   computed: {
+    ...mapGetters({ menu: 'layout/getNavBar' }),
+
     currentItem() {
       return this.menu[this.selected];
     },
@@ -95,6 +91,6 @@ export default {
       this.selected = idx;
       this.isSubLevel && this.open();
     }
-  },
+  }
 };
 </script>

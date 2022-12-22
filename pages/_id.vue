@@ -1,9 +1,7 @@
 <template>
   <div class="layout layout-dt detail-page">
     <div class="detail-page__row">
-      <div class="detail-page__col">
-        gallery
-      </div>
+      <div class="detail-page__col">gallery</div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
         <app-form-offers v-if="isTypeComposite" :product="getProduct"/>
@@ -12,28 +10,16 @@
     </div>
 
     <div class="detail-page__about about">
-      <h2 class="about__title">
-        reviews.title
-      </h2>
+      <h2 class="about__title">reviews.title</h2>
       <div class="about__row">
-        <div class="about__reviews">
-          reviews.list
-        </div>
-        <div class="about__rating">
-          rating
-        </div>
+        <div class="about__reviews">reviews.list</div>
+        <div class="about__rating">rating</div>
       </div>
     </div>
 
-    <div class="detail-page__section">
-      similar
-    </div>
-    <div class="detail-page__section">
-      recently
-    </div>
-    <div class="detail-page__section">
-      popular-categories
-    </div>
+    <div class="detail-page__section">similar</div>
+    <div class="detail-page__section">recently</div>
+    <div class="detail-page__section">popular-categories</div>
   </div>
 </template>
 
@@ -71,9 +57,7 @@ export default {
     }
 
     return data;
-  }
-  ,
-
+  },
   head() {
     return {
       title: this.seo.title,
@@ -83,7 +67,7 @@ export default {
           name: 'description',
           content: this.seo.description
         }
-      ],
+      ]
     };
   },
 
@@ -94,7 +78,7 @@ export default {
 
     getProduct() {
       return this.isTypeComposite ? this.positions[0] : this.positions[1];
-    },
+    }
   }
 };
 </script>

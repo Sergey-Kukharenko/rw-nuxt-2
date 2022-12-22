@@ -2,13 +2,13 @@
   <div class="header-group">
     <app-navigation />
     <app-multiply-navigation />
-    <app-nav-bar v-if="$route.name !== 'basket'"/>
+    <app-nav-bar v-if="$route.name !== 'basket'" />
   </div>
 </template>
 
 <script>
-import AppNavigation from '@/components/header/AppNavigation'
-import AppMultiplyNavigation from '~/components/header/AppMultiplyNavigation'
+import AppNavigation from '@/components/header/AppNavigation';
+import AppMultiplyNavigation from '~/components/header/AppMultiplyNavigation';
 import AppNavBar from '~/components/header/AppNavBar';
 
 export default {
@@ -16,9 +16,9 @@ export default {
   components: {
     AppNavBar,
     AppMultiplyNavigation,
-    AppNavigation,
+    AppNavigation
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

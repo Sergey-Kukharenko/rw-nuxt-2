@@ -13,9 +13,7 @@
     </div>
 
     <nuxt-link to="/">
-      <app-button size="pre-lg" class="not-found__button">
-        Go to catalog
-      </app-button>
+      <app-button size="pre-lg" class="not-found__button"> Go to catalog</app-button>
     </nuxt-link>
   </div>
 </template>
@@ -25,7 +23,7 @@ import AppButton from '~/components/shared/AppButton';
 
 export default {
   name: 'AppNotFound',
-  components: {AppButton}
+  components: { AppButton }
 };
 </script>
 

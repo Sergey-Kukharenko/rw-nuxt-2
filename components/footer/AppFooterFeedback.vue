@@ -22,15 +22,15 @@ export default {
   name: 'AppFooterFeedback',
 
   components: {
-    AppEmailButton,
+    AppEmailButton
   },
 
   props: {
     contacts: {
       type: Object,
-      default: () => ({}),
-    },
-  },
+      default: () => ({})
+    }
+  }
 };
 </script>
 
@@ -44,7 +44,7 @@ export default {
   }
 
   @include lt-sm {
-		padding-top: 24px;
+    padding-top: 24px;
     gap: 12px;
   }
 

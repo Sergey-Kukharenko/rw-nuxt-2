@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import AppBadge from '~/components/shared/AppBadge'
+import AppBadge from '~/components/shared/AppBadge';
 
 export default {
   name: 'AppBadges',
@@ -22,7 +22,7 @@ export default {
       default: () => {}
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

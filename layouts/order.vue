@@ -1,20 +1,20 @@
 <template>
   <div class="wrapper">
     <template v-if="$device.isMobileOrTablet">
-      <app-header-mobile />
+      <app-header-mobile/>
     </template>
 
     <template v-else>
-      <app-header class="header-group" />
-      <app-nav-bar />
+      <app-header class="header-group"/>
+      <app-nav-bar/>
     </template>
 
     <div class="content">
-      <Nuxt />
+      <Nuxt/>
     </div>
 
     <div class="footer">
-      <order-footer />
+      <order-footer/>
     </div>
   </div>
 </template>
@@ -29,8 +29,8 @@ export default {
     OrderFooter,
     AppHeader: () => import('@/components/header/AppHeader'),
     AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
-    AppNavBar: () => import('@/components/header/AppNavBar'),
-  },
+    AppNavBar: () => import('@/components/header/AppNavBar')
+  }
 };
 </script>
 

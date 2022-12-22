@@ -31,31 +31,31 @@ export default {
   components: { Teleport, AppRadio },
 
   directives: {
-    clickOutside: vClickOutside.directive,
+    clickOutside: vClickOutside.directive
   },
 
   props: {
     currSorting: {
       type: String,
-      default: '',
+      default: ''
     },
 
     list: {
       type: Array,
-      default: () => [],
-    },
+      default: () => []
+    }
   },
 
   methods: {
     setSort(variant) {
       this.$emit('set-sort', variant);
-      this.close()
+      this.close();
     },
 
     close() {
       this.$emit('close');
-    },
-  },
+    }
+  }
 };
 </script>
 

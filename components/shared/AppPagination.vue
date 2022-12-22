@@ -12,7 +12,7 @@
 
 <script>
 export default {
-  name: 'AppPagination',
+  name: 'AppPagination'
 };
 </script>
 

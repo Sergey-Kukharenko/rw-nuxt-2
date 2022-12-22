@@ -2,12 +2,7 @@
   <div class="cities">
     <div class="cities__title">Or choose from the popular</div>
     <div class="cities__list list">
-      <div
-        v-for="(item, idx) in list"
-        :key="idx"
-        class="list__item"
-        @click="onChange(item)"
-      >
+      <div v-for="(item, idx) in list" :key="idx" class="list__item" @click="onChange(item)">
         {{ item.city }}
       </div>
     </div>
@@ -15,7 +10,7 @@
 </template>
 
 <script>
-import dataCities from '@/data/cities-by-default'
+import dataCities from '@/data/cities-by-default';
 
 export default {
   name: 'AppCitiesByDefault',
@@ -25,13 +20,13 @@ export default {
   data() {
     return {
       list: dataCities
-    }
+    };
   },
 
   methods: {
-    onChange({ address, city })  {
-      this.$emit('clearQuery')
-      this.updateLocation({ address, city })
+    onChange({ address, city }) {
+      this.$emit('clearQuery');
+      this.updateLocation({ address, city });
     }
   }
 };

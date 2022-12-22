@@ -14,9 +14,9 @@
 </template>
 
 <script>
-import AppReviewsList from '@/components/card-product/AppReviewsList'
-import AppButton from '@/components/shared/AppButton'
-import { useSortArrayBy, useToggleClassName } from '@/helpers'
+import AppReviewsList from '@/components/card-product/AppReviewsList';
+import AppButton from '@/components/shared/AppButton';
+import { useSortArrayBy, useToggleClassName } from '@/helpers';
 
 export default {
   name: 'AppReviews',
@@ -37,39 +37,39 @@ export default {
     return {
       order: false,
       text: 'first'
-    }
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.order, 'button', 'active')
+      return useToggleClassName(this.order, 'button', 'active');
     },
 
     passedReviews() {
-      return this.reviews
+      return this.reviews;
     }
   },
 
   methods: {
     toggleText() {
-      this.order ? (this.text = 'first') : (this.text = 'last')
+      this.order ? (this.text = 'first') : (this.text = 'last');
     },
 
     toggleOrder() {
-      this.order = !this.order
+      this.order = !this.order;
     },
 
     sortArrayBy() {
-      return useSortArrayBy(this.passedReviews, this.order, 'date')
+      return useSortArrayBy(this.passedReviews, this.order, 'date');
     },
 
     sort() {
-      this.toggleText()
-      this.sortArrayBy()
-      this.toggleOrder()
+      this.toggleText();
+      this.sortArrayBy();
+      this.toggleOrder();
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

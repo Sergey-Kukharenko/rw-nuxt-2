@@ -4,41 +4,41 @@
       <div :class="classNames">
         <div class="content__layout content__layout--md">
           <div class="content__row nested-group">
-            <app-mobile-profile @close="close"/>
+            <app-mobile-profile @close="close" />
             <nuxt-link to="/search" class="search">
-              <svg-icon name="search" class="search__icon"/>
+              <svg-icon name="search" class="search__icon" />
             </nuxt-link>
           </div>
         </div>
         <div class="content__layout content__layout--md">
-          <app-mobile-location/>
+          <app-mobile-location />
         </div>
         <div class="content__layout">
-          <app-header-mobile-menu/>
+          <app-header-mobile-menu />
         </div>
         <div class="content__group">
-          <div class="content__separator"/>
+          <div class="content__separator" />
           <div class="content__layout">
-            <app-header-mobile-nav/>
+            <app-header-mobile-nav />
           </div>
         </div>
       </div>
     </app-drawer>
 
-    <app-header-checkout-order v-if="isCheckout"/>
+    <app-header-checkout-order v-if="isCheckout" />
     <template v-else>
-      <app-logo/>
+      <app-logo />
       <nuxt-link to="/search" class="search">
-        <svg-icon name="search" class="search__icon"/>
+        <svg-icon name="search" class="search__icon" />
       </nuxt-link>
-      <app-call/>
-      <app-cart/>
+      <app-call />
+      <app-cart />
     </template>
   </header>
 </template>
 
 <script>
-import {useToggleClassName} from '~/helpers';
+import { useToggleClassName } from '~/helpers';
 
 import AppDrawer from '~/components/shared/AppDrawer';
 import AppLogo from '~/components/header/AppLogo';
@@ -62,7 +62,7 @@ export default {
     AppCart,
     AppCall,
     AppLogo,
-    AppDrawer,
+    AppDrawer
   },
 
   provide() {
@@ -101,7 +101,6 @@ export default {
     }
   }
 };
-
 </script>
 
 <style lang="scss" scoped>
@@ -198,4 +197,3 @@ header {
   }
 }
 </style>
-

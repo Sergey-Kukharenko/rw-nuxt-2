@@ -12,7 +12,7 @@ import AppProfileList from '~/components/header/profile/AppProfileList';
 export default {
   name: 'AppProfilePreview',
 
-  components: {AppProfileList, AppProfileHeader},
+  components: { AppProfileList, AppProfileHeader },
 
   props: {
     user: {

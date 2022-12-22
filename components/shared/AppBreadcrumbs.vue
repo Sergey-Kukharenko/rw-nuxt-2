@@ -10,17 +10,17 @@
 </template>
 
 <script>
-import { useBreadCrumbs } from '@/helpers'
+import { useBreadCrumbs } from '@/helpers';
 
 export default {
   name: 'AppBreadcrumbs',
 
   computed: {
     breadCrumbs() {
-      return useBreadCrumbs(this.$route)
+      return useBreadCrumbs(this.$route);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

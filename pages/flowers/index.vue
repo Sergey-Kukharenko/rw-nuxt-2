@@ -7,7 +7,7 @@
         </div>
       </div>
       <div class="category-page__col category-products">
-        <category-product-list :products="categoryProducts.list" />
+        <category-product-list :products="categoryProducts.list"/>
       </div>
     </div>
   </main>
@@ -22,9 +22,9 @@ export default {
   data() {
     return {
       categoryProducts: dataCategoryProducts,
-      title: dataCategoryProducts.main.title,
+      title: dataCategoryProducts.main.title
     };
-  },
+  }
 };
 </script>
 

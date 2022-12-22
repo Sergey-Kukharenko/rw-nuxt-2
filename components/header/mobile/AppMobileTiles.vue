@@ -6,11 +6,7 @@
     <div :class="classNames">
       <div v-for="(item, idx) in section.list" :key="idx" class="list__item">
         <div class="figure">
-          <svg-icon
-            :name="item.icon"
-            class="figure__icon"
-            :class="item.icon"
-          />
+          <svg-icon :name="item.icon" class="figure__icon" :class="item.icon" />
         </div>
         <div class="figcaption">{{ item.text }}</div>
       </div>
@@ -19,7 +15,7 @@
 </template>
 
 <script>
-import {useClassNameProp} from '~/helpers';
+import { useClassNameProp } from '~/helpers';
 
 export default {
   name: 'AppMobileTiles',
@@ -103,6 +99,6 @@ export default {
   font-size: 11px;
   line-height: 13px;
   letter-spacing: 0.066px;
-  margin-top: 7px
+  margin-top: 7px;
 }
 </style>

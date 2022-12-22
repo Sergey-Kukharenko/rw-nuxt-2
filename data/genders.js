@@ -6,5 +6,5 @@ export default [
   {
     name: 'Male',
     img: '/icons/genders/male.png'
-  },
-]
+  }
+];

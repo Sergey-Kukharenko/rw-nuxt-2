@@ -1,19 +1,9 @@
 <template>
   <div class="list">
-    <div
-      v-for="(item, idx) in list"
-      :key="idx"
-      class="list__item"
-      @click="handleClick(idx)"
-    >
+    <div v-for="(item, idx) in list" :key="idx" class="list__item" @click="handleClick(idx)">
       <div class="group-content">
         <div class="figure">
-          <svg-icon
-            v-if="item.icon"
-            :name="item.icon"
-            class="figure__icon"
-            :class="item.icon"
-          />
+          <svg-icon v-if="item.icon" :name="item.icon" class="figure__icon" :class="item.icon" />
         </div>
         <div class="figcaption">{{ item.title }}</div>
       </div>
@@ -36,7 +26,7 @@ export default {
 
   methods: {
     handleClick(idx) {
-      this.$emit('selectItem', idx)
+      this.$emit('selectItem', idx);
     }
   }
 };

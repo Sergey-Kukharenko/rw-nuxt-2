@@ -15,7 +15,7 @@ import { INFO_BUTTONS } from '~/constants';
 export default {
   name: 'AboutPageLinks',
 
-  INFO_BUTTONS,
+  INFO_BUTTONS
 };
 </script>
 

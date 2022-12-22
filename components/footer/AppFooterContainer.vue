@@ -37,7 +37,8 @@
 </template>
 
 <script>
-import dataFooter from '@/data/footer';
+import { mapGetters } from 'vuex';
+
 import AppFooterSection from '@/components/footer/AppFooterSection';
 import AppFooterFeedback from '@/components/footer/AppFooterFeedback';
 import AppEmailButton from '@/components/shared/AppEmailButton';
@@ -48,14 +49,12 @@ export default {
   components: {
     AppFooterSection,
     AppFooterFeedback,
-    AppEmailButton,
+    AppEmailButton
   },
 
-  data() {
-    return {
-      footer: dataFooter,
-    };
-  },
+  computed: {
+    ...mapGetters({ footer: 'layout/getFooter' })
+  }
 };
 </script>
 
@@ -87,7 +86,6 @@ export default {
     max-width: 252px;
     margin: 0 auto;
   }
-
 }
 
 .group {

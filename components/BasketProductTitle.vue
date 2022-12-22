@@ -1,6 +1,6 @@
 <template>
   <div class="title">
-    <slot/>
+    <slot />
   </div>
 </template>
 
@@ -11,7 +11,7 @@
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
-  color: #1F2226;
+  color: #1f2226;
   margin-bottom: 4px;
 
   @include lt-lg {

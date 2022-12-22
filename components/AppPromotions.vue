@@ -1,27 +1,27 @@
 <template>
-  <section class="layout promotion">
+  <section v-if="isPromotions" class="layout promotion">
     <a v-for="(promotion, idx) in promotions" :key="idx" class="promotion__item">
       <div class="promotion__text">
         <div v-for="(item, index) in promotion.text" :key="index">{{ item }}</div>
       </div>
       <figure class="promotion__figure">
-        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text"/>
+        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text" />
       </figure>
     </a>
   </section>
 </template>
 
 <script>
-import dataPromotions from '@/data/promotions';
+import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-      promotions: dataPromotions
-    };
-  },
-
   computed: {
+    ...mapGetters({ promotions: 'index-page/getPromotions' }),
+
+    isPromotions() {
+      return this.promotions.length;
+    },
+
     getImg() {
       return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
@@ -34,7 +34,6 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-gap: $gap-ds;
-
 
   @include gt-sm {
     margin-top: 24px;

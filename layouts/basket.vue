@@ -19,7 +19,7 @@ export default {
   components: {
     AppFooterBottom,
     AppHeaderMobile,
-    AppHeader,
+    AppHeader
   }
 };
 </script>

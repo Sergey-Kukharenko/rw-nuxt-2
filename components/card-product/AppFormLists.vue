@@ -60,11 +60,11 @@
 </template>
 
 <script>
-import { useToggleClassName } from '@/helpers'
-import AppList from '@/components/card-product/AppList'
-import AppCounter from '@/components/card-product/AppCounter'
-import AppBadges from '@/components/shared/AppBadges'
-import AppButton from '@/components/shared/AppButton'
+import { useToggleClassName } from '@/helpers';
+import AppList from '@/components/card-product/AppList';
+import AppCounter from '@/components/card-product/AppCounter';
+import AppBadges from '@/components/shared/AppBadges';
+import AppButton from '@/components/shared/AppButton';
 
 export default {
   name: 'AppFormLists',
@@ -89,26 +89,26 @@ export default {
       itemPackage: this.product?.choose_package?.[0],
       count: this.product?.count,
       like: this.product.like
-    }
+    };
   },
 
   computed: {
     classNames() {
-      return useToggleClassName(this.like, 'like', 'active')
+      return useToggleClassName(this.like, 'like', 'active');
     }
   },
 
   methods: {
     onSetColor(payload) {
-      this.itemColor = payload
+      this.itemColor = payload;
     },
 
     onSetPackage(payload) {
-      this.itemPackage = payload
+      this.itemPackage = payload;
     },
 
     toggleLike() {
-      this.like = !this.like
+      this.like = !this.like;
     },
 
     addToCart() {
@@ -117,10 +117,10 @@ export default {
         count: this.count,
         package: this.itemPackage.name,
         like: this.like
-      })
+      });
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>

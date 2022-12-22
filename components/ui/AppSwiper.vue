@@ -7,7 +7,7 @@
 </template>
 
 <script>
-import { Swiper, SwiperSlide } from 'vue-awesome-swiper'
+import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
 
 export default {
   components: {
@@ -26,5 +26,5 @@ export default {
       default: () => []
     }
   }
-}
+};
 </script>

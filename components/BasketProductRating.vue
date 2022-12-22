@@ -1,16 +1,13 @@
 <template>
   <div class="rating">
     <div class="rating__amount">{{ value }}</div>
-    <svg-icon
-      class="rating__icon"
-      name="star"
-    />
+    <svg-icon class="rating__icon" name="star" />
   </div>
 </template>
 
 <script>
 export default {
-  name: "BasketProductRating",
+  name: 'BasketProductRating',
   props: {
     value: {
       type: Number,
@@ -36,7 +33,7 @@ export default {
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    color: #7C7C7C;
+    color: #7c7c7c;
 
     @include lt-lg {
       line-height: 18px;

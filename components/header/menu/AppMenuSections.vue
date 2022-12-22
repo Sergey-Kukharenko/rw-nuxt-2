@@ -25,4 +25,3 @@ export default {
   margin: 0 -16px;
 }
 </style>
-

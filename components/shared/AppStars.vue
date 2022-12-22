@@ -1,11 +1,6 @@
 <template>
   <div class="stars">
-    <svg-icon
-      v-for="(star, idx) in stars"
-      :key="idx"
-      name="star"
-      class="stars__icon"
-    />
+    <svg-icon v-for="(star, idx) in stars" :key="idx" name="star" class="stars__icon" />
   </div>
 </template>
 
@@ -18,7 +13,7 @@ export default {
       type: Number,
       default: 1
     }
-  },
+  }
 };
 </script>
 

@@ -7,29 +7,29 @@
 </template>
 
 <script>
-import dataPayment from '@/data/payment'
+import dataPayment from '@/data/payment';
 
 export default {
   name: 'AppPayment',
   data() {
     return {
       payment: dataPayment
-    }
+    };
   },
 
   computed: {
     getImg() {
-      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop'
+      return this.$device.isMobileOrTablet ? 'mobile' : 'desktop';
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .payment {
   display: flex;
   align-items: center;
-  
+
   @include lt-md {
     justify-content: space-between;
   }

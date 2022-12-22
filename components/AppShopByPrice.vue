@@ -1,15 +1,11 @@
 <template>
-  <section class="layout shop-by-price">
+  <section v-if="isShopByPrice" class="layout shop-by-price">
     <h2 class="shop-by-price__title">
-      {{ shopByPrice.title }}
+      {{ getShopByPrice.title }}
     </h2>
 
     <div class="list">
-      <div
-        v-for="(item, idx) in shopByPrice.list"
-        :key="idx"
-        class="list__item"
-      >
+      <div v-for="(item, idx) in getShopByPrice.list" :key="idx" class="list__item">
         <div class="card">
           <div class="card__figure">{{ item.type }}</div>
           <div class="card__group">
@@ -28,15 +24,18 @@
 </template>
 
 <script>
-import dataShopByPrice from '@/data/shop-by-price';
+import { mapGetters } from 'vuex';
+import { useObjectNotEmpty } from '~/helpers';
 
 export default {
   name: 'AppShopByPrice',
 
-  data() {
-    return {
-      shopByPrice: dataShopByPrice
-    };
+  computed: {
+    ...mapGetters('index-page', ['getShopByPrice']),
+
+    isShopByPrice() {
+      return useObjectNotEmpty(this.getShopByPrice);
+    }
   }
 };
 </script>
