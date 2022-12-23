@@ -2,10 +2,10 @@
   <div class="form">
     <div class="section">
       <div class="section__item item">
-        <div class="item__header">{{ product.title }}</div>
+        <div class="item__header">Choose size</div>
         <div class="item__body item__body--sm-include-border">
-          <app-offers :offers="product.options" @setOffer="onSetOffer" />
-          <app-offer-detail :list="offer.item.components" />
+          <app-offers :offers="product.positions" @setOffer="onSetOffer" />
+          <app-offer-detail :list="offer.items" />
         </div>
       </div>
     </div>
@@ -60,7 +60,7 @@ export default {
 
   data() {
     return {
-      offer: this.product?.options[0],
+      offer: this.product?.positions[0],
       like: this.product.like
     };
   },

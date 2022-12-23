@@ -4,8 +4,8 @@
       <div class="detail-page__col">gallery</div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
-        <app-form-offers v-if="isTypeComposite" :product="getProduct"/>
-        <app-service :text="description"/>
+                <app-form-offers :product="getProduct" />
+        <app-service :text="description" />
       </div>
     </div>
 
@@ -26,38 +26,45 @@
 <script>
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
+import bouquetSunshine from '~/data/bouquet-sunshine';
 
 export default {
   name: 'IdPage',
 
-  components: {AppService, AppFormOffers},
+  components: {
+    AppService,
+    AppFormOffers
+  },
 
-  middleware: ['not-found'],
+  // middleware: ['not-found'],
 
-  async asyncData({route, $axios, redirect}) {
-    const path = route.fullPath;
+  asyncData({ route, $axios, redirect }) {
+    // async asyncData({route, $axios, redirect}) {
+    // const path = route.fullPath;
     const data = {
       seo: {},
       title: '',
       description: '',
-      object: {},
-      positions: []
+      positions: [],
+      price: {}
     };
 
     try {
-      const {data: response} = await $axios.$get(`/offers${path}`);
+      // const {data: response} = await $axios.$get(`/offers${path}`);
+      const { data: response } = bouquetSunshine;
 
       data.seo = response.seo;
       data.title = response.title;
       data.description = response.description;
-      data.object = response.object;
       data.positions = response.positions;
+      data.price = response.price;
     } catch (error) {
       console.error(error);
     }
 
     return data;
   },
+
   head() {
     return {
       title: this.seo.title,
@@ -72,12 +79,14 @@ export default {
   },
 
   computed: {
-    isTypeComposite() {
-      return this.object === 'Offer';
-    },
-
     getProduct() {
-      return this.isTypeComposite ? this.positions[0] : this.positions[1];
+      const positions = this.positions;
+      const price = this.price;
+
+      return {
+        positions,
+        price
+      };
     }
   }
 };
