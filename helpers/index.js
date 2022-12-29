@@ -60,6 +60,37 @@ const useObjectNotEmpty = (obj) => {
 
 const useStringBasedOnDevice = (device, str) => (device ? str : '');
 
+const useWithExcludedKeys = (originalObject, array) => {
+  const excludeKeys = new Set(array);
+  const filteredPairs = Object.entries(originalObject).filter(([key]) => !excludeKeys.has(key));
+  return Object.fromEntries(filteredPairs);
+};
+
+// const useCollectionUniqueByKey = (originalObject, key) =>
+//   Object.values(originalObject).reduce(
+//     (acc, item, index) =>
+//       acc[item[key]] !== undefined ? { ...acc, [item[key]]: acc[item[key]] + 1 } : { ...acc, [item[key]]: 1 },
+//     {}
+//   );
+
+const useCollectionUniqueByKey = (originalObject, key) =>
+  Object.values(originalObject).reduce((acc, item, index) => {
+    acc[item[key]] = acc[item[key]] ? acc[item[key]] + 1 : 1;
+    return acc;
+  }, {});
+
+const useArrayUniqueByKey = (originalObject, key) => [
+  ...new Map(Object.values(originalObject).map((item) => [item[key], item])).values()
+];
+
+const useValueFromObject = (o, path) => path.split('.').reduce((o = {}, key) => o[key], o);
+
+const useFixedSumByKey = (originalObject, pathToValue, fixedNumber) => {
+  return Object.values(originalObject)
+    .reduce((acc, val) => acc + useValueFromObject(val, pathToValue), 0)
+    .toFixed(fixedNumber);
+};
+
 export {
   useClassName,
   useClassNameProp,
@@ -69,5 +100,10 @@ export {
   useBreadCrumbs,
   useStringSwappedValues,
   useObjectNotEmpty,
-  useStringBasedOnDevice
+  useStringBasedOnDevice,
+  useWithExcludedKeys,
+  useCollectionUniqueByKey,
+  useArrayUniqueByKey,
+  useValueFromObject,
+  useFixedSumByKey
 };

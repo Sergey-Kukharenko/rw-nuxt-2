@@ -1,62 +1,51 @@
+import { useArrayUniqueByKey, useCollectionUniqueByKey, useFixedSumByKey, useWithExcludedKeys } from '~/helpers';
+
 export const state = () => ({
-  cart: {
-    items: [],
-    price: null,
-    count: null
-  }
+  cart: {}
 });
 
 export const mutations = {
-  ADD_TO_CART(state, payload) {
-    const duplicate = state.cart.items.find((item) => item.title === payload.title);
-
-    if (duplicate) {
-      duplicate.qty += payload.qty;
-    } else {
-      state.cart.items.push(payload);
-    }
-  },
-
-  /*
-   UPDATE_CART будет удален, как только будет готов backend
-  */
-  UPDATE_CART(state) {
-    state.cart = {
-      ...state.cart,
-      price: `£ ${state.cart.items.reduce((acc, val) => acc + val.price.amount * val.qty, 0)}`,
-      count: state.cart.items.reduce((acc, val) => acc + val.qty, 0)
-    };
-  },
-
-  REMOVE_FROM_CART(state, payload) {
-    state.cart.items.splice(state.cart.items.indexOf(payload), 1);
-  },
-
-  UPDATE_CART_QTY(state, payload) {
-    state.cart.items.forEach((item) => item.title === payload.title && Object.assign(item, payload));
+  setCart(state, payload) {
+    state.cart = payload;
   }
 };
 
 export const actions = {
-  addToCart({ state, commit }, payload) {
-    // будет запрос
-    commit('ADD_TO_CART', { ...payload, qty: 1 });
-    commit('UPDATE_CART');
+  async fetchCart({ state, commit }) {
+    try {
+      const { data } = await this.$axios.$get('/basket/');
+      const formattedData = useWithExcludedKeys(data, ['object', 'id', 'positions']);
+      commit('setCart', formattedData);
+    } catch (e) {
+      console.error(e);
+    }
   },
 
-  removeFromCart({ state, commit }, payload) {
-    commit('REMOVE_FROM_CART', payload);
-    commit('UPDATE_CART');
+  async addToCart({ state, commit }, { productId, positionSlag }) {
+    try {
+      const { data } = await this.$axios.$post(`/basket/${productId}/${positionSlag}`);
+      const formattedData = useWithExcludedKeys(data, ['object', 'id', 'positions']);
+      commit('setCart', formattedData);
+    } catch (e) {
+      console.error(e);
+    }
   },
 
-  updateCartQty({ state, commit }, payload) {
-    commit('UPDATE_CART_QTY', payload);
-    commit('UPDATE_CART');
+  async removeFromCart({ state, commit }, { productId, positionSlag }) {
+    try {
+      const { data } = await this.$axios.$delete(`/basket/${productId}/${positionSlag}`);
+      const formattedData = useWithExcludedKeys(data, ['object', 'id', 'positions']);
+      commit('setCart', formattedData);
+    } catch (e) {
+      console.error(e);
+    }
   }
 };
 
 export const getters = {
-  cart: (state) => state.cart,
-  price: (state) => state.cart.price,
-  items: (state) => state.cart.items
+  getCount: (state) => Object.values(state.cart).length,
+  getPrice: (state) => useFixedSumByKey(state.cart, 'price.amount', 3),
+  getAniqueCollection: (state) => useCollectionUniqueByKey(state.cart, 'title'),
+  getUniqueArray: (state) => useArrayUniqueByKey(state.cart, 'title'),
+  getUniqueCount: (state, getter) => getter.getUniqueArray.length
 };

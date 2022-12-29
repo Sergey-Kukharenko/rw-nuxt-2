@@ -35,6 +35,11 @@ export default {
       default: ''
     },
 
+    name: {
+      type: String,
+      default: ''
+    },
+
     size: {
       type: String,
       default: 'medium',

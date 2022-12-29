@@ -54,7 +54,7 @@ export default {
           }
         ],
         price: {
-          amount: 52.688,
+          amount: 52,
           currencyCode: 'GBP'
         }
       },

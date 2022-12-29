@@ -21,7 +21,7 @@
 
       <div class="group-buttons">
         <div class="group-buttons__item">
-          <app-button theme="green" stretch="fix" @click="addToCart">Send now</app-button>
+          <app-button theme="green" stretch="fix" @click="onAddToCart">Send now</app-button>
         </div>
         <div class="group-buttons__item">
           <app-button theme="grey" @click="toggleLike">
@@ -34,6 +34,7 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
 import { useToggleClassName } from '@/helpers';
 import AppOffers from '@/components/product/AppOffers';
 import AppButton from '@/components/shared/AppButton';
@@ -96,6 +97,8 @@ export default {
   },
 
   methods: {
+    ...mapActions({ addToCart: 'cart/addToCart' }),
+
     onSetOffer(payload) {
       this.offer = payload;
     },
@@ -104,12 +107,18 @@ export default {
       this.like = !this.like;
     },
 
-    addToCart() {
-      this.$store.dispatch('cart/addToCart', this.offer);
+    onAddToCart() {
+      const payload = {
+        productId: this.product.id,
+        positionSlag: this.offer.title
+      };
+
+      this.addToCart(payload);
     }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .form {
   &__footer {

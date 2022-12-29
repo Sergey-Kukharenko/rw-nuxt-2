@@ -6,7 +6,6 @@
 
     <template v-else>
       <app-header class="header-group"/>
-      <app-nav-bar/>
     </template>
 
     <div class="content">
@@ -29,7 +28,6 @@ export default {
     OrderFooter,
     AppHeader: () => import('@/components/header/AppHeader'),
     AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
-    AppNavBar: () => import('@/components/header/AppNavBar')
   }
 };
 </script>

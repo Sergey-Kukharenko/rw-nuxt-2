@@ -11,16 +11,14 @@ export const state = () => ({
     'Bouquets under £30',
     'Cheap bouquets'
   ],
-  user: null
+  user: null,
+
+  recipient: null
 });
 
 export const mutations = {
-  setAuth(state, payload) {
-    state.authorized = payload;
-  },
-
-  setUser(state, payload) {
-    state.user = payload;
+  setField(state, { name, value }) {
+    state[name] = value;
   },
 
   addToHistory(state, payload) {
@@ -34,16 +32,21 @@ export const mutations = {
 
 export const actions = {
   setAuthData({ commit }, payload) {
-    commit('setAuth', true);
-    commit('setUser', payload);
+    commit('setField', { name: 'authorized', value: true });
+    commit('setField', { name: 'user', value: payload });
   },
 
   logout({ commit }) {
-    commit('setAuth', false);
+    commit('setField', { name: 'authorized', value: false });
+  },
+
+  setRecipient({ commit }, payload) {
+    commit('setField', { name: 'recipient', value: payload });
   }
 };
 
 export const getters = {
   state: (state) => state,
-  getSearchHistory: (state) => state.searchHistory
+  getSearchHistory: (state) => state.searchHistory,
+  getRecipient: (state) => state.recipient
 };

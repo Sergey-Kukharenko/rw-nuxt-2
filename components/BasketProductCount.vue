@@ -3,7 +3,7 @@
     <basket-button theme="grey" size="small" :icon-only="true" :disabled="isMinLimit" @click="decrement">
       <svg-icon class="count__icon-minus" name="minus" />
     </basket-button>
-    <basket-input v-model="passedCount" align="center" type="number" :width="88" :min="1" />
+    <basket-input v-model="passedCount" align="center" type="number" :width="88" :min="0" />
     <basket-button theme="grey" size="small" :icon-only="true" @click="increment">
       <svg-icon class="count__icon-plus" name="plus" />
     </basket-button>
@@ -32,7 +32,7 @@ export default {
     },
 
     isMinLimit() {
-      return this.passedCount <= 1;
+      return this.passedCount <= 0;
     }
   },
 

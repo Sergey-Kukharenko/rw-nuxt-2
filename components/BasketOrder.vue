@@ -2,8 +2,8 @@
   <div class="order">
     <div class="order__title">Order details</div>
     <div class="order__row" style="margin-top: 16px">
-      <div class="order__text-grey">2 bouquets</div>
-      <div class="order__text-price">{{ cart.price }}</div>
+      <div class="order__text-grey">{{ count }} bouquets</div>
+      <div class="order__text-price">£ {{ price }}</div>
     </div>
     <div class="order__row" style="margin-top: 6px; display: none">
       <div class="order__text-grey">Sale</div>
@@ -12,7 +12,7 @@
     <div class="order__delim" style="margin-top: 16px"></div>
     <div class="order__row" style="margin-top: 18px">
       <div class="order__text-medium">Summary</div>
-      <div class="order__text-summary">{{ cart.price }}</div>
+      <div class="order__text-summary">£ {{ price }}</div>
     </div>
     <div class="order__cashback-desktop">
       <svg-icon class="order__icon-coins" name="coins" />
@@ -29,35 +29,39 @@
       <svg-icon class="order__icon-percent-green" name="percent-green" />
       <div>Promocode and Bonuses will be available at the next stage of order</div>
     </div>
-    <div class="order__title" style="margin-top: 32px">Your details</div>
-    <form class="form" @submit.prevent="onSubmit">
-      <basket-input
-        v-model="name"
-        style="margin-top: 16px"
-        size="large"
-        placeholder="Your name"
-        :validations="$v.name"
-      />
-      <basket-input
-        v-model="phone"
-        type="number"
-        style="margin-top: 8px"
-        size="large"
-        placeholder="Mobile phone"
-        :validations="$v.phone"
-      />
-      <basket-button style="margin-top: 24px" :stretch="true"> Continue </basket-button>
-      <div class="order__terms">
-        By clicking on the button, you agree to the<br /><a href="#" target="_blank"
-          >Terms of personal data processing</a
+
+    <tempate v-if="userNotLoggedIn">
+      <div class="order__title" style="margin-top: 32px">Your details</div>
+      <form class="form" @submit.prevent="onSubmit">
+        <basket-input
+          v-model="name"
+          style="margin-top: 16px"
+          size="large"
+          placeholder="Your name"
+          :validations="$v.name"
+        />
+        <basket-input
+          v-model="phone"
+          name="phone"
+          type="number"
+          style="margin-top: 8px"
+          size="large"
+          placeholder="Mobile phone"
+          :validations="$v.phone"
+        />
+        <basket-button style="margin-top: 24px" :stretch="true" align="center">Continue</basket-button>
+        <div class="order__terms">
+          By clicking on the button, you agree to the<br /><a href="#" target="_blank"
+        >Terms of personal data processing</a
         >
-      </div>
-    </form>
+        </div>
+      </form>
+    </tempate>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 import { minLength, required } from 'vuelidate/lib/validators';
 
 export default {
@@ -71,15 +75,31 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ cart: 'cart/cart' })
+    ...mapGetters({
+      price: 'cart/getPrice',
+      count: 'cart/getUniqueCount',
+      recipient: 'user/getRecipient'
+    }),
+
+    userNotLoggedIn() {
+      return !this.recipient;
+    }
   },
 
   methods: {
+    ...mapActions({ setRecipient: 'user/setRecipient' }),
+
     onSubmit() {
       this.$v.$touch();
 
       if (!this.$v.$invalid) {
-        // Submit Form
+        const payload = {
+          name: this.name,
+          phone: this.phone
+        };
+
+        this.setRecipient(payload);
+        this.$router.push('/checkout')
       }
     }
   },
@@ -283,6 +303,7 @@ export default {
   }
 
   &__icon-percent-green {
+    flex-shrink: 0;
     width: 16px;
     height: 16px;
   }

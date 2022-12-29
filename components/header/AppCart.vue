@@ -2,7 +2,7 @@
   <nuxt-link :to="goToCart" :class="classNames">
     <figure class="cart__figure">
       <svg-icon :name="getImg" class="cart__icon" />
-      <app-counter v-if="isCount" :count="cart.count" class="cart__counter" />
+      <app-counter v-if="isCount" :count="count" class="cart__counter" />
     </figure>
     <div class="cart__figcaption">{{ isPrice }}</div>
   </nuxt-link>
@@ -26,14 +26,17 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ cart: 'cart/cart' }),
+    ...mapGetters({
+      count: 'cart/getCount',
+      price: 'cart/getPrice'
+    }),
 
     getImg() {
       return this.$device.isMobileOrTablet ? 'cart-bag' : 'cart-outline';
     },
 
     isCount() {
-      return this.cart.count > 0;
+      return this.count > 0;
     },
 
     goToCart() {
@@ -41,7 +44,7 @@ export default {
     },
 
     isPrice() {
-      return this.isCount ? this.cart.price : 'Basket';
+      return this.isCount ? this.price : 'Basket';
     },
 
     classNames() {
@@ -53,6 +56,7 @@ export default {
 
 <style lang="scss" scoped>
 .cart {
+  color: #ccc;
   cursor: pointer;
 
   @include lt-md {
@@ -79,7 +83,6 @@ export default {
     @include gt-sm {
       width: 28px;
       height: 28px;
-      color: #ccc;
     }
   }
 
@@ -175,6 +178,10 @@ export default {
 
   &--active {
     color: $color-green;
+
+    .cart__figcaption {
+      color: inherit;
+    }
   }
 }
 </style>

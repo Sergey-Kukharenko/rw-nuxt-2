@@ -1,25 +1,25 @@
 <template>
   <main class="checkout">
     <div class="checkout__recipient">
-      <checkout-recipient/>
+      <checkout-recipient />
     </div>
     <div class="checkout__delivery-details">
-      <checkout-delivery-details :error="fields.address.errorMsg" @set-field="setField"/>
+      <checkout-delivery-details :error="fields.address.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__date-time">
-      <checkout-date-time :error="fields.dateTime.errorMsg" @set-field="setField"/>
+      <checkout-date-time :error="fields.dateTime.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__payment-methods">
-      <checkout-payment-methods/>
+      <checkout-payment-methods />
     </div>
     <div class="checkout__gift-card">
-      <checkout-gift-card/>
+      <checkout-gift-card />
     </div>
     <div class="checkout__order">
-      <checkout-order/>
+      <checkout-order />
     </div>
     <div class="checkout__email">
-      <checkout-email :error="fields.email.errorMsg" @set-field="setField"/>
+      <checkout-email :error="fields.email.errorMsg" @set-field="setField" />
     </div>
     <div class="checkout__submit">
       <basket-button size="large" :stretch="true" @click="handleValidate">
@@ -35,7 +35,7 @@
 <script>
 import authManager from '~/mixins/authManager';
 
-import {VALIDATE_MESSAGES} from '~/messages';
+import { VALIDATE_MESSAGES } from '~/messages';
 
 export default {
   name: 'CheckoutPage',
@@ -43,6 +43,16 @@ export default {
   mixins: [authManager],
 
   layout: 'checkout',
+
+  middleware: ['user-recipient'],
+
+  async asyncData({ store }) {
+    try {
+      await store.dispatch('checkout/fetchCheckout');
+    } catch (error) {
+      console.error(error);
+    }
+  },
 
   data() {
     return {
@@ -76,6 +86,8 @@ export default {
       this.resetErrors();
 
       if (!this.isInvalidForm) {
+        this.$router.push({ name: 'order' });
+
         return;
       }
 
@@ -92,7 +104,7 @@ export default {
       });
     },
 
-    setField({key, value}) {
+    setField({ key, value }) {
       this.fields[key].value = value;
     },
 

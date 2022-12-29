@@ -17,7 +17,7 @@
             <basket-product-price :price="price" :old-price="oldPrice" />
             <div class="product__items">
               <basket-button size="small" theme="grey">
-                <div>1 item</div>
+                <div>{{count}} item</div>
                 <svg-icon class="product__item-icon" name="chevron" />
               </basket-button>
             </div>
@@ -39,50 +39,68 @@
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 export default {
   name: 'BasketProduct',
+
   props: {
+    id: {
+      type: String,
+      default: ''
+    },
+
     imageUrl: {
       type: String,
       default: ''
     },
+
     rating: {
       type: Number,
       default: 5
     },
+
     title: {
       type: String,
       default: ''
     },
+
     price: {
       type: Number,
       default: 0
     },
+
     oldPrice: {
       type: Number,
       default: 0
     },
+
     size: {
       type: String,
       default: ''
     },
+
     color: {
       type: String,
       default: ''
     },
+
     pack: {
       type: String,
       default: ''
     },
+
     leaves: {
       type: Boolean,
       default: false
     },
+
     qty: {
       type: Number,
       default: 1
     }
   },
+
   data() {
     return {
       leavesSwitch: false,
@@ -91,9 +109,22 @@ export default {
   },
 
   watch: {
-    count(value) {
-      this.$store.dispatch('cart/updateCartQty', { title: this.title, qty: value });
+    count(value, oldValue) {
+      const payload = {
+        productId: this.id,
+        positionSlag: this.title
+      };
+
+      const action = oldValue < value ? 'addToCart' : 'removeFromCart';
+      this[action](payload)
     }
+  },
+
+  methods: {
+    ...mapActions({
+      addToCart: 'cart/addToCart',
+      removeFromCart: 'cart/removeFromCart'
+    })
   }
 };
 </script>

@@ -14,6 +14,8 @@ export const actions = {
       }
     }
 
+    await dispatch('cart/fetchCart');
+
     const suffix = useStringBasedOnDevice(this.$device.isMobileOrTablet, '-mob');
     await dispatch(`layout/fetchLayout`, suffix);
   }

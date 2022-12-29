@@ -5,12 +5,12 @@
         <template #default="{ item }">
           <div class="date__tabs-item">
             <div
-              v-if="daySelect === null"
+              v-if="daySelectIndex === null"
               :class="item.type === 'fix' ? 'date__tabs-item-title' : 'date__tabs-item-label'"
             >
               {{ item.title }}
             </div>
-            <div v-else class="date__tabs-item-title">{{ dayList[daySelect].weekday }}</div>
+            <div v-else class="date__tabs-item-title">{{ dayList[daySelectIndex]?.weekday }}</div>
             <div class="date__tabs-item-label">
               {{ getDateLabel(item) }}
             </div>
@@ -19,7 +19,7 @@
       </basket-tab>
     </div>
     <div class="date__select">
-      <app-select placeholder="Choose delivery time" :list="timeList" size="x-large" dark-label>
+      <app-select ref="timeSelect" placeholder="Choose delivery time" :list="timeList" size="x-large" dark-label>
         <template #default="{ item, close, setLabel }">
           <div class="date__select-item" @click="onClickTimeItem(item, close, setLabel)">
             <div>
@@ -35,7 +35,7 @@
         {{ error }}
       </div>
       <div class="date__fasten">
-        <basket-switch v-model="fasten" />
+        <basket-switch v-model="fasten" @change="onChangeDeliveryMode" />
         <div class="date__fasten-group-text">
           <div class="date__fasten-label">Fasten delivery (in 2 hours)</div>
           <div class="date__fasten-price">+ £5</div>
@@ -52,9 +52,9 @@
             class="date__modal-day-item"
             @click="onClickDayItem(index)"
           >
-            <app-radio v-model="daySelect" :name="index" />
+            <app-radio v-model="daySelectIndex" :name="index" />
             <div class="date__modal-day-label">
-              {{ item.month }} {{ item.day }}, <span>{{ item.weekday }}</span>
+              {{ item.month }} {{ item.day }}, <span>{{ item?.weekday }}</span>
             </div>
           </div>
         </div>
@@ -150,7 +150,7 @@ export default {
         }
       ],
       time: 0,
-      daySelect: null,
+      daySelectIndex: null,
       fasten: false
     };
   },
@@ -170,7 +170,28 @@ export default {
         date.setDate(date.getDate() + 1);
       }
       return result;
+    },
+
+    dateTimeIntervalData() {
+      return this.$store.getters['checkout/getCheckout']?.interval;
+    },
+
+    isFastenDelivery() {
+      return !!this.$store.getters['checkout/getCheckout']?.fast_delivery;
+    },
+
+    selectedMonth() {
+      return this.dayList[this.daySelectIndex]?.month;
+    },
+
+    selectedDay() {
+      return this.dayList[this.daySelectIndex]?.day;
     }
+  },
+
+  mounted() {
+    this.initDateTimeData();
+    this.fasten = this.isFastenDelivery;
   },
 
   methods: {
@@ -179,31 +200,72 @@ export default {
         const month = item.label.getMonth();
         const day = item.label.getDate();
         return `${monthList[month]} ${day}`;
-      } else if (this.daySelect !== null) {
-        return `${this.dayList[this.daySelect].month} ${this.dayList[this.daySelect].day}`;
+      } else if (this.daySelectIndex !== null) {
+        return `${this.selectedMonth} ${this.selectedDay}`;
       }
       return item.label;
     },
+
     onClickTimeItem(item, close, setLabel) {
       this.time = item.id;
       const price = item.price || 'free delivery';
+
       setLabel(`${item.label}, ${price}`);
+      this.setInterval({ time: item.label });
       this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, value: item.label });
       close();
     },
+
     onTabClick(index) {
       if (this.dateList[index].type === 'select') {
         this.$refs.dateModal.open();
       } else {
-        this.daySelect = null;
+        this.daySelectIndex = null;
+        const date = new Intl.DateTimeFormat('en-CA').format(this.dateList[index].label);
+        this.setInterval({ date });
       }
     },
+
     onCloseDayModal() {
-      if (this.daySelect === null) this.$refs.dateTab.active = 0;
+      if (this.daySelectIndex === null) this.$refs.dateTab.active = 0;
     },
+
     onClickDayItem(index) {
-      this.daySelect = index;
+      const date = new Date(`${this.selectedMonth} ${this.selectedMonth} ${new Date().getFullYear()}`);
+      const formatted = new Intl.DateTimeFormat('en-CA').format(date);
+
+      this.setInterval({ date: formatted });
+
+      this.daySelectIndex = index;
+
       this.$refs.dateModal.close();
+    },
+
+    initDateTimeData() {
+      const time = this.dateTimeIntervalData?.time;
+      const date = new Date();
+      const checkoutDate = new Date(this.dateTimeIntervalData?.date);
+      const isToday = date === checkoutDate || !this.dateTimeIntervalData?.date;
+      const isTomorrow = date.getDay() + 1 === checkoutDate.getDay();
+
+      this.$refs.timeSelect.setLabel(time);
+
+      if (isToday) {
+        this.$refs.dateTab.active = 0;
+      } else if (isTomorrow) {
+        this.$refs.dateTab.active = 1;
+      } else {
+        this.$refs.dateTab.active = 2;
+        this.daySelectIndex = checkoutDate.getDay() - date.getDay();
+      }
+    },
+
+    onChangeDeliveryMode(status) {
+      this.$store.dispatch('checkout/setCheckoutOther', { fast_delivery: status });
+    },
+
+    setInterval(payload) {
+      this.$store.dispatch('checkout/setCheckoutInterval', { ...payload });
     }
   }
 };

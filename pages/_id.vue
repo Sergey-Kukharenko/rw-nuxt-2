@@ -4,7 +4,7 @@
       <div class="detail-page__col">gallery</div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
-                <app-form-offers :product="getProduct" />
+        <app-form-offers :product="getProduct" />
         <app-service :text="description" />
       </div>
     </div>
@@ -26,7 +26,6 @@
 <script>
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
-import bouquetSunshine from '~/data/bouquet-sunshine';
 
 export default {
   name: 'IdPage',
@@ -36,28 +35,30 @@ export default {
     AppFormOffers
   },
 
-  // middleware: ['not-found'],
+  middleware: ['not-found'],
 
-  asyncData({ route, $axios, redirect }) {
-    // async asyncData({route, $axios, redirect}) {
-    // const path = route.fullPath;
+  async asyncData({ route, $axios, redirect }) {
+    const path = route.fullPath;
     const data = {
       seo: {},
       title: '',
       description: '',
+
       positions: [],
       price: {}
     };
 
     try {
-      // const {data: response} = await $axios.$get(`/offers${path}`);
-      const { data: response } = bouquetSunshine;
+      const { data: response } = await $axios.$get(`/offers${path}`);
 
       data.seo = response.seo;
       data.title = response.title;
       data.description = response.description;
+
+      data.id = response.id;
       data.positions = response.positions;
       data.price = response.price;
+
     } catch (error) {
       console.error(error);
     }
@@ -80,10 +81,12 @@ export default {
 
   computed: {
     getProduct() {
+      const id = this.id;
       const positions = this.positions;
       const price = this.price;
 
       return {
+        id,
         positions,
         price
       };

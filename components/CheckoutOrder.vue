@@ -1,6 +1,6 @@
 <template>
   <div class="order">
-    <div class="order__bonuses">
+    <!-- <div class="order__bonuses">
       <div>
         <div class="order__bonuses-title">You have 8 460 bonuses</div>
         <div class="order__bonuses-note">Use 2 680 of them to pay up 50% from this order</div>
@@ -8,8 +8,8 @@
       <div>
         <basket-switch v-model="bonuses" color="yellow" />
       </div>
-    </div>
-    <app-input v-model="name" size="x-large" placeholder="Promocode" note="Unavailable with bonuses">
+    </div> -->
+    <app-input v-model="promocode" size="x-large" placeholder="Promocode" note="Unavailable with bonuses">
       <template #right>
         <basket-button
           :size="$device.isMobileOrTablet ? 'medium' : 'small'"
@@ -17,36 +17,47 @@
           :disabled="false"
           align="center"
           style="margin-right: -8px"
+          @click="submitHandler"
         >
           Apply
         </basket-button>
       </template>
     </app-input>
     <div class="order__title">Order details</div>
-    <div class="order__row" style="margin-top: 16px">
-      <div class="order__text-grey order__row-gap">
-        <div>4 items</div>
-        <svg-icon class="order__icon-chevron" name="chevron" />
+    <template v-if="orderItems.length">
+      <div class="order__row" style="margin-top: 16px">
+        <div class="order__text-grey order__row-gap" @click="toggleItems">
+          <div>{{ orderItems.length }} items</div>
+          <svg-icon class="order__icon-chevron" name="chevron" />
+        </div>
+        <div class="order__text-price">£ {{ orderCost.positionsCost }}</div>
       </div>
-      <div class="order__text-price">£ 94</div>
-    </div>
-    <div class="order__row" style="margin-top: 8px">
+      <div class="goods" :class="{ active: itemsVisibility }">
+        <div v-for="item in orderItems" :key="item.offer_id" class="goods__item">
+          <div class="goods__item-picture">
+            <img :src="item.image.filename" class="goods__item-picture--img" :alt="item.image.alt_text" />
+          </div>
+          <div class="goods__item-title">{{ item.title }}</div>
+        </div>
+      </div>
+    </template>
+    <div v-if="orderCost.sale" class="order__row" style="margin-top: 8px">
       <div class="order__text-grey">Sale</div>
-      <div class="order__text-sale">- £ 8</div>
+      <div class="order__text-sale">- £ {{ orderCost.sale }}</div>
     </div>
     <div class="order__row" style="margin-top: 8px">
       <div class="order__text-grey">Delivery</div>
-      <div class="order__text-price">Free</div>
+      <div class="order__text-price">{{ orderCost.deliveryAmout }}</div>
     </div>
     <div class="order__row order__total">
       <div class="order__text-medium">Total</div>
-      <div class="order__text-summary">£ 86</div>
+      <div class="order__text-summary">£ {{ orderCost.totalSum }}</div>
     </div>
-    <div class="order__row">
+    <div v-if="orderCost.cashback" class="order__row">
       <div class="order__text-grey">Cashback</div>
       <div class="order__text-cashback">
         <svg-icon class="order__icon-coins" name="coins" />
-        <div>£0.4</div>
+        <div>£ {{ orderCost.cashback }}</div>
       </div>
     </div>
   </div>
@@ -57,13 +68,47 @@ import AppInput from '~/components/shared/AppInput';
 
 export default {
   name: 'CheckoutOrder',
+
   components: { AppInput },
+  
   data() {
     return {
       bonuses: false,
-      name: '',
-      phone: ''
+      promocode: '',
+      itemsVisibility: false
     };
+  },
+
+  computed: {
+    orderItems() {
+      return this.$store.getters['checkout/getCheckout']?.positions ?? [];
+    },
+
+    orderCost() {
+      return {
+        positionsCost: this.$store.getters['checkout/getCheckout']?.positions_cost ?? 0,
+        deliveryAmout: +this.$store.getters['checkout/getCheckout']?.delivery_amount
+          ? `£ ${this.$store.getters['checkout/getCheckout']?.delivery_amount}`
+          : 'Free',
+        totalSum: this.$store.getters['checkout/getCheckout']?.total_sum ?? 0,
+        cashback: +this.$store.getters['checkout/getCheckout']?.cashback ?? 0,
+        sale: +this.$store.getters['checkout/getCheckout']?.sale ?? 0
+      };
+    }
+  },
+
+  methods: {
+    toggleItems() {
+      this.itemsVisibility = !this.itemsVisibility;
+    },
+
+    submitHandler() {
+      if (!this.promocode) {
+        return;
+      }
+
+      this.$store.dispatch('checkout/setCheckoutOther', { promo_code: this.promocode });
+    }
   }
 };
 </script>
@@ -177,6 +222,7 @@ export default {
     line-height: 20px;
     letter-spacing: -0.01em;
     color: #7c7c7c;
+    user-select: none;
   }
 
   &__text-price {
@@ -244,11 +290,56 @@ export default {
     width: 10px;
     height: 6px;
     color: #f8b900;
+
+    @include gt-sm {
+      cursor: pointer;
+    }
   }
 
   &__icon-coins {
     width: 14px;
     height: 13px;
+  }
+
+  .goods {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+
+    padding-top: 8px;
+
+    &.active {
+      display: flex;
+    }
+
+    &__item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      &-picture {
+        width: 48px;
+        height: 48px;
+
+        &--img {
+          width: 100%;
+          height: 100%;
+          border-radius: 12px;
+        }
+      }
+
+      &-title {
+        font-family: $golos-regular;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: -0.01em;
+        color: $color-dark-grey;
+
+        max-width: 200px;
+      }
+    }
   }
 }
 </style>

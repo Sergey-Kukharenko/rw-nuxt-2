@@ -9,9 +9,9 @@
           <svg-icon name="heart" class="like__icon" />
         </button>
       </div>
-      <a class="figure absolute-grow">
+      <nuxt-link :to="slide.url" class="figure absolute-grow">
         <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
-      </a>
+      </nuxt-link>
     </div>
     <div class="card__body">
       <div class="rating">

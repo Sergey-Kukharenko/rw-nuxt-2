@@ -8,7 +8,7 @@
       <div v-for="(item, idx) in list" :key="idx" class="list__item">
         <div class="card">
           <div class="card__text">{{ item.title }}</div>
-          <div class="card__points"></div>
+          <div class="card__points"/>
           <div class="card__text">{{ item.quantity }}{{ item.quantityUnit }}</div>
         </div>
       </div>

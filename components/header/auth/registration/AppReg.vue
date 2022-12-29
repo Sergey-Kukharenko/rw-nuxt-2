@@ -156,7 +156,6 @@ export default {
 
   methods: {
     setNumber({ value, isValid }) {
-      console.log(isValid);
       this.form.phone = { ...this.form.phone, value, isValid };
     },
 

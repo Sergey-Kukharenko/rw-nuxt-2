@@ -1,17 +1,16 @@
 <template>
   <main class="basket">
     <section>
-      <basket-title/>
+      <basket-title />
     </section>
     <section class="basket__wrapper">
       <div class="basket__main">
-        <basket-product-list/>
-        <basket-something/>
+        <basket-product-list />
       </div>
-      <basket-order/>
+      <basket-order />
     </section>
-    <section>
-      <basket-people/>
+    <section class="basket__people">
+<!--      <basket-people />-->
     </section>
   </main>
 </template>
@@ -37,7 +36,7 @@ export default {
       props: {
         img: {
           src: 'https://via.placeholder.com/252x300',
-          size: {width: 32, height: 32}
+          size: { width: 32, height: 32 }
         },
         text: 'Postcard added to the order'
       }
@@ -73,7 +72,6 @@ export default {
     display: flex;
     flex-direction: row;
     gap: 24px;
-    //max-width: 100%;
 
     @include lt-lg {
       flex-direction: column;
@@ -85,6 +83,10 @@ export default {
     flex: 1 1 auto;
     min-width: 0;
     max-width: 100%;
+  }
+
+  &__people{
+   margin-bottom: 40px;
   }
 }
 </style>

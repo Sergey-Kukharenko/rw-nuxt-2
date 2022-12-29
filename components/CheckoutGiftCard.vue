@@ -27,7 +27,12 @@
             </div>
           </div>
           <div class="gift__comment">
-            <textarea class="gift__dashed" placeholder="Commentary for courier" />
+            <textarea
+              v-model="comment"
+              class="gift__dashed"
+              placeholder="Commentary for courier"
+              @input="commentHandler"
+            />
           </div>
         </div>
       </div>
@@ -36,11 +41,37 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce';
 import AppInput from '~/components/shared/AppInput';
+
+import { CHECKOUT_INPUT_DELAY } from '~/constants/index';
 
 export default {
   name: 'CheckoutGiftCard',
-  components: { AppInput }
+
+  components: { AppInput },
+
+  data() {
+    return {
+      comment: ''
+    };
+  },
+
+  computed: {
+    commentData() {
+      return this.$store.getters['checkout/getCheckout']?.comment ?? '';
+    }
+  },
+
+  mounted() {
+    this.comment = this.commentData;
+  },
+
+  methods: {
+    commentHandler: debounce(function (e) {
+      this.$store.dispatch('checkout/setCheckoutOther', { comment: e.target.value });
+    }, CHECKOUT_INPUT_DELAY)
+  }
 };
 </script>
 

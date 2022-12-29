@@ -15,6 +15,7 @@ export default {
         ['green', 'grey', 'white'].includes(value);
       }
     },
+
     size: {
       type: String,
       default: 'medium',
@@ -22,6 +23,7 @@ export default {
         return ['x-small', 'small', 'medium', 'large'].includes(value);
       }
     },
+
     align: {
       type: String,
       default: 'left',
@@ -29,14 +31,17 @@ export default {
         return ['left', 'center', 'right'].includes(value);
       }
     },
+
     stretch: {
       type: Boolean,
       default: false
     },
+
     iconOnly: {
       type: Boolean,
       default: false
     },
+
     disabled: {
       type: Boolean,
       default: false
@@ -121,6 +126,7 @@ export default {
     justify-content: center;
 
     &.basket-button--icon-only {
+      min-width: initial;
       width: 36px;
       padding: 0;
       justify-content: center;
