@@ -20,18 +20,23 @@
     <div class="detail-page__section">
       <app-section v-if="isSimilarBouquets" :section="similarBouquets" name="similar-bouquets" />
     </div>
-    <div class="detail-page__section">recently</div>
-    <div class="detail-page__section">popular-categories</div>
+    <div class="detail-page__section">
+      <app-section v-if="isRecentlyWatched" :section="recentlyWatched" name="recently-watched" />
+    </div>
+    <div class="detail-page__section">
+      <app-popular-categories-items v-if="isPopularCategoriesItems" :popular="popularCategoriesItems" />
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { useObjectNotEmpty } from '~/helpers';
 
-import AppFormOffers from '~/components/product/AppFormOffers';
-import AppService from '~/components/product/AppService';
+import AppFormOffers from '@/components/product/AppFormOffers';
+import AppService from '@/components/product/AppService';
 import AppSection from '@/components/shared/AppSection.vue';
+import AppPopularCategoriesItems from '@/components/card-product/AppPopularCategoriesItems';
 
 export default {
   name: 'IdPage',
@@ -39,12 +44,13 @@ export default {
   components: {
     AppService,
     AppFormOffers,
-    AppSection
+    AppSection,
+    AppPopularCategoriesItems
   },
 
   middleware: ['not-found'],
 
-  async asyncData({ route, $axios, redirect }) {
+  async asyncData({ route, $axios }) {
     const path = route.fullPath;
     const data = {
       seo: {},
@@ -87,11 +93,21 @@ export default {
 
   computed: {
     ...mapGetters({
-      similarBouquets: 'pages/card-product/getSimilarBouquets'
+      similarBouquets: 'pages/card-product/getSimilarBouquets',
+      recentlyWatched: 'pages/card-product/getRecentlyWatched',
+      popularCategoriesItems: 'pages/card-product/getPopularCategoriesItems'
     }),
 
     isSimilarBouquets() {
       return useObjectNotEmpty(this.similarBouquets);
+    },
+
+    isRecentlyWatched() {
+      return useObjectNotEmpty(this.recentlyWatched);
+    },
+
+    isPopularCategoriesItems() {
+      return useObjectNotEmpty(this.popularCategoriesItems);
     },
 
     getProduct() {
@@ -108,7 +124,11 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch('pages/card-product/fetchCardProductPage');
+    this.fetchCardProductPage();
+  },
+
+  methods: {
+    ...mapActions({ fetchCardProductPage: 'pages/card-product/fetchCardProductPage' })
   }
 };
 </script>

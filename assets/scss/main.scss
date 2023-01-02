@@ -20,6 +20,11 @@ body.no-scroll {
     max-width: 1080px;
   }
 
+  @include lt-md {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
   @include gt-xs {
     padding: $gap-ds;
   }

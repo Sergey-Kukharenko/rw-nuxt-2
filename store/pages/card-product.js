@@ -1,5 +1,7 @@
 export const state = () => ({
-  similarBouquets: {}
+  similarBouquets: {},
+  recentlyWatched: {},
+  popularCategoriesItems: {}
 });
 
 export const mutations = {
@@ -10,7 +12,11 @@ export const mutations = {
 
 export const actions = {
   async fetchCardProductPage({ commit, dispatch }) {
-    await Promise.all([dispatch('fetchSimilarBouquets')]);
+    await Promise.all([
+      dispatch('fetchSimilarBouquets'),
+      dispatch('fetchRecentlyWatched'),
+      dispatch('fetchPopularCategoriesItems')
+    ]);
   },
 
   async fetchSimilarBouquets({ commit }) {
@@ -20,9 +26,29 @@ export const actions = {
     } catch (e) {
       console.error(e);
     }
+  },
+
+  async fetchRecentlyWatched({ commit }) {
+    try {
+      const recentlyWatched = await this.$axios.$get('/recently-watched/');
+      commit('setField', { name: 'recentlyWatched', value: recentlyWatched });
+    } catch (e) {
+      console.error(e);
+    }
+  },
+
+  async fetchPopularCategoriesItems({ commit }) {
+    try {
+      const popularCategoriesItems = await this.$axios.$get('/popular-categories-items/');
+      commit('setField', { name: 'popularCategoriesItems', value: popularCategoriesItems });
+    } catch (e) {
+      console.error(e);
+    }
   }
 };
 
 export const getters = {
-  getSimilarBouquets: (state) => state.similarBouquets
+  getSimilarBouquets: (state) => state.similarBouquets,
+  getRecentlyWatched: (state) => state.recentlyWatched,
+  getPopularCategoriesItems: (state) => state.popularCategoriesItems
 };

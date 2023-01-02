@@ -42,7 +42,7 @@ export default {
       order: 1;
     }
 
-    & main {
+    & main, & > .layout {
       order: 2;
     }
 

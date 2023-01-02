@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import { useObjectNotEmpty } from '~/helpers';
 
 import AppSection from '@/components/shared/AppSection.vue';
@@ -68,7 +68,11 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch('pages/home/fetchMainPage');
+    this.fetchMainPage();
+  },
+
+  methods: {
+    ...mapActions({ fetchMainPage: 'pages/home/fetchMainPage' })
   }
 };
 </script>
