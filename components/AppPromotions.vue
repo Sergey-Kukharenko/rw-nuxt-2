@@ -16,7 +16,7 @@ import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapGetters({ promotions: 'index-page/getPromotions' }),
+    ...mapGetters({ promotions: 'pages/home/getPromotions' }),
 
     isPromotions() {
       return this.promotions.length;

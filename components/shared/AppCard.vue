@@ -1,49 +1,60 @@
 <template>
   <div class="card">
-    <div class="card__container">
-      <div class="header">
-        <app-badge v-if="slide.sale" theme="red" class="header__badge">
-          {{ slide.sale.percent }}
-        </app-badge>
-        <button class="like">
-          <svg-icon name="heart" class="like__icon" />
-        </button>
+    <div class="card__hint">
+      <div class="hint">
+        <svg-icon name="truck-hint" class="hint__icon" />
+        <div class="hint__text">Free shipping</div>
       </div>
-      <nuxt-link :to="slide.url" class="figure absolute-grow">
-        <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
-      </nuxt-link>
     </div>
-    <div class="card__body">
-      <div class="rating">
-        <div class="rating__text">{{ slide.rating }}</div>
-        <svg-icon name="star" class="rating__icon" />
-        <div class="rating__reviews">12 560</div>
-      </div>
 
-      <div class="title">
-        {{ slide.title }}
-      </div>
-      <div class="content">
-        <div class="price">
-          <div v-if="slide.sale" class="group">
-            <div class="price__old">£ {{ slide.price }}</div>
-            <div class="group__badge">
-              <app-badge theme="red">
-                {{ slide.sale.percent }}
-              </app-badge>
-            </div>
-          </div>
-          <div class="price__current">£ {{ slide.price }}</div>
+    <div class="card__over">
+      <div class="card__container">
+        <div class="header">
+          <app-badge v-if="slide.sale" theme="red" class="header__badge">
+            {{ slide.sale.percent }}
+          </app-badge>
+          <button class="like">
+            <svg-icon name="heart" class="like__icon" />
+          </button>
         </div>
-        <app-button theme="green" size="sm">
-          <span>Send</span>
-        </app-button>
+        <a :href="slide.url" class="figure absolute-grow">
+          <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
+        </a>
+      </div>
+      <div class="card__body">
+        <div class="rating">
+          <div class="rating__text">{{ slide.rating }}</div>
+          <svg-icon name="star" class="rating__icon" />
+          <div class="rating__reviews">12 560</div>
+        </div>
+
+        <div class="title">
+          {{ slide.title }}
+        </div>
+        <div class="content">
+          <div class="price">
+            <div v-if="slide.sale" class="group">
+              <div class="price__old">£ {{ slide.price }}</div>
+              <div class="group__badge">
+                <app-badge theme="red">
+                  {{ slide.sale.percent }}
+                </app-badge>
+              </div>
+            </div>
+            <div class="price__current">£ {{ slide.price }}</div>
+          </div>
+          <app-button theme="green" size="sm" @click="onAddToCart">
+            <span>Send</span>
+          </app-button>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import AppBadge from './AppBadge.vue';
 import AppButton from './AppButton.vue';
 
@@ -60,22 +71,55 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+
+  methods: {
+    ...mapActions({ addToCart: 'cart/addToCart' }),
+
+    onAddToCart() {
+      const payload = {
+        productId: this.slide.productId,
+        positionSlag: this.slide.positionSlag
+      };
+
+      this.addToCart(payload);
+      this.$router.push('/basket');
+    }
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
-  overflow: hidden;
+  position: relative;
+  z-index: 1;
 
-  @include gt-sm {
-    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+  &__hint {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    min-height: 156px;
+    padding: 4px 12px;
+    background: #fff;
     border-radius: 14px;
+    box-shadow: 0 0 0 rgba(0, 0, 0, 0.1);
+    transform: translateY(0%);
+    transition: box-shadow 0.24s ease-out 0s, transform 0.24s ease-out 0s;
   }
 
-  @include lt-md {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 4px;
+  &__over {
+    overflow: hidden;
+
+    @include gt-sm {
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.1);
+      border-radius: 14px;
+    }
+
+    @include lt-md {
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      border-radius: 4px;
+    }
   }
 
   &__body {
@@ -108,6 +152,52 @@ export default {
       }
     }
   }
+
+  &:hover {
+    z-index: 2;
+
+    @include gt-sm {
+      & .card__hint {
+        box-shadow: 0 0 32px rgba(0, 0, 0, 0.1);
+        transform: translateY(-40px);
+      }
+
+      & .hint__icon,
+      & .hint__text {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  }
+}
+
+.hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 32px;
+
+  &__icon {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    font-family: $golos-bold;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: -0.01em;
+    color: $color-dark-grey;
+    margin-left: 5px;
+  }
+
+  &__icon,
+  &__text {
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.24s ease-out 0.03s, transform 0.24s ease-out 0.03s;
+  }
 }
 
 .figure {
@@ -120,7 +210,7 @@ export default {
     object-fit: cover;
     z-index: 1;
     transform: translate(-50%, -50%) scale(1);
-    transition: opacity 0.35s, transform 0.35s;
+    transition: opacity 0.24s, transform 0.24s;
   }
 }
 

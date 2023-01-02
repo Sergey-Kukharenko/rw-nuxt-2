@@ -32,7 +32,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ benefits: 'index-page/getBenefits' }),
+    ...mapGetters({ benefits: 'pages/home/getBenefits' }),
 
     isBenefits() {
       return this.benefits.length;

@@ -1,10 +1,11 @@
 import { useStringBasedOnDevice } from '~/helpers';
 
 export const actions = {
-  async nuxtServerInit({ dispatch, state }) {
+  async nuxtServerInit({ dispatch, commit, state }, {$cookies}) {
+    commit('auth/setToken', $cookies.get('token'))
     await dispatch('auth/fetchToken')
 
-    const { token } = state.auth
+    const token = state.auth.token
 
     if (token) {
       try {

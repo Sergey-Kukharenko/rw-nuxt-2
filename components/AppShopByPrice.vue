@@ -31,7 +31,7 @@ export default {
   name: 'AppShopByPrice',
 
   computed: {
-    ...mapGetters('index-page', ['getShopByPrice']),
+    ...mapGetters('pages/home', ['getShopByPrice']),
 
     isShopByPrice() {
       return useObjectNotEmpty(this.getShopByPrice);

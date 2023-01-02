@@ -16,7 +16,7 @@ import AppCard from '@/components/shared/AppCard';
 const { main, list } = dataRecently;
 
 export default {
-  name: 'AppSimilar',
+  name: 'AppRecently',
 
   components: {
     AppSectionHeader,

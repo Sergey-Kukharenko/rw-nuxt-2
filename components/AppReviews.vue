@@ -88,7 +88,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ reviewList: 'index-page/getReviews' }),
+    ...mapGetters({ reviewList: 'pages/home/getReviews' }),
 
     isReviewsList() {
       return this.reviewList.length;

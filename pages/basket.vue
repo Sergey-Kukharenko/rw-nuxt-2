@@ -1,5 +1,5 @@
 <template>
-  <main class="basket">
+  <div class="basket">
     <section>
       <basket-title />
     </section>
@@ -12,7 +12,7 @@
     <section class="basket__people">
 <!--      <basket-people />-->
     </section>
-  </main>
+  </div>
 </template>
 
 <script>

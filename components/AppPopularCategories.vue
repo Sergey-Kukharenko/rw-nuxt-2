@@ -30,7 +30,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ popularCategories: 'index-page/getPopularCategories' }),
+    ...mapGetters({ popularCategories: 'pages/home/getPopularCategories' }),
 
     isPopularCategories() {
       return this.popularCategories.length;

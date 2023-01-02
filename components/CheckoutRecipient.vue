@@ -33,6 +33,7 @@ import debounce from 'lodash.debounce';
 import AppInput from '~/components/shared/AppInput';
 import authManager from '~/mixins/authManager';
 
+import { useObjectNotEmpty } from '~/helpers';
 import { CHECKOUT_INPUT_DELAY } from '~/constants/index';
 
 export default {
@@ -63,6 +64,14 @@ export default {
   computed: {
     recipientData() {
       return this.$store.getters['checkout/getCheckout']?.recipient || {};
+    },
+
+    recipientDataFromBusket() {
+      return this.$store.getters['user/getRecipient'] || {};
+    },
+
+    isRecipientDataFromBusket() {
+      return useObjectNotEmpty(this.recipientDataFromBusket);
     }
   },
 
@@ -94,6 +103,14 @@ export default {
     },
 
     initRecipientData() {
+      if (this.isRecipientDataFromBusket) {
+        this.form.name = this.recipientDataFromBusket.name;
+        this.form.phone.value = this.recipientDataFromBusket.phone;
+
+        this.setRecipient({ name: this.form.name, phone: this.form.phone.value });
+        return;
+      }
+
       if (this.recipientData?.name) this.form.name = this.recipientData?.name;
       if (this.recipientData?.phone) this.form.phone.value = this.recipientData?.phone;
     }

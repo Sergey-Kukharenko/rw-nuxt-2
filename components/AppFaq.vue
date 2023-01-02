@@ -46,7 +46,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters({ faqList: 'index-page/getFaq' }),
+    ...mapGetters({ faqList: 'pages/home/getFaq' }),
 
     isFaqList() {
       return this.faqList.length;

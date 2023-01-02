@@ -30,7 +30,7 @@
       <div>Promocode and Bonuses will be available at the next stage of order</div>
     </div>
 
-    <tempate v-if="userNotLoggedIn">
+    <template v-if="userNotLoggedIn">
       <div class="order__title" style="margin-top: 32px">Your details</div>
       <form class="form" @submit.prevent="onSubmit">
         <basket-input
@@ -56,7 +56,7 @@
         >
         </div>
       </form>
-    </tempate>
+    </template>
   </div>
 </template>
 

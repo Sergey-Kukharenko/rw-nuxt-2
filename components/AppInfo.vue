@@ -47,7 +47,7 @@ export default {
   name: 'AppInfo',
 
   computed: {
-    ...mapGetters({ info: 'index-page/getInfo' }),
+    ...mapGetters({ info: 'pages/home/getInfo' }),
 
     isInfo() {
       return useObjectNotEmpty(this.info);

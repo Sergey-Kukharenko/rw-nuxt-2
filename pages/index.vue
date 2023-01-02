@@ -34,12 +34,12 @@ export default {
 
   computed: {
     ...mapGetters({
-      bestBouquets: 'index-page/getBestBouquets',
-      recipient: 'index-page/getRecipient',
-      specialOffers: 'index-page/getSpecialOffers',
-      underPounds: 'index-page/getUnderPounds',
-      autumnCollection: 'index-page/getAutumnCollection',
-      pickBouquet: 'index-page/getPickBouquet'
+      bestBouquets: 'pages/home/getBestBouquets',
+      recipient: 'pages/home/getRecipient',
+      specialOffers: 'pages/home/getSpecialOffers',
+      underPounds: 'pages/home/getUnderPounds',
+      autumnCollection: 'pages/home/getAutumnCollection',
+      pickBouquet: 'pages/home/getPickBouquet'
     }),
 
     isBestBouquets() {
@@ -68,7 +68,7 @@ export default {
   },
 
   mounted() {
-    this.$store.dispatch('index-page/fetchMainPage');
+    this.$store.dispatch('pages/home/fetchMainPage');
   }
 };
 </script>

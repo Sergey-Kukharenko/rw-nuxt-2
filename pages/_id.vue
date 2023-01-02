@@ -17,22 +17,29 @@
       </div>
     </div>
 
-    <div class="detail-page__section">similar</div>
+    <div class="detail-page__section">
+      <app-section v-if="isSimilarBouquets" :section="similarBouquets" name="similar-bouquets" />
+    </div>
     <div class="detail-page__section">recently</div>
     <div class="detail-page__section">popular-categories</div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import { useObjectNotEmpty } from '~/helpers';
+
 import AppFormOffers from '~/components/product/AppFormOffers';
 import AppService from '~/components/product/AppService';
+import AppSection from '@/components/shared/AppSection.vue';
 
 export default {
   name: 'IdPage',
 
   components: {
     AppService,
-    AppFormOffers
+    AppFormOffers,
+    AppSection
   },
 
   middleware: ['not-found'],
@@ -58,7 +65,6 @@ export default {
       data.id = response.id;
       data.positions = response.positions;
       data.price = response.price;
-
     } catch (error) {
       console.error(error);
     }
@@ -80,6 +86,14 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      similarBouquets: 'pages/card-product/getSimilarBouquets'
+    }),
+
+    isSimilarBouquets() {
+      return useObjectNotEmpty(this.similarBouquets);
+    },
+
     getProduct() {
       const id = this.id;
       const positions = this.positions;
@@ -91,6 +105,10 @@ export default {
         price
       };
     }
+  },
+
+  mounted() {
+    this.$store.dispatch('pages/card-product/fetchCardProductPage');
   }
 };
 </script>

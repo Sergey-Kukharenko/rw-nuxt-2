@@ -44,8 +44,6 @@ export default {
 
   layout: 'checkout',
 
-  middleware: ['user-recipient'],
-
   async asyncData({ store }) {
     try {
       await store.dispatch('checkout/fetchCheckout');

@@ -6,6 +6,7 @@ export default function ({ store, app: { $axios }, redirect }) {
     timeout: 60000
     // withCredentials: true
   });
+
   AxiosLogger.setGlobalConfig({
     data: false
   });
@@ -23,7 +24,7 @@ export default function ({ store, app: { $axios }, redirect }) {
   $axios.onError(async (error) => {
     const statusCode = error?.response?.status
 
-    if (statusCode === 401) {
+    if ([401, 403].includes(statusCode)) {
       await store.dispatch('auth/fetchToken')
     }
 

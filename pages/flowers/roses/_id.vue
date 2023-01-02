@@ -27,7 +27,7 @@
     </div>
 
     <div class="detail-page__section">
-      <app-similar/>
+      similar
     </div>
     <div class="detail-page__section">
       <app-recently/>
@@ -48,7 +48,6 @@ import AppFormLists from '@/components/card-product/AppFormLists';
 import AppService from '@/components/card-product/AppService';
 import AppReviews from '@/components/card-product/AppReviews';
 import AppRating from '@/components/card-product/AppRating';
-import AppSimilar from '@/components/AppSimilar';
 import AppRecently from '@/components/AppRecently';
 import AppPopularCategories from '@/components/card-product/AppPopularCategories';
 
@@ -63,7 +62,6 @@ export default {
     AppService,
     AppReviews,
     AppRating,
-    AppSimilar,
     AppRecently,
     AppPopularCategories
   },
