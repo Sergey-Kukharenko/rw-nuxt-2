@@ -2,13 +2,14 @@ export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   env: {
     baseUrl: process.env.BASE_URL,
+    fileUrl: process.env.FILE_URL,
     stripePublicKey: process.env.STRIPE_PUBLIC_KEY,
     paypalSecretKey: process.env.PAYPAL_SECRET_KEY,
     paypalClientId: process.env.PAYPAL_CLIENT_ID
   },
 
   head: {
-    title: 'MyFlowers',
+    title: 'rw-nuxt-2',
     htmlAttrs: {
       lang: 'en'
     },
@@ -39,8 +40,7 @@ export default {
     { src: '@/plugins/vue-awesome-swiper', ssr: true },
     '@/plugins/v-mask',
     '~/plugins/axios',
-    { src: '~/plugins/vuelidate' },
-    '~/plugins/local-storage',
+    { src: '~/plugins/vuelidate' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -64,7 +64,8 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/svg-sprite',
-    '@nuxtjs/device'
+    '@nuxtjs/device',
+    'cookie-universal-nuxt'
   ],
 
   svgSprite: {
@@ -78,6 +79,10 @@ export default {
     baseURL: process.env.BASE_URL || '/'
   },
 
+  auth: {
+    plugins: [{ src: '~/plugins/axios', ssr: true }]
+  },
+
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     loaders: {
@@ -89,4 +94,4 @@ export default {
       }
     }
   }
-}
+};

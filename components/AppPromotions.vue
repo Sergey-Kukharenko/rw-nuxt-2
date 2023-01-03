@@ -1,20 +1,30 @@
 <template>
-  <section v-if="isPromotions" class="layout promotion">
-    <a v-for="(promotion, idx) in promotions" :key="idx" class="promotion__item">
-      <div class="promotion__text">
-        <div v-for="(item, index) in promotion.text" :key="index">{{ item }}</div>
-      </div>
-      <figure class="promotion__figure">
-        <img :src="promotion.img[getImg]" class="promotion__image" :alt="promotion.text" />
-      </figure>
-    </a>
-  </section>
+  <div v-if="isPromotions" class="promotion">
+    <div v-if="hasTitle" class="layout layout--horizontal promotion-title">Why people choose us</div>
+    <div class="layout promotion-list">
+      <a v-for="(promotion, idx) in promotions" :key="idx" class="promotion-list__item">
+        <div class="promotion-list__text">
+          <div v-for="(item, index) in promotion.text" :key="index">{{ item }}</div>
+        </div>
+        <figure class="promotion-list__figure">
+          <img :src="promotion.img[getImg]" class="promotion-list__image" :alt="promotion.text" />
+        </figure>
+      </a>
+    </div>
+  </div>
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 
 export default {
+  props: {
+    hasTitle: {
+      type: Boolean,
+      default: false
+    }
+  },
+
   computed: {
     ...mapGetters({ promotions: 'pages/home/getPromotions' }),
 
@@ -30,7 +40,28 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.promotion {
+.promotion-title {
+  @include gt-sm() {
+    font-family: $golos-bold;
+    font-size: 20px;
+    line-height: 24px;
+    color: $color-dark-grey;
+
+    & + .promotion-list {
+      margin-top: 0;
+    }
+  }
+
+  @include lt-md() {
+    display: none;
+
+    & + .promotion-list {
+      margin-top: 22px;
+    }
+  }
+}
+
+.promotion-list {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(30%, 1fr));
   grid-gap: $gap-ds;
@@ -71,7 +102,7 @@ export default {
     }
 
     &:nth-child(1) {
-      .promotion__image {
+      .promotion-list__image {
         top: -37px;
         right: 0;
 
@@ -86,7 +117,7 @@ export default {
         }
       }
 
-      .promotion__text {
+      .promotion-list__text {
         @include gt-xs {
           max-width: 162px;
         }
@@ -103,7 +134,7 @@ export default {
     }
 
     &:not(:nth-child(1)) {
-      .promotion__text {
+      .promotion-list__text {
         & > div {
           &:nth-child(2) {
             font-family: $golos-bold;
@@ -114,7 +145,7 @@ export default {
     }
 
     &:nth-child(2) {
-      .promotion__image {
+      .promotion-list__image {
         top: -63px;
         right: -30px;
 
@@ -129,7 +160,7 @@ export default {
         }
       }
 
-      .promotion__text {
+      .promotion-list__text {
         @include gt-xs {
           max-width: 114px;
         }
@@ -137,7 +168,7 @@ export default {
     }
 
     &:nth-child(3) {
-      .promotion__image {
+      .promotion-list__image {
         top: -60px;
         right: -24px;
 
@@ -152,7 +183,7 @@ export default {
         }
       }
 
-      .promotion__text {
+      .promotion-list__text {
         @include gt-xs {
           max-width: 182px;
         }

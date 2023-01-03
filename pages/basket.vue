@@ -1,21 +1,23 @@
 <template>
   <div class="basket">
-    <section>
+    <section class="basket__layout">
       <basket-title />
     </section>
-    <section class="basket__wrapper">
+    <section class="basket__layout basket__wrapper">
       <div class="basket__main">
         <basket-product-list />
       </div>
       <basket-order />
     </section>
     <section class="basket__people">
-<!--      <basket-people />-->
+      <app-promotions has-title />
     </section>
   </div>
 </template>
 
 <script>
+import { mapActions } from 'vuex';
+
 import ToastCardDeals from '~/components/toast-cards/ToastCardDeals';
 
 export default {
@@ -31,6 +33,8 @@ export default {
   },
 
   mounted() {
+    this.fetchPromotions();
+
     const content = {
       component: ToastCardDeals,
       props: {
@@ -51,6 +55,10 @@ export default {
     };
 
     this.$toast(content, options);
+  },
+
+  methods: {
+    ...mapActions({ fetchPromotions: 'pages/home/fetchPromotions' })
   }
 };
 </script>
@@ -59,7 +67,7 @@ export default {
 .basket {
   width: 100%;
 
-  & > * {
+  &__layout {
     max-width: 1080px;
     margin: 0 auto;
 
@@ -85,8 +93,8 @@ export default {
     max-width: 100%;
   }
 
-  &__people{
-   margin-bottom: 40px;
+  &__people {
+    margin-bottom: 40px;
   }
 }
 </style>

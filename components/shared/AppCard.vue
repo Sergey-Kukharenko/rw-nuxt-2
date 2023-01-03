@@ -18,7 +18,11 @@
           </button>
         </div>
         <a :href="slide.url" class="figure absolute-grow">
-          <img :src="slide.img" class="absolute-center figure__img" :alt="slide.img" />
+          <img
+            :src="useSizedImage({ name: slide.img, width: 508, height: 508 })"
+            class="absolute-center figure__img"
+            :alt="slide.img"
+          />
         </a>
       </div>
       <div class="card__body">
@@ -57,6 +61,7 @@ import { mapActions } from 'vuex';
 
 import AppBadge from './AppBadge.vue';
 import AppButton from './AppButton.vue';
+import { useSizedImage } from '~/helpers';
 
 export default {
   name: 'AppCard',
@@ -75,6 +80,8 @@ export default {
 
   methods: {
     ...mapActions({ addToCart: 'cart/addToCart' }),
+
+    useSizedImage,
 
     onAddToCart() {
       const payload = {

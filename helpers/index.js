@@ -66,13 +66,6 @@ const useWithExcludedKeys = (originalObject, array) => {
   return Object.fromEntries(filteredPairs);
 };
 
-// const useCollectionUniqueByKey = (originalObject, key) =>
-//   Object.values(originalObject).reduce(
-//     (acc, item, index) =>
-//       acc[item[key]] !== undefined ? { ...acc, [item[key]]: acc[item[key]] + 1 } : { ...acc, [item[key]]: 1 },
-//     {}
-//   );
-
 const useCollectionUniqueByKey = (originalObject, key) =>
   Object.values(originalObject).reduce((acc, item, index) => {
     acc[item[key]] = acc[item[key]] ? acc[item[key]] + 1 : 1;
@@ -91,6 +84,11 @@ const useFixedSumByKey = (originalObject, pathToValue, fixedNumber) => {
     .toFixed(fixedNumber);
 };
 
+const useSizedImage = ({ name, width = 60, height = 60 }) => {
+  const size = width && height ? `${height}x${width}` : 'original';
+  return `${process.env.fileUrl}/${size}/${name}`;
+};
+
 export {
   useClassName,
   useClassNameProp,
@@ -105,5 +103,6 @@ export {
   useCollectionUniqueByKey,
   useArrayUniqueByKey,
   useValueFromObject,
-  useFixedSumByKey
+  useFixedSumByKey,
+  useSizedImage
 };

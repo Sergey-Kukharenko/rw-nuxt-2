@@ -34,6 +34,7 @@
       </div>
       <div class="goods" :class="{ active: itemsVisibility }">
         <div v-for="item in orderItems" :key="item.offer_id" class="goods__item">
+          {{item}}
           <div class="goods__item-picture">
             <img :src="item.image.filename" class="goods__item-picture--img" :alt="item.image.alt_text" />
           </div>
@@ -70,7 +71,7 @@ export default {
   name: 'CheckoutOrder',
 
   components: { AppInput },
-  
+
   data() {
     return {
       bonuses: false,
