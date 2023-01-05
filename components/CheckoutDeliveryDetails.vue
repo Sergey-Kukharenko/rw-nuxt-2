@@ -132,7 +132,7 @@ export default {
     onClickAddressItem(item, close, setLabel) {
       this.form.addressSelect = item.id;
       setLabel(item.label);
-      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.address, value: item.label });
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.address, status: !!item.label });
       close();
     },
 
@@ -154,6 +154,10 @@ export default {
           this.modalForm[key] = this.deliveryDetails.postal_code;
         }
       });
+
+      if (this.form.address) {
+        this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.address });
+      }
     },
 
     async saveAddress() {
@@ -170,7 +174,7 @@ export default {
       await this.$store.dispatch('checkout/setCheckoutAddress', {
         ...props,
         postal_code: postalCode,
-        full_address: 'test'
+        full_address: this.form.address
       });
 
       this.form.address = `${props.address1} ${props.address2}`;
@@ -185,7 +189,7 @@ export default {
       }
 
       await this.$store.dispatch('checkout/setCheckoutAddress', {
-        full_address: 'Test',
+        full_address: this.form.address,
         comment: value
       });
 

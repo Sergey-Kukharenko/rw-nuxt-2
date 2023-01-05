@@ -5,6 +5,7 @@
       :mask="$refs['number-input']?.phoneNumberExample?.replace(/\d/g, '#')"
       size="x-large"
       :placeholder="$refs['number-input']?.phoneNumberExample"
+      :error="error"
       @input="onInput"
     >
       <template #left>
@@ -17,9 +18,6 @@
         />
       </template>
     </app-input>
-    <div v-show="error" class="error">
-      {{ error }}
-    </div>
   </div>
 </template>
 

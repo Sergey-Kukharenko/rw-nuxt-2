@@ -24,16 +24,16 @@ export const mutations = {
 
   setToken(state, payload) {
     state.token = payload;
-  } 
+  }
 };
 
 export const actions = {
   async fetchToken({ commit }) {
     try {
       const { token } = await this.$axios.$get('/session/')
-      
       commit('setToken', token)
-      this.$cookies.set('token', token)
+
+      return token
     } catch (err) {
       console.error(err)
     }

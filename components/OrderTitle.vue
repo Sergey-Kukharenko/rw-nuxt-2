@@ -1,13 +1,20 @@
 <template>
   <div class="title">
     <div class="title__label">The order is awaiting payment</div>
-    <div class="title__link">Please pay for the order</div>
+    <div v-if="!isPaid" class="title__link">Please pay for the order</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'OrderTitle'
+  name: 'OrderTitle',
+
+  props: {
+    isPaid: {
+      type: Boolean,
+      default: false
+    }
+  }
 };
 </script>
 

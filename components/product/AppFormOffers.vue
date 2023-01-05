@@ -97,13 +97,20 @@ export default {
   },
 
   methods: {
-    ...mapActions({ addToCart: 'cart/addToCart' }),
+    ...mapActions({
+      addToCart: 'cart/addToCart',
+      addToFavorites: 'favorites/addToFavorites',
+      removeFromFavorites: 'favorites/removeFromFavorites',
+    }),
 
     onSetOffer(payload) {
       this.offer = payload;
     },
 
     toggleLike() {
+      const action = this.like ? 'removeFromFavorites' : 'addToFavorites';
+      this[action](this.product.id);
+
       this.like = !this.like;
     },
 

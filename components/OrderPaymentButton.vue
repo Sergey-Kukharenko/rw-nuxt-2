@@ -1,30 +1,32 @@
 <template>
   <client-only>
-    <div v-if="isMounted" class="payment__button">
-      <template v-if="isPaypalPaymentMethod">
-        <paypal-checkout
-          env="sandbox"
-          :amount="$options.PAYPAL.amount"
-          :currency="$options.PAYPAL.currency"
-          :button-style="$options.PAYPAL.styles"
-          :client="$options.PAYPAL.credentials"
-          :experienc="$options.PAYPAL.experienceOptions"
-          @payment-completed="paypalPaymentCompleted"
-        >
-        </paypal-checkout>
-      </template>
-      <template v-if="isStripePaymentMethod">
-        <stripe-checkout
-          ref="checkoutRef"
-          mode="payment"
-          :pk="$options.STRIPE.publicKey"
-          :line-items="$options.STRIPE.paymentConf.lineItems"
-          :success-url="$options.STRIPE.successURL"
-          :cancel-url="$options.STRIPE.cancelURL"
-          @loading="(v) => (loading = v)"
-        />
-        <app-button theme="green" stretch="full" @click="payByStripe">Go to payment</app-button>
-      </template>
+    <div class="payment__wrapper">
+      <div v-if="isMounted" class="payment__button">
+        <template v-if="isPaypalPaymentMethod">
+          <paypal-checkout
+            env="sandbox"
+            :amount="$options.PAYPAL.amount"
+            :currency="$options.PAYPAL.currency"
+            :button-style="$options.PAYPAL.styles"
+            :client="$options.PAYPAL.credentials"
+            :experienc="$options.PAYPAL.experienceOptions"
+            @payment-completed="paypalPaymentCompleted"
+          >
+          </paypal-checkout>
+        </template>
+        <template v-if="isStripePaymentMethod">
+          <stripe-checkout
+            ref="checkoutRef"
+            mode="payment"
+            :pk="$options.STRIPE.publicKey"
+            :line-items="$options.STRIPE.paymentConf.lineItems"
+            :success-url="$options.STRIPE.successURL"
+            :cancel-url="$options.STRIPE.cancelURL"
+            @loading="(v) => (loading = v)"
+          />
+          <app-button theme="green" stretch="full" @click="payByStripe">Go to payment</app-button>
+        </template>
+      </div>
     </div>
   </client-only>
 </template>

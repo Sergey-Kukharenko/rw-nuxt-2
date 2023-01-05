@@ -18,7 +18,7 @@ export default {
   name: 'AppHeaderCheckoutOrder',
 
   computed: {
-    ...mapGetters({ price: 'cart/price' })
+    ...mapGetters({ price: 'cart/getPrice' })
   }
 };
 </script>

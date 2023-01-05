@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="product">
-      <basket-product-image :url="imageUrl" />
+      <basket-product-image :url="useSizedImage({ name: imageUrl, width: 280, height: 280 })" />
       <div class="product__info">
         <div class="product__info-price">
           <div>
@@ -17,7 +17,7 @@
             <basket-product-price :price="price" :old-price="oldPrice" />
             <div class="product__items">
               <basket-button size="small" theme="grey">
-                <div>{{count}} item</div>
+                <div>{{ count }} item</div>
                 <svg-icon class="product__item-icon" name="chevron" />
               </basket-button>
             </div>
@@ -40,6 +40,8 @@
 
 <script>
 import { mapActions } from 'vuex';
+
+import { useSizedImage } from '~/helpers';
 
 export default {
   name: 'BasketProduct',
@@ -116,7 +118,7 @@ export default {
       };
 
       const action = oldValue < value ? 'addToCart' : 'removeFromCart';
-      this[action](payload)
+      this[action](payload);
     }
   },
 
@@ -124,7 +126,9 @@ export default {
     ...mapActions({
       addToCart: 'cart/addToCart',
       removeFromCart: 'cart/removeFromCart'
-    })
+    }),
+
+    useSizedImage
   }
 };
 </script>

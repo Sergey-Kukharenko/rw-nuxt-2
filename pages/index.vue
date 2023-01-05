@@ -3,7 +3,7 @@
     <app-promotions />
     <app-popular-categories />
     <app-section v-if="isBestBouquets" :section="bestBouquets" name="best-bouquets" />
-    <app-section-sm v-if="isRecipient" :section="recipient" name="recipient" />
+    <app-section-sm v-if="isRecipient" :section="recipient" use-local-path-to-img name="recipient" />
     <app-section v-if="isSpecialOffers" :section="specialOffers" name="special-offers" theme="custom" />
     <app-reviews />
     <app-section v-if="isUnderPounds" :section="underPounds" name="under-pounds" theme="custom" />
@@ -19,7 +19,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
-import { useObjectNotEmpty } from '~/helpers';
+import { useArrayNotEmpty } from '~/helpers';
 
 import AppSection from '@/components/shared/AppSection.vue';
 import AppSectionSm from '@/components/shared/AppSectionSm';
@@ -43,27 +43,27 @@ export default {
     }),
 
     isBestBouquets() {
-      return useObjectNotEmpty(this.bestBouquets);
+      return useArrayNotEmpty(this.bestBouquets?.list);
     },
 
     isRecipient() {
-      return useObjectNotEmpty(this.recipient);
+      return useArrayNotEmpty(this.recipient?.list);
     },
 
     isSpecialOffers() {
-      return useObjectNotEmpty(this.specialOffers);
+      return useArrayNotEmpty(this.specialOffers?.list);
     },
 
     isUnderPounds() {
-      return useObjectNotEmpty(this.underPounds);
+      return useArrayNotEmpty(this.underPounds?.list);
     },
 
     isAutumnCollection() {
-      return useObjectNotEmpty(this.autumnCollection);
+      return useArrayNotEmpty(this.autumnCollection?.list);
     },
 
     isPickBouquet() {
-      return useObjectNotEmpty(this.pickBouquet);
+      return useArrayNotEmpty(this.pickBouquet?.list);
     }
   },
 

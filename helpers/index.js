@@ -33,13 +33,13 @@ const useBreadCrumbs = (route) => {
   return route.path.split('/').reduce((array, path, idx) => {
     idx === 0
       ? array.push({
-          path: '/',
-          text: 'main'
-        })
+        path: '/',
+        text: 'main'
+      })
       : array.push({
-          path: array[idx - 1].path + (idx > 1 ? '/' : '') + path,
-          text: path
-        });
+        path: array[idx - 1].path + (idx > 1 ? '/' : '') + path,
+        text: path
+      });
 
     return array;
   }, []);
@@ -56,6 +56,10 @@ const useStringSwappedValues = (str, mapKeys) => {
 
 const useObjectNotEmpty = (obj) => {
   return Object.keys(obj).length !== 0;
+};
+
+const useArrayNotEmpty = (arr) => {
+  return arr && arr.length;
 };
 
 const useStringBasedOnDevice = (device, str) => (device ? str : '');
@@ -85,7 +89,7 @@ const useFixedSumByKey = (originalObject, pathToValue, fixedNumber) => {
 };
 
 const useSizedImage = ({ name, width = 60, height = 60 }) => {
-  const size = width && height ? `${height}x${width}` : 'original';
+  const size = width && height ? `${height}x${width}` : "original";
   return `${process.env.fileUrl}/${size}/${name}`;
 };
 
@@ -98,6 +102,7 @@ export {
   useBreadCrumbs,
   useStringSwappedValues,
   useObjectNotEmpty,
+  useArrayNotEmpty,
   useStringBasedOnDevice,
   useWithExcludedKeys,
   useCollectionUniqueByKey,

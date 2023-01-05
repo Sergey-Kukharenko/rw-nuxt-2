@@ -10,10 +10,9 @@
 
 <script>
 import { mapGetters } from 'vuex';
+import { useClassName, useSetClassName } from '@/helpers';
 
 import AppCounter from '@/components/shared/AppCounter';
-
-import { useClassName, useSetClassName } from '@/helpers';
 
 export default {
   name: 'AppCart',

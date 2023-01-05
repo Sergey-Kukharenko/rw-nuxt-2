@@ -212,7 +212,7 @@ export default {
 
       setLabel(`${item.label}, ${price}`);
       this.setInterval({ time: item.label });
-      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, value: item.label });
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime, status: !!item.label });
       close();
     },
 
@@ -257,6 +257,10 @@ export default {
       } else {
         this.$refs.dateTab.active = 2;
         this.daySelectIndex = checkoutDate.getDay() - date.getDay();
+      }
+
+      if (time && checkoutDate) {
+        this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.dateTime });
       }
     },
 

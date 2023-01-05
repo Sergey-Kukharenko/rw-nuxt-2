@@ -28,6 +28,10 @@ export default {
     OrderFooter,
     AppHeader: () => import('@/components/header/AppHeader'),
     AppHeaderMobile: () => import('~/components/header/mobile/AppHeaderMobile'),
+  },
+
+  asyncData() {
+    
   }
 };
 </script>

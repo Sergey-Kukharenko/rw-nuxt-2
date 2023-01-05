@@ -1,9 +1,9 @@
 import * as AxiosLogger from 'axios-logger';
 
-export default function ({ store, app: { $axios }, redirect }) {
+export default function ({ store, app: { $axios }, isDev, $cookies }) {
   $axios.create({
     baseURL: process.env.BASE_URL || 'https://dev-api.myflowers.co.uk/v1',
-    timeout: 60000
+    timeout: 60000,
     // withCredentials: true
   });
 
@@ -12,23 +12,27 @@ export default function ({ store, app: { $axios }, redirect }) {
   });
 
   $axios.onRequest((config) => {
-    const auth = store.state.auth
+    const token = $cookies.get('token')
 
-    config.headers.Authorization = auth.token ? `Bearer ${auth.token}` : ''
+    config.headers.Authorization = token ? `Bearer ${token}` : ''
 
-    return AxiosLogger.requestLogger(config)
+    return isDev ? AxiosLogger.requestLogger(config) : config
   })
 
-  $axios.onResponse(AxiosLogger.responseLogger)
-
-  $axios.onError(async (error) => {
-    const statusCode = error?.response?.status
-
-    if ([401, 403].includes(statusCode)) {
-      await store.dispatch('auth/fetchToken')
-    }
-
-    return AxiosLogger.errorLogger(error)
+  $axios.onResponse((response) => {
+    return isDev ? AxiosLogger.responseLogger(response) : response
   })
+
+  $axios.onError(
+    // async
+    (error) => {
+      const statusCode = error?.response?.status
+
+      if ([401, 403].includes(statusCode)) {
+        // await store.dispatch('auth/fetchToken')
+      }
+
+      return isDev ? AxiosLogger.errorLogger(error) : error
+    })
 
 }

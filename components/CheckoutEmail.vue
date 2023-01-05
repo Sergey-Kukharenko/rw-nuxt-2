@@ -49,7 +49,7 @@ export default {
 
   methods: {
     onInput(value) {
-      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.email, value });
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.email, status: !!value });
     }
   }
 };

@@ -2,7 +2,7 @@
   <main class="order">
     <section class="order__wrapper">
       <div class="order__main">
-        <order-title/>
+        <order-title :is-paid="isPaid" />
         <order-panel
           title="Order Details"
           :icon="detailsIcon"
@@ -12,35 +12,43 @@
         />
         <template v-if="isDetailVisible">
           <order-panel title="Recipient" icon="user-outline">
-            <div>Maria Sazontova</div>
-            <div>+7 (999) 123-45-67</div>
+            <div v-if="recipientData.name">{{ recipientData.name }}</div>
+            <div v-if="recipientData.phone">{{ recipientData.phone }}</div>
           </order-panel>
           <order-panel title="Delivery" icon="place-outline">
-            <div>15 Westferry Road, London, E14 8FQ, Apartment 813</div>
-            <div>20 May 2022; 3:00 - 6:00 pm, free delivery</div>
+            <div v-if="fullAddress">{{ fullAddress }}</div>
+            <div>
+              <template v-if="intervalData.date"> {{ intervalData.date }}; </template>
+              <template v-if="intervalData.time"> {{ intervalData.time }}, </template>
+              {{ deliveryAmount }}
+            </div>
           </order-panel>
-          <order-panel class="order-composition" title="Order composition" icon="flower-box">
+          <order-panel v-if="orderItems.length" class="order-composition" title="Order composition" icon="flower-box">
             <div class="order-items">
-              <div v-for="item in 3" :key="item" class="order-items__item item">
+              <div v-for="(item, index) in orderItems" :key="index" class="order-items__item item">
                 <div class="item__picture">
-                  <img src="https://via.placeholder.com/48" class="item__img" alt=""/>
+                  <img
+                    :src="useSizedImage({ name: item.image.filename })"
+                    class="item__img"
+                    :alt="item.image.alt_text"
+                  />
                 </div>
-                <div class="item__text">A bouquet of 29 peonies with addition of greenery</div>
+                <div class="item__text">{{ item.title }}</div>
               </div>
             </div>
           </order-panel>
           <div class="order-total">
             <div class="order-total__item">Total</div>
-            <div class="order-total__item">£ 105</div>
+            <div class="order-total__item">£ {{ totalSum }}</div>
           </div>
         </template>
-        <order-panel title="Payment" icon="money-circle-outline">
+        <order-panel v-if="!isPaid" title="Payment" icon="money-circle-outline">
           <template #top>
             <div class="change-payment" @click="openPaymentSelect">Change</div>
           </template>
           <template #full>
             <div class="select-payment">
-              <svg-icon :name="paymentMethod.logo" class="select-payment__icon"/>
+              <svg-icon :name="paymentMethod.logo" class="select-payment__icon" />
               <app-select
                 ref="payment-select"
                 :placeholder="paymentMethod.label"
@@ -52,12 +60,12 @@
                     <app-radio v-model="paymentMethod.label" :name="item.label" :has-icon="hasRadioIcon">
                       <div class="payment-item">
                         <div class="payment-item__logo">
-                          <svg-icon :name="item.logo" class="payment-item__logo-icon"/>
+                          <svg-icon :name="item.logo" class="payment-item__logo-icon" />
                         </div>
                         {{ item.label }}
                         <div class="payment-item__icons">
                           <div v-for="icon in item.methodIcons" :key="icon" class="payment-item__icon-item">
-                            <svg-icon :name="icon" class="payment-item__icon"/>
+                            <svg-icon :name="icon" class="payment-item__icon" />
                           </div>
                         </div>
                       </div>
@@ -74,19 +82,19 @@
             </div>
           </template>
         </order-panel>
-        <order-payment-button :payment-method="paymentMethod"/>
-        <div class="payment__promo">
-          <order-promo/>
+        <order-payment-button v-if="!isPaid" :payment-method="paymentMethod" />
+        <div v-if="isPaid" class="payment__promo">
+          <order-promo />
         </div>
       </div>
-      <order-detail @cancel="openModal"/>
+      <order-detail @cancel="openModal" />
     </section>
-    <div class="payment__promo--mobile">
-      <order-promo/>
+    <div v-if="isPaid" class="payment__promo--mobile">
+      <order-promo />
     </div>
     <div class="order-cancel" @click="openModal('OrderCancel')">Cancel the order</div>
     <app-modal :visible="isModalVisible" theme="centered" @close="closeModal">
-      <component :is="currModal" @close="closeModal" @cancel-order="cancelOrder"/>
+      <component :is="currModal" @close="closeModal" @cancel-order="cancelOrder" />
     </app-modal>
   </main>
 </template>
@@ -98,7 +106,8 @@ import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
 import AppModal from '~/components/shared/AppModal';
 
-import {disableScroll, enableScroll} from '~/helpers/scrollLock';
+import { disableScroll, enableScroll } from '~/helpers/scrollLock';
+import { useSizedImage } from '~/helpers';
 
 import paymentMethodsData from '~/data/payment-methods';
 
@@ -121,11 +130,16 @@ export default {
     return {
       loading: false,
 
-      paymentMethod: {...STRIPE_METHOD},
+      paymentMethod: { ...STRIPE_METHOD },
       currModal: '',
       isDetailVisible: false,
       isModalVisible: false
     };
+  },
+
+  async fetch({ store }) {
+    await store.dispatch('checkout/fetchCheckout');
+    await store.dispatch('checkout/fetchPaidCheckout');
   },
 
   PAYMENT_METHODS: paymentMethodsData,
@@ -137,11 +151,47 @@ export default {
 
     hasRadioIcon() {
       return this.$device.isMobile;
+    },
+
+    recipientData() {
+      return this.$store.getters['checkout/getCheckout']?.recipient || {};
+    },
+
+    fullAddress() {
+      return this.$store.getters['checkout/getCheckout']?.shipping_address?.full_address;
+    },
+
+    intervalData() {
+      return this.$store.getters['checkout/getCheckout']?.interval || {};
+    },
+
+    deliveryAmount() {
+      return +this.$store.getters['checkout/getCheckout']?.delivery_amount
+        ? `£ ${this.$store.getters['checkout/getCheckout']?.delivery_amount}`
+        : 'Free';
+    },
+
+    orderItems() {
+      return this.$store.getters['checkout/getCheckout']?.positions ?? [];
+    },
+
+    totalSum() {
+      return this.$store.getters['checkout/getCheckout']?.total_sum ?? 0;
+    },
+
+    isPaid() {
+      return this.$store.getters['checkout/isPaidOrder'];
     }
   },
 
+  mounted() {
+    this.initPaymentMethod();
+  },
+
   methods: {
-    onClickPaymentSystem({label, logo, name}, close, setLabel) {
+    useSizedImage,
+
+    onClickPaymentSystem({ label, logo, name }, close, setLabel) {
       setLabel(label);
       this.setIcon(logo);
       this.paymentMethod.name = name;
@@ -174,7 +224,15 @@ export default {
 
     cancelOrder() {
       this.closeModal();
-      this.$router.push({name: 'index'});
+      this.$router.push({ name: 'index' });
+    },
+
+    initPaymentMethod() {
+      const currPaymentMethod = this.$store.getters['checkout/getPaymentMethod'];
+
+      if (this.paymentMethod.name !== currPaymentMethod) {
+        this.paymentMethod = paymentMethodsData.find((el) => el.name === currPaymentMethod);
+      }
     }
   }
 };

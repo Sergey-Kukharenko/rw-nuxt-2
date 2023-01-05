@@ -1,6 +1,6 @@
 <template>
   <checkout-pane title="Recipient" :delim="true">
-    <!-- <div class="recipient__select">
+    <div class="recipient__select">
       <div class="recipient__radio-row">
         <app-radio v-model="recipient" name="myself"> I’ll get order by myself </app-radio>
       </div>
@@ -8,20 +8,16 @@
         <app-radio v-model="recipient" name="another"> Another recipient </app-radio>
       </div>
     </div>
-    <div v-if="recipient === 'another'" class="recipient__another-name">
-      <app-input placeholder="Recipient name" value="" size="x-large" />
-      <app-input placeholder="And phone number" value="" size="x-large" />
-    </div> -->
 
-    <div class="recipient__another-name">
-      <app-input :value="form.name" placeholder="Recipient name" size="x-large" @input="setName" />
+    <div v-if="recipient === 'another'" class="recipient__another-name">
       <app-input
-        placeholder="And phone number"
-        :value="form.phone.value"
+        :value="form.name.value"
+        placeholder="Recipient name"
         size="x-large"
-        :error="form.phone.errorMsg"
-        @input="setNumber"
+        :error="form.name.errorMsg"
+        @input="setName"
       />
+      <app-number-input :error="form.phone.errorMsg" @set-number="setNumber" />
     </div>
   </checkout-pane>
 </template>
@@ -29,30 +25,45 @@
 <script>
 import debounce from 'lodash.debounce';
 
-// import AppRadio from '~/components/shared/AppRadio';
+import AppRadio from '~/components/shared/AppRadio';
 import AppInput from '~/components/shared/AppInput';
 import authManager from '~/mixins/authManager';
 
-import { useObjectNotEmpty } from '~/helpers';
-import { CHECKOUT_INPUT_DELAY } from '~/constants/index';
+import { CHECKOUT_INPUT_DELAY, CHECKOUT_FORM_KEYS } from '~/constants';
 
 export default {
   name: 'CheckoutRecipient',
 
   components: {
-    // AppRadio,
-    AppInput
-    // AppNumberInput: () => import('~/components/shared/AppNumberInput')
+    AppRadio,
+    AppInput,
+    AppNumberInput: () => import('~/components/shared/AppNumberInput')
   },
 
   mixins: [authManager],
+
+  props: {
+    nameError: {
+      type: String,
+      default: ''
+    },
+
+    phoneError: {
+      type: String,
+      default: ''
+    }
+  },
 
   data() {
     return {
       recipient: 'myself',
 
       form: {
-        name: '',
+        name: {
+          value: '',
+          errorMsg: ''
+        },
+
         phone: {
           value: '',
           errorMsg: ''
@@ -66,12 +77,18 @@ export default {
       return this.$store.getters['checkout/getCheckout']?.recipient || {};
     },
 
-    recipientDataFromBusket() {
-      return this.$store.getters['user/getRecipient'] || {};
+    hasRecipientData() {
+      return this.recipientData?.name && this.recipientData?.phone;
+    }
+  },
+
+  watch: {
+    nameError(val) {
+      this.form.name.errorMsg = val;
     },
 
-    isRecipientDataFromBusket() {
-      return useObjectNotEmpty(this.recipientDataFromBusket);
+    phoneError(val) {
+      this.form.phone.errorMsg = val;
     }
   },
 
@@ -80,22 +97,26 @@ export default {
   },
 
   methods: {
-    setNumber: debounce(function (value) {
-      this.form.phone = { ...this.form.phone, value, errorMsg: this.hasPhoneError(!!value) };
+    setNumber: debounce(function ({ value, isValid }) {
+      this.form.phone = { ...this.form.phone, value, errorMsg: value && this.hasPhoneError(!!value) };
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.phone, status: isValid });
 
-      if (this.form.phone.errorMsg) {
+      if (this.form.phone.errorMsg || !value) {
         return;
       }
 
-      this.setRecipient({ name: this.form.name, phone: this.form.phone.value });
+      this.setRecipient({ name: this.form.name.value, phone: this.form.phone.value });
     }, CHECKOUT_INPUT_DELAY),
 
     setName: debounce(function () {
-      if (!this.form.name) {
+      this.form.name.errorMsg = this.isEmptyField(this.form.name.value);
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.name, status: !this.form.name.errorMsg });
+
+      if (!this.form.name.errorMsg) {
         return;
       }
 
-      this.setRecipient({ name: this.form.name, phone: this.form.phone.value });
+      this.setRecipient({ name: this.form.name.value, phone: this.form.phone.value });
     }, CHECKOUT_INPUT_DELAY),
 
     setRecipient(payload) {
@@ -103,16 +124,14 @@ export default {
     },
 
     initRecipientData() {
-      if (this.isRecipientDataFromBusket) {
-        this.form.name = this.recipientDataFromBusket.name;
-        this.form.phone.value = this.recipientDataFromBusket.phone;
+      if (!this.hasRecipientData) {
+        this.recipient = 'another';
 
-        this.setRecipient({ name: this.form.name, phone: this.form.phone.value });
         return;
       }
 
-      if (this.recipientData?.name) this.form.name = this.recipientData?.name;
-      if (this.recipientData?.phone) this.form.phone.value = this.recipientData?.phone;
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.name });
+      this.$emit('set-field', { key: CHECKOUT_FORM_KEYS.phone });
     }
   }
 };

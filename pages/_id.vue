@@ -58,11 +58,14 @@ export default {
       description: '',
 
       positions: [],
-      price: {}
+      price: {},
+      like: null,
     };
 
     try {
       const { data: response } = await $axios.$get(`/offers${path}`);
+
+      console.log(response);
 
       data.seo = response.seo;
       data.title = response.title;
@@ -71,6 +74,7 @@ export default {
       data.id = response.id;
       data.positions = response.positions;
       data.price = response.price;
+      data.like = response.like;
     } catch (error) {
       console.error(error);
     }
@@ -114,11 +118,13 @@ export default {
       const id = this.id;
       const positions = this.positions;
       const price = this.price;
+      const like = this.like;
 
       return {
         id,
         positions,
-        price
+        price,
+        like
       };
     }
   },

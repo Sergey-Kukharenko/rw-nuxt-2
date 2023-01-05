@@ -13,7 +13,7 @@
           <app-badge v-if="slide.sale" theme="red" class="header__badge">
             {{ slide.sale.percent }}
           </app-badge>
-          <button class="like">
+          <button :class="classNames" @click="toggleLike">
             <svg-icon name="heart" class="like__icon" />
           </button>
         </div>
@@ -29,7 +29,7 @@
         <div class="rating">
           <div class="rating__text">{{ slide.rating }}</div>
           <svg-icon name="star" class="rating__icon" />
-          <div class="rating__reviews">12 560</div>
+          <div class="rating__reviews">{{ slide.reviews }}</div>
         </div>
 
         <div class="title">
@@ -61,7 +61,7 @@ import { mapActions } from 'vuex';
 
 import AppBadge from './AppBadge.vue';
 import AppButton from './AppButton.vue';
-import { useSizedImage } from '~/helpers';
+import { useSizedImage, useToggleClassName } from '~/helpers';
 
 export default {
   name: 'AppCard',
@@ -78,10 +78,33 @@ export default {
     }
   },
 
+  data() {
+    return {
+      like: this.slide.like
+    };
+  },
+
+  computed: {
+    classNames() {
+      return useToggleClassName(this.like, 'like', 'active');
+    }
+  },
+
   methods: {
-    ...mapActions({ addToCart: 'cart/addToCart' }),
+    ...mapActions({
+      addToCart: 'cart/addToCart',
+      addToFavorites: 'favorites/addToFavorites',
+      removeFromFavorites: 'favorites/removeFromFavorites'
+    }),
 
     useSizedImage,
+
+    toggleLike() {
+      const action = this.like ? 'removeFromFavorites' : 'addToFavorites';
+      this[action](this.slide.id);
+
+      this.like = !this.like;
+    },
 
     onAddToCart() {
       const payload = {
@@ -342,11 +365,14 @@ export default {
 }
 
 .like {
+  color: #fff;
+
   &__icon {
     display: block;
-    color: #fff;
     mix-blend-mode: normal;
-    stroke: #7c7c7c;
+    color: inherit;
+    fill: currentColor;
+    stroke: $color-white-grey;
 
     @include gt-sm {
       width: 20px;
@@ -356,6 +382,16 @@ export default {
     @include lt-md {
       width: 13.33px;
       height: 12.33px;
+    }
+  }
+
+  &--active {
+    color: $color-like-active;
+
+    .like {
+      &__icon {
+        stroke: #fff;
+      }
     }
   }
 }

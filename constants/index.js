@@ -54,6 +54,8 @@ const AUTH_CORRECT_CODE = '1234';
 const CODE_INPUT_DEFAULT_COUNT = 4;
 
 const CHECKOUT_FORM_KEYS = {
+  name: 'name',
+  phone: 'phone',
   address: 'address',
   dateTime: 'dateTime',
   email: 'email'

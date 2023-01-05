@@ -2,30 +2,41 @@
   <div class="detail">
     <div class="detail__panel panel">
       <div class="detail__title">Order details</div>
-      <div class="panel__items items">
+      <div v-if="orderItems.length" class="panel__items items">
         <div class="items__top">
           <div class="items__top-column" @click="toggleItems">
-            3 items <svg-icon name="arrow-grey" class="items__icon" />
+            {{ orderItems.length }} items <svg-icon name="arrow-grey" class="items__icon" />
           </div>
-          <div class="items__top-column items__price">£ 94</div>
+          <div class="items__top-column items__price">£ {{ orderCost.positionsCost }}</div>
         </div>
         <div class="items__body goods" :class="{ active: itemsVisibility }">
-          <div v-for="item in 3" :key="item" class="goods__item">
+          <div v-for="(item, idx) in orderItems" :key="idx" class="goods__item">
             <div class="goods__item-picture">
-              <img src="https://via.placeholder.com/48" class="goods__item-picture--img" alt="" />
+              <img
+                :src="useSizedImage({ name: item.image.filename })"
+                class="goods__item-picture--img"
+                :alt="item.image.alt_text"
+              />
             </div>
-            <div class="goods__item-title">A bouquet of 29 peonies with the addition of greenery</div>
+            <div class="goods__item-title">{{ item.title }}</div>
           </div>
         </div>
       </div>
-      <div class="panel__discount">
-        <div class="panel__discount-item">Sale <span class="sale">- £ 8</span></div>
-        <div class="panel__discount-item">Delivery <span class="delivery">Free</span></div>
+      <div v-if="orderCost.sale" class="panel__discount">
+        <div class="panel__discount-item">
+          Sale <span class="sale">- £ {{ orderCost.sale }}</span>
+        </div>
+        <div class="panel__discount-item">
+          Delivery <span class="delivery">{{ orderCost.deliveryAmout }}</span>
+        </div>
       </div>
       <div class="panel__total">
-        <div class="panel__total-item total">Total <span class="total__price">£ 86</span></div>
-        <div class="panel__total-item cashback">
-          Cashback <span class="cashback__price"><svg-icon class="cashback__icon" name="coins" />£0.4</span>
+        <div class="panel__total-item total">
+          Total <span class="total__price">£ {{ orderCost.totalSum }}</span>
+        </div>
+        <div v-if="orderCost.cashback" class="panel__total-item cashback">
+          Cashback
+          <span class="cashback__price"><svg-icon class="cashback__icon" name="coins" />£ {{ orderCost.cashback }}</span>
         </div>
       </div>
       <div class="panel__bottom">
@@ -48,6 +59,8 @@
 import AppButton from '@/components/shared/AppButton';
 import OrderCancel from '@/components/OrderCancel';
 
+import { useSizedImage } from '~/helpers';
+
 export default {
   name: 'OrderDetail',
 
@@ -61,7 +74,27 @@ export default {
     };
   },
 
+  computed: {
+    orderItems() {
+      return this.$store.getters['checkout/getCheckout']?.positions ?? [];
+    },
+
+    orderCost() {
+      return {
+        positionsCost: this.$store.getters['checkout/getCheckout']?.positions_cost ?? 0,
+        deliveryAmout: +this.$store.getters['checkout/getCheckout']?.delivery_amount
+          ? `£ ${this.$store.getters['checkout/getCheckout']?.delivery_amount}`
+          : 'Free',
+        totalSum: this.$store.getters['checkout/getCheckout']?.total_sum ?? 0,
+        cashback: +this.$store.getters['checkout/getCheckout']?.cashback ?? 0,
+        sale: +this.$store.getters['checkout/getCheckout']?.sale ?? 0
+      };
+    }
+  },
+
   methods: {
+    useSizedImage,
+
     toggleItems() {
       this.itemsVisibility = !this.itemsVisibility;
     },

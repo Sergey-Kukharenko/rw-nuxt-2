@@ -33,10 +33,13 @@
         <div class="order__text-price">£ {{ orderCost.positionsCost }}</div>
       </div>
       <div class="goods" :class="{ active: itemsVisibility }">
-        <div v-for="item in orderItems" :key="item.offer_id" class="goods__item">
-          {{item}}
+        <div v-for="(item, idx) in orderItems" :key="idx" class="goods__item">
           <div class="goods__item-picture">
-            <img :src="item.image.filename" class="goods__item-picture--img" :alt="item.image.alt_text" />
+            <img
+              :src="useSizedImage({ name: item.image.filename })"
+              class="goods__item-picture--img"
+              :alt="item.image.alt_text"
+            />
           </div>
           <div class="goods__item-title">{{ item.title }}</div>
         </div>
@@ -66,6 +69,8 @@
 
 <script>
 import AppInput from '~/components/shared/AppInput';
+
+import { useSizedImage } from '~/helpers';
 
 export default {
   name: 'CheckoutOrder',
@@ -99,6 +104,8 @@ export default {
   },
 
   methods: {
+    useSizedImage,
+
     toggleItems() {
       this.itemsVisibility = !this.itemsVisibility;
     },

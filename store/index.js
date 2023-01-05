@@ -1,23 +1,21 @@
 import { useStringBasedOnDevice } from '~/helpers';
 
 export const actions = {
-  async nuxtServerInit({ dispatch, commit, state }, {$cookies}) {
-    commit('auth/setToken', $cookies.get('token'))
-    await dispatch('auth/fetchToken')
+  async nuxtServerInit({ dispatch, state }, { $cookies }) {
+    const newToken = await dispatch('auth/fetchToken');
+    $cookies.set('token', newToken);
 
-    const token = state.auth.token
+    const { token } = state.auth;
 
     if (token) {
       try {
-        // TODO:
+        const suffix = useStringBasedOnDevice(this.$device.isMobileOrTablet, '-mob');
+        await dispatch('cart/fetchCart');
+        await dispatch('favorites/fetchFavorites');
+        await dispatch(`layout/fetchLayout`, suffix);
       } catch (e) {
         console.error(e);
       }
     }
-
-    await dispatch('cart/fetchCart');
-
-    const suffix = useStringBasedOnDevice(this.$device.isMobileOrTablet, '-mob');
-    await dispatch(`layout/fetchLayout`, suffix);
   }
 };

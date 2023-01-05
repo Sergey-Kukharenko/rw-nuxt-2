@@ -1,18 +1,33 @@
 export const state = () => ({
-  checkout: null
+  checkout: null,
+  isPaid: false,
+  paymentMethod: 'stripe'
 });
 
 export const mutations = {
-  setField(state, { name, value }) {
-    state[name] = value;
-  }
+  SET_STATE(state, payload) {
+    Object.keys(payload).forEach((key) => {
+      if (key in state) {
+        state[key] = payload[key];
+      }
+    });
+  },
 };
 
 export const actions = {
   async fetchCheckout({ commit }) {
     try {
-      const {data} = await this.$axios.$get('/checkout/')
-      commit('setField', { name: 'checkout', value: data })
+      const { data } = await this.$axios.$get('/checkout/')
+      commit('SET_STATE', { checkout: data })
+    } catch (err) {
+      console.error(err)
+    }
+  },
+
+  async fetchPaidCheckout({ commit }) {
+    try {
+      const { data } = await this.$axios.$get('/checkout/payment/paid/')
+      commit('SET_STATE', { isPaid: data?.success ?? false })
     } catch (err) {
       console.error(err)
     }
@@ -21,7 +36,7 @@ export const actions = {
   setCheckoutRecipent(_, payload) {
     try {
       this.$axios.$post('/checkout/recipient/', payload)
-    } catch(err) {
+    } catch (err) {
       console.error(err)
     }
   },
@@ -61,4 +76,6 @@ export const actions = {
 
 export const getters = {
   getCheckout: (state) => state.checkout,
+  isPaidOrder: (state) => state.isPaid,
+  getPaymentMethod: (state) => state.paymentMethod
 }

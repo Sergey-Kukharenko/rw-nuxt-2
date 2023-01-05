@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <div class="card__figure">
-      <img :src="slide.img" :alt="slide.img" class="card__img" />
+      <img :src="pathToImage" :alt="slide.img" class="card__img" />
     </div>
 
     <div class="card__title">{{ slide.title }}</div>
@@ -9,6 +9,8 @@
 </template>
 
 <script>
+import { useSizedImage } from '~/helpers';
+
 export default {
   name: 'AppCardSm',
 
@@ -16,7 +18,24 @@ export default {
     slide: {
       type: Object,
       default: () => ({})
+    },
+
+    useLocalPathToImg: {
+      type: Boolean,
+      default: false
     }
+  },
+
+  computed: {
+    pathToImage() {
+      return this.useLocalPathToImg
+        ? this.slide.img
+        : this.useSizedImage({ name: this.slide.img, width: 320, height: 320 });
+    }
+  },
+
+  methods: {
+    useSizedImage
   }
 };
 </script>
@@ -27,12 +46,12 @@ export default {
     overflow: hidden;
 
     @include gt-sm {
-      height: 144px;
+      min-height: 160px;
       border-radius: 16px;
     }
 
     @include lt-md {
-      height: 92px;
+      min-height: 92px;
       border-radius: 12px;
     }
   }

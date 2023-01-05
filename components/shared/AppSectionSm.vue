@@ -7,7 +7,7 @@
       </div>
 
       <app-section-grid-sm v-slot="slotProps" :slides="section.list" :theme="theme">
-        <app-card-sm :slide="{ ...slotProps }" />
+        <app-card-sm :slide="{ ...slotProps }" :use-local-path-to-img="useLocalPathToImg" />
       </app-section-grid-sm>
     </section>
   </div>
@@ -37,6 +37,11 @@ export default {
     name: {
       type: String,
       default: ''
+    },
+
+    useLocalPathToImg: {
+      type: Boolean,
+      default: false
     }
   },
 

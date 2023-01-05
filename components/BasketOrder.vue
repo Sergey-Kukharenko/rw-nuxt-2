@@ -33,27 +33,13 @@
     <template v-if="userNotLoggedIn">
       <div class="order__title" style="margin-top: 32px">Your details</div>
       <form class="form" @submit.prevent="onSubmit">
-        <basket-input
-          v-model="name"
-          style="margin-top: 16px"
-          size="large"
-          placeholder="Your name"
-          :validations="$v.name"
-        />
-        <basket-input
-          v-model="phone"
-          name="phone"
-          type="number"
-          style="margin-top: 8px"
-          size="large"
-          placeholder="Mobile phone"
-          :validations="$v.phone"
-        />
+        <app-input v-model="form.name.value" size="large" placeholder="Your name" />
+        <app-number-input :error="form.phone.errorMsg" @set-number="setNumber" />
         <basket-button style="margin-top: 24px" :stretch="true" align="center">Continue</basket-button>
         <div class="order__terms">
           By clicking on the button, you agree to the<br /><a href="#" target="_blank"
-        >Terms of personal data processing</a
-        >
+            >Terms of personal data processing</a
+          >
         </div>
       </form>
     </template>
@@ -61,16 +47,32 @@
 </template>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
-import { minLength, required } from 'vuelidate/lib/validators';
+import { mapGetters } from 'vuex';
+
+import authManager from '~/mixins/authManager';
 
 export default {
   name: 'BasketOrder',
 
+  components: {
+    AppInput: () => import('~/components/shared/AppInput'),
+    AppNumberInput: () => import('~/components/shared/AppNumberInput')
+  },
+
+  mixins: [authManager],
+
   data() {
     return {
-      name: '',
-      phone: ''
+      form: {
+        name: {
+          value: '',
+          errorMsg: ''
+        },
+        phone: {
+          errorMsg: '',
+          value: ''
+        }
+      }
     };
   },
 
@@ -81,38 +83,33 @@ export default {
       recipient: 'user/getRecipient'
     }),
 
+    isFormValid() {
+      return !this.form.name.errorMsg && !this.form.phone.errorMsg;
+    },
+
     userNotLoggedIn() {
       return !this.recipient;
     }
   },
 
   methods: {
-    ...mapActions({ setRecipient: 'user/setRecipient' }),
-
-    onSubmit() {
-      this.$v.$touch();
-
-      if (!this.$v.$invalid) {
-        const payload = {
-          name: this.name,
-          phone: this.phone
-        };
-
-        this.setRecipient(payload);
-        this.$router.push('/checkout')
-      }
-    }
-  },
-
-  validations: {
-    name: {
-      required,
-      minLength: minLength(2)
+    setNumber({ value }) {
+      this.form.phone = { ...this.form.phone, value };
     },
 
-    phone: {
-      required,
-      minLength: minLength(4)
+    async onSubmit() {
+      this.form.name.errorMsg = this.isEmptyField(this.form.name.value);
+      this.form.phone.errorMsg = this.hasPhoneError(this.form.phone.value);
+
+      if (this.isFormValid) {
+        const payload = {
+          name: this.form.name.value,
+          phone: this.form.phone.value
+        };
+
+        await this.$store.dispatch('checkout/setCheckoutRecipent', { ...payload });
+        this.$router.push({ name: 'checkout' });
+      }
     }
   }
 };
@@ -306,6 +303,16 @@ export default {
     flex-shrink: 0;
     width: 16px;
     height: 16px;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include lt-md {
+    gap: 12px;
   }
 }
 </style>

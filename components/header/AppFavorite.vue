@@ -1,31 +1,35 @@
 <template>
-  <a :class="classNames">
+  <nuxt-link :to="goToFavorites" :class="classNames">
     <div class="favorite__figure">
       <svg-icon name="heart" class="favorite__icon" />
       <app-counter v-if="isCount" :count="count" class="favorite__counter" />
     </div>
     <div class="favorite__figcaption">Favorite</div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
-import AppCounter from '@/components/shared/AppCounter';
+import { mapGetters } from 'vuex';
 import { useToggleClassName } from '@/helpers';
+
+import AppCounter from '@/components/shared/AppCounter';
 
 export default {
   name: 'AppFavorite',
 
   components: { AppCounter },
 
-  data() {
-    return {
-      count: 12
-    };
-  },
-
   computed: {
+    ...mapGetters({
+      count: 'favorites/getCount'
+    }),
+
     isCount() {
       return this.count > 0;
+    },
+
+    goToFavorites() {
+      return this.isCount ? '/favorites' : '';
     },
 
     classNames() {
@@ -80,10 +84,8 @@ export default {
   &--active {
     color: $color-favorite;
 
-    &:hover {
-      .favorite__figcaption {
-        color: inherit;
-      }
+    .favorite__figcaption {
+      color: inherit;
     }
   }
 }

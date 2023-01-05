@@ -23,12 +23,18 @@
       </div>
     </div>
     <div class="benefit__col">
-      <img :src="currBenefit.img" :alt="currBenefit.img" class="benefit__img" />
+      <img
+        :src="useSizedImage({ name: currBenefit.img, width: 192, height: 192 })"
+        class="benefit__img"
+        :alt="currBenefit.img"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { useSizedImage } from '~/helpers';
+
 export default {
   name: 'AppBenefitsCard',
 
@@ -69,7 +75,9 @@ export default {
         case this.hasNext && 'next':
           this.$emit('next');
       }
-    }
+    },
+
+    useSizedImage
   }
 };
 </script>

@@ -39,6 +39,8 @@ export default {
 <style lang="scss" scoped>
 .grid {
   display: grid;
+  max-width: 1064px;
+  margin: 0 auto;
 
   @include gt-sm {
     grid-template-columns: repeat(auto-fill, minmax(22%, 1fr));

@@ -2,7 +2,7 @@
   <checkout-pane title="Payment methods">
     <div class="payment">
       <div class="payment__tabs">
-        <basket-tab size="extra-large" :list="list">
+        <basket-tab size="extra-large" :list="$options.PAYMENT_METHODS" @click="onClickSelect">
           <template #default="{ item }">
             <div class="payment__tab-item">
               <svg-icon class="payment__icon-item" :name="item.icon" />
@@ -12,17 +12,17 @@
         </basket-tab>
       </div>
       <div class="payment__select">
-        <app-select ref="paymentSelect" size="x-large" placeholder="Payment methods" :list="list">
+        <app-select ref="paymentSelect" size="x-large" placeholder="Payment methods" :list="$options.PAYMENT_METHODS">
           <template #label>
             <div class="payment__select-label">
-              <svg-icon class="payment__icon-select" :name="list[select].iconSelect" />
-              <div>{{ list[select].label }}</div>
+              <svg-icon class="payment__icon-select" :name="$options.PAYMENT_METHODS[selectIndex].iconSelect" />
+              <div>{{ $options.PAYMENT_METHODS[selectIndex].label }}</div>
             </div>
           </template>
           <template #default="{ item, index, close }">
             <div class="payment__select-item" @click="onClickSelect(index, close)">
               <div class="payment__select-item-left">
-                <app-radio :value="select" :name="index" />
+                <app-radio :value="selectIndex" :name="index" />
                 <div>{{ item.label }}</div>
               </div>
               <div class="payment__select-item-right">
@@ -40,29 +40,33 @@
 import AppSelect from '~/components/shared/AppSelect';
 import AppRadio from '~/components/shared/AppRadio';
 
+import paymentMethods from '~/data/checkout-payment-methods';
+
 export default {
   name: 'CheckoutPaymentMethods',
-  components: { AppRadio, AppSelect },
+
+  components: {
+    AppRadio,
+    AppSelect
+  },
+
   data() {
     return {
-      list: [
-        {
-          icon: 'credit-card-bg',
-          iconSelect: 'bank-card',
-          label: 'Bank cards'
-        },
-        {
-          icon: 'paypal-bg',
-          iconSelect: 'paypal',
-          label: 'PayPal account'
-        }
-      ],
-      select: 0
+      selectIndex: 0
     };
   },
+
+  PAYMENT_METHODS: paymentMethods,
+
   methods: {
     onClickSelect(index, close) {
-      this.select = index;
+      this.selectIndex = index;
+      this.$store.commit('checkout/SET_STATE', { paymentMethod: paymentMethods[index].name });
+
+      if (!close) {
+        return;
+      }
+
       close();
     }
   }

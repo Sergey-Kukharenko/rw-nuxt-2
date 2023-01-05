@@ -1,7 +1,11 @@
 <template>
   <main class="checkout">
     <div class="checkout__recipient">
-      <checkout-recipient />
+      <checkout-recipient
+        :name-error="fields.name.errorMsg"
+        :phone-error="fields.phone.errorMsg"
+        @set-field="setField"
+      />
     </div>
     <div class="checkout__delivery-details">
       <checkout-delivery-details :error="fields.address.errorMsg" @set-field="setField" />
@@ -55,18 +59,28 @@ export default {
   data() {
     return {
       fields: {
+        name: {
+          isValid: false,
+          errorMsg: ''
+        },
+
+        phone: {
+          isValid: false,
+          errorMsg: ''
+        },
+
         address: {
-          value: '',
+          isValid: false,
           errorMsg: ''
         },
 
         dateTime: {
-          value: '',
+          isValid: false,
           errorMsg: ''
         },
 
         email: {
-          value: '',
+          isValid: false,
           errorMsg: ''
         }
       }
@@ -75,8 +89,8 @@ export default {
 
   computed: {
     isInvalidForm() {
-      return Object.keys(this.fields).some((key) => !this.fields[key].value);
-    }
+      return Object.keys(this.fields).some((key) => !this.fields[key].isValid);
+    },
   },
 
   methods: {
@@ -90,9 +104,9 @@ export default {
       }
 
       Object.keys(this.fields).forEach((key) => {
-        if (!this.fields[key].value) {
+        if (!this.fields[key].isValid) {
           if (key === 'email') {
-            this.fields[key].errorMsg = this.hasEmailError(this.fields[key].value);
+            this.fields[key].errorMsg = this.hasEmailError('');
 
             return;
           }
@@ -102,8 +116,8 @@ export default {
       });
     },
 
-    setField({ key, value }) {
-      this.fields[key].value = value;
+    setField({ key, status = true }) { 
+      this.fields[key].isValid = status;
     },
 
     resetErrors() {
