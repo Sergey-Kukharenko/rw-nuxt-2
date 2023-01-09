@@ -1,5 +1,13 @@
 <template>
-  <a class="card">
+  <nuxt-link
+    :to="{
+      name: 'category-slug',
+      params: {
+        slug
+      }
+    }"
+    class="card"
+  >
     <div class="container">
       <div class="group">
         <div class="title">
@@ -15,12 +23,19 @@
         <svg-icon name="arrow-right" class="icon" />
       </div>
     </div>
-  </a>
+  </nuxt-link>
 </template>
 
 <script>
 export default {
-  name: 'AppCardShowMore'
+  name: 'AppCardShowMore',
+
+  props: {
+    slug: {
+      type: String,
+      default: ''
+    }
+  }
 };
 </script>
 

@@ -82,6 +82,12 @@ const EMAIL = 'info@Myflowers.ru';
 
 const CHECKOUT_INPUT_DELAY = 3000
 
+const PAGINATION = {
+  limit: 12,
+  btnCount: 5,
+  blindValue: 3
+}
+
 export {
   LIST_ITEM_VIEW_COUNT,
   FILTER_TYPES,
@@ -96,5 +102,6 @@ export {
   INFO_BUTTONS,
   REVIEW_CARD_SYMBOLS_COUNT,
   EMAIL,
-  CHECKOUT_INPUT_DELAY
+  CHECKOUT_INPUT_DELAY,
+  PAGINATION
 };

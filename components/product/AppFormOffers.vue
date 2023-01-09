@@ -117,7 +117,7 @@ export default {
     onAddToCart() {
       const payload = {
         productId: this.product.id,
-        positionSlag: this.offer.title
+        positionSlug: this.offer.title
       };
 
       this.addToCart(payload);

@@ -16,8 +16,8 @@
     "@nuxtjs/axios": "^5.13.6",
     "@nuxtjs/svg-sprite": "^0.5.2",
     "@vue-stripe/vue-stripe": "^4.4.4",
+    "cookie-universal-nuxt": "^2.2.2",
     "core-js": "^3.19.3",
-    "js-cookie": "^3.0.1",
     "node-sass": "^7.0.1",
     "nuxt": "^2.15.8",
     "swiper": "^5.3.6",
@@ -32,7 +32,6 @@
     "vue-toastification": "latest",
     "vue2-teleport": "^1.0.1",
     "vuelidate": "^0.7.7",
-    "vuex-persistedstate": "^4.1.0",
     "webpack": "^4.46.0"
   },
   "devDependencies": {

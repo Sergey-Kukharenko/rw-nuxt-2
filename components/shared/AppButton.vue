@@ -23,7 +23,7 @@ export default {
       type: String,
       default: '',
       validate(value) {
-        return ['sm', 'pre-lg', 'lg'].includes(value);
+        return ['sm','md', 'pre-lg', 'lg'].includes(value);
       }
     },
 
@@ -188,6 +188,19 @@ export default {
       line-height: 12px;
       padding: 6px 18px;
       border-radius: 6px;
+    }
+  }
+
+  &--md {
+    font-family: $golos-medium;
+
+    @include gt-sm {
+      font-size: 16px;
+      padding: 0 30.52px;
+    }
+
+    @include lt-md {
+      padding: 0 44.52px;
     }
   }
 

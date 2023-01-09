@@ -114,7 +114,7 @@ export default {
     count(value, oldValue) {
       const payload = {
         productId: this.id,
-        positionSlag: this.title
+        positionSlug: this.title
       };
 
       const action = oldValue < value ? 'addToCart' : 'removeFromCart';

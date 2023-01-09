@@ -21,9 +21,9 @@ export const actions = {
     }
   },
 
-  async addToCart({ state, commit }, { productId, positionSlag }) {
+  async addToCart({ state, commit }, { productId, positionSlug }) {
     try {
-      const { data } = await this.$axios.$post(`/basket/${productId}/${positionSlag}`);
+      const { data } = await this.$axios.$post(`/basket/${productId}/${positionSlug}`);
       const formattedData = useWithExcludedKeys(data, ['object', 'id', 'positions']);
       commit('setCart', formattedData);
     } catch (e) {
@@ -31,9 +31,9 @@ export const actions = {
     }
   },
 
-  async removeFromCart({ state, commit }, { productId, positionSlag }) {
+  async removeFromCart({ state, commit }, { productId, positionSlug }) {
     try {
-      const { data } = await this.$axios.$delete(`/basket/${productId}/${positionSlag}`);
+      const { data } = await this.$axios.$delete(`/basket/${productId}/${positionSlug}`);
       const formattedData = useWithExcludedKeys(data, ['object', 'id', 'positions']);
       commit('setCart', formattedData);
     } catch (e) {

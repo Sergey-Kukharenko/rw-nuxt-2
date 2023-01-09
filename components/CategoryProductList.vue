@@ -1,12 +1,11 @@
 <template>
   <div class="products">
-    <app-grid v-slot="slotProps" :slides="products">
+    <app-grid v-slot="slotProps" :slides="productsList">
       <app-card :slide="{ ...slotProps }" />
     </app-grid>
     <div class="products__pagination">
-      <app-button theme="grey-whitely" stretch="full"> Show more </app-button>
       <div class="products__pagination-nav">
-        <app-pagination />
+        <app-pagination :options="pagination" :loading="loading" has-show-more-btn @loadData="fetchProducts" />
       </div>
     </div>
   </div>
@@ -16,7 +15,8 @@
 import AppPagination from '@/components/shared/AppPagination.vue';
 import AppGrid from '@/components/shared/AppGrid.vue';
 import AppCard from '@/components/shared/AppCard.vue';
-import AppButton from '@/components/shared/AppButton';
+
+import { PAGINATION } from '~/constants';
 
 export default {
   name: 'CategoryProductList',
@@ -24,14 +24,43 @@ export default {
   components: {
     AppGrid,
     AppCard,
-    AppButton,
     AppPagination
   },
 
-  props: {
-    products: {
-      type: Array,
-      default: () => []
+  data() {
+    return {
+      loading: false
+    }
+  },
+
+  computed: {
+    productsList() {
+      return this.$store.getters['category/getCategory']?.list ?? [];
+    },
+
+    pagination() {
+      return this.$store.getters['category/getCategory']?.pagination;
+    }
+  },
+
+  methods: {
+    async fetchProducts({ page, isShowMore = false }) {
+      this.loading = true
+
+      const payload = {
+        slug: this.$route.params.slug,
+        params: {
+          page,
+          limit: PAGINATION.limit
+        }
+      };
+
+      await this.$store.dispatch('category/fetchCategory', {
+        ...payload,
+        isConcated: isShowMore
+      });
+
+      this.loading = false
     }
   }
 };
@@ -52,10 +81,6 @@ export default {
   }
 
   &__pagination {
-    @include lt-md {
-      display: none;
-    }
-
     @include gt-sm {
       margin-top: 40px;
 

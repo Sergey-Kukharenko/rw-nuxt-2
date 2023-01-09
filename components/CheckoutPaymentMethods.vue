@@ -61,7 +61,7 @@ export default {
   methods: {
     onClickSelect(index, close) {
       this.selectIndex = index;
-      this.$store.commit('checkout/SET_STATE', { paymentMethod: paymentMethods[index].name });
+      this.$store.commit('checkout/setState', { paymentMethod: paymentMethods[index].name });
 
       if (!close) {
         return;

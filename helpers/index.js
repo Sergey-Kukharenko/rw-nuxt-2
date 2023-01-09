@@ -24,9 +24,9 @@ const useSortArrayBy = (array, value, prop) => {
 };
 
 const useBreadCrumbs = (route) => {
-  const unusedRoutes = ['/', '/flowers', '/about', '/delivery'];
+  const unusedRoutes = ['index', 'category-slug', 'about', 'delivery'];
 
-  if (unusedRoutes.includes(route.path)) {
+  if (unusedRoutes.includes(route.name)) {
     return;
   }
 
@@ -93,6 +93,10 @@ const useSizedImage = ({ name, width = 60, height = 60 }) => {
   return `${process.env.fileUrl}/${size}/${name}`;
 };
 
+const usePaginationTotalPages = ({ total, limit }) => Math.ceil(total / limit)
+
+const useGeneratedNumsArray = (length) => Array.from({ length }, (_, i) => i + 1)
+
 export {
   useClassName,
   useClassNameProp,
@@ -109,5 +113,7 @@ export {
   useArrayUniqueByKey,
   useValueFromObject,
   useFixedSumByKey,
-  useSizedImage
+  useSizedImage,
+  usePaginationTotalPages,
+  useGeneratedNumsArray
 };

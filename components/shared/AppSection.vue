@@ -2,7 +2,7 @@
   <div :class="classNames">
     <section class="section">
       <app-section-header :header-props="section.main" />
-      <app-section-grid v-slot="slotProps" :slides="section.list" :theme="theme">
+      <app-section-grid v-slot="slotProps" :slides="section.list" :theme="theme" :slug="name">
         <app-card :slide="{ ...slotProps }" />
       </app-section-grid>
     </section>
@@ -35,6 +35,11 @@ export default {
     },
 
     name: {
+      type: String,
+      default: ''
+    },
+
+    slug: {
       type: String,
       default: ''
     }

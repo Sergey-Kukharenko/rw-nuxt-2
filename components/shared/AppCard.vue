@@ -13,17 +13,20 @@
           <app-badge v-if="slide.sale" theme="red" class="header__badge">
             {{ slide.sale.percent }}
           </app-badge>
+
           <button :class="classNames" @click="toggleLike">
             <svg-icon name="heart" class="like__icon" />
           </button>
+
         </div>
-        <a :href="slide.url" class="figure absolute-grow">
+
+        <nuxt-link :to="{ name: 'id', params: { id: slide.url } }" class="figure absolute-grow">
           <img
             :src="useSizedImage({ name: slide.img, width: 508, height: 508 })"
             class="absolute-center figure__img"
             :alt="slide.img"
           />
-        </a>
+        </nuxt-link>
       </div>
       <div class="card__body">
         <div class="rating">
@@ -108,12 +111,12 @@ export default {
 
     onAddToCart() {
       const payload = {
-        productId: this.slide.productId,
-        positionSlag: this.slide.positionSlag
+        productId: this.slide.id,
+        positionSlug: this.slide.position_name
       };
 
       this.addToCart(payload);
-      this.$router.push('/basket');
+      this.$router.push({ name: 'basket' });
     }
   }
 };

@@ -5,7 +5,7 @@ export const state = () => ({
 });
 
 export const mutations = {
-  SET_STATE(state, payload) {
+  setState(state, payload) {
     Object.keys(payload).forEach((key) => {
       if (key in state) {
         state[key] = payload[key];
@@ -18,7 +18,7 @@ export const actions = {
   async fetchCheckout({ commit }) {
     try {
       const { data } = await this.$axios.$get('/checkout/')
-      commit('SET_STATE', { checkout: data })
+      commit('setState', { checkout: data })
     } catch (err) {
       console.error(err)
     }
@@ -27,7 +27,7 @@ export const actions = {
   async fetchPaidCheckout({ commit }) {
     try {
       const { data } = await this.$axios.$get('/checkout/payment/paid/')
-      commit('SET_STATE', { isPaid: data?.success ?? false })
+      commit('setState', { isPaid: data?.success ?? false })
     } catch (err) {
       console.error(err)
     }

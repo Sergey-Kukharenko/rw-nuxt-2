@@ -5,7 +5,7 @@
     </div>
 
     <div v-if="theme" class="grid__item">
-      <app-card-show-more />
+      <app-card-show-more :slug="slug" />
     </div>
   </div>
 </template>
@@ -25,6 +25,11 @@ export default {
     theme: {
       type: String,
       default: ''
+    },
+
+    slug: {
+      type: String,
+      default: ''
     }
   },
 
@@ -32,7 +37,7 @@ export default {
     classNames() {
       return useClassNameProp(this.theme, 'grid');
     }
-  }
+  },
 };
 </script>
 
