@@ -25,7 +25,7 @@
         </div>
         <div class="group-buttons__item">
           <app-button theme="grey" @click="toggleLike">
-            <svg-icon name="heart-outline" :class="classNames" />
+            <app-like-icon :active="like" theme="grey"/>
           </app-button>
         </div>
       </div>
@@ -35,17 +35,18 @@
 
 <script>
 import { mapActions } from 'vuex';
-import { useToggleClassName } from '@/helpers';
 import AppOffers from '@/components/product/AppOffers';
 import AppButton from '@/components/shared/AppButton';
 import AppBadges from '@/components/shared/AppBadges';
 import AppOfferDetail from '@/components/product/AppOfferDetail';
 import ToastCardDeals from '@/components/toast-cards/ToastCardDeals';
+import AppLikeIcon from '~/components/shared/AppLikeIcon';
 
 export default {
   name: 'AppFormOffers',
 
   components: {
+    AppLikeIcon,
     AppOfferDetail,
     AppOffers,
     AppBadges,
@@ -64,12 +65,6 @@ export default {
       offer: this.product?.positions[0],
       like: this.product.like
     };
-  },
-
-  computed: {
-    classNames() {
-      return useToggleClassName(this.like, 'like', 'active');
-    }
   },
 
   mounted() {

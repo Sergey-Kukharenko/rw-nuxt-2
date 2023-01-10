@@ -1,16 +1,21 @@
 <template>
   <div class="card">
-    <img :src="slide.img" :alt="slide.img" class="card__img" />
+    <img
+      :src="useSizedImage({ name: slide.filename, width: 1056, height: 1056 })"
+      :alt="slide.alt_text"
+      class="card__img"
+    />
+
     <div class="card__overlay absolute-grow"></div>
     <div class="card__container absolute-grow">
       <div class="card__header header">
-        <div class="header__item">
+        <div v-if="slide.sale" class="header__item">
           <app-badge theme="red" size="md">
             {{ slide.sale.status }}
             {{ slide.sale.percent }}
           </app-badge>
         </div>
-        <div class="header__item">
+        <div v-if="slide.rating" class="header__item">
           <app-badge-rate-reviews
             :rating="slide.rating"
             :stars="1"
@@ -24,6 +29,8 @@
 </template>
 
 <script>
+import { useSizedImage } from '~/helpers';
+
 import AppBadge from '@/components/shared/AppBadge';
 import AppBadgeRateReviews from '~/components/shared/AppBadgeRateReviews';
 
@@ -40,6 +47,10 @@ export default {
       type: Object,
       default: () => ({})
     }
+  },
+
+  methods: {
+    useSizedImage
   }
 };
 </script>

@@ -1,7 +1,9 @@
 <template>
   <div class="layout layout-dt detail-page">
     <div class="detail-page__row">
-      <div class="detail-page__col">gallery</div>
+      <div class="detail-page__col">
+        <app-gallery :slides="images"/>
+      </div>
       <div class="detail-page__col">
         <h1 class="detail-page__title">{{ title }}</h1>
         <app-form-offers :product="getProduct" />
@@ -37,11 +39,13 @@ import AppFormOffers from '@/components/product/AppFormOffers';
 import AppService from '@/components/product/AppService';
 import AppSection from '@/components/shared/AppSection.vue';
 import AppPopularCategoriesItems from '@/components/card-product/AppPopularCategoriesItems';
+import AppGallery from '~/components/ui/AppGallery';
 
 export default {
   name: 'IdPage',
 
   components: {
+    AppGallery,
     AppService,
     AppFormOffers,
     AppSection,
@@ -57,6 +61,7 @@ export default {
       title: '',
       description: '',
 
+      images: [],
       positions: [],
       price: {},
       like: null,
@@ -72,6 +77,7 @@ export default {
       data.description = response.description;
 
       data.id = response.id;
+      data.images = response.images;
       data.positions = response.positions;
       data.price = response.price;
       data.like = response.like;
@@ -116,12 +122,14 @@ export default {
 
     getProduct() {
       const id = this.id;
+      const images = this.images;
       const positions = this.positions;
       const price = this.price;
       const like = this.like;
 
       return {
         id,
+        images,
         positions,
         price,
         like

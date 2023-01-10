@@ -14,10 +14,7 @@
             {{ slide.sale.percent }}
           </app-badge>
 
-          <button :class="classNames" @click="toggleLike">
-            <svg-icon name="heart" class="like__icon" />
-          </button>
-
+          <app-like-icon :active="like" @click="toggleLike" />
         </div>
 
         <nuxt-link :to="{ name: 'id', params: { id: slide.url } }" class="figure absolute-grow">
@@ -40,6 +37,7 @@
         </div>
         <div class="content">
           <div class="price">
+            <div class="price__current">£ {{ slide.price }}</div>
             <div v-if="slide.sale" class="group">
               <div class="price__old">£ {{ slide.price }}</div>
               <div class="group__badge">
@@ -48,7 +46,6 @@
                 </app-badge>
               </div>
             </div>
-            <div class="price__current">£ {{ slide.price }}</div>
           </div>
           <app-button theme="green" size="sm" @click="onAddToCart">
             <span>Send</span>
@@ -64,12 +61,14 @@ import { mapActions } from 'vuex';
 
 import AppBadge from './AppBadge.vue';
 import AppButton from './AppButton.vue';
-import { useSizedImage, useToggleClassName } from '~/helpers';
+import { useSizedImage } from '~/helpers';
+import AppLikeIcon from '~/components/shared/AppLikeIcon';
 
 export default {
   name: 'AppCard',
 
   components: {
+    AppLikeIcon,
     AppBadge,
     AppButton
   },
@@ -85,12 +84,6 @@ export default {
     return {
       like: this.slide.like
     };
-  },
-
-  computed: {
-    classNames() {
-      return useToggleClassName(this.like, 'like', 'active');
-    }
   },
 
   methods: {
@@ -175,7 +168,7 @@ export default {
     }
 
     @include lt-md {
-      height: 144px;
+      height: 160px;
       padding: 8px;
     }
 
@@ -261,7 +254,6 @@ export default {
   }
 
   @include lt-md {
-    min-height: 28px;
     font-family: $golos-regular;
     font-size: 11px;
     line-height: 14px;
@@ -279,7 +271,7 @@ export default {
   }
 
   @include lt-md {
-    padding: 5px 8px 7px;
+    padding: 7px 8px 10px;
   }
 }
 
@@ -363,38 +355,6 @@ export default {
 
     @include lt-md {
       top: -6px;
-    }
-  }
-}
-
-.like {
-  color: #fff;
-
-  &__icon {
-    display: block;
-    mix-blend-mode: normal;
-    color: inherit;
-    fill: currentColor;
-    stroke: $color-white-grey;
-
-    @include gt-sm {
-      width: 20px;
-      height: 18.5px;
-    }
-
-    @include lt-md {
-      width: 13.33px;
-      height: 12.33px;
-    }
-  }
-
-  &--active {
-    color: $color-like-active;
-
-    .like {
-      &__icon {
-        stroke: #fff;
-      }
     }
   }
 }

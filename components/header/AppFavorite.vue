@@ -41,7 +41,7 @@ export default {
 
 <style lang="scss" scoped>
 .favorite {
-  color: $color-light-grey;
+  color: #ccc;
   cursor: pointer;
 
   &:hover {
@@ -73,7 +73,7 @@ export default {
     font-size: 14px;
     line-height: 16px;
     text-align: center;
-    color: $color-dark-grey;
+    color: $color-light-grey;
     margin-top: 7px;
   }
 

@@ -1,5 +1,5 @@
 <template>
-  <svg-icon name="heart" :class="classes" />
+  <svg-icon name="heart" :class="classNames" v-on="$listeners" />
 </template>
 
 <script>
@@ -7,6 +7,11 @@ export default {
   name: 'AppLikeIcon',
 
   props: {
+    active: {
+      type: Boolean,
+      default: false
+    },
+
     theme: {
       type: String,
       default: 'colored',
@@ -17,9 +22,10 @@ export default {
   },
 
   computed: {
-    classes() {
+    classNames() {
       return {
-        [`icon icon--theme-${this.theme}`]: this.theme
+        [`icon icon--theme-${this.theme}`]: this.theme,
+        'icon icon--active': this.active
       };
     }
   }
@@ -33,6 +39,7 @@ export default {
   color: #fff;
   fill: currentColor;
   stroke: $color-white-grey;
+  cursor: pointer;
 
   @include gt-sm {
     width: 20px;
@@ -44,18 +51,23 @@ export default {
     height: 12.33px;
   }
 
-  &--theme-colored {
-    &:hover,
-    &--active {
-      color: $color-like-active;
-      stroke: #fff;
+  &--theme-grey {
+    color: transparent;
+
+    &.icon {
+      &--active {
+        color: $color-grey;
+        stroke: $color-grey;
+      }
     }
   }
 
-  &--theme-grey {
-    &:hover,
-    &--active {
-      color: $color-grey;
+  &--theme-colored {
+    &.icon {
+      &--active {
+        color: $color-like-active;
+        stroke: #fff;
+      }
     }
   }
 }

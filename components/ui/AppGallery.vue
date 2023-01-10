@@ -1,7 +1,7 @@
 <template>
   <div class="thumb-example">
     <swiper ref="swiperTop" class="swiper swiper--gallery" :options="swiperOption">
-      <swiper-slide v-for="(slide, idx) in items.slides" :key="idx">
+      <swiper-slide v-for="(slide, idx) in slides" :key="idx">
         <app-gallery-card :slide="slide" />
       </swiper-slide>
 
@@ -14,9 +14,13 @@
     </swiper>
 
     <swiper ref="swiperThumbs" class="swiper-thumbs" :options="swiperOptionThumbs">
-      <swiper-slide v-for="(slide, idx) in items.thumbs" :key="idx">
+      <swiper-slide v-for="(slide, idx) in slides" :key="idx">
         <div class="thumbs-item">
-          <img :src="slide.img" :alt="slide.img" class="thumbs-item__img" />
+          <img
+            :src="useSizedImage({ name: slide.filename, width: 120, height: 120 })"
+            :alt="slide.alt_text"
+            class="thumbs-item__img"
+          />
           <div class="thumbs-item__border absolute-grow" />
         </div>
       </swiper-slide>
@@ -26,6 +30,8 @@
 
 <script>
 import { Swiper, SwiperSlide } from 'vue-awesome-swiper';
+import { useSizedImage } from '~/helpers';
+
 import AppGalleryCard from '@/components/shared/AppGalleryCard.vue';
 
 export default {
@@ -36,9 +42,9 @@ export default {
   },
 
   props: {
-    items: {
-      type: Object,
-      default: () => {}
+    slides: {
+      type: Array,
+      default: () => []
     }
   },
 
@@ -54,6 +60,7 @@ export default {
           clickable: true
         }
       },
+
       swiperOptionThumbs: {
         loop: true,
         loopedSlides: 4,
@@ -73,6 +80,10 @@ export default {
       swiperTop.controller.control = swiperThumbs;
       swiperThumbs.controller.control = swiperTop;
     });
+  },
+
+  methods: {
+    useSizedImage
   }
 };
 </script>

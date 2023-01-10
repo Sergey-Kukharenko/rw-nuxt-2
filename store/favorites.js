@@ -38,6 +38,6 @@ export const actions = {
 };
 
 export const getters = {
-  getCount: (state) => state.favorites.list.length,
+  getCount: (state) => state.favorites?.list?.length,
   getFavorites: (state) => state.favorites
 };
