@@ -18,16 +18,21 @@
         </div>
 
         <nuxt-link :to="{ name: 'id', params: { id: slide.url } }" class="figure absolute-grow">
+          <!--          <img-->
+          <!--            :src="useSizedImage({ name: slide.img, width: 508, height: 508 })"-->
+          <!--            class="absolute-center figure__img"-->
+          <!--            :alt="slide.img"-->
+          <!--          />-->
+
           <img
-            :src="useSizedImage({ name: slide.img, width: 508, height: 508 })"
+            src="https://images.unsplash.com/photo-1566346654731-638a9ee21e5c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MjB8fHNoaW5lfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=508&q=60"
             class="absolute-center figure__img"
-            :alt="slide.img"
           />
         </nuxt-link>
       </div>
       <div class="card__body">
         <div class="rating">
-          <div class="rating__text">{{ slide.rating }}</div>
+          <div :class="classNames">{{ showStatus }}</div>
           <svg-icon name="star" class="rating__icon" />
           <div class="rating__reviews">{{ slide.reviews }}</div>
         </div>
@@ -61,7 +66,7 @@ import { mapActions } from 'vuex';
 
 import AppBadge from './AppBadge.vue';
 import AppButton from './AppButton.vue';
-import { useSizedImage } from '~/helpers';
+import { useSizedImage, useToggleClassName } from '~/helpers';
 import AppLikeIcon from '~/components/shared/AppLikeIcon';
 
 export default {
@@ -84,6 +89,20 @@ export default {
     return {
       like: this.slide.like
     };
+  },
+
+  computed: {
+    isNew() {
+      return this.slide.is_new;
+    },
+
+    showStatus() {
+      return this.isNew ? 'New' : this.slide.rating;
+    },
+
+    classNames() {
+      return useToggleClassName(this.isNew, 'rating__text', 'color-green');
+    }
   },
 
   methods: {
@@ -305,6 +324,10 @@ export default {
     @include lt-md {
       font-size: 10px;
       line-height: 12px;
+    }
+
+    &--color-green {
+      color: $color-dark-green;
     }
   }
 
